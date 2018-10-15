@@ -9,7 +9,6 @@
 
 #include "structs/base/base_plugin.h"
 #include "structs/cassandra/cassandra.pb.h"
-#include "structs/cassandra/cassandra_internal.pb.h"
 #include "structs/cassandra/message_gen.h"
 
 namespace structs {

@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package structs;
+
+enum RepeatedHandler {
+  LIST = 0;
+  FROZEN_LIST = 1;
+  BYTES = 2;
+  FROZEN_SET = 3;
+  SET = 4;
+}
+
+message CassandraField {
+  // Path to the fields that you are describing, using dots notation.
+  // For instance: "foo.bar.baz".
+  string path = 1;
+  // Whether this field is part of the (compound or not) PRIMARY KEY definition.
+  // If no id field is defined, the field named "id" is the id.
+  // If no id field is defined and there is no field named id, it is an error.
+  bool is_id = 2;
+  // If there is more than one id, each of them must have cardinality set.
+  int32 id_cardinality = 7;
+  // For message fields, when this is true the whole message will be serialized as a blob.
+  //
+  // For instance, given:
+  //
+  // message Foo {
+  //   string field_1 = 1;
+  //   int32 field_2 = 2;
+  // }
+  // 
+  // message Bar {
+  //   Foo the_foo = 1; 
+  // }
+  //
+  // In the default case, this will expand to cassandra columns "the_foo_field_1 text" and "the_foo_field_2 int".
+  // However, if is_bytes is true on field "the_foo" this will exapnd to "the_foo blob" where the value is Foo serialized
+  // as proto.
+  //
+  // Using bytes may help vastly reducing the number of fields and enhance performance, at the expense
+  // of not being able to query the fields, and having to update the whole message at once.
+  bool is_bytes = 3;
+  // If true, the field is not persisted.
+  bool is_transient = 4;
+
+  // If empty, the name is automatically generated using conventions "path_to_the_field".
+  string field_name = 5;
+
+  RepeatedHandler repeated_handling = 6;
+}
+
+message CassandraSchema {
+  // Fully qualified name of the protobuf to generate structs for.
+  // This is the only mandatory field in a schema, as it indicates that generation shall be
+  // ran for this message.
+  string message_name = 1;
+  // Name of the cassandra field.
+  string table_name = 2;
+
+  repeated CassandraField fields = 3;
+
+  // Defaults to 'LeveledCompactionStrategy'.
+  string compaction_strategy = 4;
+  // Defaults to 'SnappyCompressor'.
+  string compression_strategy = 5;
+
+  // If set, override the java package for the structs generated class.
+  // If not set we will use the java_package of the proto file if any.
+  string java_package = 6;
+}
+
+message CassandraSchemas {
+  repeated CassandraSchema schema = 1;
+}

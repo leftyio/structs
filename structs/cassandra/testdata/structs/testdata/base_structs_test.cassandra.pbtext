@@ -1,0 +1,15 @@
+schema: {
+  message_name: "structs.testdata.StructTest1"
+  table_name: ""
+}
+
+schema: {
+  message_name: "structs.testdata.StructTest2"
+  table_name: "name_of_struct2"
+  java_package: "io.structs.testdata"
+}
+
+schema: {
+  message_name: "structs.testdata.StructTest3"
+  table_name: "name_of_struct3"
+}

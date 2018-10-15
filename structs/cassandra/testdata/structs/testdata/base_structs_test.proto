@@ -1,0 +1,26 @@
+// basic test that we only generate for the messages listed in the schema.
+// + table names.
+
+syntax = "proto3";
+
+package structs.testdata;
+
+message StructTest1 {
+  string id = 1;
+}
+
+message StructNotTable {  
+  string id = 1;
+}
+
+message StructTest2 {
+  string id = 1;
+}
+
+message StructTest3 {
+  string id = 1;
+}
+
+message AnotherNotTable {  
+  string id = 1;
+}

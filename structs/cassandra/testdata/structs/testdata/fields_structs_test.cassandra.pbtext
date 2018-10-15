@@ -1,0 +1,43 @@
+schema: {
+  message_name: "structs.testdata.StructTest"
+  table_name: ""
+
+  fields: {
+    path: "transient_field"
+    is_transient: true
+  }
+
+  fields: {
+    path: "another_transient_field"
+    is_transient: true
+  }
+
+  fields: {
+    path: "inner.inside.inner_transient"
+    is_transient: true
+  }
+
+  fields: {
+    path: "field_inner_as_bytes"
+    is_bytes: true
+  }
+}
+
+schema: {
+  message_name: "structs.testdata.StructTestingId"
+  table_name: ""
+
+  fields: {
+    path: "field_1"
+    is_id: true
+  }
+
+  fields: {
+    path: "field_4"
+    is_id: true
+  }
+}
+
+schema: {
+  message_name: "structs.testdata.StructTestingDefaultId"
+}

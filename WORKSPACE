@@ -27,10 +27,3 @@ git_repository(
   commit = "d89dba27e35462d7457121b978fd79214205e686",
   remote = "https://github.com/abseil/abseil-cpp.git",
 )
-
-git_repository(
-  name = "com_google_googletest",
-
-  commit = "ba96d0b1161f540656efdaed035b3c062b60e006",
-  remote = "https://github.com/google/googletest.git",
-)

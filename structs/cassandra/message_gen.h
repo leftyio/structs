@@ -6,7 +6,6 @@
 #include "google/protobuf/descriptor.h"
 
 #include "structs/cassandra/cassandra.pb.h"
-#include "structs/cassandra/cassandra_internal.pb.h"
 #include "structs/cassandra/field_gen.h"
 
 namespace structs {
@@ -19,7 +18,6 @@ class MessageGen {
   ~MessageGen();
 
   void AddField(const FieldGen& field);
-  CassandraInternalMessage BuildMessage();
 
   // Getters for the renderers.
   std::string CompressionStrategy() const;

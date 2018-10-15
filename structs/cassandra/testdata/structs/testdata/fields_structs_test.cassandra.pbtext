@@ -30,11 +30,13 @@ schema: {
   fields: {
     path: "field_1"
     is_id: true
+    id_cardinality: 1
   }
 
   fields: {
     path: "field_4"
     is_id: true
+    id_cardinality: 2
   }
 }
 

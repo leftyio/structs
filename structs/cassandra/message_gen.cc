@@ -36,65 +36,6 @@ struct ByIdCardinality {
   }
 };
 
-CassandraInternalMessage MessageGen::BuildMessage() {
-  CassandraInternalMessage res;
-  res.set_table_name(TableName());
-
-  std::vector<const FieldGen*> id_fields;
-
-  for (const auto& field : fields_) {
-    auto* cassandra_field = res.add_fields();
-    cassandra_field->set_name(field.CassandraName());
-    cassandra_field->set_cassandra_type(field.CassandraType());
-
-    if (field.IsId()) {
-      id_fields.push_back(&field);
-    }
-  }
-
-  if (id_fields.empty()) {
-    const FieldGen* field_named_id = FieldNamedId();
-    if (field_named_id != nullptr) {
-      LOG(INFO) << "no id was defined, we will use the field named \"id\" as an id";
-      id_fields.push_back(field_named_id);
-    } else {
-      LOG(FATAL) << "couldn't build a PRIMARY KEY for table: " << res.table_name();
-    }
-  }
-
-  if (id_fields.size() > 1) {
-    for (const FieldGen* field : id_fields) {
-      int cardinality = field->IdCardinality();
-      CHECK(cardinality > 0) << "Multiple ids are defined so cardinality must be set on field: "
-          << field->CassandraName();
-    }
-
-    std::sort(id_fields.begin(), id_fields.end(), ByIdCardinality());
-  }
-
-  for (const FieldGen* id_field : id_fields) {
-    res.add_ids(id_field->CassandraName());
-  }
-
-  res.set_pkg(descriptor_->file()->package());
-
-  res.set_java_class(descriptor_->name());
-  std::string java_pkg = "";
-  if (!schema_->java_package().empty()) {
-    java_pkg = schema_->java_package();
-  } else {
-    const auto& opts = descriptor_->file()->options();
-    if (!opts.java_package().empty()) {
-      java_pkg = opts.java_package();
-    } else {
-      java_pkg = descriptor_->file()->package();
-    }
-  }
-  res.set_java_package(java_pkg);
-
-  return res;
-}
-
 std::string MessageGen::TableName() const {
   if (!schema_->table_name().empty()) {
     return schema_->table_name();

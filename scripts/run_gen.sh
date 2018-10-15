@@ -1,5 +1,8 @@
 #!/bin/bash
-
-bazel build //structs/cassandra:protoc-gen-structs-cassandra
+make protoc-gen-structs-cassandra
 export GLOG_logtostderr=1
-protoc --plugin=bazel-bin/structs/cassandra/protoc-gen-structs-cassandra --structs-cassandra_out="schema=data/structs_test.cassandra.pbtext:." data/structs_test.proto
+protoc --plugin=protoc-gen-structs-cassandra                                                                    \
+    --proto_path=structs/cassandra/testdata                                                                     \
+    --proto_path=/usr/local/include                                                                             \
+    --structs-cassandra_out="schema=structs/cassandra/testdata/structs/testdata/fields_structs_test.cassandra.pbtext:." \
+    structs/testdata/fields_structs_test.proto 

@@ -3,4 +3,9 @@
 /bazel-out
 /bazel-structs
 /bazel-testlogs
-
+/*.a
+/protoc-gen-structs-cassandra
+/Makefile
+/CMakeCache.txt
+/cmake_install.cmake
+/CMakeFiles

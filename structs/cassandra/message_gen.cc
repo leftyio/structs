@@ -4,7 +4,12 @@
 #include <list>
 
 #include "glog/logging.h"
+#include "google/protobuf/compiler/java/java_names.h"
 #include "google/protobuf/descriptor.pb.h"
+
+using google::protobuf::Descriptor;
+using google::protobuf::FieldDescriptor;
+using google::protobuf::FileDescriptor;
 
 namespace structs {
 MessageGen::MessageGen(const CassandraSchema* schema,
@@ -56,23 +61,31 @@ std::string MessageGen::Pkg() const {
 }
 
 std::string MessageGen::JavaClass() const {
-  return descriptor_->name();
-}
-
-std::string MessageGen::JavaPkg() const {
-  std::string java_pkg = "";
-  if (!schema_->java_package().empty()) {
-    java_pkg = schema_->java_package();
-  } else {
-    const auto& opts = descriptor_->file()->options();
-    if (!opts.java_package().empty()) {
-      java_pkg = opts.java_package();
-    } else {
-      java_pkg = descriptor_->file()->package();
+  if (schema_ != nullptr) {
+    if (!schema_->java_class().empty()) {
+      return schema_->java_class();
     }
   }
-  
-  return java_pkg;
+
+  return google::protobuf::compiler::java::ClassName(descriptor_) + "CassandraStruct";
+}
+
+const char* kDefaultPackage = "";
+std::string MessageGen::JavaPkg() const {
+  std::string result;
+  const FileDescriptor* file = descriptor_->file();
+
+  if (file->options().has_java_package()) {
+    result = file->options().java_package();
+  } else {
+    result = kDefaultPackage;
+    if (!file->package().empty()) {
+      if (!result.empty()) result += '.';
+      result += file->package();
+    }
+  }
+
+  return result;
 }
 
 std::string MessageGen::CompressionStrategy() const {

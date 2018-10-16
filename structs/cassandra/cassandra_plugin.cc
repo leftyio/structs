@@ -77,13 +77,13 @@ int CassandraPlugin::DoRun() {
     }
   }
 
-  WriteCQLFiles();
+  WriteFiles();
 
   // success
   return 0;
 }
 
-void CassandraPlugin::WriteCQLFiles() {
+void CassandraPlugin::WriteFiles() {
   for (const auto& msg : msgs_) {
     WriteCQLFile(msg);
     WriteJavaFile(msg);
@@ -99,7 +99,11 @@ void CassandraPlugin::WriteCQLFile(const MessageGen& msg) {
 }
 
 void CassandraPlugin::WriteJavaFile(const MessageGen& msg) {
-
+  CodeGeneratorResponse_File* file = resp()->add_file();
+  std::string pkg = msg.JavaPkg();
+  absl::StrReplaceAll({{ ".", "/" }}, &pkg);
+  file->set_name(pkg + "/" + msg.JavaClass() + ".java");
+  file->set_content(JavaContent(&msg));
 }
 
 void CassandraPlugin::Generate(const Descriptor* msg,
@@ -142,7 +146,5 @@ void CassandraPlugin::ParseSchema() {
     CHECK(it == schemas_.end()) << "duplicate message: " << s.message_name();
     schemas_[s.message_name()] = s;
   }
-
-
 }
 }  // structs

@@ -415,6 +415,20 @@ class CassandraSchema : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_java_package();
   void set_allocated_java_package(::std::string* java_package);
 
+  // string java_class = 7;
+  void clear_java_class();
+  static const int kJavaClassFieldNumber = 7;
+  const ::std::string& java_class() const;
+  void set_java_class(const ::std::string& value);
+  #if LANG_CXX11
+  void set_java_class(::std::string&& value);
+  #endif
+  void set_java_class(const char* value);
+  void set_java_class(const char* value, size_t size);
+  ::std::string* mutable_java_class();
+  ::std::string* release_java_class();
+  void set_allocated_java_class(::std::string* java_class);
+
   // @@protoc_insertion_point(class_scope:structs.CassandraSchema)
  private:
 
@@ -425,6 +439,7 @@ class CassandraSchema : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::internal::ArenaStringPtr compaction_strategy_;
   ::google::protobuf::internal::ArenaStringPtr compression_strategy_;
   ::google::protobuf::internal::ArenaStringPtr java_package_;
+  ::google::protobuf::internal::ArenaStringPtr java_class_;
   mutable int _cached_size_;
   friend struct ::protobuf_structs_2fcassandra_2fcassandra_2eproto::TableStruct;
   friend void ::protobuf_structs_2fcassandra_2fcassandra_2eproto::InitDefaultsCassandraSchemaImpl();
@@ -1018,6 +1033,59 @@ inline void CassandraSchema::set_allocated_java_package(::std::string* java_pack
   }
   java_package_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), java_package);
   // @@protoc_insertion_point(field_set_allocated:structs.CassandraSchema.java_package)
+}
+
+// string java_class = 7;
+inline void CassandraSchema::clear_java_class() {
+  java_class_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CassandraSchema::java_class() const {
+  // @@protoc_insertion_point(field_get:structs.CassandraSchema.java_class)
+  return java_class_.GetNoArena();
+}
+inline void CassandraSchema::set_java_class(const ::std::string& value) {
+  
+  java_class_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:structs.CassandraSchema.java_class)
+}
+#if LANG_CXX11
+inline void CassandraSchema::set_java_class(::std::string&& value) {
+  
+  java_class_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:structs.CassandraSchema.java_class)
+}
+#endif
+inline void CassandraSchema::set_java_class(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  java_class_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:structs.CassandraSchema.java_class)
+}
+inline void CassandraSchema::set_java_class(const char* value, size_t size) {
+  
+  java_class_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:structs.CassandraSchema.java_class)
+}
+inline ::std::string* CassandraSchema::mutable_java_class() {
+  
+  // @@protoc_insertion_point(field_mutable:structs.CassandraSchema.java_class)
+  return java_class_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CassandraSchema::release_java_class() {
+  // @@protoc_insertion_point(field_release:structs.CassandraSchema.java_class)
+  
+  return java_class_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CassandraSchema::set_allocated_java_class(::std::string* java_class) {
+  if (java_class != NULL) {
+    
+  } else {
+    
+  }
+  java_class_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), java_class);
+  // @@protoc_insertion_point(field_set_allocated:structs.CassandraSchema.java_class)
 }
 
 // -------------------------------------------------------------------

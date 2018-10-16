@@ -129,6 +129,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::CassandraSchema, compaction_strategy_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::CassandraSchema, compression_strategy_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::CassandraSchema, java_package_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::CassandraSchema, java_class_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::CassandraSchemas, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -139,7 +140,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::structs::CassandraField)},
   { 12, -1, sizeof(::structs::CassandraSchema)},
-  { 23, -1, sizeof(::structs::CassandraSchemas)},
+  { 24, -1, sizeof(::structs::CassandraSchemas)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -175,19 +176,19 @@ void AddDescriptorsImpl() {
       "\005is_id\030\002 \001(\010\022\026\n\016id_cardinality\030\007 \001(\005\022\020\n\010"
       "is_bytes\030\003 \001(\010\022\024\n\014is_transient\030\004 \001(\010\022\022\n\n"
       "field_name\030\005 \001(\t\0223\n\021repeated_handling\030\006 "
-      "\001(\0162\030.structs.RepeatedHandler\"\265\001\n\017Cassan"
+      "\001(\0162\030.structs.RepeatedHandler\"\311\001\n\017Cassan"
       "draSchema\022\024\n\014message_name\030\001 \001(\t\022\022\n\ntable"
       "_name\030\002 \001(\t\022\'\n\006fields\030\003 \003(\0132\027.structs.Ca"
       "ssandraField\022\033\n\023compaction_strategy\030\004 \001("
       "\t\022\034\n\024compression_strategy\030\005 \001(\t\022\024\n\014java_"
-      "package\030\006 \001(\t\"<\n\020CassandraSchemas\022(\n\006sch"
-      "ema\030\001 \003(\0132\030.structs.CassandraSchema*P\n\017R"
-      "epeatedHandler\022\010\n\004LIST\020\000\022\017\n\013FROZEN_LIST\020"
-      "\001\022\t\n\005BYTES\020\002\022\016\n\nFROZEN_SET\020\003\022\007\n\003SET\020\004b\006p"
-      "roto3"
+      "package\030\006 \001(\t\022\022\n\njava_class\030\007 \001(\t\"<\n\020Cas"
+      "sandraSchemas\022(\n\006schema\030\001 \003(\0132\030.structs."
+      "CassandraSchema*P\n\017RepeatedHandler\022\010\n\004LI"
+      "ST\020\000\022\017\n\013FROZEN_LIST\020\001\022\t\n\005BYTES\020\002\022\016\n\nFROZ"
+      "EN_SET\020\003\022\007\n\003SET\020\004b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 565);
+      descriptor, 585);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs/cassandra/cassandra.proto", &protobuf_RegisterTypes);
 }
@@ -731,6 +732,7 @@ const int CassandraSchema::kFieldsFieldNumber;
 const int CassandraSchema::kCompactionStrategyFieldNumber;
 const int CassandraSchema::kCompressionStrategyFieldNumber;
 const int CassandraSchema::kJavaPackageFieldNumber;
+const int CassandraSchema::kJavaClassFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CassandraSchema::CassandraSchema()
@@ -767,6 +769,10 @@ CassandraSchema::CassandraSchema(const CassandraSchema& from)
   if (from.java_package().size() > 0) {
     java_package_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.java_package_);
   }
+  java_class_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.java_class().size() > 0) {
+    java_class_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.java_class_);
+  }
   // @@protoc_insertion_point(copy_constructor:structs.CassandraSchema)
 }
 
@@ -776,6 +782,7 @@ void CassandraSchema::SharedCtor() {
   compaction_strategy_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   compression_strategy_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   java_package_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  java_class_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
@@ -790,6 +797,7 @@ void CassandraSchema::SharedDtor() {
   compaction_strategy_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   compression_strategy_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   java_package_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  java_class_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void CassandraSchema::SetCachedSize(int size) const {
@@ -827,6 +835,7 @@ void CassandraSchema::Clear() {
   compaction_strategy_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   compression_strategy_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   java_package_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  java_class_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -931,6 +940,22 @@ bool CassandraSchema::MergePartialFromCodedStream(
         break;
       }
 
+      // string java_class = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_java_class()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->java_class().data(), static_cast<int>(this->java_class().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "structs.CassandraSchema.java_class"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -1014,6 +1039,16 @@ void CassandraSchema::SerializeWithCachedSizes(
       6, this->java_package(), output);
   }
 
+  // string java_class = 7;
+  if (this->java_class().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->java_class().data(), static_cast<int>(this->java_class().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "structs.CassandraSchema.java_class");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      7, this->java_class(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1091,6 +1126,17 @@ void CassandraSchema::SerializeWithCachedSizes(
         6, this->java_package(), target);
   }
 
+  // string java_class = 7;
+  if (this->java_class().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->java_class().data(), static_cast<int>(this->java_class().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "structs.CassandraSchema.java_class");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->java_class(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -1154,6 +1200,13 @@ size_t CassandraSchema::ByteSizeLong() const {
         this->java_package());
   }
 
+  // string java_class = 7;
+  if (this->java_class().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->java_class());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -1204,6 +1257,10 @@ void CassandraSchema::MergeFrom(const CassandraSchema& from) {
 
     java_package_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.java_package_);
   }
+  if (from.java_class().size() > 0) {
+
+    java_class_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.java_class_);
+  }
 }
 
 void CassandraSchema::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1236,6 +1293,7 @@ void CassandraSchema::InternalSwap(CassandraSchema* other) {
   compaction_strategy_.Swap(&other->compaction_strategy_);
   compression_strategy_.Swap(&other->compression_strategy_);
   java_package_.Swap(&other->java_package_);
+  java_class_.Swap(&other->java_class_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }

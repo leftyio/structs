@@ -25,7 +25,7 @@ class CassandraPlugin : public BasePlugin {
   void Generate(const Descriptor* msg, const CassandraSchema& s);
   // parse the parameter string. 
   void ParseSchema();
-  void WriteCQLFiles();
+  void WriteFiles();
   void WriteCQLFile(const MessageGen& msg);
   void WriteJavaFile(const MessageGen& msg);
 

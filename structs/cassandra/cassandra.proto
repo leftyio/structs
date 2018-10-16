@@ -67,6 +67,7 @@ message CassandraSchema {
   // If set, override the java package for the structs generated class.
   // If not set we will use the java_package of the proto file if any.
   string java_package = 6;
+  string java_class = 7;
 }
 
 message CassandraSchemas {

@@ -18,6 +18,7 @@
 #include "structs/cassandra/message_gen.h"
 #include "structs/cassandra/renderers/cql_file.h"
 #include "structs/cassandra/renderers/java_file.h"
+#include "structs/cassandra/renderers/spark_java_file.h"
 
 using google::protobuf::Descriptor;
 using google::protobuf::FieldDescriptor;
@@ -51,7 +52,7 @@ void VisitField(const CassandraSchema& schema,
 }
 }  // anonymous namespace
 
-CassandraPlugin::CassandraPlugin() {
+CassandraPlugin::CassandraPlugin(CassandraPluginRun run) : run_(run) {
   ParseSchema();
 }
 
@@ -85,8 +86,17 @@ int CassandraPlugin::DoRun() {
 
 void CassandraPlugin::WriteFiles() {
   for (const auto& msg : msgs_) {
-    WriteCQLFile(msg);
-    WriteJavaFile(msg);
+    switch (run_) {
+      case CassandraPluginRun::kTable:
+        WriteCQLFile(msg);
+        break;
+      case CassandraPluginRun::kJava:
+        WriteJavaFile(msg);
+        break;
+      case CassandraPluginRun::kSparkJava:
+        WriteSparkJavaFile(msg);
+        break;
+    }
   }
 }
 
@@ -104,6 +114,14 @@ void CassandraPlugin::WriteJavaFile(const MessageGen& msg) {
   absl::StrReplaceAll({{ ".", "/" }}, &pkg);
   file->set_name(pkg + "/" + msg.JavaClass() + ".java");
   file->set_content(JavaContent(&msg));
+}
+
+void CassandraPlugin::WriteSparkJavaFile(const MessageGen& msg) {
+  CodeGeneratorResponse_File* file = resp()->add_file();
+  std::string pkg = msg.JavaPkg();
+  absl::StrReplaceAll({{ ".", "/" }}, &pkg);
+  file->set_name(pkg + "/" + msg.JavaClass() + ".java");
+  file->set_content(SparkJavaContent(&msg));
 }
 
 void CassandraPlugin::Generate(const Descriptor* msg,

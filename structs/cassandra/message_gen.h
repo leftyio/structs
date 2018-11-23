@@ -25,6 +25,7 @@ class MessageGen {
   std::string TableName() const;
   std::string Pkg() const;
   std::string JavaClass() const;
+  std::string JavaClassOfMessage() const;
   std::string JavaPkg() const;
 
   std::vector<const FieldGen*> Fields() const;

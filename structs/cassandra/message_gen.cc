@@ -70,6 +70,10 @@ std::string MessageGen::JavaClass() const {
   return google::protobuf::compiler::java::ClassName(descriptor_) + "CassandraStruct";
 }
 
+std::string MessageGen::JavaClassOfMessage() const {
+  return google::protobuf::compiler::java::ClassName(descriptor_);
+}
+
 const char* kDefaultPackage = "";
 std::string MessageGen::JavaPkg() const {
   std::string result;

@@ -6,6 +6,7 @@
 #include "absl/strings/str_join.h"
 #include "glog/logging.h"
 #include "google/protobuf/descriptor.pb.h"
+#include "google/protobuf/compiler/java/java_names.h"
 
 using google::protobuf::FieldDescriptorProto;
 using google::protobuf::FieldDescriptorProto_Type_TYPE_MESSAGE;
@@ -13,6 +14,41 @@ using google::protobuf::FieldDescriptorProto_Label_LABEL_REPEATED;
 
 namespace structs {
 namespace {
+std::string UnderscoresToCamelCase(const std::string& input, bool cap_next_letter) {
+  std::string result;
+  // Note:  I distrust ctype.h due to locales.
+  for (int i = 0; i < input.size(); i++) {
+    if ('a' <= input[i] && input[i] <= 'z') {
+      if (cap_next_letter) {
+        result += input[i] + ('A' - 'a');
+      } else {
+        result += input[i];
+      }
+      cap_next_letter = false;
+    } else if ('A' <= input[i] && input[i] <= 'Z') {
+      if (i == 0 && !cap_next_letter) {
+        // Force first letter to lower-case unless explicitly told to
+        // capitalize it.
+        result += input[i] + ('a' - 'A');
+      } else {
+        // Capital letters after the first are left as-is.
+        result += input[i];
+      }
+      cap_next_letter = false;
+    } else if ('0' <= input[i] && input[i] <= '9') {
+      result += input[i];
+      cap_next_letter = true;
+    } else {
+      cap_next_letter = true;
+    }
+  }
+  // Add a trailing "_" if the name should be altered.
+  if (input[input.size() - 1] == '#') {
+    result += '_';
+  }
+  return result;
+}
+
 const CassandraField* FindField(const CassandraSchema& schema,
                                 const std::vector<std::string>& path) {
   const std::string exp_path = absl::StrJoin(path, ".");
@@ -173,6 +209,89 @@ std::string FieldGen::NonRepeatedCassandraType() const {
       }
     default:
       LOG(FATAL) << "unhandled type: " << proto_field_->type();
+  }
+}
+
+void FieldGen::SetFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {
+  if (proto_field_->type() == FieldDescriptor::Type::TYPE_MESSAGE && !IsSpecialMessage(proto_field_)) {
+    SetMessageFromJavaStmt(value_name, cb);
+    return;
+  }
+
+  if (proto_field_->type() == FieldDescriptor::Type::TYPE_MESSAGE && IsSpecialMessage(proto_field_)) {
+    SetSpecialMessageFromJavaStmt(value_name, cb);
+    return;
+  }
+
+  if (proto_field_->type() == FieldDescriptor::Type::TYPE_ENUM) {
+    SetEnumFromJavaStmt(value_name, cb);
+    return;
+  }
+
+  LOG(WARNING) << "primitives not supported yet";
+}
+
+void FieldGen::SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {
+  PathToFieldMinusOne(cb);
+  
+  std::string field = UnderscoresToCamelCase(path_.back(), true);
+  std::string enum_java_name = google::protobuf::compiler::java::ClassName(proto_field_->enum_type());
+
+  cb << "set" << field << "(" << enum_java_name << ".forNumber(" << value_name << "))";
+}
+
+void FieldGen::SetMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {
+  PathToFieldMinusOne(cb);
+  std::string field = UnderscoresToCamelCase(path_.back(), true);
+
+  cb << "get" << field << "Builder()" << ".mergeFrom(com.google.protobuf.ByteString.copyFrom("
+     << value_name << "))";
+}
+
+void FieldGen::SetSpecialMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {
+  std::set<std::string> simple_primitives;
+  simple_primitives.insert("google.protobuf.DoubleValue");
+  simple_primitives.insert("google.protobuf.FloatValue");
+  simple_primitives.insert("google.protobuf.Int64Value");
+  simple_primitives.insert("google.protobuf.UInt64Value");
+  simple_primitives.insert("google.protobuf.Int32Value");
+  simple_primitives.insert("google.protobuf.UInt32Value");
+  simple_primitives.insert("google.protobuf.BoolValue");
+  simple_primitives.insert("google.protobuf.StringValue");
+  simple_primitives.insert("google.protobuf.BytesValue");
+
+  auto it = simple_primitives.find(proto_field_->message_type()->full_name());
+  if (it != simple_primitives.end()) {
+    PathToFieldMinusOne(cb);
+    std::string field = UnderscoresToCamelCase(path_.back(), true);
+    
+    if (proto_field_->message_type()->full_name() != "google.protobuf.BytesValue") {
+      cb << "get" << field << "Builder()" << ".setValue(" << value_name << ")";
+    } else {
+      cb << "get" << field << "Builder()" << ".setValue(com.google.protobuf.ByteString.copyFrom("
+         << value_name << "))";
+    }
+
+    return;
+  }
+
+  // case of a timestamp.
+  PathToFieldMinusOne(cb);
+  std::string field = UnderscoresToCamelCase(path_.back(), true);
+  
+  cb << "set" << field << "(com.google.protobuf.util.Timestamps.fromMillis("
+     << value_name << ".getTime())" << ")";
+}
+
+void FieldGen::PathToFieldMinusOne(CodeBuilder& cb) const {
+  if (path_.size() == 1) {
+    return;
+  }
+
+  for (int i = 0; i < path_.size() - 1; ++i) {
+    std::string field = UnderscoresToCamelCase(path_[i], true);
+    cb << "get" << field << "Builder()";
+    cb << ".";
   }
 }
 }  // namespace structs

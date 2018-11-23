@@ -14,9 +14,15 @@
 namespace structs {
 using google::protobuf::Descriptor;
 
+enum class CassandraPluginRun {
+  kTable,
+  kJava,
+  kSparkJava
+};
+
 class CassandraPlugin : public BasePlugin {
  public:
-  CassandraPlugin();
+  explicit CassandraPlugin(CassandraPluginRun run);
   ~CassandraPlugin() override;
 
   int DoRun() override;
@@ -28,6 +34,9 @@ class CassandraPlugin : public BasePlugin {
   void WriteFiles();
   void WriteCQLFile(const MessageGen& msg);
   void WriteJavaFile(const MessageGen& msg);
+  void WriteSparkJavaFile(const MessageGen& msg);
+
+  const CassandraPluginRun run_;
 
   std::map<std::string, CassandraSchema> schemas_;
   std::vector<MessageGen> msgs_;

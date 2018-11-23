@@ -5,6 +5,7 @@
 
 #include "google/protobuf/descriptor.h"
 
+#include "structs/base/code_builder.h"
 #include "structs/cassandra/cassandra.pb.h"
 
 namespace structs {
@@ -31,7 +32,15 @@ class FieldGen {
   std::string CassandraType() const;
   std::string NonRepeatedCassandraType() const;
 
+  // statement to set this field from a java value.
+  void SetFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
+
  private:
+  void SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
+  void SetMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
+  void SetSpecialMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
+  void PathToFieldMinusOne(CodeBuilder& cb) const;
+
   std::vector<std::string> path_;
   // not owned
   const CassandraField* field_schema_{nullptr};

@@ -47,6 +47,13 @@ std::string GetFromCassandraRow(const std::string cassandra_type) {
   return it->second;
 }
 
+void SetListFromCassandraRow(const FieldGen& field,
+                             const std::string& builder,
+                             const std::string& value,
+                             CodeBuilder& cb) {
+  // TODO(christian) implement this.
+}
+
 void SetFromValue(const FieldGen& field,
                   const std::string& builder,
                   const std::string& value,
@@ -60,22 +67,26 @@ void SetFromCassandraRow(const FieldGen& field,
                          const std::string& builder,
                          const std::string& row,
                          CodeBuilder& cb) {
-  cb.BreakLine().Newline() << "{";
-  cb.Indent() << "int idx = " << row << ".indexOf(\""
-      << PathToField(field) << "\");";
-  cb.Newline() << "if (!row.isNullAt(idx)) {";
+  if (field.IsList()) {
+    SetListFromCassandraRow(field, builder, row, cb);
+  } else {
+    cb.BreakLine().Newline() << "{";
+    cb.Indent() << "int idx = " << row << ".indexOf(\""
+        << PathToField(field) << "\");";
+    cb.Newline() << "if (!row.isNullAt(idx)) {";
 
-  cb.Indent() << JavaTypeOfCassandra(field.CassandraType())
-    << " value = "
-    << row
-    << "."
-    << GetFromCassandraRow(field.CassandraType())
-    << "(idx);";
+    cb.Indent() << JavaTypeOfCassandra(field.CassandraType())
+        << " value = "
+        << row
+        << "."
+        << GetFromCassandraRow(field.CassandraType())
+        << "(idx);";
 
-  cb.Newline();
-  SetFromValue(field, "b", "value", cb);
-  cb.Outdent() << "}";
-  cb.Outdent() << "}";
+    cb.Newline();
+    SetFromValue(field, "b", "value", cb);
+    cb.Outdent() << "}";
+    cb.Outdent() << "}";
+  }
 }
 }  // anonymous namespace
 

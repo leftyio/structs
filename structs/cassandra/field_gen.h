@@ -23,6 +23,7 @@ class FieldGen {
   bool WillRecurse();
   bool IsId() const;
   int IdCardinality() const;
+  bool IsList() const;
 
   const Descriptor* MessageType() const;
   
@@ -38,6 +39,7 @@ class FieldGen {
  private:
   void SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
   void SetMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
+  void SetPrimitiveFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
   void SetSpecialMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
   void PathToFieldMinusOne(CodeBuilder& cb) const;
 

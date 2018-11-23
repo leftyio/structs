@@ -8,47 +8,14 @@
 #include "google/protobuf/descriptor.pb.h"
 #include "google/protobuf/compiler/java/java_names.h"
 
+#include "structs/base/utils.h"
+
 using google::protobuf::FieldDescriptorProto;
 using google::protobuf::FieldDescriptorProto_Type_TYPE_MESSAGE;
 using google::protobuf::FieldDescriptorProto_Label_LABEL_REPEATED;
 
 namespace structs {
 namespace {
-std::string UnderscoresToCamelCase(const std::string& input, bool cap_next_letter) {
-  std::string result;
-  // Note:  I distrust ctype.h due to locales.
-  for (int i = 0; i < input.size(); i++) {
-    if ('a' <= input[i] && input[i] <= 'z') {
-      if (cap_next_letter) {
-        result += input[i] + ('A' - 'a');
-      } else {
-        result += input[i];
-      }
-      cap_next_letter = false;
-    } else if ('A' <= input[i] && input[i] <= 'Z') {
-      if (i == 0 && !cap_next_letter) {
-        // Force first letter to lower-case unless explicitly told to
-        // capitalize it.
-        result += input[i] + ('a' - 'A');
-      } else {
-        // Capital letters after the first are left as-is.
-        result += input[i];
-      }
-      cap_next_letter = false;
-    } else if ('0' <= input[i] && input[i] <= '9') {
-      result += input[i];
-      cap_next_letter = true;
-    } else {
-      cap_next_letter = true;
-    }
-  }
-  // Add a trailing "_" if the name should be altered.
-  if (input[input.size() - 1] == '#') {
-    result += '_';
-  }
-  return result;
-}
-
 const CassandraField* FindField(const CassandraSchema& schema,
                                 const std::vector<std::string>& path) {
   const std::string exp_path = absl::StrJoin(path, ".");
@@ -120,6 +87,10 @@ bool FieldGen::IsId() const {
 
 int FieldGen::IdCardinality() const {
   return field_schema_ != nullptr ? field_schema_->id_cardinality() : 0;
+}
+
+bool FieldGen::IsList() const {
+  return proto_field_->type() != FieldDescriptor::Type::TYPE_MESSAGE && proto_field_->is_repeated();
 }
 
 bool FieldGen::WillRecurse() {
@@ -228,7 +199,8 @@ void FieldGen::SetFromJavaStmt(const std::string& value_name, CodeBuilder& cb) c
     return;
   }
 
-  LOG(WARNING) << "primitives not supported yet";
+  // case of a primitive.
+  SetPrimitiveFromJavaStmt(value_name, cb);
 }
 
 void FieldGen::SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {
@@ -238,6 +210,13 @@ void FieldGen::SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& c
   std::string enum_java_name = google::protobuf::compiler::java::ClassName(proto_field_->enum_type());
 
   cb << "set" << field << "(" << enum_java_name << ".forNumber(" << value_name << "))";
+}
+
+void FieldGen::SetPrimitiveFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {
+  PathToFieldMinusOne(cb);
+  
+  std::string field = UnderscoresToCamelCase(path_.back(), true);
+  cb << "set" << field << "(" << value_name << ")"; 
 }
 
 void FieldGen::SetMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const {

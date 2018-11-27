@@ -29,11 +29,11 @@ class MessageGen {
   std::string JavaPkg() const;
 
   std::vector<const FieldGen*> Fields() const;
+  std::vector<const FieldGen*> IdFields() const;
   std::vector<std::string> Ids() const;
 
  private:
   // Id fields, ordered by cardinality.
-  std::vector<const FieldGen*> IdFields() const;
   // Finds the field named 'id', or returns null.
   const FieldGen* FieldNamedId() const;
 

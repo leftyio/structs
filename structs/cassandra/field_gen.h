@@ -30,11 +30,16 @@ class FieldGen {
   const std::vector<std::string>& path() const { return path_; }
 
   std::string CassandraName() const;
+  std::string JavaName() const;
   std::string CassandraType() const;
   std::string NonRepeatedCassandraType() const;
 
   // statement to set this field from a java value.
   void SetFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
+
+  void GetFromJavaObj(const std::string& obj_name,
+                      const std::string& getted_name,
+                      CodeBuilder& cb) const;
 
  private:
   void SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
@@ -42,6 +47,18 @@ class FieldGen {
   void SetPrimitiveFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
   void SetSpecialMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
   void PathToFieldMinusOne(CodeBuilder& cb) const;
+
+  // Get from OBJ related methods.
+
+  bool IsPurePrimitive() const;
+  void GetPrimitiveFromJavaObj(const std::string& obj_name,
+                               const std::string& getted_name,
+                               CodeBuilder& cb) const;
+  void GetEnumFromJavaObj(const std::string& obj_name,
+                          const std::string& getted_name,
+                          CodeBuilder& cb) const;
+
+  void PathToFieldMinusOneNotBuilder(CodeBuilder& cb) const;
 
   std::vector<std::string> path_;
   // not owned

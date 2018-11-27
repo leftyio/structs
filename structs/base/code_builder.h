@@ -11,6 +11,7 @@ class CodeBuilder {
   CodeBuilder& Indent();
   CodeBuilder& Newline();
   CodeBuilder& BreakLine();
+  CodeBuilder& PureBreakLine();
   CodeBuilder& Outdent();
 
   CodeBuilder& operator<<(const std::string& in);

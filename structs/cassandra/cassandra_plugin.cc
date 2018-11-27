@@ -135,6 +135,9 @@ void CassandraPlugin::Generate(const Descriptor* msg,
     const auto* field = msg->field(i);
     VisitField(schema, field, path, &to_gen);
   }
+
+  // This validates we have at least one id.
+  to_gen.Ids();
 }
 
 void CassandraPlugin::ParseSchema() {

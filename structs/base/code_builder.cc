@@ -31,6 +31,18 @@ CodeBuilder& CodeBuilder::Newline() {
 CodeBuilder& CodeBuilder::BreakLine() {
   out_ << '\n';
   out_ << '\n';
+
+  for (int i = 0; i < indent_; ++i) {
+    out_ << ' ';
+  }
+
+  return *this;
+}
+
+CodeBuilder& CodeBuilder::PureBreakLine() {
+  out_ << '\n';
+  out_ << '\n';
+
   return *this;
 }
 

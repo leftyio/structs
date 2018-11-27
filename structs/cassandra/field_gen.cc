@@ -126,6 +126,10 @@ std::string FieldGen::CassandraName() const {
   return absl::StrJoin(path_, "_");
 }
 
+std::string FieldGen::JavaName() const {
+  return UnderscoresToCamelCase(CassandraName(), false);
+}
+
 std::string FieldGen::CassandraType() const {
   if (!proto_field_->is_repeated()) {
     return NonRepeatedCassandraType();
@@ -270,6 +274,53 @@ void FieldGen::PathToFieldMinusOne(CodeBuilder& cb) const {
   for (int i = 0; i < path_.size() - 1; ++i) {
     std::string field = UnderscoresToCamelCase(path_[i], true);
     cb << "get" << field << "Builder()";
+    cb << ".";
+  }
+}
+
+bool FieldGen::IsPurePrimitive() const {
+  return proto_field_->type() != FieldDescriptor::Type::TYPE_MESSAGE
+      && proto_field_->type() != FieldDescriptor::Type::TYPE_ENUM;
+}
+
+void FieldGen::GetFromJavaObj(const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) const {
+  if (IsPurePrimitive()) {
+    GetPrimitiveFromJavaObj(obj_name, getted_name, cb);
+  } else if (proto_field_->type() == FieldDescriptor::Type::TYPE_ENUM) {
+    GetEnumFromJavaObj(obj_name, getted_name, cb);
+  } else {
+    LOG(FATAL) << "UNIMPLEMENTED YET";
+  }
+}
+
+void FieldGen::GetPrimitiveFromJavaObj(const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) const {
+  cb << getted_name << " = " << obj_name << ".";
+
+  PathToFieldMinusOneNotBuilder(cb);
+  std::string field = UnderscoresToCamelCase(path_.back(), true);
+  cb << "get" << field << "();";
+}
+
+void FieldGen::GetEnumFromJavaObj(const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) const {
+  std::string enum_java_name = google::protobuf::compiler::java::ClassName(proto_field_->enum_type());
+  cb << enum_java_name << " val = " << obj_name << ".";
+  PathToFieldMinusOneNotBuilder(cb);
+  std::string field = UnderscoresToCamelCase(path_.back(), true);
+  cb << "get" << field << "();";
+
+  cb.Newline() << "if (val != " << enum_java_name << ".UNRECOGNIZED) {";
+  cb.Indent() << getted_name << " = val.getNumber();";
+  cb.Outdent() << "}";
+}
+
+void FieldGen::PathToFieldMinusOneNotBuilder(CodeBuilder& cb) const {
+  if (path_.size() == 1) {
+    return;
+  }
+
+  for (int i = 0; i < path_.size() - 1; ++i) {
+    std::string field = UnderscoresToCamelCase(path_[i], true);
+    cb << "get" << field << "()";
     cb << ".";
   }
 }

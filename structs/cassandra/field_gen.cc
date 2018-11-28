@@ -90,7 +90,7 @@ int FieldGen::IdCardinality() const {
 }
 
 bool FieldGen::IsList() const {
-  return proto_field_->type() != FieldDescriptor::Type::TYPE_MESSAGE && proto_field_->is_repeated();
+  return proto_field_->is_repeated();
 }
 
 bool FieldGen::WillRecurse() {
@@ -128,6 +128,32 @@ std::string FieldGen::CassandraName() const {
 
 std::string FieldGen::JavaName() const {
   return UnderscoresToCamelCase(CassandraName(), false);
+}
+
+std::string FieldGen::JavaBaseType() const {
+  std::map<std::string, std::string> types;
+  types["timestamp"] = "java.util.Date";
+  types["double"] = "double";
+  types["float"] = "float";
+  types["bigint"] = "long";
+  types["varint"] = "java.math.BigInteger";
+  types["int"] = "int";
+  types["boolean"] = "boolean";
+  types["text"] = "String";
+  types["blob"] = "java.nio.ByteBuffer";
+
+  auto it = types.find(NonRepeatedCassandraType());
+  CHECK(it != types.end()) << "unsupported type: " << NonRepeatedCassandraType();
+  return it->second;
+}
+
+std::string FieldGen::JavaType() const {
+  if (!proto_field_->is_repeated()) {
+    return JavaBaseType();
+  }
+
+  // case of a repeated.
+  return absl::StrCat("java.util.List<", JavaBaseType(), ">");
 }
 
 std::string FieldGen::CassandraType() const {

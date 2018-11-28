@@ -21,6 +21,7 @@ void BindObject(const MessageGen& msg, CodeBuilder& cb) {
   for (const FieldGen* field : fields) {
     cb.BreakLine() << "{";
     cb.Indent() << "Object o = null;";
+    cb.Newline();
     GetFromJavaObj(*field, "obj", "o", cb);
 
     std::string assigner = absl::StrCat("boundObjs[", i++, "]");
@@ -85,23 +86,6 @@ void WriteFields(const MessageGen& msg, CodeBuilder& cb) {
   cb.OutdentBracket();
 }
 
-std::string JavaTypeOfCassandra(const std::string cassandra_type) {
-  std::map<std::string, std::string> types;
-  types["timestamp"] = "java.util.Date";
-  types["double"] = "double";
-  types["float"] = "float";
-  types["bigint"] = "long";
-  types["varint"] = "java.math.BigInteger";
-  types["int"] = "int";
-  types["boolean"] = "boolean";
-  types["text"] = "String";
-  types["blob"] = "java.nio.ByteBuffer";
-
-  auto it = types.find(cassandra_type);
-  CHECK(it != types.end()) << "unsupported type: " << cassandra_type;
-  return it->second;
-}
-
 std::string GetFromCassandraRow(const std::string cassandra_type) {
   std::map<std::string, std::string> types;
   types["timestamp"] = "getDate";
@@ -121,9 +105,22 @@ std::string GetFromCassandraRow(const std::string cassandra_type) {
 
 void SetListFromCassandraRow(const FieldGen& field,
                              const std::string& builder,
-                             const std::string& value,
+                             const std::string& row,
                              CodeBuilder& cb) {
-  // TODO(christian) implement this.
+  cb.BreakLine() << "{";
+  cb.Indent() << "int idx = " << row << ".getColumnDefinitions().getIndexOf(\""
+      << field.CassandraName() << "\");";
+  cb.Newline() << "if (!row.isNull(idx)) {";
+
+  cb.Indent() << field.JavaType()
+      << " value = ";
+    
+  GetterFromCassandraRow(field, "row", "idx", cb);
+
+  cb.Newline();
+  SetListFromJavaStmt(field, builder, "value", cb);
+  cb.OutdentBracket();
+  cb.OutdentBracket();
 }
 
 void SetFromValue(const FieldGen& field,
@@ -147,12 +144,10 @@ void SetFromCassandraRow(const FieldGen& field,
         << field.CassandraName() << "\");";
     cb.Newline() << "if (!row.isNull(idx)) {";
 
-    cb.Indent() << JavaTypeOfCassandra(field.CassandraType())
-        << " value = "
-        << row
-        << "."
-        << GetFromCassandraRow(field.CassandraType())
-        << "(idx);";
+    cb.Indent() << field.JavaType()
+        << " value = ";
+    
+    GetterFromCassandraRow(field, "row", "idx", cb);
 
     cb.Newline();
     SetFromValue(field, "b", "value", cb);
@@ -201,6 +196,29 @@ void LoadArgumentsNoType(const MessageGen& msg, CodeBuilder& cb) {
     }
   }
 }
+
+// Create private vars for each list type token that shall be needed.
+void WriteTypeTokens(const MessageGen& msg, CodeBuilder& cb) {
+  const auto& fields = msg.Fields();
+
+  std::set<std::string> already_written_types;
+
+  for (const FieldGen* field : fields) {
+    if (!field->IsList()) {
+      continue;
+    }
+
+    std::string java_type = field->JavaBaseType();
+    if (already_written_types.find(java_type) != already_written_types.end()) {
+      continue;
+    }
+
+    already_written_types.insert(java_type);
+    cb.BreakLine() << "private static final com.google.common.reflect.TypeToken<"
+        << java_type << "> " << TokenName(java_type)
+        << " = new com.google.common.reflect.TypeToken<" << java_type << ">() {};";
+  }
+}
 }  // anonymous
 
 std::string JavaContent(const MessageGen* msg) {
@@ -217,6 +235,9 @@ std::string JavaContent(const MessageGen* msg) {
 
   cb << "public final class " << msg->JavaClass() << " {";
   WriteFields(*msg, cb);
+
+  WriteTypeTokens(*msg, cb);
+
   
   cb.BreakLine() << "private final Session session;";
   cb.Newline() << "private final com.google.common.base.Supplier<PreparedStatement> selectAllStmt;";
@@ -257,7 +278,7 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Newline() << "if (row == null) {";
   cb.Indent() << "return java.util.Optional.empty();";
   cb.Outdent() << "}";
-  cb.BreakLine() << "return java.util.Optional.of(ofRow(row));";
+  cb.BreakLine() << "return java.util.Optional.of(ofRowOrDie(row));";
   cb.OutdentBracket();
 
   result_type = "com.google.common.util.concurrent.ListenableFuture<java.util.Optional<" + msg->JavaClassOfMessage() + ">>";
@@ -274,11 +295,21 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Newline() << "if (row == null) {";
   cb.Indent() << "return java.util.Optional.empty();";
   cb.Outdent() << "}";
-  cb.BreakLine() << "return java.util.Optional.of(ofRow(row));";
+  cb.BreakLine() << "return java.util.Optional.of(ofRowOrDie(row));";
   cb.Outdent() << "});";
   cb.OutdentBracket();
 
-  cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRow(Row row) {";
+  cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRowOrDie(Row row) {";
+  cb.Indent() << "try {";
+  cb.Indent() << "return ofRow(row);";
+  cb.Outdent() << "} catch (com.google.protobuf.InvalidProtocolBufferException ex) {";
+  // TODO(christian) we shall throw a better exception.
+  cb.Indent() << "throw io.grpc.Status.fromThrowable(ex).asRuntimeException();";
+
+  cb.OutdentBracket();
+  cb.OutdentBracket();
+
+  cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {";
   cb.Indent() << msg->JavaClassOfMessage() << ".Builder b = " << msg->JavaClassOfMessage() << ".newBuilder();";
    
   for (const FieldGen* field : msg->Fields()) {

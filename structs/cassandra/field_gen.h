@@ -33,22 +33,14 @@ class FieldGen {
 
   std::string CassandraName() const;
   std::string JavaName() const;
+  // Java type as it would come from as cassandra row.
+  std::string JavaType() const;
+  std::string JavaBaseType() const;
+
   std::string CassandraType() const;
   std::string NonRepeatedCassandraType() const;
 
  private:
-  // Get from OBJ related methods.
-
-  bool IsPurePrimitive() const;
-  void GetPrimitiveFromJavaObj(const std::string& obj_name,
-                               const std::string& getted_name,
-                               CodeBuilder& cb) const;
-  void GetEnumFromJavaObj(const std::string& obj_name,
-                          const std::string& getted_name,
-                          CodeBuilder& cb) const;
-
-  void PathToFieldMinusOneNotBuilder(CodeBuilder& cb) const;
-
   std::vector<std::string> path_;
   // not owned
   const CassandraField* field_schema_{nullptr};

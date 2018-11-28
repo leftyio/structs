@@ -13,6 +13,7 @@ class CodeBuilder {
   CodeBuilder& BreakLine();
   CodeBuilder& PureBreakLine();
   CodeBuilder& Outdent();
+  CodeBuilder& OutdentBracket();
 
   CodeBuilder& operator<<(const std::string& in);
 

@@ -31,6 +31,7 @@ add_library (structs_lib
   structs/cassandra/message_gen.cc
   structs/cassandra/renderers/cql_file.cc
   structs/cassandra/renderers/java_file.cc
+  structs/cassandra/renderers/java_helpers.cc
   structs/cassandra/renderers/spark_java_file.cc
 )
 

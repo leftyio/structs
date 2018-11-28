@@ -57,6 +57,10 @@ CodeBuilder& CodeBuilder::Outdent() {
   return *this;
 }
 
+CodeBuilder& CodeBuilder::OutdentBracket() {
+  return Outdent() << "}";
+}
+
 CodeBuilder& CodeBuilder::operator<<(const std::string& in) {
   out_ << in;
 

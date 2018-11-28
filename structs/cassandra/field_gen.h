@@ -24,30 +24,19 @@ class FieldGen {
   bool IsId() const;
   int IdCardinality() const;
   bool IsList() const;
+  bool IsSpecialMessage() const;
 
   const Descriptor* MessageType() const;
   
   const std::vector<std::string>& path() const { return path_; }
+  const FieldDescriptor* proto_field() const { return proto_field_; }
 
   std::string CassandraName() const;
   std::string JavaName() const;
   std::string CassandraType() const;
   std::string NonRepeatedCassandraType() const;
 
-  // statement to set this field from a java value.
-  void SetFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
-
-  void GetFromJavaObj(const std::string& obj_name,
-                      const std::string& getted_name,
-                      CodeBuilder& cb) const;
-
  private:
-  void SetEnumFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
-  void SetMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
-  void SetPrimitiveFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
-  void SetSpecialMessageFromJavaStmt(const std::string& value_name, CodeBuilder& cb) const;
-  void PathToFieldMinusOne(CodeBuilder& cb) const;
-
   // Get from OBJ related methods.
 
   bool IsPurePrimitive() const;

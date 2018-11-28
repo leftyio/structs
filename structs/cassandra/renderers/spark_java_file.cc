@@ -6,6 +6,7 @@
 #include "glog/logging.h"
 
 #include "structs/base/code_builder.h"
+#include "structs/cassandra/renderers/java_helpers.h"
 
 namespace structs {
 namespace {
@@ -59,7 +60,7 @@ void SetFromValue(const FieldGen& field,
                   const std::string& value,
                   CodeBuilder& cb) {
   cb << builder << ".";
-  field.SetFromJavaStmt(value, cb);
+  SetFromJavaStmt(field, value, cb);
   cb << ";";
 }
 

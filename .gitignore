@@ -9,3 +9,7 @@
 /CMakeCache.txt
 /cmake_install.cmake
 /CMakeFiles
+
+/protoc-gen-structs-cassandra-java
+/protoc-gen-structs-cassandra-spark-java
+/protoc-gen-structs-cassandra-table

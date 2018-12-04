@@ -8,7 +8,7 @@
 namespace structs {
 std::string CQLContent(const MessageGen* msg) {
   std::ostringstream out;
-  out << "CREATE TABLE " << msg->TableName() << " {" << std::endl;
+  out << "CREATE TABLE " << msg->TableName() << " (" << std::endl;
 
   for (const auto* field : msg->Fields()) {
     out << "  " << field->CassandraName() << " " << field->CassandraType() << "," << std::endl;

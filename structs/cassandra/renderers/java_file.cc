@@ -65,12 +65,12 @@ void WriteFields(const MessageGen& msg, CodeBuilder& cb) {
     }
   }
 
-  cb.BreakLine() << "private String fieldName;"; 
+  cb.BreakLine() << "public final String fieldName;"; 
   cb.BreakLine() << "Fields(String fieldName) {";
   cb.Indent() << "this.fieldName = fieldName;";
   cb.OutdentBracket();
 
-  cb.BreakLine() << "private static Iterable<Fields> all() {";
+  cb.BreakLine() << "public static Iterable<Fields> all() {";
   cb.Indent() << "com.google.common.collect.ImmutableList.Builder<Fields> b = com.google.common.collect.ImmutableList.builder();";
   
   for (int i = 0; i < fields.size(); ++i) {
@@ -171,12 +171,27 @@ void WhereClause(const MessageGen& msg, CodeBuilder& cb) {
   }
 }
 
+void WhereClauseSub(const MessageGen& msg, int index, CodeBuilder& cb) {
+  cb << " where ";
+
+  const auto& fields = msg.IdFields();
+  
+  for (int i = 0; i <= index; ++i) {
+    const FieldGen* field = fields[i];
+    cb << field->CassandraName() << "=?";
+
+    if (i != index) {
+      cb << " and ";
+    }
+  }
+}
+
 void LoadArguments(const MessageGen& msg, CodeBuilder& cb) {
   const auto& fields = msg.IdFields();
   
   for (int i = 0; i < fields.size(); ++i) {
     const FieldGen* field = fields[i];
-    cb << "String " << field->JavaName();
+    cb << field->JavaType() << " " << field->JavaName();
 
     if (i != fields.size() - 1) {
       cb << ", ";
@@ -192,6 +207,32 @@ void LoadArgumentsNoType(const MessageGen& msg, CodeBuilder& cb) {
     cb << field->JavaName();
 
     if (i != fields.size() - 1) {
+      cb << ", ";
+    }
+  }
+}
+
+void LoadArgumentsSub(const MessageGen& msg, int index, CodeBuilder& cb) {
+  const auto& fields = msg.IdFields();
+  
+  for (int i = 0; i <= index; ++i) {
+    const FieldGen* field = fields[i];
+    cb << field->JavaType() << " " << field->JavaName();
+
+    if (i != index) {
+      cb << ", ";
+    }
+  }
+}
+
+void LoadArgumentsNoTypeSub(const MessageGen& msg, int index, CodeBuilder& cb) {
+  const auto& fields = msg.IdFields();
+  
+  for (int i = 0; i <= index; ++i) {
+    const FieldGen* field = fields[i];
+    cb << field->JavaName();
+
+    if (i != index) {
       cb << ", ";
     }
   }
@@ -243,6 +284,17 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Newline() << "private final com.google.common.base.Supplier<PreparedStatement> selectAllStmt;";
   cb.Newline() << "private final com.google.common.base.Supplier<PreparedStatement> insertAllStmt;";
 
+  const auto& id_fields = msg->IdFields();
+
+  {
+    if (id_fields.size() > 1) {
+      for (int i = 0; i < id_fields.size() - 1; ++i) {
+        std::string i_s = absl::StrCat("", i);
+        cb.Newline() << "private final com.google.common.base.Supplier<PreparedStatement> loadAllStmt" << i_s << ";";
+      }
+    }
+  }
+
   cb.BreakLine() << "public " << msg->JavaClass() << "(Session session) {";
   cb.Indent() << "this.session = session;";
   cb.Newline() << "this.selectAllStmt = com.google.common.base.Suppliers.memoize(() -> {";
@@ -251,6 +303,18 @@ std::string JavaContent(const MessageGen* msg) {
   cb.BreakLine() << "this.insertAllStmt = com.google.common.base.Suppliers.memoize(() -> {";
   cb.Indent() << "return createInsertAllStmt(session);";
   cb.Outdent() << "});";
+
+  {
+    if (id_fields.size() > 1) {
+      for (int i = 0; i < id_fields.size() - 1; ++i) {
+        std::string i_s = absl::StrCat("", i);
+        cb.BreakLine() << "this.loadAllStmt" << i_s << " = com.google.common.base.Suppliers.memoize(() -> {";
+        cb.Indent() << "return createLoadAllStmt" << i_s << "(session);";
+        cb.Outdent() << "});";
+      }
+    }
+  }
+
   cb.OutdentBracket();
 
   cb.BreakLine() << "private static PreparedStatement createSelectAllStmt(Session session) {";
@@ -264,6 +328,26 @@ std::string JavaContent(const MessageGen* msg) {
 
   cb.Newline() << "return session.prepare(sb.toString());";
   cb.OutdentBracket();
+
+  {
+    if (id_fields.size() > 1) {
+      for (int i = 0; i < id_fields.size() - 1; ++i) {
+        std::string i_s = absl::StrCat("", i);
+
+        cb.BreakLine() << "private static PreparedStatement createLoadAllStmt" << i_s << "(Session session) {";
+        cb.Indent() << "Iterable<String> names = com.google.common.collect.Iterables.transform(Fields.all(), x -> x.fieldName);";
+        cb.Newline() << "StringBuilder sb = new StringBuilder(\"select \");";
+        cb.Newline() << "com.google.common.base.Joiner.on(',').appendTo(sb, names);";
+
+        cb.Newline() << "sb.append(\" from " << msg->TableName();
+        WhereClauseSub(*msg, i, cb);
+        cb << "\");";
+
+        cb.Newline() << "return session.prepare(sb.toString());";
+        cb.OutdentBracket();
+      }
+    }
+  }
 
   std::string result_type = "java.util.Optional<" + msg->JavaClassOfMessage() + ">";
   cb.BreakLine() << "public " << result_type << " load(";
@@ -298,6 +382,27 @@ std::string JavaContent(const MessageGen* msg) {
   cb.BreakLine() << "return java.util.Optional.of(ofRowOrDie(row));";
   cb.Outdent() << "});";
   cb.OutdentBracket();
+
+  {
+    const auto& id_fields = msg->IdFields();
+    if (id_fields.size() > 1) {
+      for (int i = 0; i < id_fields.size() - 1; ++i) {
+        std::string i_s = absl::StrCat("", i);
+        std::string result_type = absl::StrCat("java.util.Iterator<", msg->JavaClassOfMessage(), ">");
+        cb.BreakLine() << "public " << result_type << " loadAll(";
+        LoadArgumentsSub(*msg, i, cb);
+        cb << ") {";
+        cb.Indent() << "PreparedStatement stmt = loadAllStmt" << i_s << ".get();";
+        cb.Newline() << "BoundStatement bound = stmt.bind(";
+        LoadArgumentsNoTypeSub(*msg, i, cb);
+        cb << ");";
+        cb.Newline() << "ResultSet rs = session.execute(bound);";
+        cb.Newline() << "java.util.Iterator<Row> it = rs.iterator();";
+        cb.Newline() << "return com.google.common.collect.Iterators.transform(it, row -> ofRowOrDie(row));";
+        cb.OutdentBracket();
+      }
+    }
+  }
 
   cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRowOrDie(Row row) {";
   cb.Indent() << "try {";

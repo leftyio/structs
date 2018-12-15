@@ -152,7 +152,18 @@ void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, c
 
 void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
   if (IsPurePrimitive(field) || field.IsSpecialMessage()) {
-    LOG(FATAL) << "UNIMPLEMENTED";
+    cb.Newline() << "{";
+    cb.Indent() << "java.util.List<" << field.JavaBaseType() << "> list = new java.util.ArrayList<>();";
+    cb.Newline() << "for (" << field.JavaBaseType() << " x : " << obj_name << ".";
+    PathToFieldMinusOne(field, cb);
+    std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+    cb << "get" << field_name << "List()) {";
+    cb.Indent() << "list.add(x);";
+  
+    cb.OutdentBracket();
+    cb.Newline() << getted_name << " = list;";
+    cb.OutdentBracket();
+    return;
   }
   
   std::string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
@@ -186,7 +197,7 @@ void SetListFromJavaStmt(const FieldGen& field,
     std::string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
     cb << msg_java_name << ".parseFrom(x));";
   } else {
-    LOG(FATAL) << "UNIMPLEMENTED";
+    cb << "x);";
   }
 
   cb.OutdentBracket();

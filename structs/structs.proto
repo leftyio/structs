@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package structs;
+
+message StructField {
+  // Path to the fields that you are describing, using dots notation.
+  // For instance: "foo.bar.baz".
+  string path = 1;
+
+  // If true, the field shall be ignored (by any means of what that
+  // structs plugin does).
+  bool structs_transient = 2;
+}
+
+message StructSchema {
+  // Fully qualified name of the protobuf to generate structs for.
+  // This is the only mandatory field in a schema, as it indicates that generation shall be
+  // ran for this message.
+  string message_name = 1;
+
+  // If set, override the java package for the structs generated class.
+  // If not set we will use the java_package of the proto file if any.
+  string java_package = 2;
+  string java_class = 3;
+}

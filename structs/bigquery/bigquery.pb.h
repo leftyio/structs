@@ -244,6 +244,20 @@ class BigQuerySchema : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
+  // string bigquery_table_name = 2;
+  void clear_bigquery_table_name();
+  static const int kBigqueryTableNameFieldNumber = 2;
+  const ::std::string& bigquery_table_name() const;
+  void set_bigquery_table_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_bigquery_table_name(::std::string&& value);
+  #endif
+  void set_bigquery_table_name(const char* value);
+  void set_bigquery_table_name(const char* value, size_t size);
+  ::std::string* mutable_bigquery_table_name();
+  ::std::string* release_bigquery_table_name();
+  void set_allocated_bigquery_table_name(::std::string* bigquery_table_name);
+
   // .structs.StructSchema structs_schema = 1;
   bool has_structs_schema() const;
   void clear_structs_schema();
@@ -257,6 +271,7 @@ class BigQuerySchema : public ::google::protobuf::Message /* @@protoc_insertion_
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr bigquery_table_name_;
   ::structs::StructSchema* structs_schema_;
   mutable int _cached_size_;
   friend struct ::protobuf_structs_2fbigquery_2fbigquery_2eproto::TableStruct;
@@ -424,6 +439,59 @@ inline void BigQuerySchema::set_allocated_structs_schema(::structs::StructSchema
   }
   structs_schema_ = structs_schema;
   // @@protoc_insertion_point(field_set_allocated:structs.BigQuerySchema.structs_schema)
+}
+
+// string bigquery_table_name = 2;
+inline void BigQuerySchema::clear_bigquery_table_name() {
+  bigquery_table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BigQuerySchema::bigquery_table_name() const {
+  // @@protoc_insertion_point(field_get:structs.BigQuerySchema.bigquery_table_name)
+  return bigquery_table_name_.GetNoArena();
+}
+inline void BigQuerySchema::set_bigquery_table_name(const ::std::string& value) {
+  
+  bigquery_table_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:structs.BigQuerySchema.bigquery_table_name)
+}
+#if LANG_CXX11
+inline void BigQuerySchema::set_bigquery_table_name(::std::string&& value) {
+  
+  bigquery_table_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:structs.BigQuerySchema.bigquery_table_name)
+}
+#endif
+inline void BigQuerySchema::set_bigquery_table_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  bigquery_table_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:structs.BigQuerySchema.bigquery_table_name)
+}
+inline void BigQuerySchema::set_bigquery_table_name(const char* value, size_t size) {
+  
+  bigquery_table_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:structs.BigQuerySchema.bigquery_table_name)
+}
+inline ::std::string* BigQuerySchema::mutable_bigquery_table_name() {
+  
+  // @@protoc_insertion_point(field_mutable:structs.BigQuerySchema.bigquery_table_name)
+  return bigquery_table_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BigQuerySchema::release_bigquery_table_name() {
+  // @@protoc_insertion_point(field_release:structs.BigQuerySchema.bigquery_table_name)
+  
+  return bigquery_table_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BigQuerySchema::set_allocated_bigquery_table_name(::std::string* bigquery_table_name) {
+  if (bigquery_table_name != NULL) {
+    
+  } else {
+    
+  }
+  bigquery_table_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), bigquery_table_name);
+  // @@protoc_insertion_point(field_set_allocated:structs.BigQuerySchema.bigquery_table_name)
 }
 
 // -------------------------------------------------------------------

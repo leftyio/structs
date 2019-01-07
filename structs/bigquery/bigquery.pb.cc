@@ -116,6 +116,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::BigQuerySchema, structs_schema_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::BigQuerySchema, bigquery_table_name_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::structs::BigQuerySchemas, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -126,7 +127,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::structs::BigQueryField)},
   { 5, -1, sizeof(::structs::BigQuerySchema)},
-  { 11, -1, sizeof(::structs::BigQuerySchemas)},
+  { 12, -1, sizeof(::structs::BigQuerySchemas)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -159,13 +160,14 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\037structs/bigquery/bigquery.proto\022\007struc"
       "ts\032\025structs/structs.proto\"\017\n\rBigQueryFie"
-      "ld\"\?\n\016BigQuerySchema\022-\n\016structs_schema\030\001"
-      " \001(\0132\025.structs.StructSchema\":\n\017BigQueryS"
-      "chemas\022\'\n\006schema\030\001 \003(\0132\027.structs.BigQuer"
-      "ySchemab\006proto3"
+      "ld\"\\\n\016BigQuerySchema\022-\n\016structs_schema\030\001"
+      " \001(\0132\025.structs.StructSchema\022\033\n\023bigquery_"
+      "table_name\030\002 \001(\t\":\n\017BigQuerySchemas\022\'\n\006s"
+      "chema\030\001 \003(\0132\027.structs.BigQuerySchemab\006pr"
+      "oto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 215);
+      descriptor, 244);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs/bigquery/bigquery.proto", &protobuf_RegisterTypes);
   ::protobuf_structs_2fstructs_2eproto::AddDescriptors();
@@ -392,6 +394,7 @@ void BigQuerySchema::clear_structs_schema() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int BigQuerySchema::kStructsSchemaFieldNumber;
+const int BigQuerySchema::kBigqueryTableNameFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 BigQuerySchema::BigQuerySchema()
@@ -407,6 +410,10 @@ BigQuerySchema::BigQuerySchema(const BigQuerySchema& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  bigquery_table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.bigquery_table_name().size() > 0) {
+    bigquery_table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.bigquery_table_name_);
+  }
   if (from.has_structs_schema()) {
     structs_schema_ = new ::structs::StructSchema(*from.structs_schema_);
   } else {
@@ -416,6 +423,7 @@ BigQuerySchema::BigQuerySchema(const BigQuerySchema& from)
 }
 
 void BigQuerySchema::SharedCtor() {
+  bigquery_table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   structs_schema_ = NULL;
   _cached_size_ = 0;
 }
@@ -426,6 +434,7 @@ BigQuerySchema::~BigQuerySchema() {
 }
 
 void BigQuerySchema::SharedDtor() {
+  bigquery_table_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete structs_schema_;
 }
 
@@ -458,6 +467,7 @@ void BigQuerySchema::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  bigquery_table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && structs_schema_ != NULL) {
     delete structs_schema_;
   }
@@ -481,6 +491,22 @@ bool BigQuerySchema::MergePartialFromCodedStream(
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_structs_schema()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string bigquery_table_name = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_bigquery_table_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->bigquery_table_name().data(), static_cast<int>(this->bigquery_table_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "structs.BigQuerySchema.bigquery_table_name"));
         } else {
           goto handle_unusual;
         }
@@ -519,6 +545,16 @@ void BigQuerySchema::SerializeWithCachedSizes(
       1, *this->structs_schema_, output);
   }
 
+  // string bigquery_table_name = 2;
+  if (this->bigquery_table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->bigquery_table_name().data(), static_cast<int>(this->bigquery_table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "structs.BigQuerySchema.bigquery_table_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->bigquery_table_name(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -540,6 +576,17 @@ void BigQuerySchema::SerializeWithCachedSizes(
         1, *this->structs_schema_, deterministic, target);
   }
 
+  // string bigquery_table_name = 2;
+  if (this->bigquery_table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->bigquery_table_name().data(), static_cast<int>(this->bigquery_table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "structs.BigQuerySchema.bigquery_table_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->bigquery_table_name(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -557,6 +604,13 @@ size_t BigQuerySchema::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // string bigquery_table_name = 2;
+  if (this->bigquery_table_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->bigquery_table_name());
+  }
+
   // .structs.StructSchema structs_schema = 1;
   if (this->has_structs_schema()) {
     total_size += 1 +
@@ -593,6 +647,10 @@ void BigQuerySchema::MergeFrom(const BigQuerySchema& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.bigquery_table_name().size() > 0) {
+
+    bigquery_table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.bigquery_table_name_);
+  }
   if (from.has_structs_schema()) {
     mutable_structs_schema()->::structs::StructSchema::MergeFrom(from.structs_schema());
   }
@@ -622,6 +680,7 @@ void BigQuerySchema::Swap(BigQuerySchema* other) {
 }
 void BigQuerySchema::InternalSwap(BigQuerySchema* other) {
   using std::swap;
+  bigquery_table_name_.Swap(&other->bigquery_table_name_);
   swap(structs_schema_, other->structs_schema_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);

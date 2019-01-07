@@ -10,6 +10,8 @@ message BigQueryField {
 
 message BigQuerySchema {
   StructSchema structs_schema = 1;
+
+  string bigquery_table_name = 2;
 }
 
 message BigQuerySchemas {

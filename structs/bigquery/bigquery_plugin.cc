@@ -94,14 +94,18 @@ std::string BigQueryMessageType(const FieldDescriptor* field) {
 
   const Descriptor* desc = field->message_type();
 
-  if (desc->full_name() == "google.protobuf.Timestamp") {
-    return "TIMESTAMP";
-  } else if (desc->full_name() == "google.protobuf.FloatValue") {
-    return "FLOAT64";
-  } else if (desc->full_name() == "google.protobuf.Int32Value") {
-    return "INTEGER";
-  } else if (desc->full_name() == "google.protobuf.BoolValue") {
-    return "BOOLEAN";
+  std::map<std::string, std::string> special_messages;
+  special_messages["google.protobuf.Timestamp"] = "TIMESTAMP";
+  special_messages["google.protobuf.FloatValue"] = "FLOAT64";
+  special_messages["google.protobuf.DoubleValue"] = "FLOAT64";
+  special_messages["google.protobuf.Int32Value"] = "INTEGER";
+  special_messages["google.protobuf.Int64Value"] = "INT64";
+  special_messages["google.protobuf.BoolValue"] = "BOOLEAN";
+  special_messages["google.protobuf.StringValue"] = "STRING";
+
+  auto it = special_messages.find(desc->full_name());
+  if (it != special_messages.end()) {
+    return it->second;
   }
 
   // Note(christian) add more special types (those from duration.proto,

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package structs;
+
+import "structs/structs.proto";
+
+message BigQueryField {
+
+}
+
+message BigQuerySchema {
+  StructSchema structs_schema = 1;
+
+  string bigquery_table_name = 2;
+}
+
+message BigQuerySchemas {
+  repeated BigQuerySchema schema = 1;
+}

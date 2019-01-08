@@ -6,6 +6,9 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_definitions("-std=c++14")
 add_definitions(-DGTEST_HAS_TR1_TUPLE=1)
 
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(third_party/json)
+
 add_subdirectory(third_party/abseil-cpp)
 
 add_library (structs_base_lib
@@ -22,9 +25,14 @@ target_link_libraries(structs_base_lib
   absl::base
   absl::synchronization
   absl::strings
+
+  nlohmann_json::nlohmann_json
 )
 
 add_library (structs_lib
+  structs/structs.pb.cc
+  structs/bigquery/bigquery.pb.cc
+  structs/bigquery/bigquery_plugin.cc
   structs/cassandra/cassandra.pb.cc
   structs/cassandra/cassandra_plugin.cc
   structs/cassandra/field_gen.cc
@@ -44,6 +52,14 @@ target_link_libraries(structs_lib
   absl::base
   absl::synchronization
   absl::strings
+)
+
+add_executable(protoc-gen-structs-bigquery-schema
+  structs/bigquery/protoc_gen_structs_bigquery_schema.cc
+)
+
+target_link_libraries (protoc-gen-structs-bigquery-schema
+  structs_lib
 )
 
 add_executable(protoc-gen-structs-cassandra-table

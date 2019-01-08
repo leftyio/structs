@@ -97,7 +97,7 @@ std::string BigQueryMessageType(const FieldDescriptor* field) {
   if (desc->full_name() == "google.protobuf.Timestamp") {
     return "TIMESTAMP";
   } else if (desc->full_name() == "google.protobuf.FloatValue") {
-    return "FLOAT";
+    return "FLOAT64";
   } else if (desc->full_name() == "google.protobuf.Int32Value") {
     return "INTEGER";
   } else if (desc->full_name() == "google.protobuf.BoolValue") {
@@ -189,15 +189,15 @@ std::string JsonToString(const Json::Value& json) {
 
 void BigQueryPlugin::Generate(const Descriptor* msg, const BigQuerySchema& s) {
   CHECK(!s.bigquery_table_name().empty());
-  
+
   nlohmann::json schema = ToJson(msg);
 
   std::string output_file = OutputLocation(msg->file(), s.bigquery_table_name());
 
   CodeGeneratorResponse_File* file = resp()->add_file();
   file->set_name(output_file);
-  file->set_content(schema.dump(4));
-  LOG(INFO) << "added file: " << output_file << " with content:\n" << schema.dump(4);
+  file->set_content(schema.dump(2));
+  LOG(INFO) << "added file: " << output_file << " with content:\n" << schema.dump(2);
 }
 
 std::map<std::string, BigQuerySchema> BigQueryPlugin::ParseSchema(const std::string& file_name) const {

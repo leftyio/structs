@@ -25,7 +25,9 @@ class CassandraPlugin : public BasePlugin {
   explicit CassandraPlugin(CassandraPluginRun run);
   ~CassandraPlugin() override;
 
-  int DoRun() override;
+ protected:
+  void Setup(const std::map<std::string, std::string>& params) override;
+  void GenerateFile(const FileDescriptor* file) override;
 
  private:
   void Generate(const Descriptor* msg, const CassandraSchema& s);

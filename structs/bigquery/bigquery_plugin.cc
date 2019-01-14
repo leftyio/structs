@@ -22,39 +22,25 @@ BigQueryPlugin::BigQueryPlugin() {
 BigQueryPlugin::~BigQueryPlugin() {
 }
 
-int BigQueryPlugin::DoRun() {
-  std::string param = req()->parameter();
-  std::vector<std::pair<std::string, std::string>> params;
-  google::protobuf::compiler::ParseGeneratorParameter(param, &params);
+void BigQueryPlugin::Setup(const std::map<std::string, std::string>& params) {
+  auto it = params.find("schema");
+  CHECK(it != params.end()) << "schema= option is missing";
 
-  const std::string* schema_file_name = nullptr;
-  for (const auto& it : params) {
-    if ("schema" == it.first) {
-      schema_file_name = &it.second;
-      break;
+  schemas_ = ParseSchema(it->second);
+}
+
+void BigQueryPlugin::GenerateFile(const FileDescriptor* file) {
+  for (int i = 0; i < file->message_type_count(); ++i) {
+    const Descriptor* msg = file->message_type(i);
+
+    auto it = schemas_.find(msg->full_name());
+    if (it == schemas_.end()) {
+      LOG(INFO) << "message name: " << msg->full_name() << " has no schema, skipping...";      
+    } else {
+      LOG(INFO) << "message name: " << msg->full_name() << " has a schema, generating...";
+      Generate(msg, it->second);  
     }
   }
-
-  CHECK(schema_file_name != nullptr) << "schema= option is missing";
-  const std::map<std::string, BigQuerySchema> schemas = ParseSchema(*schema_file_name);
-
-  std::vector<const FileDescriptor*> to_gen = FilesToGenerate();
-
-  for (const auto* file : to_gen) {
-    for (int i = 0; i < file->message_type_count(); ++i) {
-      const Descriptor* msg = file->message_type(i);
-
-      auto it = schemas.find(msg->full_name());
-      if (it == schemas.end()) {
-        LOG(INFO) << "message name: " << msg->full_name() << " has no schema, skipping...";      
-      } else {
-        LOG(INFO) << "message name: " << msg->full_name() << " has a schema, generating...";
-        Generate(msg, it->second);  
-      }
-    }
-  }
-
-  return 0;
 }
 
 namespace {

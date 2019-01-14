@@ -18,11 +18,14 @@ class BigQueryPlugin : public BasePlugin {
   BigQueryPlugin();
   ~BigQueryPlugin() override;
 
-  int DoRun() override;
+ protected:
+  void Setup(const std::map<std::string, std::string>& params) override;
+  void GenerateFile(const FileDescriptor* file) override;
 
  private:
   void Generate(const Descriptor* msg, const BigQuerySchema& s);
 
   std::map<std::string, BigQuerySchema> ParseSchema(const std::string& file_name) const;
+  std::map<std::string, BigQuerySchema> schemas_;
 };
 }  // structs

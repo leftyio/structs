@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <memory>
 #include <set>
 #include <string>
@@ -23,9 +24,11 @@ class BasePlugin {
   virtual ~BasePlugin();
 
   int Run();
-  virtual int DoRun() = 0;
   
  protected:
+  virtual void Setup(const std::map<std::string, std::string>& params) = 0;
+  virtual void GenerateFile(const FileDescriptor* file) = 0;
+
   const CodeGeneratorRequest* req() const { return req_.get(); }
   CodeGeneratorResponse* resp() const { return resp_.get(); }
 
@@ -33,6 +36,7 @@ class BasePlugin {
   
  private:
   void Init();
+  std::map<std::string, std::string> ParseParams();
   bool IsToGenerate(const FileDescriptorProto& file);
   
   std::unique_ptr<CodeGeneratorRequest> req_{new CodeGeneratorRequest()};

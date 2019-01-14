@@ -59,29 +59,24 @@ CassandraPlugin::CassandraPlugin(CassandraPluginRun run) : run_(run) {
 CassandraPlugin::~CassandraPlugin() {
 }
 
-int CassandraPlugin::DoRun() {
-  std::vector<const FileDescriptor*> to_gen = FilesToGenerate();
+void CassandraPlugin::Setup(const std::map<std::string, std::string>& params) {
 
-  for (const auto* file : to_gen) {
-    LOG(INFO) << "generating for file: " << file->name();
-    
-    for (int i = 0; i < file->message_type_count(); ++i) {
-      const Descriptor* msg = file->message_type(i);
+}
 
-      auto it = schemas_.find(msg->full_name());
-      if (it == schemas_.end()) {
-        LOG(INFO) << "message name: " << msg->full_name() << " has no schema, skipping...";      
-      } else {
-        LOG(INFO) << "message name: " << msg->full_name() << " has a schema, generating...";      
-        Generate(msg, it->second);
-      }
+void CassandraPlugin::GenerateFile(const FileDescriptor* file) {
+  for (int i = 0; i < file->message_type_count(); ++i) {
+    const Descriptor* msg = file->message_type(i);
+
+    auto it = schemas_.find(msg->full_name());
+    if (it == schemas_.end()) {
+      LOG(INFO) << "message name: " << msg->full_name() << " has no schema, skipping...";      
+    } else {
+      LOG(INFO) << "message name: " << msg->full_name() << " has a schema, generating...";      
+      Generate(msg, it->second);
     }
   }
 
   WriteFiles();
-
-  // success
-  return 0;
 }
 
 void CassandraPlugin::WriteFiles() {

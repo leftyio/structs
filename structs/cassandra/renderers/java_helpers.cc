@@ -251,7 +251,7 @@ void GetterFromCassandraRow(const FieldGen& field,
   if (!field.IsList()) {
     std::map<std::string, std::string> type_to_getter;
     type_to_getter["java.util.Date"] = "getTimestamp";
-    type_to_getter["double"] = "getFloat";
+    type_to_getter["double"] = "getDouble";
     type_to_getter["float"] = "getFloat";
     type_to_getter["long"] = "getLong";
     type_to_getter["java.math.BigInteger"] = "getVarInt";

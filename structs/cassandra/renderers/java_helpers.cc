@@ -139,9 +139,9 @@ void GetSpecialMessageFromJavaObj(const FieldGen& field, const std::string& obj_
 }
 
 void GetRegularMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  LOG(FATAL) << "UNIMPLEMENTED";
+  LOG(FATAL) << "UNIMPLEMENTED: " << field.PathAsString();
 }
-
+      
 void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
   if (field.IsSpecialMessage()) {
     GetSpecialMessageFromJavaObj(field, obj_name, getted_name, cb);

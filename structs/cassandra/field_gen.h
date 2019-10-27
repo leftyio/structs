@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+#include "absl/strings/str_join.h"
 #include "google/protobuf/descriptor.h"
 
 #include "structs/base/code_builder.h"
@@ -29,6 +30,7 @@ class FieldGen {
   const Descriptor* MessageType() const;
   
   const std::vector<std::string>& path() const { return path_; }
+  std::string PathAsString() const { return absl::StrJoin(path_, "."); }
   const FieldDescriptor* proto_field() const { return proto_field_; }
 
   std::string CassandraName() const;

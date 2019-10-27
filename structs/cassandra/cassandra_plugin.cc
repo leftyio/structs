@@ -40,14 +40,16 @@ void VisitField(const CassandraSchema& schema,
     return;
   }
 
-  LOG(INFO) << "processing not transient field";
+  LOG(INFO) << "processing not transient field of path: " << absl::StrJoin(path_so_far, ".") << " and field is: " << field->name();
   if (field_gen.WillRecurse()) { 
     for (int i = 0; i < field_gen.MessageType()->field_count(); ++i) {
       const auto* subfield = field_gen.MessageType()->field(i);
       VisitField(schema, subfield, field_gen.path(), msg);
     }
   } else {
+    LOG(INFO) << "adding field yay yay";
     msg->AddField(field_gen);
+    LOG(INFO) << "added field yay yay";
   }
 }
 }  // anonymous namespace
@@ -113,7 +115,9 @@ void CassandraPlugin::WriteJavaFile(const MessageGen& msg) {
   std::string pkg = msg.JavaPkg();
   absl::StrReplaceAll({{ ".", "/" }}, &pkg);
   file->set_name(pkg + "/" + msg.JavaClass() + ".java");
+  LOG(INFO) << "in this";
   file->set_content(JavaContent(&msg));
+  LOG(INFO) << "in that";
 }
 
 void CassandraPlugin::WriteSparkJavaFile(const MessageGen& msg) {

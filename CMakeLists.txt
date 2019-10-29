@@ -1,7 +1,10 @@
 cmake_minimum_required (VERSION 2.8)
 project (structs)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  third_party/inja/include
+)
 
 add_definitions("-std=c++14")
 add_definitions(-DGTEST_HAS_TR1_TUPLE=1)

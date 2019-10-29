@@ -2,6 +2,7 @@
 
 #include <set>
 
+#include "absl/strings/str_join.h"
 #include "google/protobuf/compiler/java/java_names.h"
 
 #include "structs/base/code_builder.h"
@@ -138,8 +139,12 @@ void GetSpecialMessageFromJavaObj(const FieldGen& field, const std::string& obj_
   }
 }
 
+std::string ToString(const FieldGen& field) {
+  return absl::StrJoin(field.path(), ".");
+}
+
 void GetRegularMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  LOG(FATAL) << "UNIMPLEMENTED";
+  LOG(FATAL) << "UNIMPLEMENTED: " << ToString(field);
 }
 
 void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {

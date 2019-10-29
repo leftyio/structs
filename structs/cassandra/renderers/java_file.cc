@@ -22,11 +22,16 @@ void BindObject(const MessageGen& msg, CodeBuilder& cb) {
     cb.BreakLine() << "{";
     cb.Indent() << "Object o = null;";
     cb.Newline();
+
+    LOG(INFO) << "Field: " << field->PathAsString();
+
     GetFromJavaObj(*field, "obj", "o", cb);
 
     std::string assigner = absl::StrCat("boundObjs[", i++, "]");
     cb.Newline() << assigner << " = o;";
     cb.OutdentBracket();
+        LOG(INFO) << "Field done OK ";
+
   }
 }
 
@@ -256,8 +261,8 @@ void WriteTypeTokens(const MessageGen& msg, CodeBuilder& cb) {
 
     already_written_types.insert(java_type);
     cb.BreakLine() << "private static final com.google.common.reflect.TypeToken<"
-        << java_type << "> " << TokenName(java_type)
-        << " = new com.google.common.reflect.TypeToken<" << java_type << ">() {};";
+        << WrapperTypeOf(java_type) << "> " << TokenName(java_type)
+        << " = new com.google.common.reflect.TypeToken<" << WrapperTypeOf(java_type) << ">() {};";
   }
 }
 }  // anonymous
@@ -307,6 +312,8 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Indent() << "return createInsertAllStmt(session);";
   cb.Outdent() << "});";
 
+  LOG(INFO) << "REACHED THAT";
+
   {
     if (id_fields.size() > 1) {
       for (int i = 0; i < id_fields.size() - 1; ++i) {
@@ -328,6 +335,9 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Newline() << "sb.append(\" from " << msg->TableName();
   WhereClause(*msg, cb);
   cb << "\");";
+
+    LOG(INFO) << "REACHED THAT 2 ";
+
 
   cb.Newline() << "return session.prepare(sb.toString());";
   cb.OutdentBracket();
@@ -368,6 +378,8 @@ std::string JavaContent(const MessageGen* msg) {
   cb.BreakLine() << "return java.util.Optional.of(ofRowOrDie(row));";
   cb.OutdentBracket();
 
+    LOG(INFO) << "REACHED THAT 3 ";
+
   result_type = "com.google.common.util.concurrent.ListenableFuture<java.util.Optional<" + msg->JavaClassOfMessage() + ">>";
   cb.BreakLine() << "public " << result_type << " loadAsync(";
   LoadArguments(*msg, cb);
@@ -385,6 +397,8 @@ std::string JavaContent(const MessageGen* msg) {
   cb.BreakLine() << "return java.util.Optional.of(ofRowOrDie(row));";
   cb.Outdent() << "});";
   cb.OutdentBracket();
+
+    LOG(INFO) << "REACHED THAT 4";
 
   {
     const auto& id_fields = msg->IdFields();
@@ -406,6 +420,7 @@ std::string JavaContent(const MessageGen* msg) {
       }
     }
   }
+
 
   cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRowOrDie(Row row) {";
   cb.Indent() << "try {";
@@ -432,6 +447,8 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Indent() << "StringBuilder sb = new StringBuilder();";
   cb.Newline() << "sb.append(\"INSERT INTO " << msg->TableName() << " (\");";
 
+    LOG(INFO) << "REACHED THAT 6";
+
   const auto& fields = msg->Fields();
   cb.Newline() << "sb.append(\"";
   for (int i = 0; i < fields.size(); ++i) {
@@ -456,12 +473,16 @@ std::string JavaContent(const MessageGen* msg) {
 
   cb.OutdentBracket();
 
+    LOG(INFO) << "REACHED THAT 6.5";
+
   cb.BreakLine() << "public void save(" << msg->JavaClassOfMessage() << " obj) {";
   cb.Indent() << "PreparedStatement stmt = insertAllStmt.get();";
   BindObject(*msg, cb);
   cb.BreakLine() << "BoundStatement bound = stmt.bind(boundObjs);";
   cb.Newline() << "session.execute(bound);";
   cb.OutdentBracket();
+
+    LOG(INFO) << "REACHED THAT 7";
 
   cb.BreakLine() << "public com.google.common.util.concurrent.ListenableFuture<Void> saveAsync(" << msg->JavaClassOfMessage() << " obj) {";
   cb.Indent() << "PreparedStatement stmt = insertAllStmt.get();";
@@ -470,6 +491,8 @@ std::string JavaContent(const MessageGen* msg) {
   cb.Newline() << "ResultSetFuture rsF = session.executeAsync(bound);";
   cb.Newline() << "return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);";
   cb.OutdentBracket();
+
+    LOG(INFO) << "REACHED THAT 7";
 
   cb.OutdentBracket();
   cb.Newline();

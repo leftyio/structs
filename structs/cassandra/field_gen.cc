@@ -61,6 +61,10 @@ FieldGen::~FieldGen() {
 }
 
 bool FieldGen::IsSpecialMessage() const {
+  if (proto_field()->type() != FieldDescriptor::Type::TYPE_MESSAGE) {
+    return false;
+  }
+
   std::set<std::string> special_names{
       "google.protobuf.Timestamp",
       "google.protobuf.DoubleValue",
@@ -147,13 +151,34 @@ std::string FieldGen::JavaBaseType() const {
   return it->second;
 }
 
+namespace {
+  std::string WrapperTypeOf(const std::string& java_type) {
+  LOG(INFO) << "CHECKING: " << java_type;
+
+  std::map<std::string, std::string> type_to_token_name;
+  type_to_token_name["double"] = "Double";
+  type_to_token_name["float"] = "Float";
+  type_to_token_name["long"] = "Long";
+  type_to_token_name["int"] = "Integer";
+  type_to_token_name["boolean"] = "Boolean";
+
+  auto it = type_to_token_name.find(java_type);
+  if (it == type_to_token_name.end()) {
+    LOG(INFO) << "CHECKING: " << java_type << ", result not found";
+    return java_type;
+  }
+
+  return it->second;
+}
+}
+
 std::string FieldGen::JavaType() const {
   if (!proto_field_->is_repeated()) {
     return JavaBaseType();
   }
 
   // case of a repeated.
-  return absl::StrCat("java.util.List<", JavaBaseType(), ">");
+  return absl::StrCat("java.util.List<", WrapperTypeOf(JavaBaseType()), ">");
 }
 
 std::string FieldGen::CassandraType() const {

@@ -30,4 +30,6 @@ void GetterFromCassandraRow(const FieldGen& field,
                             CodeBuilder& cb);
 
 std::string TokenName(const std::string& java_type);
+std::string WrapperTypeOf(const std::string& java_type);
+
 }  // structs

@@ -103,6 +103,10 @@ bool IsPurePrimitive(const FieldGen& field) {
       && field.proto_field()->type() != FieldDescriptor::Type::TYPE_ENUM;
 }
 
+bool IsEnum(const FieldGen& field) {
+  return field.proto_field()->type() == FieldDescriptor::Type::TYPE_ENUM;
+}
+
 void GetPrimitiveFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
   cb << getted_name << " = " << obj_name << ".";
 
@@ -156,10 +160,31 @@ void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, c
 }
 
 void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
+  LOG(INFO) << "Getting list from hava object";
+
   if (IsPurePrimitive(field) || field.IsSpecialMessage()) {
+      LOG(INFO) << "Case of primi!";
+
     cb.Newline() << "{";
-    cb.Indent() << "java.util.List<" << field.JavaBaseType() << "> list = new java.util.ArrayList<>();";
-    cb.Newline() << "for (" << field.JavaBaseType() << " x : " << obj_name << ".";
+    cb.Indent() << "java.util.List<" << WrapperTypeOf(field.JavaBaseType()) << "> list = new java.util.ArrayList<>();";
+    cb.Newline() << "for (" << WrapperTypeOf(field.JavaBaseType()) << " x : " << obj_name << ".";
+    PathToFieldMinusOne(field, cb);
+    std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+    cb << "get" << field_name << "List()) {";
+    cb.Indent() << "list.add(x);";
+  
+    cb.OutdentBracket();
+    cb.Newline() << getted_name << " = list;";
+    cb.OutdentBracket();
+    return;
+  }
+
+  if (IsEnum(field)) {
+    LOG(INFO) << "Case of enum!";
+
+    cb.Newline() << "{";
+    cb.Indent() << "java.util.List<" << WrapperTypeOf(field.JavaBaseType()) << "> list = new java.util.ArrayList<>();";
+    cb.Newline() << "for (" << WrapperTypeOf(field.JavaBaseType()) << " x : " << obj_name << ".";
     PathToFieldMinusOne(field, cb);
     std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
     cb << "get" << field_name << "List()) {";
@@ -171,7 +196,10 @@ void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, cons
     return;
   }
   
+  LOG(INFO) << "REGULAR CASE!";
+
   std::string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
+  LOG(INFO) << "IT FUCKING CRASHED";
 
   cb.Newline() << "{";
   cb.Indent() << "java.util.List<" << field.JavaBaseType() << "> list = new java.util.ArrayList<>();";
@@ -299,6 +327,25 @@ std::string TokenName(const std::string& java_type) {
 
   auto it = type_to_token_name.find(java_type);
   CHECK(it != type_to_token_name.end()) << java_type;
+  return it->second;
+}
+
+std::string WrapperTypeOf(const std::string& java_type) {
+  LOG(INFO) << "CHECKING: " << java_type;
+
+  std::map<std::string, std::string> type_to_token_name;
+  type_to_token_name["double"] = "Double";
+  type_to_token_name["float"] = "Float";
+  type_to_token_name["long"] = "Long";
+  type_to_token_name["int"] = "Integer";
+  type_to_token_name["boolean"] = "Boolean";
+
+  auto it = type_to_token_name.find(java_type);
+  if (it == type_to_token_name.end()) {
+    LOG(INFO) << "CHECKING: " << java_type << ", result not found";
+    return java_type;
+  }
+
   return it->second;
 }
 }  // namespace structs

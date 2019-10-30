@@ -1,0 +1,12 @@
+// messages for testing
+
+syntax = "proto3";
+
+package structs.testing;
+
+option java_package = "io.structs.testing";
+option java_outer_classname = "TestingProto";
+
+message MostBasic {
+  string id = 1;
+}

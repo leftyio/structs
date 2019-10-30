@@ -1,0 +1,5 @@
+schema: {
+  message_name: "structs.testing.InnerContainer"
+  table_name: "inner_containers"
+  java_class: "InnerContainerStruct"
+}

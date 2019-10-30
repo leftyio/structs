@@ -1,0 +1,5 @@
+schema: {
+  message_name: "structs.testing.TestingMessage"
+  table_name: "testing_messages"
+  java_class: "TestingMessageStruct"
+}

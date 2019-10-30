@@ -79,7 +79,7 @@ void SetPrimitiveFromJavaStmt(const FieldGen& field, const std::string& value_na
 void SetMessageFromJavaStmt(const FieldGen& field, const std::string& value_name, CodeBuilder& cb) {
   MutablePathToFieldMinusOne(field, cb);
   std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
-
+  LOG(INFO) << field.PathAsString();
   cb << "get" << field_name << "Builder()" << ".mergeFrom(com.google.protobuf.ByteString.copyFrom("
      << value_name << "))";
 }
@@ -143,15 +143,13 @@ void GetSpecialMessageFromJavaObj(const FieldGen& field, const std::string& obj_
   }
 }
 
-std::string ToString(const FieldGen& field) {
-  return absl::StrJoin(field.path(), ".");
-}
-
 void GetRegularMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  LOG(FATAL) << "UNIMPLEMENTED: " << ToString(field);
+  LOG(FATAL) << "UNIMPLEMENTED: " << field.PathAsString();
 }
-
+      
 void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
+    LOG(INFO) << field.PathAsString();
+
   if (field.IsSpecialMessage()) {
     GetSpecialMessageFromJavaObj(field, obj_name, getted_name, cb);
   } else {
@@ -263,6 +261,7 @@ void GetFromJavaObj(const FieldGen& field,
                     const std::string& obj_name,
                     const std::string& getted_name,
                     CodeBuilder& cb) {
+  LOG(INFO) << field.PathAsString();                    
   if (field.IsList()) {
     GetListFromJavaObj(field, obj_name, getted_name, cb);
     return;

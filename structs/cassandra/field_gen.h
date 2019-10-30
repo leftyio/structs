@@ -30,7 +30,8 @@ class FieldGen {
   const Descriptor* MessageType() const;
   
   const std::vector<std::string>& path() const { return path_; }
-  const std::string PathAsString() const { return absl::StrJoin(path(), "."); }
+
+  std::string PathAsString() const { return absl::StrJoin(path_, "."); }
 
   const FieldDescriptor* proto_field() const { return proto_field_; }
 

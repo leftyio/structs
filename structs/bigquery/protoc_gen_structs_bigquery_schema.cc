@@ -2,6 +2,7 @@
 
 #include "gflags/gflags.h"
 #include "glog/logging.h"
+#include "inja/inja.hpp"
 
 #include "structs/bigquery/bigquery_plugin.h"
 

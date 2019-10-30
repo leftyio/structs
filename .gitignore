@@ -13,3 +13,4 @@
 /protoc-gen-structs-cassandra-java
 /protoc-gen-structs-cassandra-spark-java
 /protoc-gen-structs-cassandra-table
+/protoc-gen-structs-bigquery-schema

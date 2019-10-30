@@ -33,6 +33,11 @@ dependencies:
       version: "1.13.1"
       lang: java
 
+  junit:
+    junit:
+      version: "4.12"
+      lang: java
+
 options:
   languages: ["java"]
   resolverType: "coursier"

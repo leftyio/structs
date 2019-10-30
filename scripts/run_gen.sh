@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 make
 export GLOG_logtostderr=1
 
@@ -22,4 +23,29 @@ protoc --proto_path=.                                                           
 protoc --plugin=protoc-gen-structs-cassandra-java                                             \
     --proto_path=.                                                                            \
     --structs-cassandra-java_out="schema=structs/proto/most_basic.java.pbtext:java/generated" \
-    structs/proto/testing.proto 
+    structs/proto/testing.proto
+
+protoc --plugin=protoc-gen-structs-cassandra-table                                            \
+    --proto_path=.                                                                            \
+    --structs-cassandra-table_out="schema=structs/proto/most_basic.java.pbtext:tables"        \
+    structs/proto/testing.proto
+
+protoc --plugin=protoc-gen-structs-cassandra-java                                             \
+    --proto_path=.                                                                            \
+    --structs-cassandra-java_out="schema=structs/proto/testing_message.java.pbtext:java/generated" \
+    structs/proto/testing.proto
+
+protoc --plugin=protoc-gen-structs-cassandra-table                                                 \
+    --proto_path=.                                                                                 \
+    --structs-cassandra-table_out="schema=structs/proto/testing_message.java.pbtext:tables"        \
+    structs/proto/testing.proto
+
+protoc --plugin=protoc-gen-structs-cassandra-java                                             \
+    --proto_path=.                                                                            \
+    --structs-cassandra-java_out="schema=structs/proto/inner_container.java.pbtext:java/generated" \
+    structs/proto/testing.proto
+
+protoc --plugin=protoc-gen-structs-cassandra-table                                                 \
+    --proto_path=.                                                                                 \
+    --structs-cassandra-table_out="schema=structs/proto/inner_container.java.pbtext:tables"        \
+    structs/proto/testing.proto

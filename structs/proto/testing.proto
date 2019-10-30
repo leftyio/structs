@@ -7,6 +7,64 @@ package structs.testing;
 option java_package = "io.structs.testing";
 option java_outer_classname = "TestingProto";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
 message MostBasic {
   string id = 1;
+}
+
+enum TestingEnum {
+  TESTING_ENUM_UNKNOWN = 0;
+  FIRST_VALUE = 1;
+  SECOND_VALUE = 2;
+  THIRD_VALUE = 3;
+}
+
+message TestingMessage {
+  string id = 1;
+
+  double field_double = 100;
+  float field_float = 101;
+  int32 field_int32 = 102;
+  int64 field_int64 = 103;
+  bool field_bool = 112;
+  string field_string = 113;
+  bytes field_bytes = 114;
+
+  TestingEnum field_enum = 115;
+
+  // special messages
+  google.protobuf.Timestamp field_timestamp = 200;
+  google.protobuf.DoubleValue field_double_value = 201;
+  google.protobuf.FloatValue field_float_value = 202;
+  google.protobuf.Int64Value field_int64_value = 203;
+  google.protobuf.Int32Value field_int32_value = 205;
+  google.protobuf.BoolValue field_bool_value = 207;
+  google.protobuf.StringValue field_string_value = 208;
+  // TODO(christian) Bytes value fields.
+  // google.protobuf.BytesValue field_bytes_value = 209;
+
+  repeated double list_of_double = 300;
+  repeated float list_of_float = 301;
+  repeated int32 list_of_int32 = 302;
+  repeated int64 list_of_int64 = 303;
+  repeated bool list_of_bool = 312;
+  repeated string list_of_string = 313;
+  // TODO(chistian) List of bytes.
+  // repeated bytes list_of_bytes = 314;
+
+  repeated TestingEnum list_of_enum = 400;
+}
+
+message InnerMessage {
+  int32 value = 1;
+  string value_str = 2;
+}
+
+message InnerContainer {
+  string id = 1;
+
+  InnerMessage inner = 2;
+  InnerMessage inner_as_bytes = 3;
 }

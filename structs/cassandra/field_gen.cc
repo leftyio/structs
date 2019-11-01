@@ -17,8 +17,8 @@ using google::protobuf::FieldDescriptorProto_Label_LABEL_REPEATED;
 namespace structs {
 namespace {
 const CassandraField* FindField(const CassandraSchema& schema,
-                                const std::vector<std::string>& path) {
-  const std::string exp_path = absl::StrJoin(path, ".");
+                                const vector<string>& path) {
+  const string exp_path = absl::StrJoin(path, ".");
 
   for (const auto& field : schema.fields()) {
     if (field.path() == exp_path) {
@@ -29,8 +29,8 @@ const CassandraField* FindField(const CassandraSchema& schema,
   return nullptr;
 }
 
-std::string SpecialMessageCassandraType(const FieldDescriptor* field) {
-  std::map<std::string, std::string> types;
+string SpecialMessageCassandraType(const FieldDescriptor* field) {
+  std::map<string, string> types;
   types["google.protobuf.Timestamp"] = "timestamp";
   types["google.protobuf.DoubleValue"] = "double";
   types["google.protobuf.FloatValue"] = "float";
@@ -49,7 +49,7 @@ std::string SpecialMessageCassandraType(const FieldDescriptor* field) {
 }  // namespace
 
 FieldGen::FieldGen(const CassandraSchema& schema,
-                   std::vector<std::string> path,
+                   vector<string> path,
                    const FieldDescriptor* proto_field) : proto_field_(proto_field) {
   path.push_back(proto_field->name());
   std::swap(path, path_);
@@ -65,7 +65,7 @@ bool FieldGen::IsSpecialMessage() const {
     return false;
   }
 
-  std::set<std::string> special_names{
+  std::set<string> special_names{
       "google.protobuf.Timestamp",
       "google.protobuf.DoubleValue",
       "google.protobuf.FloatValue",
@@ -122,7 +122,7 @@ const Descriptor* FieldGen::MessageType() const {
   return proto_field_->message_type();
 }
 
-std::string FieldGen::CassandraName() const {
+string FieldGen::CassandraName() const {
   if (field_schema_ != nullptr && !field_schema_->field_name().empty()) {
     return field_schema_->field_name();
   }
@@ -130,12 +130,12 @@ std::string FieldGen::CassandraName() const {
   return absl::StrJoin(path_, "_");
 }
 
-std::string FieldGen::JavaName() const {
+string FieldGen::JavaName() const {
   return UnderscoresToCamelCase(CassandraName(), false);
 }
 
-std::string FieldGen::JavaBaseType() const {
-  std::map<std::string, std::string> types;
+string FieldGen::JavaBaseType() const {
+  std::map<string, string> types;
   types["timestamp"] = "java.util.Date";
   types["double"] = "double";
   types["float"] = "float";
@@ -152,10 +152,10 @@ std::string FieldGen::JavaBaseType() const {
 }
 
 namespace {
-  std::string WrapperTypeOf(const std::string& java_type) {
+string WrapperTypeOf(const string& java_type) {
   LOG(INFO) << "CHECKING: " << java_type;
 
-  std::map<std::string, std::string> type_to_token_name;
+  std::map<string, string> type_to_token_name;
   type_to_token_name["double"] = "Double";
   type_to_token_name["float"] = "Float";
   type_to_token_name["long"] = "Long";
@@ -172,7 +172,7 @@ namespace {
 }
 }
 
-std::string FieldGen::JavaType() const {
+string FieldGen::JavaType() const {
   if (!proto_field_->is_repeated()) {
     return JavaBaseType();
   }
@@ -181,7 +181,7 @@ std::string FieldGen::JavaType() const {
   return absl::StrCat("java.util.List<", WrapperTypeOf(JavaBaseType()), ">");
 }
 
-std::string FieldGen::CassandraType() const {
+string FieldGen::CassandraType() const {
   if (!proto_field_->is_repeated()) {
     return NonRepeatedCassandraType();
   }
@@ -189,7 +189,7 @@ std::string FieldGen::CassandraType() const {
   return "list<" + NonRepeatedCassandraType() + ">";
 }
 
-std::string FieldGen::NonRepeatedCassandraType() const {
+string FieldGen::NonRepeatedCassandraType() const {
   switch (proto_field_->type()) {
     case FieldDescriptor::Type::TYPE_FLOAT:
       return "float";

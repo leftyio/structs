@@ -199,6 +199,10 @@ public class CassandraJavaTest {
     message = cassandra.load("id_1").get();
     assertFalse(message.hasFieldBoolValue());
     assertFalse(message.hasFieldDoubleValue());
+    assertFalse(message.hasFieldFloatValue());
+    assertFalse(message.hasFieldInt32Value());
+    assertFalse(message.hasFieldInt64Value());
+    
     // TODO(christian) adds all.
 
     TestingMessage.Builder messageBuilder = TestingMessage.newBuilder()
@@ -395,6 +399,5 @@ public class CassandraJavaTest {
     assertEquals("value", message.getInner().getValueStr());
     assertEquals(14, message.getInnerAsBytes().getValue());
     assertEquals("value_in_bytes", message.getInnerAsBytes().getValueStr());
-
   }
 }

@@ -135,33 +135,43 @@ void GetEnumFromJavaObj(const FieldGen& field, const std::string& obj_name, cons
   cb.Newline() << getted_name << " = val;";
 }
 
-void GetSpecialMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+void GetSpecialMessageFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {
+  string field_name = UnderscoresToCamelCase(field.path().back(), true);
   cb << "if (" << obj_name << ".has" << field_name << "()) {";
   cb.Indent();
 
   if (field.proto_field()->message_type()->full_name() == "google.protobuf.Timestamp") {
     cb << getted_name << " = new java.util.Date(com.google.protobuf.util.Timestamps.toMillis(" << obj_name << ".";
     PathToFieldMinusOne(field, cb);
-    std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+    string field_name = UnderscoresToCamelCase(field.path().back(), true);
     cb << "get" << field_name << "()));";
   } else if (field.proto_field()->message_type()->full_name() == "google.protobuf.BytesValue") {
     LOG(FATAL) << "UNIMPLEMENTED";
   } else {
     cb << getted_name << " = " << obj_name << ".";
     PathToFieldMinusOne(field, cb);
-    std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+    string field_name = UnderscoresToCamelCase(field.path().back(), true);
     cb << "get" << field_name << "().getValue();";
   }
 
   cb.Outdent() << "}";
 }
 
-void GetRegularMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  LOG(FATAL) << "UNIMPLEMENTED: " << field.PathAsString();
+void GetRegularMessageFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {
+  string field_name = UnderscoresToCamelCase(field.path().back(), true);
+
+  cb << "if (" << obj_name;
+  PathToFieldMinusOne(field, cb);
+  cb << ".has" << field_name << "()) {";
+  cb.Indent();
+  cb << getted_name << " = " << obj_name << ".";
+  PathToFieldMinusOne(field, cb);
+  cb << "get" << field_name << "().tobytes();";
+  cb.Outdent();
+  cb << "}";
 }
       
-void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
+void GetMessageFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {
     LOG(INFO) << field.PathAsString();
 
   if (field.IsSpecialMessage()) {
@@ -171,17 +181,13 @@ void GetMessageFromJavaObj(const FieldGen& field, const std::string& obj_name, c
   }
 }
 
-void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  LOG(INFO) << "Getting list from hava object";
-
+void GetListFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {
   if (IsPurePrimitive(field) || field.IsSpecialMessage()) {
-      LOG(INFO) << "Case of primi!";
-
     cb.Newline() << "{";
     cb.Indent() << "java.util.List<" << WrapperTypeOf(field.JavaBaseType()) << "> list = new java.util.ArrayList<>();";
     cb.Newline() << "for (" << WrapperTypeOf(field.JavaBaseType()) << " x : " << obj_name << ".";
     PathToFieldMinusOne(field, cb);
-    std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+    string field_name = UnderscoresToCamelCase(field.path().back(), true);
     cb << "get" << field_name << "List()) {";
     cb.Indent() << "list.add(x);";
   
@@ -192,8 +198,6 @@ void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, cons
   }
 
   if (IsEnum(field)) {
-    LOG(INFO) << "Case of enum!";
-
     cb.Newline() << "{";
     cb.Indent() << "java.util.List<" << WrapperTypeOf(field.JavaBaseType()) << "> list = new java.util.ArrayList<>();";
     cb.Newline() << "for (" << WrapperTypeOf(field.JavaBaseType()) << " x : " << obj_name << ".";
@@ -207,17 +211,14 @@ void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, cons
     cb.OutdentBracket();
     return;
   }
-  
-  LOG(INFO) << "REGULAR CASE!";
 
-  std::string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
-  LOG(INFO) << "IT FUCKING CRASHED";
+  string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
 
   cb.Newline() << "{";
   cb.Indent() << "java.util.List<" << field.JavaBaseType() << "> list = new java.util.ArrayList<>();";
   cb.Newline() << "for (" << msg_java_name << " x : " << obj_name << ".";
   PathToFieldMinusOne(field, cb);
-  std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+  string field_name = UnderscoresToCamelCase(field.path().back(), true);
   cb << "get" << field_name << "List()) {";
   cb.Indent() << "list.add(x.toByteString().asReadOnlyByteBuffer());";
   
@@ -227,10 +228,10 @@ void GetListFromJavaObj(const FieldGen& field, const std::string& obj_name, cons
 }
 
 void SetEnumListFromJavaStmt(const FieldGen& field,
-                             const std::string& builder,
-                             const std::string& value_name,
+                             const string& builder,
+                             const string& value_name,
                              CodeBuilder& cb) {
-  std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+  string field_name = UnderscoresToCamelCase(field.path().back(), true);
 
   cb << "for (" << field.JavaBaseType() << " x : " << value_name << ") {";
   cb.Indent() << builder << ".";
@@ -242,15 +243,15 @@ void SetEnumListFromJavaStmt(const FieldGen& field,
 }  // namespace
 
 void SetListFromJavaStmt(const FieldGen& field,
-                         const std::string& builder,
-                         const std::string& value_name,
+                         const string& builder,
+                         const string& value_name,
                          CodeBuilder& cb) {
   if (field.proto_field()->type() == FieldDescriptor::Type::TYPE_ENUM) {
     SetEnumListFromJavaStmt(field, builder, value_name, cb);
     return;
   }
 
-  std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
+  string field_name = UnderscoresToCamelCase(field.path().back(), true);
 
   cb << "for (" << field.JavaBaseType() << " x : " << value_name << ") {";
   cb.Indent() << builder << ".";
@@ -258,7 +259,7 @@ void SetListFromJavaStmt(const FieldGen& field,
   cb << "add" << field_name << "(";
 
   if (field.proto_field()->type() == FieldDescriptor::Type::TYPE_MESSAGE) {
-    std::string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
+    string msg_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->message_type());
     cb << msg_java_name << ".parseFrom(x));";
   } else {
     cb << "x);";
@@ -269,7 +270,7 @@ void SetListFromJavaStmt(const FieldGen& field,
 
 // statement to set this field from a java value.
 void SetFromJavaStmt(const FieldGen& field,
-                     const std::string& value_name,
+                     const string& value_name,
                      CodeBuilder& cb) {
   if (field.proto_field()->type() == FieldDescriptor::Type::TYPE_MESSAGE && !field.IsSpecialMessage()) {
     SetMessageFromJavaStmt(field, value_name, cb);
@@ -291,10 +292,9 @@ void SetFromJavaStmt(const FieldGen& field,
 }
 
 void GetFromJavaObj(const FieldGen& field,
-                    const std::string& obj_name,
-                    const std::string& getted_name,
+                    const string& obj_name,
+                    const string& getted_name,
                     CodeBuilder& cb) {
-  LOG(INFO) << field.PathAsString();                    
   if (field.IsList()) {
     GetListFromJavaObj(field, obj_name, getted_name, cb);
     return;
@@ -310,11 +310,11 @@ void GetFromJavaObj(const FieldGen& field,
 }
 
 void GetterFromCassandraRow(const FieldGen& field,
-                            const std::string& row_name,
-                            const std::string& idx_name,
+                            const string& row_name,
+                            const string& idx_name,
                             CodeBuilder& cb) {
   if (!field.IsList()) {
-    std::map<std::string, std::string> type_to_getter;
+    std::map<string, string> type_to_getter;
     type_to_getter["java.util.Date"] = "getTimestamp";
     type_to_getter["double"] = "getDouble";
     type_to_getter["float"] = "getFloat";

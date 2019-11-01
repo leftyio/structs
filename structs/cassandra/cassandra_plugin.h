@@ -10,6 +10,7 @@
 #include "structs/base/base_plugin.h"
 #include "structs/cassandra/cassandra.pb.h"
 #include "structs/cassandra/message_gen.h"
+#include "structs/sugar/sugar.h"
 
 namespace structs {
 using google::protobuf::Descriptor;
@@ -38,7 +39,7 @@ class CassandraPlugin : public BasePlugin {
 
   const CassandraPluginRun run_;
 
-  std::map<std::string, CassandraSchema> schemas_;
-  std::vector<MessageGen> msgs_;
+  std::map<string, CassandraSchema> schemas_;
+  vector<MessageGen> msgs_;
 };
 }  // structs

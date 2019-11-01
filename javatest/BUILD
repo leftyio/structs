@@ -18,11 +18,11 @@ java_library(
         "io/structs/cassandra.truststore",
     ]),
     deps = [
-        "//3rdparty/jvm/com/datastax/cassandra:cassandra_driver_core",
-        "//3rdparty/jvm/junit",
-        "//java/generated",        "//3rdparty/jvm/com/google/protobuf:protobuf_java",
-
         ":io_netty_netty_tcnative_boringssl_static",
+        "//3rdparty/jvm/com/datastax/cassandra:cassandra_driver_core",
+        "//3rdparty/jvm/com/google/protobuf:protobuf_java",
+        "//3rdparty/jvm/junit",
+        "//java/generated",
     ],
 )
 

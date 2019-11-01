@@ -165,7 +165,7 @@ public final class InnerContainerStruct {
     {
       Object o = null;
       if (obj.hasInnerAsBytes()) {
-        o = obj.getInnerAsBytes().tobytes();
+        o = obj.getInnerAsBytes().toByteString().asReadOnlyByteBuffer();
       }
       boundObjs[3] = o;
     }
@@ -199,7 +199,7 @@ public final class InnerContainerStruct {
     {
       Object o = null;
       if (obj.hasInnerAsBytes()) {
-        o = obj.getInnerAsBytes().tobytes();
+        o = obj.getInnerAsBytes().toByteString().asReadOnlyByteBuffer();
       }
       boundObjs[3] = o;
     }

@@ -166,7 +166,7 @@ void GetRegularMessageFromJavaObj(const FieldGen& field, const string& obj_name,
   cb.Indent();
   cb << getted_name << " = " << obj_name << ".";
   PathToFieldMinusOne(field, cb);
-  cb << "get" << field_name << "().tobytes();";
+  cb << "get" << field_name << "().toByteString().asReadOnlyByteBuffer();";
   cb.Outdent();
   cb << "}";
 }

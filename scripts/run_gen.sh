@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-ninja
+make
 export GLOG_logtostderr=1
 
 #protoc --plugin=protoc-gen-structs-cassandra-spark-java                                                         \

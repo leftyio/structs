@@ -202,18 +202,25 @@ public class CassandraJavaTest {
     assertFalse(message.hasFieldFloatValue());
     assertFalse(message.hasFieldInt32Value());
     assertFalse(message.hasFieldInt64Value());
-    
+    assertFalse(message.hasFieldBytesValue());
+
     // TODO(christian) adds all.
 
     TestingMessage.Builder messageBuilder = TestingMessage.newBuilder()
         .setId("id_1");
 
+    byte[] someBytes = new byte[] { 0, 4, 5, 8, 12, 4 };
+
     messageBuilder.getFieldBoolValueBuilder().setValue(false);
+    messageBuilder.getFieldBytesValueBuilder().setValue(ByteString.copyFrom(someBytes));
+
     cassandra.save(messageBuilder.build());
 
     message = cassandra.load("id_1").get();
     assertTrue(message.hasFieldBoolValue());
     assertFalse(message.getFieldBoolValue().getValue());
+    assertTrue(message.hasFieldBytesValue());
+    assertArrayEquals(someBytes, message.getFieldBytesValue().getValue().toByteArray());
 
     messageBuilder = TestingMessage.newBuilder()
         .setId("id_1");

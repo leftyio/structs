@@ -27,6 +27,7 @@ public final class TestingMessageStruct {
     FIELD_INT32_VALUE("field_int32_value"),
     FIELD_BOOL_VALUE("field_bool_value"),
     FIELD_STRING_VALUE("field_string_value"),
+    FIELD_BYTES_VALUE("field_bytes_value"),
     LIST_OF_DOUBLE("list_of_double"),
     LIST_OF_FLOAT("list_of_float"),
     LIST_OF_INT32("list_of_int32"),
@@ -59,6 +60,7 @@ public final class TestingMessageStruct {
       b.add(FIELD_INT32_VALUE);
       b.add(FIELD_BOOL_VALUE);
       b.add(FIELD_STRING_VALUE);
+      b.add(FIELD_BYTES_VALUE);
       b.add(LIST_OF_DOUBLE);
       b.add(LIST_OF_FLOAT);
       b.add(LIST_OF_INT32);
@@ -271,6 +273,14 @@ public final class TestingMessageStruct {
     }
 
     {
+      int idx = row.getColumnDefinitions().getIndexOf("field_bytes_value");
+      if (!row.isNull(idx)) {
+        java.nio.ByteBuffer value = row.getBytes(idx);
+        b.getFieldBytesValueBuilder().setValue(com.google.protobuf.ByteString.copyFrom(value));
+      }
+    }
+
+    {
       int idx = row.getColumnDefinitions().getIndexOf("list_of_double");
       if (!row.isNull(idx)) {
         java.util.List<Double> value = row.getList(idx, listOfDoubles);
@@ -347,15 +357,15 @@ public final class TestingMessageStruct {
   private static PreparedStatement createInsertAllStmt(Session session) {
     StringBuilder sb = new StringBuilder();
     sb.append("INSERT INTO testing_messages (");
-    sb.append("id, field_double, field_float, field_int32, field_int64, field_bool, field_string, field_bytes, field_enum, field_timestamp, field_double_value, field_float_value, field_int64_value, field_int32_value, field_bool_value, field_string_value, list_of_double, list_of_float, list_of_int32, list_of_int64, list_of_bool, list_of_string, list_of_enum) ");
-    sb.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    sb.append("id, field_double, field_float, field_int32, field_int64, field_bool, field_string, field_bytes, field_enum, field_timestamp, field_double_value, field_float_value, field_int64_value, field_int32_value, field_bool_value, field_string_value, field_bytes_value, list_of_double, list_of_float, list_of_int32, list_of_int64, list_of_bool, list_of_string, list_of_enum) ");
+    sb.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     return session.prepare(sb.toString());
   }
 
   public void save(io.structs.testing.TestingProto.TestingMessage obj) {
     PreparedStatement stmt = insertAllStmt.get();
-    Object[] boundObjs = new Object[23];
+    Object[] boundObjs = new Object[24];
 
     {
       Object o = null;
@@ -470,6 +480,14 @@ public final class TestingMessageStruct {
 
     {
       Object o = null;
+      if (obj.hasFieldBytesValue()) {
+        o = obj.getFieldBytesValue().getValue().asReadOnlyByteBuffer();
+      }
+      boundObjs[16] = o;
+    }
+
+    {
+      Object o = null;
       
       {
         java.util.List<Double> list = new java.util.ArrayList<>();
@@ -478,7 +496,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[16] = o;
+      boundObjs[17] = o;
     }
 
     {
@@ -491,7 +509,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[17] = o;
+      boundObjs[18] = o;
     }
 
     {
@@ -504,7 +522,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[18] = o;
+      boundObjs[19] = o;
     }
 
     {
@@ -517,7 +535,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[19] = o;
+      boundObjs[20] = o;
     }
 
     {
@@ -530,7 +548,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[20] = o;
+      boundObjs[21] = o;
     }
 
     {
@@ -543,7 +561,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[21] = o;
+      boundObjs[22] = o;
     }
 
     {
@@ -556,7 +574,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[22] = o;
+      boundObjs[23] = o;
     }
 
     BoundStatement bound = stmt.bind(boundObjs);
@@ -565,7 +583,7 @@ public final class TestingMessageStruct {
 
   public com.google.common.util.concurrent.ListenableFuture<Void> saveAsync(io.structs.testing.TestingProto.TestingMessage obj) {
     PreparedStatement stmt = insertAllStmt.get();
-    Object[] boundObjs = new Object[23];
+    Object[] boundObjs = new Object[24];
 
     {
       Object o = null;
@@ -680,6 +698,14 @@ public final class TestingMessageStruct {
 
     {
       Object o = null;
+      if (obj.hasFieldBytesValue()) {
+        o = obj.getFieldBytesValue().getValue().asReadOnlyByteBuffer();
+      }
+      boundObjs[16] = o;
+    }
+
+    {
+      Object o = null;
       
       {
         java.util.List<Double> list = new java.util.ArrayList<>();
@@ -688,7 +714,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[16] = o;
+      boundObjs[17] = o;
     }
 
     {
@@ -701,7 +727,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[17] = o;
+      boundObjs[18] = o;
     }
 
     {
@@ -714,7 +740,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[18] = o;
+      boundObjs[19] = o;
     }
 
     {
@@ -727,7 +753,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[19] = o;
+      boundObjs[20] = o;
     }
 
     {
@@ -740,7 +766,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[20] = o;
+      boundObjs[21] = o;
     }
 
     {
@@ -753,7 +779,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[21] = o;
+      boundObjs[22] = o;
     }
 
     {
@@ -766,7 +792,7 @@ public final class TestingMessageStruct {
         }
         o = list;
       }
-      boundObjs[22] = o;
+      boundObjs[23] = o;
     }
 
     BoundStatement bound = stmt.bind(boundObjs);

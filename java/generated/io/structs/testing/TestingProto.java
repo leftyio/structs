@@ -809,32 +809,30 @@ public final class TestingProto {
     com.google.protobuf.BoolValueOrBuilder getFieldBoolValueOrBuilder();
 
     /**
-     * <pre>
-     * TODO(christian) Bytes value fields.
-     * google.protobuf.BytesValue field_bytes_value = 209;
-     * </pre>
-     *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     boolean hasFieldStringValue();
     /**
-     * <pre>
-     * TODO(christian) Bytes value fields.
-     * google.protobuf.BytesValue field_bytes_value = 209;
-     * </pre>
-     *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     com.google.protobuf.StringValue getFieldStringValue();
     /**
-     * <pre>
-     * TODO(christian) Bytes value fields.
-     * google.protobuf.BytesValue field_bytes_value = 209;
-     * </pre>
-     *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder();
+
+    /**
+     * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     */
+    boolean hasFieldBytesValue();
+    /**
+     * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     */
+    com.google.protobuf.BytesValue getFieldBytesValue();
+    /**
+     * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     */
+    com.google.protobuf.BytesValueOrBuilder getFieldBytesValueOrBuilder();
 
     /**
      * <code>repeated double list_of_double = 300;</code>
@@ -1163,10 +1161,23 @@ public final class TestingProto {
 
               break;
             }
+            case 1674: {
+              com.google.protobuf.BytesValue.Builder subBuilder = null;
+              if (fieldBytesValue_ != null) {
+                subBuilder = fieldBytesValue_.toBuilder();
+              }
+              fieldBytesValue_ = input.readMessage(com.google.protobuf.BytesValue.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(fieldBytesValue_);
+                fieldBytesValue_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             case 2401: {
-              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
                 listOfDouble_ = new java.util.ArrayList<java.lang.Double>();
-                mutable_bitField0_ |= 0x00010000;
+                mutable_bitField0_ |= 0x00020000;
               }
               listOfDouble_.add(input.readDouble());
               break;
@@ -1174,9 +1185,9 @@ public final class TestingProto {
             case 2402: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000) && input.getBytesUntilLimit() > 0) {
                 listOfDouble_ = new java.util.ArrayList<java.lang.Double>();
-                mutable_bitField0_ |= 0x00010000;
+                mutable_bitField0_ |= 0x00020000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 listOfDouble_.add(input.readDouble());
@@ -1185,9 +1196,9 @@ public final class TestingProto {
               break;
             }
             case 2413: {
-              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
                 listOfFloat_ = new java.util.ArrayList<java.lang.Float>();
-                mutable_bitField0_ |= 0x00020000;
+                mutable_bitField0_ |= 0x00040000;
               }
               listOfFloat_.add(input.readFloat());
               break;
@@ -1195,9 +1206,9 @@ public final class TestingProto {
             case 2410: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000) && input.getBytesUntilLimit() > 0) {
                 listOfFloat_ = new java.util.ArrayList<java.lang.Float>();
-                mutable_bitField0_ |= 0x00020000;
+                mutable_bitField0_ |= 0x00040000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 listOfFloat_.add(input.readFloat());
@@ -1206,9 +1217,9 @@ public final class TestingProto {
               break;
             }
             case 2416: {
-              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
+              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
                 listOfInt32_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00040000;
+                mutable_bitField0_ |= 0x00080000;
               }
               listOfInt32_.add(input.readInt32());
               break;
@@ -1216,9 +1227,9 @@ public final class TestingProto {
             case 2418: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000) && input.getBytesUntilLimit() > 0) {
                 listOfInt32_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00040000;
+                mutable_bitField0_ |= 0x00080000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 listOfInt32_.add(input.readInt32());
@@ -1227,9 +1238,9 @@ public final class TestingProto {
               break;
             }
             case 2424: {
-              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
                 listOfInt64_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00080000;
+                mutable_bitField0_ |= 0x00100000;
               }
               listOfInt64_.add(input.readInt64());
               break;
@@ -1237,9 +1248,9 @@ public final class TestingProto {
             case 2426: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000) && input.getBytesUntilLimit() > 0) {
                 listOfInt64_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00080000;
+                mutable_bitField0_ |= 0x00100000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 listOfInt64_.add(input.readInt64());
@@ -1248,9 +1259,9 @@ public final class TestingProto {
               break;
             }
             case 2496: {
-              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
+              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
                 listOfBool_ = new java.util.ArrayList<java.lang.Boolean>();
-                mutable_bitField0_ |= 0x00100000;
+                mutable_bitField0_ |= 0x00200000;
               }
               listOfBool_.add(input.readBool());
               break;
@@ -1258,9 +1269,9 @@ public final class TestingProto {
             case 2498: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000) && input.getBytesUntilLimit() > 0) {
                 listOfBool_ = new java.util.ArrayList<java.lang.Boolean>();
-                mutable_bitField0_ |= 0x00100000;
+                mutable_bitField0_ |= 0x00200000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 listOfBool_.add(input.readBool());
@@ -1270,18 +1281,18 @@ public final class TestingProto {
             }
             case 2506: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
+              if (!((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
                 listOfString_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00200000;
+                mutable_bitField0_ |= 0x00400000;
               }
               listOfString_.add(s);
               break;
             }
             case 3200: {
               int rawValue = input.readEnum();
-              if (!((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
+              if (!((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
                 listOfEnum_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00400000;
+                mutable_bitField0_ |= 0x00800000;
               }
               listOfEnum_.add(rawValue);
               break;
@@ -1291,9 +1302,9 @@ public final class TestingProto {
               int oldLimit = input.pushLimit(length);
               while(input.getBytesUntilLimit() > 0) {
                 int rawValue = input.readEnum();
-                if (!((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
+                if (!((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
                   listOfEnum_ = new java.util.ArrayList<java.lang.Integer>();
-                  mutable_bitField0_ |= 0x00400000;
+                  mutable_bitField0_ |= 0x00800000;
                 }
                 listOfEnum_.add(rawValue);
               }
@@ -1308,25 +1319,25 @@ public final class TestingProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+        if (((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
           listOfDouble_ = java.util.Collections.unmodifiableList(listOfDouble_);
         }
-        if (((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+        if (((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
           listOfFloat_ = java.util.Collections.unmodifiableList(listOfFloat_);
         }
-        if (((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
+        if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
           listOfInt32_ = java.util.Collections.unmodifiableList(listOfInt32_);
         }
-        if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+        if (((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
           listOfInt64_ = java.util.Collections.unmodifiableList(listOfInt64_);
         }
-        if (((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
+        if (((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
           listOfBool_ = java.util.Collections.unmodifiableList(listOfBool_);
         }
-        if (((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
+        if (((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
           listOfString_ = listOfString_.getUnmodifiableView();
         }
-        if (((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
+        if (((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
           listOfEnum_ = java.util.Collections.unmodifiableList(listOfEnum_);
         }
         this.unknownFields = unknownFields.build();
@@ -1625,37 +1636,43 @@ public final class TestingProto {
     public static final int FIELD_STRING_VALUE_FIELD_NUMBER = 208;
     private com.google.protobuf.StringValue fieldStringValue_;
     /**
-     * <pre>
-     * TODO(christian) Bytes value fields.
-     * google.protobuf.BytesValue field_bytes_value = 209;
-     * </pre>
-     *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     public boolean hasFieldStringValue() {
       return fieldStringValue_ != null;
     }
     /**
-     * <pre>
-     * TODO(christian) Bytes value fields.
-     * google.protobuf.BytesValue field_bytes_value = 209;
-     * </pre>
-     *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     public com.google.protobuf.StringValue getFieldStringValue() {
       return fieldStringValue_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : fieldStringValue_;
     }
     /**
-     * <pre>
-     * TODO(christian) Bytes value fields.
-     * google.protobuf.BytesValue field_bytes_value = 209;
-     * </pre>
-     *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     public com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder() {
       return getFieldStringValue();
+    }
+
+    public static final int FIELD_BYTES_VALUE_FIELD_NUMBER = 209;
+    private com.google.protobuf.BytesValue fieldBytesValue_;
+    /**
+     * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     */
+    public boolean hasFieldBytesValue() {
+      return fieldBytesValue_ != null;
+    }
+    /**
+     * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     */
+    public com.google.protobuf.BytesValue getFieldBytesValue() {
+      return fieldBytesValue_ == null ? com.google.protobuf.BytesValue.getDefaultInstance() : fieldBytesValue_;
+    }
+    /**
+     * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     */
+    public com.google.protobuf.BytesValueOrBuilder getFieldBytesValueOrBuilder() {
+      return getFieldBytesValue();
     }
 
     public static final int LIST_OF_DOUBLE_FIELD_NUMBER = 300;
@@ -1928,6 +1945,9 @@ public final class TestingProto {
       if (fieldStringValue_ != null) {
         output.writeMessage(208, getFieldStringValue());
       }
+      if (fieldBytesValue_ != null) {
+        output.writeMessage(209, getFieldBytesValue());
+      }
       if (getListOfDoubleList().size() > 0) {
         output.writeUInt32NoTag(2402);
         output.writeUInt32NoTag(listOfDoubleMemoizedSerializedSize);
@@ -2042,6 +2062,10 @@ public final class TestingProto {
       if (fieldStringValue_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(208, getFieldStringValue());
+      }
+      if (fieldBytesValue_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(209, getFieldBytesValue());
       }
       {
         int dataSize = 0;
@@ -2196,6 +2220,11 @@ public final class TestingProto {
         result = result && getFieldStringValue()
             .equals(other.getFieldStringValue());
       }
+      result = result && (hasFieldBytesValue() == other.hasFieldBytesValue());
+      if (hasFieldBytesValue()) {
+        result = result && getFieldBytesValue()
+            .equals(other.getFieldBytesValue());
+      }
       result = result && getListOfDoubleList()
           .equals(other.getListOfDoubleList());
       result = result && getListOfFloatList()
@@ -2269,6 +2298,10 @@ public final class TestingProto {
       if (hasFieldStringValue()) {
         hash = (37 * hash) + FIELD_STRING_VALUE_FIELD_NUMBER;
         hash = (53 * hash) + getFieldStringValue().hashCode();
+      }
+      if (hasFieldBytesValue()) {
+        hash = (37 * hash) + FIELD_BYTES_VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + getFieldBytesValue().hashCode();
       }
       if (getListOfDoubleCount() > 0) {
         hash = (37 * hash) + LIST_OF_DOUBLE_FIELD_NUMBER;
@@ -2487,20 +2520,26 @@ public final class TestingProto {
           fieldStringValue_ = null;
           fieldStringValueBuilder_ = null;
         }
+        if (fieldBytesValueBuilder_ == null) {
+          fieldBytesValue_ = null;
+        } else {
+          fieldBytesValue_ = null;
+          fieldBytesValueBuilder_ = null;
+        }
         listOfDouble_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00010000);
-        listOfFloat_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00020000);
-        listOfInt32_ = java.util.Collections.emptyList();
+        listOfFloat_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00040000);
-        listOfInt64_ = java.util.Collections.emptyList();
+        listOfInt32_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00080000);
-        listOfBool_ = java.util.Collections.emptyList();
+        listOfInt64_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00100000);
-        listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        listOfBool_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00200000);
-        listOfEnum_ = java.util.Collections.emptyList();
+        listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00400000);
+        listOfEnum_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00800000);
         return this;
       }
 
@@ -2569,39 +2608,44 @@ public final class TestingProto {
         } else {
           result.fieldStringValue_ = fieldStringValueBuilder_.build();
         }
-        if (((bitField0_ & 0x00010000) == 0x00010000)) {
-          listOfDouble_ = java.util.Collections.unmodifiableList(listOfDouble_);
-          bitField0_ = (bitField0_ & ~0x00010000);
+        if (fieldBytesValueBuilder_ == null) {
+          result.fieldBytesValue_ = fieldBytesValue_;
+        } else {
+          result.fieldBytesValue_ = fieldBytesValueBuilder_.build();
         }
-        result.listOfDouble_ = listOfDouble_;
         if (((bitField0_ & 0x00020000) == 0x00020000)) {
-          listOfFloat_ = java.util.Collections.unmodifiableList(listOfFloat_);
+          listOfDouble_ = java.util.Collections.unmodifiableList(listOfDouble_);
           bitField0_ = (bitField0_ & ~0x00020000);
         }
-        result.listOfFloat_ = listOfFloat_;
+        result.listOfDouble_ = listOfDouble_;
         if (((bitField0_ & 0x00040000) == 0x00040000)) {
-          listOfInt32_ = java.util.Collections.unmodifiableList(listOfInt32_);
+          listOfFloat_ = java.util.Collections.unmodifiableList(listOfFloat_);
           bitField0_ = (bitField0_ & ~0x00040000);
         }
-        result.listOfInt32_ = listOfInt32_;
+        result.listOfFloat_ = listOfFloat_;
         if (((bitField0_ & 0x00080000) == 0x00080000)) {
-          listOfInt64_ = java.util.Collections.unmodifiableList(listOfInt64_);
+          listOfInt32_ = java.util.Collections.unmodifiableList(listOfInt32_);
           bitField0_ = (bitField0_ & ~0x00080000);
         }
-        result.listOfInt64_ = listOfInt64_;
+        result.listOfInt32_ = listOfInt32_;
         if (((bitField0_ & 0x00100000) == 0x00100000)) {
-          listOfBool_ = java.util.Collections.unmodifiableList(listOfBool_);
+          listOfInt64_ = java.util.Collections.unmodifiableList(listOfInt64_);
           bitField0_ = (bitField0_ & ~0x00100000);
         }
-        result.listOfBool_ = listOfBool_;
+        result.listOfInt64_ = listOfInt64_;
         if (((bitField0_ & 0x00200000) == 0x00200000)) {
-          listOfString_ = listOfString_.getUnmodifiableView();
+          listOfBool_ = java.util.Collections.unmodifiableList(listOfBool_);
           bitField0_ = (bitField0_ & ~0x00200000);
         }
-        result.listOfString_ = listOfString_;
+        result.listOfBool_ = listOfBool_;
         if (((bitField0_ & 0x00400000) == 0x00400000)) {
-          listOfEnum_ = java.util.Collections.unmodifiableList(listOfEnum_);
+          listOfString_ = listOfString_.getUnmodifiableView();
           bitField0_ = (bitField0_ & ~0x00400000);
+        }
+        result.listOfString_ = listOfString_;
+        if (((bitField0_ & 0x00800000) == 0x00800000)) {
+          listOfEnum_ = java.util.Collections.unmodifiableList(listOfEnum_);
+          bitField0_ = (bitField0_ & ~0x00800000);
         }
         result.listOfEnum_ = listOfEnum_;
         result.bitField0_ = to_bitField0_;
@@ -2696,10 +2740,13 @@ public final class TestingProto {
         if (other.hasFieldStringValue()) {
           mergeFieldStringValue(other.getFieldStringValue());
         }
+        if (other.hasFieldBytesValue()) {
+          mergeFieldBytesValue(other.getFieldBytesValue());
+        }
         if (!other.listOfDouble_.isEmpty()) {
           if (listOfDouble_.isEmpty()) {
             listOfDouble_ = other.listOfDouble_;
-            bitField0_ = (bitField0_ & ~0x00010000);
+            bitField0_ = (bitField0_ & ~0x00020000);
           } else {
             ensureListOfDoubleIsMutable();
             listOfDouble_.addAll(other.listOfDouble_);
@@ -2709,7 +2756,7 @@ public final class TestingProto {
         if (!other.listOfFloat_.isEmpty()) {
           if (listOfFloat_.isEmpty()) {
             listOfFloat_ = other.listOfFloat_;
-            bitField0_ = (bitField0_ & ~0x00020000);
+            bitField0_ = (bitField0_ & ~0x00040000);
           } else {
             ensureListOfFloatIsMutable();
             listOfFloat_.addAll(other.listOfFloat_);
@@ -2719,7 +2766,7 @@ public final class TestingProto {
         if (!other.listOfInt32_.isEmpty()) {
           if (listOfInt32_.isEmpty()) {
             listOfInt32_ = other.listOfInt32_;
-            bitField0_ = (bitField0_ & ~0x00040000);
+            bitField0_ = (bitField0_ & ~0x00080000);
           } else {
             ensureListOfInt32IsMutable();
             listOfInt32_.addAll(other.listOfInt32_);
@@ -2729,7 +2776,7 @@ public final class TestingProto {
         if (!other.listOfInt64_.isEmpty()) {
           if (listOfInt64_.isEmpty()) {
             listOfInt64_ = other.listOfInt64_;
-            bitField0_ = (bitField0_ & ~0x00080000);
+            bitField0_ = (bitField0_ & ~0x00100000);
           } else {
             ensureListOfInt64IsMutable();
             listOfInt64_.addAll(other.listOfInt64_);
@@ -2739,7 +2786,7 @@ public final class TestingProto {
         if (!other.listOfBool_.isEmpty()) {
           if (listOfBool_.isEmpty()) {
             listOfBool_ = other.listOfBool_;
-            bitField0_ = (bitField0_ & ~0x00100000);
+            bitField0_ = (bitField0_ & ~0x00200000);
           } else {
             ensureListOfBoolIsMutable();
             listOfBool_.addAll(other.listOfBool_);
@@ -2749,7 +2796,7 @@ public final class TestingProto {
         if (!other.listOfString_.isEmpty()) {
           if (listOfString_.isEmpty()) {
             listOfString_ = other.listOfString_;
-            bitField0_ = (bitField0_ & ~0x00200000);
+            bitField0_ = (bitField0_ & ~0x00400000);
           } else {
             ensureListOfStringIsMutable();
             listOfString_.addAll(other.listOfString_);
@@ -2759,7 +2806,7 @@ public final class TestingProto {
         if (!other.listOfEnum_.isEmpty()) {
           if (listOfEnum_.isEmpty()) {
             listOfEnum_ = other.listOfEnum_;
-            bitField0_ = (bitField0_ & ~0x00400000);
+            bitField0_ = (bitField0_ & ~0x00800000);
           } else {
             ensureListOfEnumIsMutable();
             listOfEnum_.addAll(other.listOfEnum_);
@@ -3877,22 +3924,12 @@ public final class TestingProto {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> fieldStringValueBuilder_;
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public boolean hasFieldStringValue() {
         return fieldStringValueBuilder_ != null || fieldStringValue_ != null;
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public com.google.protobuf.StringValue getFieldStringValue() {
@@ -3903,11 +3940,6 @@ public final class TestingProto {
         }
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public Builder setFieldStringValue(com.google.protobuf.StringValue value) {
@@ -3924,11 +3956,6 @@ public final class TestingProto {
         return this;
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public Builder setFieldStringValue(
@@ -3943,11 +3970,6 @@ public final class TestingProto {
         return this;
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public Builder mergeFieldStringValue(com.google.protobuf.StringValue value) {
@@ -3966,11 +3988,6 @@ public final class TestingProto {
         return this;
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public Builder clearFieldStringValue() {
@@ -3985,11 +4002,6 @@ public final class TestingProto {
         return this;
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public com.google.protobuf.StringValue.Builder getFieldStringValueBuilder() {
@@ -3998,11 +4010,6 @@ public final class TestingProto {
         return getFieldStringValueFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       public com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder() {
@@ -4014,11 +4021,6 @@ public final class TestingProto {
         }
       }
       /**
-       * <pre>
-       * TODO(christian) Bytes value fields.
-       * google.protobuf.BytesValue field_bytes_value = 209;
-       * </pre>
-       *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -4035,11 +4037,128 @@ public final class TestingProto {
         return fieldStringValueBuilder_;
       }
 
+      private com.google.protobuf.BytesValue fieldBytesValue_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.BytesValue, com.google.protobuf.BytesValue.Builder, com.google.protobuf.BytesValueOrBuilder> fieldBytesValueBuilder_;
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public boolean hasFieldBytesValue() {
+        return fieldBytesValueBuilder_ != null || fieldBytesValue_ != null;
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public com.google.protobuf.BytesValue getFieldBytesValue() {
+        if (fieldBytesValueBuilder_ == null) {
+          return fieldBytesValue_ == null ? com.google.protobuf.BytesValue.getDefaultInstance() : fieldBytesValue_;
+        } else {
+          return fieldBytesValueBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public Builder setFieldBytesValue(com.google.protobuf.BytesValue value) {
+        if (fieldBytesValueBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fieldBytesValue_ = value;
+          onChanged();
+        } else {
+          fieldBytesValueBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public Builder setFieldBytesValue(
+          com.google.protobuf.BytesValue.Builder builderForValue) {
+        if (fieldBytesValueBuilder_ == null) {
+          fieldBytesValue_ = builderForValue.build();
+          onChanged();
+        } else {
+          fieldBytesValueBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public Builder mergeFieldBytesValue(com.google.protobuf.BytesValue value) {
+        if (fieldBytesValueBuilder_ == null) {
+          if (fieldBytesValue_ != null) {
+            fieldBytesValue_ =
+              com.google.protobuf.BytesValue.newBuilder(fieldBytesValue_).mergeFrom(value).buildPartial();
+          } else {
+            fieldBytesValue_ = value;
+          }
+          onChanged();
+        } else {
+          fieldBytesValueBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public Builder clearFieldBytesValue() {
+        if (fieldBytesValueBuilder_ == null) {
+          fieldBytesValue_ = null;
+          onChanged();
+        } else {
+          fieldBytesValue_ = null;
+          fieldBytesValueBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public com.google.protobuf.BytesValue.Builder getFieldBytesValueBuilder() {
+        
+        onChanged();
+        return getFieldBytesValueFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      public com.google.protobuf.BytesValueOrBuilder getFieldBytesValueOrBuilder() {
+        if (fieldBytesValueBuilder_ != null) {
+          return fieldBytesValueBuilder_.getMessageOrBuilder();
+        } else {
+          return fieldBytesValue_ == null ?
+              com.google.protobuf.BytesValue.getDefaultInstance() : fieldBytesValue_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.BytesValue, com.google.protobuf.BytesValue.Builder, com.google.protobuf.BytesValueOrBuilder> 
+          getFieldBytesValueFieldBuilder() {
+        if (fieldBytesValueBuilder_ == null) {
+          fieldBytesValueBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.BytesValue, com.google.protobuf.BytesValue.Builder, com.google.protobuf.BytesValueOrBuilder>(
+                  getFieldBytesValue(),
+                  getParentForChildren(),
+                  isClean());
+          fieldBytesValue_ = null;
+        }
+        return fieldBytesValueBuilder_;
+      }
+
       private java.util.List<java.lang.Double> listOfDouble_ = java.util.Collections.emptyList();
       private void ensureListOfDoubleIsMutable() {
-        if (!((bitField0_ & 0x00010000) == 0x00010000)) {
+        if (!((bitField0_ & 0x00020000) == 0x00020000)) {
           listOfDouble_ = new java.util.ArrayList<java.lang.Double>(listOfDouble_);
-          bitField0_ |= 0x00010000;
+          bitField0_ |= 0x00020000;
          }
       }
       /**
@@ -4096,16 +4215,16 @@ public final class TestingProto {
        */
       public Builder clearListOfDouble() {
         listOfDouble_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         onChanged();
         return this;
       }
 
       private java.util.List<java.lang.Float> listOfFloat_ = java.util.Collections.emptyList();
       private void ensureListOfFloatIsMutable() {
-        if (!((bitField0_ & 0x00020000) == 0x00020000)) {
+        if (!((bitField0_ & 0x00040000) == 0x00040000)) {
           listOfFloat_ = new java.util.ArrayList<java.lang.Float>(listOfFloat_);
-          bitField0_ |= 0x00020000;
+          bitField0_ |= 0x00040000;
          }
       }
       /**
@@ -4162,16 +4281,16 @@ public final class TestingProto {
        */
       public Builder clearListOfFloat() {
         listOfFloat_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         onChanged();
         return this;
       }
 
       private java.util.List<java.lang.Integer> listOfInt32_ = java.util.Collections.emptyList();
       private void ensureListOfInt32IsMutable() {
-        if (!((bitField0_ & 0x00040000) == 0x00040000)) {
+        if (!((bitField0_ & 0x00080000) == 0x00080000)) {
           listOfInt32_ = new java.util.ArrayList<java.lang.Integer>(listOfInt32_);
-          bitField0_ |= 0x00040000;
+          bitField0_ |= 0x00080000;
          }
       }
       /**
@@ -4228,16 +4347,16 @@ public final class TestingProto {
        */
       public Builder clearListOfInt32() {
         listOfInt32_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00080000);
         onChanged();
         return this;
       }
 
       private java.util.List<java.lang.Long> listOfInt64_ = java.util.Collections.emptyList();
       private void ensureListOfInt64IsMutable() {
-        if (!((bitField0_ & 0x00080000) == 0x00080000)) {
+        if (!((bitField0_ & 0x00100000) == 0x00100000)) {
           listOfInt64_ = new java.util.ArrayList<java.lang.Long>(listOfInt64_);
-          bitField0_ |= 0x00080000;
+          bitField0_ |= 0x00100000;
          }
       }
       /**
@@ -4294,16 +4413,16 @@ public final class TestingProto {
        */
       public Builder clearListOfInt64() {
         listOfInt64_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         onChanged();
         return this;
       }
 
       private java.util.List<java.lang.Boolean> listOfBool_ = java.util.Collections.emptyList();
       private void ensureListOfBoolIsMutable() {
-        if (!((bitField0_ & 0x00100000) == 0x00100000)) {
+        if (!((bitField0_ & 0x00200000) == 0x00200000)) {
           listOfBool_ = new java.util.ArrayList<java.lang.Boolean>(listOfBool_);
-          bitField0_ |= 0x00100000;
+          bitField0_ |= 0x00200000;
          }
       }
       /**
@@ -4360,16 +4479,16 @@ public final class TestingProto {
        */
       public Builder clearListOfBool() {
         listOfBool_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         onChanged();
         return this;
       }
 
       private com.google.protobuf.LazyStringList listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureListOfStringIsMutable() {
-        if (!((bitField0_ & 0x00200000) == 0x00200000)) {
+        if (!((bitField0_ & 0x00400000) == 0x00400000)) {
           listOfString_ = new com.google.protobuf.LazyStringArrayList(listOfString_);
-          bitField0_ |= 0x00200000;
+          bitField0_ |= 0x00400000;
          }
       }
       /**
@@ -4480,7 +4599,7 @@ public final class TestingProto {
        */
       public Builder clearListOfString() {
         listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00200000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         onChanged();
         return this;
       }
@@ -4507,9 +4626,9 @@ public final class TestingProto {
       private java.util.List<java.lang.Integer> listOfEnum_ =
         java.util.Collections.emptyList();
       private void ensureListOfEnumIsMutable() {
-        if (!((bitField0_ & 0x00400000) == 0x00400000)) {
+        if (!((bitField0_ & 0x00800000) == 0x00800000)) {
           listOfEnum_ = new java.util.ArrayList<java.lang.Integer>(listOfEnum_);
-          bitField0_ |= 0x00400000;
+          bitField0_ |= 0x00800000;
         }
       }
       /**
@@ -4573,7 +4692,7 @@ public final class TestingProto {
        */
       public Builder clearListOfEnum() {
         listOfEnum_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         onChanged();
         return this;
       }
@@ -6203,7 +6322,7 @@ public final class TestingProto {
       "\n\033structs/proto/testing.proto\022\017structs.t" +
       "esting\032\037google/protobuf/timestamp.proto\032" +
       "\036google/protobuf/wrappers.proto\"\027\n\tMostB" +
-      "asic\022\n\n\002id\030\001 \001(\t\"\266\006\n\016TestingMessage\022\n\n\002i" +
+      "asic\022\n\n\002id\030\001 \001(\t\"\357\006\n\016TestingMessage\022\n\n\002i" +
       "d\030\001 \001(\t\022\024\n\014field_double\030d \001(\001\022\023\n\013field_f" +
       "loat\030e \001(\002\022\023\n\013field_int32\030f \001(\005\022\023\n\013field" +
       "_int64\030g \001(\003\022\022\n\nfield_bool\030p \001(\010\022\024\n\014fiel" +
@@ -6219,19 +6338,21 @@ public final class TestingProto {
       "nt32Value\0225\n\020field_bool_value\030\317\001 \001(\0132\032.g" +
       "oogle.protobuf.BoolValue\0229\n\022field_string" +
       "_value\030\320\001 \001(\0132\034.google.protobuf.StringVa" +
-      "lue\022\027\n\016list_of_double\030\254\002 \003(\001\022\026\n\rlist_of_" +
-      "float\030\255\002 \003(\002\022\026\n\rlist_of_int32\030\256\002 \003(\005\022\026\n\r" +
-      "list_of_int64\030\257\002 \003(\003\022\025\n\014list_of_bool\030\270\002 " +
-      "\003(\010\022\027\n\016list_of_string\030\271\002 \003(\t\0223\n\014list_of_" +
-      "enum\030\220\003 \003(\0162\034.structs.testing.TestingEnu" +
-      "m\"0\n\014InnerMessage\022\r\n\005value\030\001 \001(\005\022\021\n\tvalu" +
-      "e_str\030\002 \001(\t\"\201\001\n\016InnerContainer\022\n\n\002id\030\001 \001" +
-      "(\t\022,\n\005inner\030\002 \001(\0132\035.structs.testing.Inne" +
-      "rMessage\0225\n\016inner_as_bytes\030\003 \001(\0132\035.struc" +
-      "ts.testing.InnerMessage*[\n\013TestingEnum\022\030" +
-      "\n\024TESTING_ENUM_UNKNOWN\020\000\022\017\n\013FIRST_VALUE\020" +
-      "\001\022\020\n\014SECOND_VALUE\020\002\022\017\n\013THIRD_VALUE\020\003B\"\n\022" +
-      "io.structs.testingB\014TestingProtob\006proto3"
+      "lue\0227\n\021field_bytes_value\030\321\001 \001(\0132\033.google" +
+      ".protobuf.BytesValue\022\027\n\016list_of_double\030\254" +
+      "\002 \003(\001\022\026\n\rlist_of_float\030\255\002 \003(\002\022\026\n\rlist_of" +
+      "_int32\030\256\002 \003(\005\022\026\n\rlist_of_int64\030\257\002 \003(\003\022\025\n" +
+      "\014list_of_bool\030\270\002 \003(\010\022\027\n\016list_of_string\030\271" +
+      "\002 \003(\t\0223\n\014list_of_enum\030\220\003 \003(\0162\034.structs.t" +
+      "esting.TestingEnum\"0\n\014InnerMessage\022\r\n\005va" +
+      "lue\030\001 \001(\005\022\021\n\tvalue_str\030\002 \001(\t\"\201\001\n\016InnerCo" +
+      "ntainer\022\n\n\002id\030\001 \001(\t\022,\n\005inner\030\002 \001(\0132\035.str" +
+      "ucts.testing.InnerMessage\0225\n\016inner_as_by" +
+      "tes\030\003 \001(\0132\035.structs.testing.InnerMessage" +
+      "*[\n\013TestingEnum\022\030\n\024TESTING_ENUM_UNKNOWN\020" +
+      "\000\022\017\n\013FIRST_VALUE\020\001\022\020\n\014SECOND_VALUE\020\002\022\017\n\013" +
+      "THIRD_VALUE\020\003B\"\n\022io.structs.testingB\014Tes" +
+      "tingProtob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6258,7 +6379,7 @@ public final class TestingProto {
     internal_static_structs_testing_TestingMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_structs_testing_TestingMessage_descriptor,
-        new java.lang.String[] { "Id", "FieldDouble", "FieldFloat", "FieldInt32", "FieldInt64", "FieldBool", "FieldString", "FieldBytes", "FieldEnum", "FieldTimestamp", "FieldDoubleValue", "FieldFloatValue", "FieldInt64Value", "FieldInt32Value", "FieldBoolValue", "FieldStringValue", "ListOfDouble", "ListOfFloat", "ListOfInt32", "ListOfInt64", "ListOfBool", "ListOfString", "ListOfEnum", });
+        new java.lang.String[] { "Id", "FieldDouble", "FieldFloat", "FieldInt32", "FieldInt64", "FieldBool", "FieldString", "FieldBytes", "FieldEnum", "FieldTimestamp", "FieldDoubleValue", "FieldFloatValue", "FieldInt64Value", "FieldInt32Value", "FieldBoolValue", "FieldStringValue", "FieldBytesValue", "ListOfDouble", "ListOfFloat", "ListOfInt32", "ListOfInt64", "ListOfBool", "ListOfString", "ListOfEnum", });
     internal_static_structs_testing_InnerMessage_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_structs_testing_InnerMessage_fieldAccessorTable = new

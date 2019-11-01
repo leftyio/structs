@@ -15,6 +15,7 @@ CREATE TABLE testing_messages (
   field_int32_value int,
   field_bool_value boolean,
   field_string_value text,
+  field_bytes_value blob,
   list_of_double list<double>,
   list_of_float list<float>,
   list_of_int32 list<int>,

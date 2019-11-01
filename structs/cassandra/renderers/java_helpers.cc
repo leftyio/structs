@@ -146,7 +146,10 @@ void GetSpecialMessageFromJavaObj(const FieldGen& field, const string& obj_name,
     string field_name = UnderscoresToCamelCase(field.path().back(), true);
     cb << "get" << field_name << "()));";
   } else if (field.proto_field()->message_type()->full_name() == "google.protobuf.BytesValue") {
-    LOG(FATAL) << "UNIMPLEMENTED";
+    cb << getted_name << " = " << obj_name << ".";
+    PathToFieldMinusOne(field, cb);
+    string field_name = UnderscoresToCamelCase(field.path().back(), true);
+    cb << "get" << field_name << "().getValue().asReadOnlyByteBuffer();";
   } else {
     cb << getted_name << " = " << obj_name << ".";
     PathToFieldMinusOne(field, cb);

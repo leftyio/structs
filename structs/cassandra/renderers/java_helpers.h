@@ -8,26 +8,28 @@
 
 #include "structs/base/code_builder.h"
 #include "structs/cassandra/field_gen.h"
+#include "structs/sugar/sugar.h"
 
 namespace structs {
 void SetFromJavaStmt(const FieldGen& field,
-                     const std::string& value_name,
+                     const string& value_name,
                      CodeBuilder& cb);
 
 void SetListFromJavaStmt(const FieldGen& field,
-                         const std::string& builder,
-                         const std::string& value_name,
+                         const string& builder,
+                         const string& value_name,
                          CodeBuilder& cb);
 
 void GetFromJavaObj(const FieldGen& field,
-                    const std::string& obj_name,
-                    const std::string& getted_name,
+                    const string& obj_name,
+                    const string& getted_name,
                     CodeBuilder& cb);
 
 void GetterFromCassandraRow(const FieldGen& field,
-                            const std::string& row_name,
-                            const std::string& idx_name,
+                            const string& row_name,
+                            const string& idx_name,
                             CodeBuilder& cb);
 
-std::string TokenName(const std::string& java_type);
+string TokenName(const string& java_type);
+string WrapperTypeOf(const string& java_type);
 }  // structs

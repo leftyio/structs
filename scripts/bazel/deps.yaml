@@ -1,0 +1,43 @@
+dependencies:
+  com.datastax.cassandra:
+    cassandra-driver-core:
+      version: "3.3.0"
+      lang: java
+    cassandra-driver-mapping:
+      version: "3.3.0"
+      lang: java
+
+  com.datastax.spark:
+    spark-cassandra-connector-unshaded_2.11:
+      version: "2.0.5"
+      lang: java
+
+  com.google.guava:
+    guava:
+      version: "21.0"
+      lang: java
+
+  com.google.protobuf:
+    protobuf-java:
+      version: "3.5.1"
+      lang: java
+    protobuf-java-util:
+      version: "3.5.1"
+      lang: java
+
+  io.grpc:
+    grpc-all:
+      version: "1.13.1"
+      lang: java
+    grpc-services:
+      version: "1.13.1"
+      lang: java
+
+  junit:
+    junit:
+      version: "4.12"
+      lang: java
+
+options:
+  languages: ["java"]
+  resolverType: "coursier"

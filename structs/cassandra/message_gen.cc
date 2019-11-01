@@ -41,12 +41,12 @@ struct ByIdCardinality {
   }
 };
 
-std::string MessageGen::TableName() const {
+string MessageGen::TableName() const {
   if (!schema_->table_name().empty()) {
     return schema_->table_name();
   }
 
-  std::string full_name = descriptor_->full_name();
+  string full_name = descriptor_->full_name();
   for (std::size_t i = 0; i < full_name.size(); ++i) {
     if (full_name[i] == '.') {
       full_name[i] = '_';
@@ -56,11 +56,11 @@ std::string MessageGen::TableName() const {
   return full_name;
 }
 
-std::string MessageGen::Pkg() const {
+string MessageGen::Pkg() const {
   return descriptor_->file()->package();
 }
 
-std::string MessageGen::JavaClass() const {
+string MessageGen::JavaClass() const {
   if (schema_ != nullptr) {
     if (!schema_->java_class().empty()) {
       return schema_->java_class();
@@ -70,13 +70,13 @@ std::string MessageGen::JavaClass() const {
   return google::protobuf::compiler::java::ClassName(descriptor_) + "CassandraStruct";
 }
 
-std::string MessageGen::JavaClassOfMessage() const {
+string MessageGen::JavaClassOfMessage() const {
   return google::protobuf::compiler::java::ClassName(descriptor_);
 }
 
 const char* kDefaultPackage = "";
-std::string MessageGen::JavaPkg() const {
-  std::string result;
+string MessageGen::JavaPkg() const {
+  string result;
   const FileDescriptor* file = descriptor_->file();
 
   if (file->options().has_java_package()) {
@@ -92,7 +92,7 @@ std::string MessageGen::JavaPkg() const {
   return result;
 }
 
-std::string MessageGen::CompressionStrategy() const {
+string MessageGen::CompressionStrategy() const {
   if (!schema_->compression_strategy().empty()) {
     return schema_->compression_strategy();
   } else {
@@ -100,7 +100,7 @@ std::string MessageGen::CompressionStrategy() const {
   }
 }
 
-std::string MessageGen::CompactionStrategy() const {
+string MessageGen::CompactionStrategy() const {
   if (!schema_->compaction_strategy().empty()) {
     return schema_->compaction_strategy();
   } else {
@@ -108,8 +108,8 @@ std::string MessageGen::CompactionStrategy() const {
   }
 }
 
-std::vector<const FieldGen*> MessageGen::Fields() const {
-  std::vector<const FieldGen*> res;
+vector<const FieldGen*> MessageGen::Fields() const {
+  vector<const FieldGen*> res;
 
   for (const auto& field : fields_) {
     res.push_back(&field);
@@ -118,8 +118,8 @@ std::vector<const FieldGen*> MessageGen::Fields() const {
   return res;
 }
 
-std::vector<std::string> MessageGen::Ids() const {
-  std::vector<std::string> ids;
+vector<string> MessageGen::Ids() const {
+  vector<string> ids;
 
   for (const auto* field : IdFields()) {
     ids.push_back(field->CassandraName());
@@ -128,8 +128,8 @@ std::vector<std::string> MessageGen::Ids() const {
   return ids;
 }
 
-std::vector<const FieldGen*> MessageGen::IdFields() const {
-  std::vector<const FieldGen*> id_fields;
+vector<const FieldGen*> MessageGen::IdFields() const {
+  vector<const FieldGen*> id_fields;
 
   for (const auto& field : fields_) {
     if (field.IsId()) {

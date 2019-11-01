@@ -8,6 +8,7 @@
 
 #include "structs/base/code_builder.h"
 #include "structs/cassandra/cassandra.pb.h"
+#include "structs/sugar/sugar.h"
 
 namespace structs {
 using google::protobuf::Descriptor;    
@@ -16,7 +17,7 @@ using google::protobuf::FieldDescriptor;
 class FieldGen {
  public:
   FieldGen(const CassandraSchema& schema,
-           std::vector<std::string> path,
+           vector<string> path,
            const FieldDescriptor* proto_field);
   ~FieldGen();
 
@@ -29,21 +30,23 @@ class FieldGen {
 
   const Descriptor* MessageType() const;
   
-  const std::vector<std::string>& path() const { return path_; }
-  std::string PathAsString() const { return absl::StrJoin(path_, "."); }
+  const vector<string>& path() const { return path_; }
+
+  string PathAsString() const { return absl::StrJoin(path_, "."); }
+
   const FieldDescriptor* proto_field() const { return proto_field_; }
 
-  std::string CassandraName() const;
-  std::string JavaName() const;
+  string CassandraName() const;
+  string JavaName() const;
   // Java type as it would come from as cassandra row.
-  std::string JavaType() const;
-  std::string JavaBaseType() const;
+  string JavaType() const;
+  string JavaBaseType() const;
 
-  std::string CassandraType() const;
-  std::string NonRepeatedCassandraType() const;
+  string CassandraType() const;
+  string NonRepeatedCassandraType() const;
 
  private:
-  std::vector<std::string> path_;
+  vector<string> path_;
   // not owned
   const CassandraField* field_schema_{nullptr};
   // not owned

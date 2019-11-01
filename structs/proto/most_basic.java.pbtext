@@ -1,0 +1,5 @@
+schema: {
+  message_name: "structs.testing.MostBasic"
+  table_name: "most_basics"
+  java_class: "MostBasicStruct"
+}

@@ -32,7 +32,7 @@ namespace structs {
 namespace {
 void VisitField(const CassandraSchema& schema,
                 const FieldDescriptor* field,
-                std::vector<std::string> path_so_far,
+                vector<string> path_so_far,
                 MessageGen* msg) {
   FieldGen field_gen(schema, path_so_far, field);
   if (field_gen.IsTransient()) {
@@ -47,9 +47,7 @@ void VisitField(const CassandraSchema& schema,
       VisitField(schema, subfield, field_gen.path(), msg);
     }
   } else {
-    LOG(INFO) << "adding field yay yay";
     msg->AddField(field_gen);
-    LOG(INFO) << "added field yay yay";
   }
 }
 }  // anonymous namespace
@@ -62,7 +60,7 @@ CassandraPlugin::~CassandraPlugin() {
 }
 
 int CassandraPlugin::DoRun() {
-  std::vector<const FileDescriptor*> to_gen = FilesToGenerate();
+  vector<const FileDescriptor*> to_gen = FilesToGenerate();
 
   for (const auto* file : to_gen) {
     LOG(INFO) << "generating for file: " << file->name();
@@ -112,17 +110,15 @@ void CassandraPlugin::WriteCQLFile(const MessageGen& msg) {
 
 void CassandraPlugin::WriteJavaFile(const MessageGen& msg) {
   CodeGeneratorResponse_File* file = resp()->add_file();
-  std::string pkg = msg.JavaPkg();
+  string pkg = msg.JavaPkg();
   absl::StrReplaceAll({{ ".", "/" }}, &pkg);
   file->set_name(pkg + "/" + msg.JavaClass() + ".java");
-  LOG(INFO) << "in this";
   file->set_content(JavaContent(&msg));
-  LOG(INFO) << "in that";
 }
 
 void CassandraPlugin::WriteSparkJavaFile(const MessageGen& msg) {
   CodeGeneratorResponse_File* file = resp()->add_file();
-  std::string pkg = msg.JavaPkg();
+  string pkg = msg.JavaPkg();
   absl::StrReplaceAll({{ ".", "/" }}, &pkg);
   file->set_name(pkg + "/" + msg.JavaClass() + ".java");
   file->set_content(SparkJavaContent(&msg));
@@ -133,7 +129,7 @@ void CassandraPlugin::Generate(const Descriptor* msg,
   msgs_.emplace_back(&schema, msg);
   MessageGen& to_gen = msgs_.back();
 
-  std::vector<std::string> path;
+  vector<string> path;
 
   for (int i = 0; i < msg->field_count(); ++i) {
     const auto* field = msg->field(i);
@@ -145,7 +141,7 @@ void CassandraPlugin::Generate(const Descriptor* msg,
 }
 
 void CassandraPlugin::ParseSchema() {
-  std::string param = req()->parameter();
+  string param = req()->parameter();
   // schema=
   if (param.size() < 7) {
     LOG(FATAL) << "illegal option should contain at least one schema.";
@@ -159,7 +155,7 @@ void CassandraPlugin::ParseSchema() {
   std::string schema = param.substr(7);
   LOG(INFO) << "we will be using the following schema file: " << schema;
 
-  std::string schema_content = ReadFile(schema);
+  string schema_content = ReadFile(schema);
   TextFormat::Parser p;
   CassandraSchemas schema_message;
   CHECK(p.ParseFromString(schema_content, &schema_message));

@@ -3,6 +3,7 @@ CREATE TABLE inner_containers (
   inner_value int,
   inner_value_str text,
   inner_field_string_value text,
+  inner_inner_in_inner blob,
   inner_as_bytes blob,
   PRIMARY KEY (id)
 ) WITH compression = { 'sstable_compression' : 'SnappyCompressor' }

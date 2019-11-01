@@ -165,9 +165,9 @@ void GetSpecialMessageFromJavaObj(const FieldGen& field, const string& obj_name,
 void GetRegularMessageFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {
   string field_name = UnderscoresToCamelCase(field.path().back(), true);
 
-  cb << "if (" << obj_name;
+  cb << "if (" << obj_name << ".";
   PathToFieldMinusOne(field, cb);
-  cb << ".has" << field_name << "()) {";
+  cb << "has" << field_name << "()) {";
   cb.Indent();
   cb << getted_name << " = " << obj_name << ".";
   PathToFieldMinusOne(field, cb);

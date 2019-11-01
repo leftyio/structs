@@ -4832,6 +4832,19 @@ public final class TestingProto {
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
     com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder();
+
+    /**
+     * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     */
+    boolean hasInnerInInner();
+    /**
+     * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     */
+    io.structs.testing.TestingProto.MostBasic getInnerInInner();
+    /**
+     * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     */
+    io.structs.testing.TestingProto.MostBasicOrBuilder getInnerInInnerOrBuilder();
   }
   /**
    * Protobuf type {@code structs.testing.InnerMessage}
@@ -4901,6 +4914,19 @@ public final class TestingProto {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(fieldStringValue_);
                 fieldStringValue_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 2402: {
+              io.structs.testing.TestingProto.MostBasic.Builder subBuilder = null;
+              if (innerInInner_ != null) {
+                subBuilder = innerInInner_.toBuilder();
+              }
+              innerInInner_ = input.readMessage(io.structs.testing.TestingProto.MostBasic.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(innerInInner_);
+                innerInInner_ = subBuilder.buildPartial();
               }
 
               break;
@@ -5005,6 +5031,27 @@ public final class TestingProto {
       return getFieldStringValue();
     }
 
+    public static final int INNER_IN_INNER_FIELD_NUMBER = 300;
+    private io.structs.testing.TestingProto.MostBasic innerInInner_;
+    /**
+     * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     */
+    public boolean hasInnerInInner() {
+      return innerInInner_ != null;
+    }
+    /**
+     * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     */
+    public io.structs.testing.TestingProto.MostBasic getInnerInInner() {
+      return innerInInner_ == null ? io.structs.testing.TestingProto.MostBasic.getDefaultInstance() : innerInInner_;
+    }
+    /**
+     * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     */
+    public io.structs.testing.TestingProto.MostBasicOrBuilder getInnerInInnerOrBuilder() {
+      return getInnerInInner();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5026,6 +5073,9 @@ public final class TestingProto {
       if (fieldStringValue_ != null) {
         output.writeMessage(208, getFieldStringValue());
       }
+      if (innerInInner_ != null) {
+        output.writeMessage(300, getInnerInInner());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5044,6 +5094,10 @@ public final class TestingProto {
       if (fieldStringValue_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(208, getFieldStringValue());
+      }
+      if (innerInInner_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(300, getInnerInInner());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5070,6 +5124,11 @@ public final class TestingProto {
         result = result && getFieldStringValue()
             .equals(other.getFieldStringValue());
       }
+      result = result && (hasInnerInInner() == other.hasInnerInInner());
+      if (hasInnerInInner()) {
+        result = result && getInnerInInner()
+            .equals(other.getInnerInInner());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5088,6 +5147,10 @@ public final class TestingProto {
       if (hasFieldStringValue()) {
         hash = (37 * hash) + FIELD_STRING_VALUE_FIELD_NUMBER;
         hash = (53 * hash) + getFieldStringValue().hashCode();
+      }
+      if (hasInnerInInner()) {
+        hash = (37 * hash) + INNER_IN_INNER_FIELD_NUMBER;
+        hash = (53 * hash) + getInnerInInner().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5228,6 +5291,12 @@ public final class TestingProto {
           fieldStringValue_ = null;
           fieldStringValueBuilder_ = null;
         }
+        if (innerInInnerBuilder_ == null) {
+          innerInInner_ = null;
+        } else {
+          innerInInner_ = null;
+          innerInInnerBuilder_ = null;
+        }
         return this;
       }
 
@@ -5256,6 +5325,11 @@ public final class TestingProto {
           result.fieldStringValue_ = fieldStringValue_;
         } else {
           result.fieldStringValue_ = fieldStringValueBuilder_.build();
+        }
+        if (innerInInnerBuilder_ == null) {
+          result.innerInInner_ = innerInInner_;
+        } else {
+          result.innerInInner_ = innerInInnerBuilder_.build();
         }
         onBuilt();
         return result;
@@ -5307,6 +5381,9 @@ public final class TestingProto {
         }
         if (other.hasFieldStringValue()) {
           mergeFieldStringValue(other.getFieldStringValue());
+        }
+        if (other.hasInnerInInner()) {
+          mergeInnerInInner(other.getInnerInInner());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5581,6 +5658,123 @@ public final class TestingProto {
           fieldStringValue_ = null;
         }
         return fieldStringValueBuilder_;
+      }
+
+      private io.structs.testing.TestingProto.MostBasic innerInInner_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.structs.testing.TestingProto.MostBasic, io.structs.testing.TestingProto.MostBasic.Builder, io.structs.testing.TestingProto.MostBasicOrBuilder> innerInInnerBuilder_;
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public boolean hasInnerInInner() {
+        return innerInInnerBuilder_ != null || innerInInner_ != null;
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public io.structs.testing.TestingProto.MostBasic getInnerInInner() {
+        if (innerInInnerBuilder_ == null) {
+          return innerInInner_ == null ? io.structs.testing.TestingProto.MostBasic.getDefaultInstance() : innerInInner_;
+        } else {
+          return innerInInnerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public Builder setInnerInInner(io.structs.testing.TestingProto.MostBasic value) {
+        if (innerInInnerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          innerInInner_ = value;
+          onChanged();
+        } else {
+          innerInInnerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public Builder setInnerInInner(
+          io.structs.testing.TestingProto.MostBasic.Builder builderForValue) {
+        if (innerInInnerBuilder_ == null) {
+          innerInInner_ = builderForValue.build();
+          onChanged();
+        } else {
+          innerInInnerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public Builder mergeInnerInInner(io.structs.testing.TestingProto.MostBasic value) {
+        if (innerInInnerBuilder_ == null) {
+          if (innerInInner_ != null) {
+            innerInInner_ =
+              io.structs.testing.TestingProto.MostBasic.newBuilder(innerInInner_).mergeFrom(value).buildPartial();
+          } else {
+            innerInInner_ = value;
+          }
+          onChanged();
+        } else {
+          innerInInnerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public Builder clearInnerInInner() {
+        if (innerInInnerBuilder_ == null) {
+          innerInInner_ = null;
+          onChanged();
+        } else {
+          innerInInner_ = null;
+          innerInInnerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public io.structs.testing.TestingProto.MostBasic.Builder getInnerInInnerBuilder() {
+        
+        onChanged();
+        return getInnerInInnerFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      public io.structs.testing.TestingProto.MostBasicOrBuilder getInnerInInnerOrBuilder() {
+        if (innerInInnerBuilder_ != null) {
+          return innerInInnerBuilder_.getMessageOrBuilder();
+        } else {
+          return innerInInner_ == null ?
+              io.structs.testing.TestingProto.MostBasic.getDefaultInstance() : innerInInner_;
+        }
+      }
+      /**
+       * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          io.structs.testing.TestingProto.MostBasic, io.structs.testing.TestingProto.MostBasic.Builder, io.structs.testing.TestingProto.MostBasicOrBuilder> 
+          getInnerInInnerFieldBuilder() {
+        if (innerInInnerBuilder_ == null) {
+          innerInInnerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              io.structs.testing.TestingProto.MostBasic, io.structs.testing.TestingProto.MostBasic.Builder, io.structs.testing.TestingProto.MostBasicOrBuilder>(
+                  getInnerInInner(),
+                  getParentForChildren(),
+                  isClean());
+          innerInInner_ = null;
+        }
+        return innerInInnerBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6598,16 +6792,18 @@ public final class TestingProto {
       "_int32\030\256\002 \003(\005\022\026\n\rlist_of_int64\030\257\002 \003(\003\022\025\n" +
       "\014list_of_bool\030\270\002 \003(\010\022\027\n\016list_of_string\030\271" +
       "\002 \003(\t\0223\n\014list_of_enum\030\220\003 \003(\0162\034.structs.t" +
-      "esting.TestingEnum\"k\n\014InnerMessage\022\r\n\005va" +
-      "lue\030\001 \001(\005\022\021\n\tvalue_str\030\002 \001(\t\0229\n\022field_st" +
-      "ring_value\030\320\001 \001(\0132\034.google.protobuf.Stri" +
-      "ngValue\"\201\001\n\016InnerContainer\022\n\n\002id\030\001 \001(\t\022," +
-      "\n\005inner\030\002 \001(\0132\035.structs.testing.InnerMes" +
-      "sage\0225\n\016inner_as_bytes\030\003 \001(\0132\035.structs.t" +
-      "esting.InnerMessage*[\n\013TestingEnum\022\030\n\024TE" +
-      "STING_ENUM_UNKNOWN\020\000\022\017\n\013FIRST_VALUE\020\001\022\020\n" +
-      "\014SECOND_VALUE\020\002\022\017\n\013THIRD_VALUE\020\003B\"\n\022io.s" +
-      "tructs.testingB\014TestingProtob\006proto3"
+      "esting.TestingEnum\"\240\001\n\014InnerMessage\022\r\n\005v" +
+      "alue\030\001 \001(\005\022\021\n\tvalue_str\030\002 \001(\t\0229\n\022field_s" +
+      "tring_value\030\320\001 \001(\0132\034.google.protobuf.Str" +
+      "ingValue\0223\n\016inner_in_inner\030\254\002 \001(\0132\032.stru" +
+      "cts.testing.MostBasic\"\201\001\n\016InnerContainer" +
+      "\022\n\n\002id\030\001 \001(\t\022,\n\005inner\030\002 \001(\0132\035.structs.te" +
+      "sting.InnerMessage\0225\n\016inner_as_bytes\030\003 \001" +
+      "(\0132\035.structs.testing.InnerMessage*[\n\013Tes" +
+      "tingEnum\022\030\n\024TESTING_ENUM_UNKNOWN\020\000\022\017\n\013FI" +
+      "RST_VALUE\020\001\022\020\n\014SECOND_VALUE\020\002\022\017\n\013THIRD_V" +
+      "ALUE\020\003B\"\n\022io.structs.testingB\014TestingPro" +
+      "tob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6640,7 +6836,7 @@ public final class TestingProto {
     internal_static_structs_testing_InnerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_structs_testing_InnerMessage_descriptor,
-        new java.lang.String[] { "Value", "ValueStr", "FieldStringValue", });
+        new java.lang.String[] { "Value", "ValueStr", "FieldStringValue", "InnerInInner", });
     internal_static_structs_testing_InnerContainer_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_structs_testing_InnerContainer_fieldAccessorTable = new

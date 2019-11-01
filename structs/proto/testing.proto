@@ -62,6 +62,8 @@ message InnerMessage {
 
   // Path to a message from inside a inner one...
   google.protobuf.StringValue field_string_value = 208;
+  
+  MostBasic inner_in_inner = 300;
 }
 
 message InnerContainer {

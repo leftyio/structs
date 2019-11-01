@@ -7,4 +7,9 @@ schema: {
     path: "inner_as_bytes"
     is_bytes: true
   }
+
+  fields: {
+    path: "inner.inner_in_inner"
+    is_bytes: true
+  }
 }

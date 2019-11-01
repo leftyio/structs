@@ -7,6 +7,7 @@
 
 #include "structs/cassandra/cassandra.pb.h"
 #include "structs/cassandra/field_gen.h"
+#include "structs/sugar/sugar.h"
 
 namespace structs {
 using google::protobuf::Descriptor;
@@ -20,17 +21,17 @@ class MessageGen {
   void AddField(const FieldGen& field);
 
   // Getters for the renderers.
-  std::string CompressionStrategy() const;
-  std::string CompactionStrategy() const;
-  std::string TableName() const;
-  std::string Pkg() const;
-  std::string JavaClass() const;
-  std::string JavaClassOfMessage() const;
-  std::string JavaPkg() const;
+  string CompressionStrategy() const;
+  string CompactionStrategy() const;
+  string TableName() const;
+  string Pkg() const;
+  string JavaClass() const;
+  string JavaClassOfMessage() const;
+  string JavaPkg() const;
 
-  std::vector<const FieldGen*> Fields() const;
-  std::vector<const FieldGen*> IdFields() const;
-  std::vector<std::string> Ids() const;
+  vector<const FieldGen*> Fields() const;
+  vector<const FieldGen*> IdFields() const;
+  vector<string> Ids() const;
 
  private:
   // Id fields, ordered by cardinality.
@@ -39,6 +40,6 @@ class MessageGen {
 
   const CassandraSchema* schema_;
   const Descriptor* descriptor_;
-  std::vector<FieldGen> fields_;
+  vector<FieldGen> fields_;
 };
 }  // namespace structs

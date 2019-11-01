@@ -137,7 +137,9 @@ void GetEnumFromJavaObj(const FieldGen& field, const std::string& obj_name, cons
 
 void GetSpecialMessageFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {
   string field_name = UnderscoresToCamelCase(field.path().back(), true);
-  cb << "if (" << obj_name << ".has" << field_name << "()) {";
+  cb << "if (" << obj_name << ".";
+  PathToFieldMinusOne(field, cb);
+  cb << "has" << field_name << "()) {";
   cb.Indent();
 
   if (field.proto_field()->message_type()->full_name() == "google.protobuf.Timestamp") {

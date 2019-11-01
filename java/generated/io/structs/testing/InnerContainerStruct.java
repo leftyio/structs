@@ -14,6 +14,7 @@ public final class InnerContainerStruct {
     ID("id"),
     INNER_VALUE("inner_value"),
     INNER_VALUE_STR("inner_value_str"),
+    INNER_FIELD_STRING_VALUE("inner_field_string_value"),
     INNER_AS_BYTES("inner_as_bytes");
 
     public final String fieldName;
@@ -27,6 +28,7 @@ public final class InnerContainerStruct {
       b.add(ID);
       b.add(INNER_VALUE);
       b.add(INNER_VALUE_STR);
+      b.add(INNER_FIELD_STRING_VALUE);
       b.add(INNER_AS_BYTES);
       return b.build();
     }
@@ -117,6 +119,14 @@ public final class InnerContainerStruct {
     }
 
     {
+      int idx = row.getColumnDefinitions().getIndexOf("inner_field_string_value");
+      if (!row.isNull(idx)) {
+        String value = row.getString(idx);
+        b.getInnerBuilder().getFieldStringValueBuilder().setValue(value);
+      }
+    }
+
+    {
       int idx = row.getColumnDefinitions().getIndexOf("inner_as_bytes");
       if (!row.isNull(idx)) {
         java.nio.ByteBuffer value = row.getBytes(idx);
@@ -131,15 +141,15 @@ public final class InnerContainerStruct {
   private static PreparedStatement createInsertAllStmt(Session session) {
     StringBuilder sb = new StringBuilder();
     sb.append("INSERT INTO inner_containers (");
-    sb.append("id, inner_value, inner_value_str, inner_as_bytes) ");
-    sb.append("VALUES (?, ?, ?, ?)");
+    sb.append("id, inner_value, inner_value_str, inner_field_string_value, inner_as_bytes) ");
+    sb.append("VALUES (?, ?, ?, ?, ?)");
 
     return session.prepare(sb.toString());
   }
 
   public void save(io.structs.testing.TestingProto.InnerContainer obj) {
     PreparedStatement stmt = insertAllStmt.get();
-    Object[] boundObjs = new Object[4];
+    Object[] boundObjs = new Object[5];
 
     {
       Object o = null;
@@ -161,10 +171,18 @@ public final class InnerContainerStruct {
 
     {
       Object o = null;
+      if (obj.getInner().hasFieldStringValue()) {
+        o = obj.getInner().getFieldStringValue().getValue();
+      }
+      boundObjs[3] = o;
+    }
+
+    {
+      Object o = null;
       if (obj.hasInnerAsBytes()) {
         o = obj.getInnerAsBytes().toByteString().asReadOnlyByteBuffer();
       }
-      boundObjs[3] = o;
+      boundObjs[4] = o;
     }
 
     BoundStatement bound = stmt.bind(boundObjs);
@@ -173,7 +191,7 @@ public final class InnerContainerStruct {
 
   public com.google.common.util.concurrent.ListenableFuture<Void> saveAsync(io.structs.testing.TestingProto.InnerContainer obj) {
     PreparedStatement stmt = insertAllStmt.get();
-    Object[] boundObjs = new Object[4];
+    Object[] boundObjs = new Object[5];
 
     {
       Object o = null;
@@ -195,10 +213,18 @@ public final class InnerContainerStruct {
 
     {
       Object o = null;
+      if (obj.getInner().hasFieldStringValue()) {
+        o = obj.getInner().getFieldStringValue().getValue();
+      }
+      boundObjs[3] = o;
+    }
+
+    {
+      Object o = null;
       if (obj.hasInnerAsBytes()) {
         o = obj.getInnerAsBytes().toByteString().asReadOnlyByteBuffer();
       }
-      boundObjs[3] = o;
+      boundObjs[4] = o;
     }
 
     BoundStatement bound = stmt.bind(boundObjs);

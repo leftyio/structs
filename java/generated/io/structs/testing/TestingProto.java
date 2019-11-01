@@ -4807,6 +4807,31 @@ public final class TestingProto {
      */
     com.google.protobuf.ByteString
         getValueStrBytes();
+
+    /**
+     * <pre>
+     * Path to a message from inside a inner one...
+     * </pre>
+     *
+     * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     */
+    boolean hasFieldStringValue();
+    /**
+     * <pre>
+     * Path to a message from inside a inner one...
+     * </pre>
+     *
+     * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     */
+    com.google.protobuf.StringValue getFieldStringValue();
+    /**
+     * <pre>
+     * Path to a message from inside a inner one...
+     * </pre>
+     *
+     * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     */
+    com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder();
   }
   /**
    * Protobuf type {@code structs.testing.InnerMessage}
@@ -4865,6 +4890,19 @@ public final class TestingProto {
               java.lang.String s = input.readStringRequireUtf8();
 
               valueStr_ = s;
+              break;
+            }
+            case 1666: {
+              com.google.protobuf.StringValue.Builder subBuilder = null;
+              if (fieldStringValue_ != null) {
+                subBuilder = fieldStringValue_.toBuilder();
+              }
+              fieldStringValue_ = input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(fieldStringValue_);
+                fieldStringValue_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -4934,6 +4972,39 @@ public final class TestingProto {
       }
     }
 
+    public static final int FIELD_STRING_VALUE_FIELD_NUMBER = 208;
+    private com.google.protobuf.StringValue fieldStringValue_;
+    /**
+     * <pre>
+     * Path to a message from inside a inner one...
+     * </pre>
+     *
+     * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     */
+    public boolean hasFieldStringValue() {
+      return fieldStringValue_ != null;
+    }
+    /**
+     * <pre>
+     * Path to a message from inside a inner one...
+     * </pre>
+     *
+     * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     */
+    public com.google.protobuf.StringValue getFieldStringValue() {
+      return fieldStringValue_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : fieldStringValue_;
+    }
+    /**
+     * <pre>
+     * Path to a message from inside a inner one...
+     * </pre>
+     *
+     * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     */
+    public com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder() {
+      return getFieldStringValue();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4952,6 +5023,9 @@ public final class TestingProto {
       if (!getValueStrBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, valueStr_);
       }
+      if (fieldStringValue_ != null) {
+        output.writeMessage(208, getFieldStringValue());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4966,6 +5040,10 @@ public final class TestingProto {
       }
       if (!getValueStrBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, valueStr_);
+      }
+      if (fieldStringValue_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(208, getFieldStringValue());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4987,6 +5065,11 @@ public final class TestingProto {
           == other.getValue());
       result = result && getValueStr()
           .equals(other.getValueStr());
+      result = result && (hasFieldStringValue() == other.hasFieldStringValue());
+      if (hasFieldStringValue()) {
+        result = result && getFieldStringValue()
+            .equals(other.getFieldStringValue());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5002,6 +5085,10 @@ public final class TestingProto {
       hash = (53 * hash) + getValue();
       hash = (37 * hash) + VALUE_STR_FIELD_NUMBER;
       hash = (53 * hash) + getValueStr().hashCode();
+      if (hasFieldStringValue()) {
+        hash = (37 * hash) + FIELD_STRING_VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + getFieldStringValue().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5135,6 +5222,12 @@ public final class TestingProto {
 
         valueStr_ = "";
 
+        if (fieldStringValueBuilder_ == null) {
+          fieldStringValue_ = null;
+        } else {
+          fieldStringValue_ = null;
+          fieldStringValueBuilder_ = null;
+        }
         return this;
       }
 
@@ -5159,6 +5252,11 @@ public final class TestingProto {
         io.structs.testing.TestingProto.InnerMessage result = new io.structs.testing.TestingProto.InnerMessage(this);
         result.value_ = value_;
         result.valueStr_ = valueStr_;
+        if (fieldStringValueBuilder_ == null) {
+          result.fieldStringValue_ = fieldStringValue_;
+        } else {
+          result.fieldStringValue_ = fieldStringValueBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -5206,6 +5304,9 @@ public final class TestingProto {
         if (!other.getValueStr().isEmpty()) {
           valueStr_ = other.valueStr_;
           onChanged();
+        }
+        if (other.hasFieldStringValue()) {
+          mergeFieldStringValue(other.getFieldStringValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5327,6 +5428,159 @@ public final class TestingProto {
         valueStr_ = value;
         onChanged();
         return this;
+      }
+
+      private com.google.protobuf.StringValue fieldStringValue_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> fieldStringValueBuilder_;
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public boolean hasFieldStringValue() {
+        return fieldStringValueBuilder_ != null || fieldStringValue_ != null;
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public com.google.protobuf.StringValue getFieldStringValue() {
+        if (fieldStringValueBuilder_ == null) {
+          return fieldStringValue_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : fieldStringValue_;
+        } else {
+          return fieldStringValueBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public Builder setFieldStringValue(com.google.protobuf.StringValue value) {
+        if (fieldStringValueBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fieldStringValue_ = value;
+          onChanged();
+        } else {
+          fieldStringValueBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public Builder setFieldStringValue(
+          com.google.protobuf.StringValue.Builder builderForValue) {
+        if (fieldStringValueBuilder_ == null) {
+          fieldStringValue_ = builderForValue.build();
+          onChanged();
+        } else {
+          fieldStringValueBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public Builder mergeFieldStringValue(com.google.protobuf.StringValue value) {
+        if (fieldStringValueBuilder_ == null) {
+          if (fieldStringValue_ != null) {
+            fieldStringValue_ =
+              com.google.protobuf.StringValue.newBuilder(fieldStringValue_).mergeFrom(value).buildPartial();
+          } else {
+            fieldStringValue_ = value;
+          }
+          onChanged();
+        } else {
+          fieldStringValueBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public Builder clearFieldStringValue() {
+        if (fieldStringValueBuilder_ == null) {
+          fieldStringValue_ = null;
+          onChanged();
+        } else {
+          fieldStringValue_ = null;
+          fieldStringValueBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public com.google.protobuf.StringValue.Builder getFieldStringValueBuilder() {
+        
+        onChanged();
+        return getFieldStringValueFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      public com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder() {
+        if (fieldStringValueBuilder_ != null) {
+          return fieldStringValueBuilder_.getMessageOrBuilder();
+        } else {
+          return fieldStringValue_ == null ?
+              com.google.protobuf.StringValue.getDefaultInstance() : fieldStringValue_;
+        }
+      }
+      /**
+       * <pre>
+       * Path to a message from inside a inner one...
+       * </pre>
+       *
+       * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> 
+          getFieldStringValueFieldBuilder() {
+        if (fieldStringValueBuilder_ == null) {
+          fieldStringValueBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
+                  getFieldStringValue(),
+                  getParentForChildren(),
+                  isClean());
+          fieldStringValue_ = null;
+        }
+        return fieldStringValueBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6344,15 +6598,16 @@ public final class TestingProto {
       "_int32\030\256\002 \003(\005\022\026\n\rlist_of_int64\030\257\002 \003(\003\022\025\n" +
       "\014list_of_bool\030\270\002 \003(\010\022\027\n\016list_of_string\030\271" +
       "\002 \003(\t\0223\n\014list_of_enum\030\220\003 \003(\0162\034.structs.t" +
-      "esting.TestingEnum\"0\n\014InnerMessage\022\r\n\005va" +
-      "lue\030\001 \001(\005\022\021\n\tvalue_str\030\002 \001(\t\"\201\001\n\016InnerCo" +
-      "ntainer\022\n\n\002id\030\001 \001(\t\022,\n\005inner\030\002 \001(\0132\035.str" +
-      "ucts.testing.InnerMessage\0225\n\016inner_as_by" +
-      "tes\030\003 \001(\0132\035.structs.testing.InnerMessage" +
-      "*[\n\013TestingEnum\022\030\n\024TESTING_ENUM_UNKNOWN\020" +
-      "\000\022\017\n\013FIRST_VALUE\020\001\022\020\n\014SECOND_VALUE\020\002\022\017\n\013" +
-      "THIRD_VALUE\020\003B\"\n\022io.structs.testingB\014Tes" +
-      "tingProtob\006proto3"
+      "esting.TestingEnum\"k\n\014InnerMessage\022\r\n\005va" +
+      "lue\030\001 \001(\005\022\021\n\tvalue_str\030\002 \001(\t\0229\n\022field_st" +
+      "ring_value\030\320\001 \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\"\201\001\n\016InnerContainer\022\n\n\002id\030\001 \001(\t\022," +
+      "\n\005inner\030\002 \001(\0132\035.structs.testing.InnerMes" +
+      "sage\0225\n\016inner_as_bytes\030\003 \001(\0132\035.structs.t" +
+      "esting.InnerMessage*[\n\013TestingEnum\022\030\n\024TE" +
+      "STING_ENUM_UNKNOWN\020\000\022\017\n\013FIRST_VALUE\020\001\022\020\n" +
+      "\014SECOND_VALUE\020\002\022\017\n\013THIRD_VALUE\020\003B\"\n\022io.s" +
+      "tructs.testingB\014TestingProtob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6385,7 +6640,7 @@ public final class TestingProto {
     internal_static_structs_testing_InnerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_structs_testing_InnerMessage_descriptor,
-        new java.lang.String[] { "Value", "ValueStr", });
+        new java.lang.String[] { "Value", "ValueStr", "FieldStringValue", });
     internal_static_structs_testing_InnerContainer_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_structs_testing_InnerContainer_fieldAccessorTable = new

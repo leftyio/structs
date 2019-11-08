@@ -4,6 +4,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.HostDistance;
@@ -15,6 +16,7 @@ import com.datastax.driver.core.SocketOptions;
 
 import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.util.FieldMaskUtil;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.SslProvider;
 import io.structs.testing.InnerContainerStruct;
@@ -406,5 +408,116 @@ public class CassandraJavaTest {
     assertEquals("value", message.getInner().getValueStr());
     assertEquals(14, message.getInnerAsBytes().getValue());
     assertEquals("value_in_bytes", message.getInnerAsBytes().getValueStr());
+  }
+
+  @Test
+  public void testUpdate_targeted() throws Exception {
+    TestingMessageStruct cassandra = new TestingMessageStruct(session);
+
+    assertFalse(cassandra.load("id_1").isPresent());
+
+    TestingMessage message = TestingMessage.newBuilder()
+        .setId("id_1")
+        .setFieldBool(true)
+        .setFieldInt32(32)
+        .build();
+
+    cassandra.save(message);
+
+    message = cassandra.load("id_1").get();
+    assertEquals(message.getFieldInt32(), 32);
+    assertTrue(message.getFieldBool());
+
+    message = TestingMessage.newBuilder()
+        .setId("id_1")
+        .setFieldInt32(45)
+        .build();
+
+    cassandra.save(message);
+
+    message = cassandra.load("id_1").get();
+    assertEquals(message.getFieldInt32(), 45);
+    // It got erased by the full save!
+    assertFalse(message.getFieldBool());
+
+    message = TestingMessage.newBuilder()
+        .setId("id_1")
+        .setFieldInt64(84L)
+        .build();
+    cassandra.update(message, FieldMaskUtil.fromString("field_int64"));
+    message = cassandra.load("id_1").get();
+    // It wasn't erased since it was a targeted update.
+    assertEquals(message.getFieldInt32(), 45);
+
+    // The update was gotten...
+    assertEquals(message.getFieldInt64(), 84);
+  }
+
+  @Test
+  public void testUpdate_illegalMask() throws Exception {
+    TestingMessageStruct cassandra = new TestingMessageStruct(session);
+
+    assertFalse(cassandra.load("id_1").isPresent());
+
+    TestingMessage message = TestingMessage.newBuilder()
+        .setId("id_1")
+        .setFieldBool(true)
+        .setFieldInt32(32)
+        .build();
+
+    cassandra.save(message);
+
+    message = TestingMessage.newBuilder()
+        .setId("id_1")
+        .setFieldInt32(45)
+        .build();
+
+    try {
+      cassandra.update(message, FieldMaskUtil.fromString("not_a_field"));
+      fail();  // should have thrown
+    } catch (IllegalArgumentException expected) {
+      expected.printStackTrace();
+    }
+  }
+
+  @Test
+  public void testUpdate_inner() throws Exception {
+    InnerContainerStruct cassandra = new InnerContainerStruct(session);
+
+    assertFalse(cassandra.load("id_1").isPresent());
+
+    InnerContainer.Builder message = InnerContainer.newBuilder()
+        .setId("id_1");
+    message.getInnerBuilder().setValue(42);
+    message.getInnerBuilder().setValueStr("value set");
+    message.getInnerBuilder().getInnerInInnerBuilder().setId("id_of_inner_in_inner");
+
+    cassandra.save(message.build());
+
+    InnerContainer container = cassandra.load("id_1").get();
+    assertEquals(container.getInner().getValue(), 42);
+    assertEquals(container.getInner().getValueStr(), "value set");
+    assertEquals(container.getInner().getInnerInInner().getId(), "id_of_inner_in_inner");
+
+    message = InnerContainer.newBuilder()
+        .setId("id_1");
+    message.getInnerBuilder().setValue(98);
+
+    cassandra.update(message.build(), FieldMaskUtil.fromString("inner.value,inner.inner_in_inner"));
+    container = cassandra.load("id_1").get();
+    assertEquals(container.getInner().getValue(), 98);
+    assertEquals(container.getInner().getValueStr(), "value set");
+    // It got erased
+    assertEquals(container.getInner().getInnerInInner().getId(), "");
+
+    // Check that all under a subpath get updated.
+    message = InnerContainer.newBuilder()
+        .setId("id_1");
+    message.getInnerBuilder().setValue(109);
+    message.getInnerBuilder().setValueStr("newstring");
+    cassandra.update(message.build(), FieldMaskUtil.fromString("inner"));
+    container = cassandra.load("id_1").get();
+    assertEquals(container.getInner().getValue(), 109);
+    assertEquals(container.getInner().getValueStr(), "newstring");
   }
 }

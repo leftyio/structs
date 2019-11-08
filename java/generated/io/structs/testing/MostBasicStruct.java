@@ -11,18 +11,53 @@ import com.datastax.driver.core.Session;
 
 public final class MostBasicStruct {
   public enum Fields {
-    ID("id");
+    ID("id", "id");
 
     public final String fieldName;
 
-    Fields(String fieldName) {
+    public final String path;
+
+    Fields(String fieldName, String path) {
       this.fieldName = fieldName;
+      this.path = path;
     }
 
     public static Iterable<Fields> all() {
       com.google.common.collect.ImmutableList.Builder<Fields> b = com.google.common.collect.ImmutableList.builder();
       b.add(ID);
       return b.build();
+    }
+
+    private static boolean isSelected(Fields field, com.google.protobuf.FieldMask mask) {
+      for (String path: mask.getPathsList()) {
+        if (path.equals(field.path) || field.path.startsWith(path + ".")) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    private static  com.google.common.collect.ImmutableList<Fields> selectFields(com.google.protobuf.FieldMask mask) {
+      com.google.common.collect.ImmutableList.Builder<Fields> b = com.google.common.collect.ImmutableList.builder();
+
+      for (Fields field : Fields.values()) {
+        if (isSelected(field, mask)) {
+          b.add(field);
+        }
+      }
+      return b.build();
+    }
+
+    private Object selectIn(io.structs.testing.TestingProto.MostBasic obj) {
+      Object y = null;
+      switch (this) {
+        
+        case ID:
+          y = obj.getId();
+          break;
+        
+      }
+      return y;
     }
   }
 
@@ -134,5 +169,43 @@ public final class MostBasicStruct {
     BoundStatement bound = stmt.bind(boundObjs);
     ResultSetFuture rsF = session.executeAsync(bound);
     return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);
+  }
+
+  public void update(io.structs.testing.TestingProto.MostBasic obj, com.google.protobuf.FieldMask mask) {
+    mask = com.google.protobuf.util.FieldMaskUtil.normalize(mask);
+    if (!com.google.protobuf.util.FieldMaskUtil.isValid(io.structs.testing.TestingProto.MostBasic.getDescriptor(), mask)) {
+      throw new IllegalArgumentException("illegal mask: " + mask);
+    }
+
+    StringBuilder sb = new StringBuilder();
+    sb.append("UPDATE most_basics SET ");
+    java.util.List<Fields> fields = Fields.selectFields(mask);
+    for (int i = 0; i < fields.size(); ++i) {
+      Fields field = fields.get(i);
+      sb.append(field.fieldName).append("=?");
+      if (i < fields.size() - 1) {
+        sb.append(", ");
+      }
+    }
+
+    sb.append("  where id=?");
+
+    String stmtStr = sb.toString();
+    System.out.println(stmtStr);
+    PreparedStatement stmt = session.prepare(stmtStr);
+    Object[] boundObjs = new Object[fields.size() + 1];
+    int i = 0;
+    while (i < fields.size()) {
+      Fields field = fields.get(i);
+      boundObjs[i] = field.selectIn(obj);
+      ++i;
+    }
+
+    
+    boundObjs[i++] = Fields.ID.selectIn(obj);
+    ++i;
+
+    BoundStatement bound = stmt.bind(boundObjs);
+    session.execute(bound);
   }
 }

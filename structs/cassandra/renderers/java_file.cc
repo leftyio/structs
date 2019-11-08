@@ -58,7 +58,7 @@ void WriteFields(const MessageGen& msg, CodeBuilder& cb) {
       cb.Newline();
     }
 
-    cb << field_enum_name << "(\"" << field->CassandraName() << "\")";
+    cb << field_enum_name << "(\"" << field->CassandraName() << "\", \"" << field->PathAsString() << "\")";
     if (i != fields.size() - 1) {
       cb << ",";
     } else {
@@ -66,9 +66,12 @@ void WriteFields(const MessageGen& msg, CodeBuilder& cb) {
     }
   }
 
-  cb.BreakLine() << "public final String fieldName;"; 
-  cb.BreakLine() << "Fields(String fieldName) {";
+  cb.BreakLine() << "public final String fieldName;";
+  cb.BreakLine() << "public final String path;";
+
+  cb.BreakLine() << "Fields(String fieldName, String path) {";
   cb.Indent() << "this.fieldName = fieldName;";
+  cb.Newline() << "this.path = path;";
   cb.OutdentBracket();
 
   cb.BreakLine() << "public static Iterable<Fields> all() {";
@@ -84,6 +87,46 @@ void WriteFields(const MessageGen& msg, CodeBuilder& cb) {
   cb.Newline() << "return b.build();";
 
   cb.OutdentBracket();
+
+  cb.BreakLine() << "private static boolean isSelected(Fields field, com.google.protobuf.FieldMask mask) {";
+  cb.Indent() << "for (String path: mask.getPathsList()) {";
+  cb.Indent() << "if (path.equals(field.path) || field.path.startsWith(path + \".\")) {";
+  cb.Indent() << "return true;";
+  cb.OutdentBracket();
+  cb.OutdentBracket();
+  cb.Newline() << "return false;";
+  cb.OutdentBracket();
+
+  cb.BreakLine() << "private static  com.google.common.collect.ImmutableList<Fields> selectFields(com.google.protobuf.FieldMask mask) {";
+  cb.Indent() << "com.google.common.collect.ImmutableList.Builder<Fields> b = com.google.common.collect.ImmutableList.builder();";
+  cb.BreakLine() << "for (Fields field : Fields.values()) {";
+  cb.Indent() << "if (isSelected(field, mask)) {";
+  cb.Indent() << "b.add(field);";
+  cb.OutdentBracket();
+  cb.OutdentBracket();
+  cb.Newline() << "return b.build();";
+  cb.OutdentBracket();
+
+
+  cb.BreakLine() << "private Object selectIn(" << msg.JavaClassOfMessage() << " obj) {";
+  cb.Indent() << "Object y = null;";
+  cb.Newline() << "switch (this) {";
+  cb.Indent();
+  for (int i = 0; i < fields.size(); ++i) {
+    const FieldGen* field = fields[i];
+    std::string field_enum_name = FieldEnumName(*field);
+    
+    cb.Newline() << "case " << field_enum_name << ":";
+    cb.Indent();
+    GetFromJavaObj(*field, "obj", "y", cb);
+    cb.Newline() << "break;";
+    cb.Outdent();
+  }
+
+  cb.OutdentBracket();
+  cb.Newline() << "return y;";
+  cb.OutdentBracket();
+
   cb.OutdentBracket();
 }
 
@@ -470,6 +513,49 @@ string JavaContent(const MessageGen* msg) {
   cb.Newline() << "return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);";
   cb.OutdentBracket();
 
+  // Targeted updates support.
+  cb.BreakLine() << "public void update(" << msg->JavaClassOfMessage() << " obj, com.google.protobuf.FieldMask mask) {";
+  cb.Indent() << "mask = com.google.protobuf.util.FieldMaskUtil.normalize(mask);";
+  cb.Newline() << "if (!com.google.protobuf.util.FieldMaskUtil.isValid(" << msg->JavaClassOfMessage() << ".getDescriptor(), mask)) {";
+  cb.Indent() << "throw new IllegalArgumentException(\"illegal mask: \" + mask);";
+  cb.OutdentBracket();
+
+  cb.BreakLine() << "StringBuilder sb = new StringBuilder();";
+  cb.Newline() << "sb.append(\"UPDATE " << msg->TableName() << " SET \");";
+  cb.Newline() << "java.util.List<Fields> fields = Fields.selectFields(mask);";
+  cb.Newline() << "for (int i = 0; i < fields.size(); ++i) {";
+  cb.Indent() << "Fields field = fields.get(i);";
+  cb.Newline() << "sb.append(field.fieldName).append(\"=?\");";
+  cb.Newline() << "if (i < fields.size() - 1) {";
+  cb.Indent() << "sb.append(\", \");";
+  cb.OutdentBracket();
+  cb.OutdentBracket();
+
+  cb.BreakLine() << "sb.append(\" ";
+  WhereClause(*msg, cb);
+  cb << "\");";
+  cb.BreakLine() << "String stmtStr = sb.toString();";
+  cb.Newline() << "System.out.println(stmtStr);";
+  cb.Newline() << "PreparedStatement stmt = session.prepare(stmtStr);";
+  cb.Newline() << "Object[] boundObjs = new Object[fields.size() + " << std::to_string(msg->IdFields().size()) << "];";
+  cb.Newline() << "int i = 0;";
+
+  cb.Newline() << "while (i < fields.size()) {";
+  cb.Indent() << "Fields field = fields.get(i);";
+  cb.Newline() << "boundObjs[i] = field.selectIn(obj);";
+  cb.Newline() << "++i;";
+  cb.OutdentBracket();
+  cb.BreakLine() << "";
+
+  for (const auto* field : msg->IdFields()) {
+    cb.Newline() << "boundObjs[i++] = Fields." << FieldEnumName(*field) << ".selectIn(obj);";
+    cb.Newline() << "++i;";
+  }
+
+  cb.BreakLine() << "BoundStatement bound = stmt.bind(boundObjs);";
+  cb.Newline() << "session.execute(bound);";
+
+  cb.OutdentBracket();
   cb.OutdentBracket();
   cb.Newline();
 

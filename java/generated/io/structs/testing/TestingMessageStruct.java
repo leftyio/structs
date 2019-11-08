@@ -11,35 +11,38 @@ import com.datastax.driver.core.Session;
 
 public final class TestingMessageStruct {
   public enum Fields {
-    ID("id"),
-    FIELD_DOUBLE("field_double"),
-    FIELD_FLOAT("field_float"),
-    FIELD_INT32("field_int32"),
-    FIELD_INT64("field_int64"),
-    FIELD_BOOL("field_bool"),
-    FIELD_STRING("field_string"),
-    FIELD_BYTES("field_bytes"),
-    FIELD_ENUM("field_enum"),
-    FIELD_TIMESTAMP("field_timestamp"),
-    FIELD_DOUBLE_VALUE("field_double_value"),
-    FIELD_FLOAT_VALUE("field_float_value"),
-    FIELD_INT64_VALUE("field_int64_value"),
-    FIELD_INT32_VALUE("field_int32_value"),
-    FIELD_BOOL_VALUE("field_bool_value"),
-    FIELD_STRING_VALUE("field_string_value"),
-    FIELD_BYTES_VALUE("field_bytes_value"),
-    LIST_OF_DOUBLE("list_of_double"),
-    LIST_OF_FLOAT("list_of_float"),
-    LIST_OF_INT32("list_of_int32"),
-    LIST_OF_INT64("list_of_int64"),
-    LIST_OF_BOOL("list_of_bool"),
-    LIST_OF_STRING("list_of_string"),
-    LIST_OF_ENUM("list_of_enum");
+    ID("id", "id"),
+    FIELD_DOUBLE("field_double", "field_double"),
+    FIELD_FLOAT("field_float", "field_float"),
+    FIELD_INT32("field_int32", "field_int32"),
+    FIELD_INT64("field_int64", "field_int64"),
+    FIELD_BOOL("field_bool", "field_bool"),
+    FIELD_STRING("field_string", "field_string"),
+    FIELD_BYTES("field_bytes", "field_bytes"),
+    FIELD_ENUM("field_enum", "field_enum"),
+    FIELD_TIMESTAMP("field_timestamp", "field_timestamp"),
+    FIELD_DOUBLE_VALUE("field_double_value", "field_double_value"),
+    FIELD_FLOAT_VALUE("field_float_value", "field_float_value"),
+    FIELD_INT64_VALUE("field_int64_value", "field_int64_value"),
+    FIELD_INT32_VALUE("field_int32_value", "field_int32_value"),
+    FIELD_BOOL_VALUE("field_bool_value", "field_bool_value"),
+    FIELD_STRING_VALUE("field_string_value", "field_string_value"),
+    FIELD_BYTES_VALUE("field_bytes_value", "field_bytes_value"),
+    LIST_OF_DOUBLE("list_of_double", "list_of_double"),
+    LIST_OF_FLOAT("list_of_float", "list_of_float"),
+    LIST_OF_INT32("list_of_int32", "list_of_int32"),
+    LIST_OF_INT64("list_of_int64", "list_of_int64"),
+    LIST_OF_BOOL("list_of_bool", "list_of_bool"),
+    LIST_OF_STRING("list_of_string", "list_of_string"),
+    LIST_OF_ENUM("list_of_enum", "list_of_enum");
 
     public final String fieldName;
 
-    Fields(String fieldName) {
+    public final String path;
+
+    Fields(String fieldName, String path) {
       this.fieldName = fieldName;
+      this.path = path;
     }
 
     public static Iterable<Fields> all() {
@@ -69,6 +72,196 @@ public final class TestingMessageStruct {
       b.add(LIST_OF_STRING);
       b.add(LIST_OF_ENUM);
       return b.build();
+    }
+
+    private static boolean isSelected(Fields field, com.google.protobuf.FieldMask mask) {
+      for (String path: mask.getPathsList()) {
+        if (path.equals(field.path) || field.path.startsWith(path + ".")) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    private static  com.google.common.collect.ImmutableList<Fields> selectFields(com.google.protobuf.FieldMask mask) {
+      com.google.common.collect.ImmutableList.Builder<Fields> b = com.google.common.collect.ImmutableList.builder();
+
+      for (Fields field : Fields.values()) {
+        if (isSelected(field, mask)) {
+          b.add(field);
+        }
+      }
+      return b.build();
+    }
+
+    private Object selectIn(io.structs.testing.TestingProto.TestingMessage obj) {
+      Object y = null;
+      switch (this) {
+        
+        case ID:
+          y = obj.getId();
+          break;
+        
+        case FIELD_DOUBLE:
+          y = obj.getFieldDouble();
+          break;
+        
+        case FIELD_FLOAT:
+          y = obj.getFieldFloat();
+          break;
+        
+        case FIELD_INT32:
+          y = obj.getFieldInt32();
+          break;
+        
+        case FIELD_INT64:
+          y = obj.getFieldInt64();
+          break;
+        
+        case FIELD_BOOL:
+          y = obj.getFieldBool();
+          break;
+        
+        case FIELD_STRING:
+          y = obj.getFieldString();
+          break;
+        
+        case FIELD_BYTES:
+          y = obj.getFieldBytes().asReadOnlyByteBuffer();
+          break;
+        
+        case FIELD_ENUM:
+          int val = obj.getFieldEnumValue();
+          y = val;
+          break;
+        
+        case FIELD_TIMESTAMP:
+          if (obj.hasFieldTimestamp()) {
+            y = new java.util.Date(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
+          }
+          break;
+        
+        case FIELD_DOUBLE_VALUE:
+          if (obj.hasFieldDoubleValue()) {
+            y = obj.getFieldDoubleValue().getValue();
+          }
+          break;
+        
+        case FIELD_FLOAT_VALUE:
+          if (obj.hasFieldFloatValue()) {
+            y = obj.getFieldFloatValue().getValue();
+          }
+          break;
+        
+        case FIELD_INT64_VALUE:
+          if (obj.hasFieldInt64Value()) {
+            y = obj.getFieldInt64Value().getValue();
+          }
+          break;
+        
+        case FIELD_INT32_VALUE:
+          if (obj.hasFieldInt32Value()) {
+            y = obj.getFieldInt32Value().getValue();
+          }
+          break;
+        
+        case FIELD_BOOL_VALUE:
+          if (obj.hasFieldBoolValue()) {
+            y = obj.getFieldBoolValue().getValue();
+          }
+          break;
+        
+        case FIELD_STRING_VALUE:
+          if (obj.hasFieldStringValue()) {
+            y = obj.getFieldStringValue().getValue();
+          }
+          break;
+        
+        case FIELD_BYTES_VALUE:
+          if (obj.hasFieldBytesValue()) {
+            y = obj.getFieldBytesValue().getValue().asReadOnlyByteBuffer();
+          }
+          break;
+        
+        case LIST_OF_DOUBLE:
+          
+          {
+            java.util.List<Double> list = new java.util.ArrayList<>();
+            for (Double x : obj.getListOfDoubleList()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+        case LIST_OF_FLOAT:
+          
+          {
+            java.util.List<Float> list = new java.util.ArrayList<>();
+            for (Float x : obj.getListOfFloatList()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+        case LIST_OF_INT32:
+          
+          {
+            java.util.List<Integer> list = new java.util.ArrayList<>();
+            for (Integer x : obj.getListOfInt32List()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+        case LIST_OF_INT64:
+          
+          {
+            java.util.List<Long> list = new java.util.ArrayList<>();
+            for (Long x : obj.getListOfInt64List()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+        case LIST_OF_BOOL:
+          
+          {
+            java.util.List<Boolean> list = new java.util.ArrayList<>();
+            for (Boolean x : obj.getListOfBoolList()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+        case LIST_OF_STRING:
+          
+          {
+            java.util.List<String> list = new java.util.ArrayList<>();
+            for (String x : obj.getListOfStringList()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+        case LIST_OF_ENUM:
+          
+          {
+            java.util.List<Integer> list = new java.util.ArrayList<>();
+            for (Integer x : obj.getListOfEnumValueList()) {
+              list.add(x);
+            }
+            y = list;
+          }
+          break;
+        
+      }
+      return y;
     }
   }
 
@@ -798,5 +991,43 @@ public final class TestingMessageStruct {
     BoundStatement bound = stmt.bind(boundObjs);
     ResultSetFuture rsF = session.executeAsync(bound);
     return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);
+  }
+
+  public void update(io.structs.testing.TestingProto.TestingMessage obj, com.google.protobuf.FieldMask mask) {
+    mask = com.google.protobuf.util.FieldMaskUtil.normalize(mask);
+    if (!com.google.protobuf.util.FieldMaskUtil.isValid(io.structs.testing.TestingProto.TestingMessage.getDescriptor(), mask)) {
+      throw new IllegalArgumentException("illegal mask: " + mask);
+    }
+
+    StringBuilder sb = new StringBuilder();
+    sb.append("UPDATE testing_messages SET ");
+    java.util.List<Fields> fields = Fields.selectFields(mask);
+    for (int i = 0; i < fields.size(); ++i) {
+      Fields field = fields.get(i);
+      sb.append(field.fieldName).append("=?");
+      if (i < fields.size() - 1) {
+        sb.append(", ");
+      }
+    }
+
+    sb.append("  where id=?");
+
+    String stmtStr = sb.toString();
+    System.out.println(stmtStr);
+    PreparedStatement stmt = session.prepare(stmtStr);
+    Object[] boundObjs = new Object[fields.size() + 1];
+    int i = 0;
+    while (i < fields.size()) {
+      Fields field = fields.get(i);
+      boundObjs[i] = field.selectIn(obj);
+      ++i;
+    }
+
+    
+    boundObjs[i++] = Fields.ID.selectIn(obj);
+    ++i;
+
+    BoundStatement bound = stmt.bind(boundObjs);
+    session.execute(bound);
   }
 }

@@ -11,17 +11,20 @@ import com.datastax.driver.core.Session;
 
 public final class InnerContainerStruct {
   public enum Fields {
-    ID("id"),
-    INNER_VALUE("inner_value"),
-    INNER_VALUE_STR("inner_value_str"),
-    INNER_FIELD_STRING_VALUE("inner_field_string_value"),
-    INNER_INNER_IN_INNER("inner_inner_in_inner"),
-    INNER_AS_BYTES("inner_as_bytes");
+    ID("id", "id"),
+    INNER_VALUE("inner_value", "inner.value"),
+    INNER_VALUE_STR("inner_value_str", "inner.value_str"),
+    INNER_FIELD_STRING_VALUE("inner_field_string_value", "inner.field_string_value"),
+    INNER_INNER_IN_INNER("inner_inner_in_inner", "inner.inner_in_inner"),
+    INNER_AS_BYTES("inner_as_bytes", "inner_as_bytes");
 
     public final String fieldName;
 
-    Fields(String fieldName) {
+    public final String path;
+
+    Fields(String fieldName, String path) {
       this.fieldName = fieldName;
+      this.path = path;
     }
 
     public static Iterable<Fields> all() {
@@ -33,6 +36,64 @@ public final class InnerContainerStruct {
       b.add(INNER_INNER_IN_INNER);
       b.add(INNER_AS_BYTES);
       return b.build();
+    }
+
+    private static boolean isSelected(Fields field, com.google.protobuf.FieldMask mask) {
+      for (String path: mask.getPathsList()) {
+        if (path.equals(field.path) || field.path.startsWith(path + ".")) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    private static  com.google.common.collect.ImmutableList<Fields> selectFields(com.google.protobuf.FieldMask mask) {
+      com.google.common.collect.ImmutableList.Builder<Fields> b = com.google.common.collect.ImmutableList.builder();
+
+      for (Fields field : Fields.values()) {
+        if (isSelected(field, mask)) {
+          b.add(field);
+        }
+      }
+      return b.build();
+    }
+
+    private Object selectIn(io.structs.testing.TestingProto.InnerContainer obj) {
+      Object y = null;
+      switch (this) {
+        
+        case ID:
+          y = obj.getId();
+          break;
+        
+        case INNER_VALUE:
+          y = obj.getInner().getValue();
+          break;
+        
+        case INNER_VALUE_STR:
+          y = obj.getInner().getValueStr();
+          break;
+        
+        case INNER_FIELD_STRING_VALUE:
+          if (obj.getInner().hasFieldStringValue()) {
+            y = obj.getInner().getFieldStringValue().getValue();
+          }
+          break;
+        
+        case INNER_INNER_IN_INNER:
+          if (obj.getInner().hasInnerInInner()) {
+            y = obj.getInner().getInnerInInner().toByteString().asReadOnlyByteBuffer();
+          }
+          break;
+        
+        case INNER_AS_BYTES:
+          if (obj.hasInnerAsBytes()) {
+            y = obj.getInnerAsBytes().toByteString().asReadOnlyByteBuffer();
+          }
+          break;
+        
+      }
+      return y;
     }
   }
 
@@ -256,5 +317,43 @@ public final class InnerContainerStruct {
     BoundStatement bound = stmt.bind(boundObjs);
     ResultSetFuture rsF = session.executeAsync(bound);
     return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);
+  }
+
+  public void update(io.structs.testing.TestingProto.InnerContainer obj, com.google.protobuf.FieldMask mask) {
+    mask = com.google.protobuf.util.FieldMaskUtil.normalize(mask);
+    if (!com.google.protobuf.util.FieldMaskUtil.isValid(io.structs.testing.TestingProto.InnerContainer.getDescriptor(), mask)) {
+      throw new IllegalArgumentException("illegal mask: " + mask);
+    }
+
+    StringBuilder sb = new StringBuilder();
+    sb.append("UPDATE inner_containers SET ");
+    java.util.List<Fields> fields = Fields.selectFields(mask);
+    for (int i = 0; i < fields.size(); ++i) {
+      Fields field = fields.get(i);
+      sb.append(field.fieldName).append("=?");
+      if (i < fields.size() - 1) {
+        sb.append(", ");
+      }
+    }
+
+    sb.append("  where id=?");
+
+    String stmtStr = sb.toString();
+    System.out.println(stmtStr);
+    PreparedStatement stmt = session.prepare(stmtStr);
+    Object[] boundObjs = new Object[fields.size() + 1];
+    int i = 0;
+    while (i < fields.size()) {
+      Fields field = fields.get(i);
+      boundObjs[i] = field.selectIn(obj);
+      ++i;
+    }
+
+    
+    boundObjs[i++] = Fields.ID.selectIn(obj);
+    ++i;
+
+    BoundStatement bound = stmt.bind(boundObjs);
+    session.execute(bound);
   }
 }

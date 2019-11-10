@@ -23,6 +23,8 @@ CREATE TABLE testing_messages (
   list_of_bool list<boolean>,
   list_of_string list<text>,
   list_of_enum list<int>,
+  second_enum int,
+  third_enum int,
   PRIMARY KEY (id)
 ) WITH compression = { 'sstable_compression' : 'SnappyCompressor' }
   AND compaction = { 'class' : 'LeveledCompactionStrategy' }

@@ -34,7 +34,9 @@ public final class TestingMessageStruct {
     LIST_OF_INT64("list_of_int64", "list_of_int64"),
     LIST_OF_BOOL("list_of_bool", "list_of_bool"),
     LIST_OF_STRING("list_of_string", "list_of_string"),
-    LIST_OF_ENUM("list_of_enum", "list_of_enum");
+    LIST_OF_ENUM("list_of_enum", "list_of_enum"),
+    SECOND_ENUM("second_enum", "second_enum"),
+    THIRD_ENUM("third_enum", "third_enum");
 
     public final String fieldName;
 
@@ -71,6 +73,8 @@ public final class TestingMessageStruct {
       b.add(LIST_OF_BOOL);
       b.add(LIST_OF_STRING);
       b.add(LIST_OF_ENUM);
+      b.add(SECOND_ENUM);
+      b.add(THIRD_ENUM);
       return b.build();
     }
 
@@ -131,8 +135,8 @@ public final class TestingMessageStruct {
           break;
         
         case FIELD_ENUM:
-          int val = obj.getFieldEnumValue();
-          y = val;
+          int val1 = obj.getFieldEnumValue();
+          y = val1;
           break;
         
         case FIELD_TIMESTAMP:
@@ -258,6 +262,16 @@ public final class TestingMessageStruct {
             }
             y = list;
           }
+          break;
+        
+        case SECOND_ENUM:
+          int val2 = obj.getSecondEnumValue();
+          y = val2;
+          break;
+        
+        case THIRD_ENUM:
+          int val3 = obj.getThirdEnumValue();
+          y = val3;
           break;
         
       }
@@ -543,6 +557,22 @@ public final class TestingMessageStruct {
       }
     }
 
+    {
+      int idx = row.getColumnDefinitions().getIndexOf("second_enum");
+      if (!row.isNull(idx)) {
+        int value = row.getInt(idx);
+        b.setSecondEnumValue(value);
+      }
+    }
+
+    {
+      int idx = row.getColumnDefinitions().getIndexOf("third_enum");
+      if (!row.isNull(idx)) {
+        int value = row.getInt(idx);
+        b.setThirdEnumValue(value);
+      }
+    }
+
     
     return b.build();
   }
@@ -550,15 +580,15 @@ public final class TestingMessageStruct {
   private static PreparedStatement createInsertAllStmt(Session session) {
     StringBuilder sb = new StringBuilder();
     sb.append("INSERT INTO testing_messages (");
-    sb.append("id, field_double, field_float, field_int32, field_int64, field_bool, field_string, field_bytes, field_enum, field_timestamp, field_double_value, field_float_value, field_int64_value, field_int32_value, field_bool_value, field_string_value, field_bytes_value, list_of_double, list_of_float, list_of_int32, list_of_int64, list_of_bool, list_of_string, list_of_enum) ");
-    sb.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    sb.append("id, field_double, field_float, field_int32, field_int64, field_bool, field_string, field_bytes, field_enum, field_timestamp, field_double_value, field_float_value, field_int64_value, field_int32_value, field_bool_value, field_string_value, field_bytes_value, list_of_double, list_of_float, list_of_int32, list_of_int64, list_of_bool, list_of_string, list_of_enum, second_enum, third_enum) ");
+    sb.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     return session.prepare(sb.toString());
   }
 
   public void save(io.structs.testing.TestingProto.TestingMessage obj) {
     PreparedStatement stmt = insertAllStmt.get();
-    Object[] boundObjs = new Object[24];
+    Object[] boundObjs = new Object[26];
 
     {
       Object o = null;
@@ -610,8 +640,8 @@ public final class TestingMessageStruct {
 
     {
       Object o = null;
-      int val = obj.getFieldEnumValue();
-      o = val;
+      int val4 = obj.getFieldEnumValue();
+      o = val4;
       boundObjs[8] = o;
     }
 
@@ -768,6 +798,20 @@ public final class TestingMessageStruct {
         o = list;
       }
       boundObjs[23] = o;
+    }
+
+    {
+      Object o = null;
+      int val5 = obj.getSecondEnumValue();
+      o = val5;
+      boundObjs[24] = o;
+    }
+
+    {
+      Object o = null;
+      int val6 = obj.getThirdEnumValue();
+      o = val6;
+      boundObjs[25] = o;
     }
 
     BoundStatement bound = stmt.bind(boundObjs);
@@ -776,7 +820,7 @@ public final class TestingMessageStruct {
 
   public com.google.common.util.concurrent.ListenableFuture<Void> saveAsync(io.structs.testing.TestingProto.TestingMessage obj) {
     PreparedStatement stmt = insertAllStmt.get();
-    Object[] boundObjs = new Object[24];
+    Object[] boundObjs = new Object[26];
 
     {
       Object o = null;
@@ -828,8 +872,8 @@ public final class TestingMessageStruct {
 
     {
       Object o = null;
-      int val = obj.getFieldEnumValue();
-      o = val;
+      int val7 = obj.getFieldEnumValue();
+      o = val7;
       boundObjs[8] = o;
     }
 
@@ -986,6 +1030,20 @@ public final class TestingMessageStruct {
         o = list;
       }
       boundObjs[23] = o;
+    }
+
+    {
+      Object o = null;
+      int val8 = obj.getSecondEnumValue();
+      o = val8;
+      boundObjs[24] = o;
+    }
+
+    {
+      Object o = null;
+      int val9 = obj.getThirdEnumValue();
+      o = val9;
+      boundObjs[25] = o;
     }
 
     BoundStatement bound = stmt.bind(boundObjs);

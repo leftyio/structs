@@ -130,6 +130,238 @@ public final class TestingProto {
     // @@protoc_insertion_point(enum_scope:structs.testing.TestingEnum)
   }
 
+  /**
+   * Protobuf enum {@code structs.testing.SecondEnum}
+   */
+  public enum SecondEnum
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SECOND_ENUM_UNKNOWN = 0;</code>
+     */
+    SECOND_ENUM_UNKNOWN(0),
+    /**
+     * <code>SECOND_ENUM_FIRST_VALUE = 1;</code>
+     */
+    SECOND_ENUM_FIRST_VALUE(1),
+    /**
+     * <code>SECOND_ENUM_SECOND_VALUE = 2;</code>
+     */
+    SECOND_ENUM_SECOND_VALUE(2),
+    /**
+     * <code>SECOND_ENUM_THIRD_VALUE = 3;</code>
+     */
+    SECOND_ENUM_THIRD_VALUE(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>SECOND_ENUM_UNKNOWN = 0;</code>
+     */
+    public static final int SECOND_ENUM_UNKNOWN_VALUE = 0;
+    /**
+     * <code>SECOND_ENUM_FIRST_VALUE = 1;</code>
+     */
+    public static final int SECOND_ENUM_FIRST_VALUE_VALUE = 1;
+    /**
+     * <code>SECOND_ENUM_SECOND_VALUE = 2;</code>
+     */
+    public static final int SECOND_ENUM_SECOND_VALUE_VALUE = 2;
+    /**
+     * <code>SECOND_ENUM_THIRD_VALUE = 3;</code>
+     */
+    public static final int SECOND_ENUM_THIRD_VALUE_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static SecondEnum valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static SecondEnum forNumber(int value) {
+      switch (value) {
+        case 0: return SECOND_ENUM_UNKNOWN;
+        case 1: return SECOND_ENUM_FIRST_VALUE;
+        case 2: return SECOND_ENUM_SECOND_VALUE;
+        case 3: return SECOND_ENUM_THIRD_VALUE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SecondEnum>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        SecondEnum> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SecondEnum>() {
+            public SecondEnum findValueByNumber(int number) {
+              return SecondEnum.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return io.structs.testing.TestingProto.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final SecondEnum[] VALUES = values();
+
+    public static SecondEnum valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private SecondEnum(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:structs.testing.SecondEnum)
+  }
+
+  /**
+   * Protobuf enum {@code structs.testing.ThirdEnum}
+   */
+  public enum ThirdEnum
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>THIRD_ENUM_UNKNOWN = 0;</code>
+     */
+    THIRD_ENUM_UNKNOWN(0),
+    /**
+     * <code>THIRD_ENUM_FIRST_VALUE = 1;</code>
+     */
+    THIRD_ENUM_FIRST_VALUE(1),
+    /**
+     * <code>THIRD_ENUM_SECOND_VALUE = 2;</code>
+     */
+    THIRD_ENUM_SECOND_VALUE(2),
+    /**
+     * <code>THIRD_ENUM_THIRD_VALUE = 3;</code>
+     */
+    THIRD_ENUM_THIRD_VALUE(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>THIRD_ENUM_UNKNOWN = 0;</code>
+     */
+    public static final int THIRD_ENUM_UNKNOWN_VALUE = 0;
+    /**
+     * <code>THIRD_ENUM_FIRST_VALUE = 1;</code>
+     */
+    public static final int THIRD_ENUM_FIRST_VALUE_VALUE = 1;
+    /**
+     * <code>THIRD_ENUM_SECOND_VALUE = 2;</code>
+     */
+    public static final int THIRD_ENUM_SECOND_VALUE_VALUE = 2;
+    /**
+     * <code>THIRD_ENUM_THIRD_VALUE = 3;</code>
+     */
+    public static final int THIRD_ENUM_THIRD_VALUE_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ThirdEnum valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ThirdEnum forNumber(int value) {
+      switch (value) {
+        case 0: return THIRD_ENUM_UNKNOWN;
+        case 1: return THIRD_ENUM_FIRST_VALUE;
+        case 2: return THIRD_ENUM_SECOND_VALUE;
+        case 3: return THIRD_ENUM_THIRD_VALUE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ThirdEnum>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ThirdEnum> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ThirdEnum>() {
+            public ThirdEnum findValueByNumber(int number) {
+              return ThirdEnum.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return io.structs.testing.TestingProto.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final ThirdEnum[] VALUES = values();
+
+    public static ThirdEnum valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ThirdEnum(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:structs.testing.ThirdEnum)
+  }
+
   public interface MostBasicOrBuilder extends
       // @@protoc_insertion_point(interface_extends:structs.testing.MostBasic)
       com.google.protobuf.MessageOrBuilder {
@@ -959,6 +1191,24 @@ public final class TestingProto {
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
      */
     int getListOfEnumValue(int index);
+
+    /**
+     * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     */
+    int getSecondEnumValue();
+    /**
+     * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     */
+    io.structs.testing.TestingProto.SecondEnum getSecondEnum();
+
+    /**
+     * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     */
+    int getThirdEnumValue();
+    /**
+     * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     */
+    io.structs.testing.TestingProto.ThirdEnum getThirdEnum();
   }
   /**
    * Protobuf type {@code structs.testing.TestingMessage}
@@ -989,6 +1239,8 @@ public final class TestingProto {
       listOfBool_ = java.util.Collections.emptyList();
       listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       listOfEnum_ = java.util.Collections.emptyList();
+      secondEnum_ = 0;
+      thirdEnum_ = 0;
     }
 
     @java.lang.Override
@@ -1309,6 +1561,18 @@ public final class TestingProto {
                 listOfEnum_.add(rawValue);
               }
               input.popLimit(oldLimit);
+              break;
+            }
+            case 4008: {
+              int rawValue = input.readEnum();
+
+              secondEnum_ = rawValue;
+              break;
+            }
+            case 4016: {
+              int rawValue = input.readEnum();
+
+              thirdEnum_ = rawValue;
               break;
             }
           }
@@ -1884,6 +2148,38 @@ public final class TestingProto {
     }
     private int listOfEnumMemoizedSerializedSize;
 
+    public static final int SECOND_ENUM_FIELD_NUMBER = 501;
+    private int secondEnum_;
+    /**
+     * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     */
+    public int getSecondEnumValue() {
+      return secondEnum_;
+    }
+    /**
+     * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     */
+    public io.structs.testing.TestingProto.SecondEnum getSecondEnum() {
+      io.structs.testing.TestingProto.SecondEnum result = io.structs.testing.TestingProto.SecondEnum.valueOf(secondEnum_);
+      return result == null ? io.structs.testing.TestingProto.SecondEnum.UNRECOGNIZED : result;
+    }
+
+    public static final int THIRD_ENUM_FIELD_NUMBER = 502;
+    private int thirdEnum_;
+    /**
+     * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     */
+    public int getThirdEnumValue() {
+      return thirdEnum_;
+    }
+    /**
+     * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     */
+    public io.structs.testing.TestingProto.ThirdEnum getThirdEnum() {
+      io.structs.testing.TestingProto.ThirdEnum result = io.structs.testing.TestingProto.ThirdEnum.valueOf(thirdEnum_);
+      return result == null ? io.structs.testing.TestingProto.ThirdEnum.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1992,6 +2288,12 @@ public final class TestingProto {
       }
       for (int i = 0; i < listOfEnum_.size(); i++) {
         output.writeEnumNoTag(listOfEnum_.get(i));
+      }
+      if (secondEnum_ != io.structs.testing.TestingProto.SecondEnum.SECOND_ENUM_UNKNOWN.getNumber()) {
+        output.writeEnum(501, secondEnum_);
+      }
+      if (thirdEnum_ != io.structs.testing.TestingProto.ThirdEnum.THIRD_ENUM_UNKNOWN.getNumber()) {
+        output.writeEnum(502, thirdEnum_);
       }
       unknownFields.writeTo(output);
     }
@@ -2148,6 +2450,14 @@ public final class TestingProto {
             .computeUInt32SizeNoTag(dataSize);
         }listOfEnumMemoizedSerializedSize = dataSize;
       }
+      if (secondEnum_ != io.structs.testing.TestingProto.SecondEnum.SECOND_ENUM_UNKNOWN.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(501, secondEnum_);
+      }
+      if (thirdEnum_ != io.structs.testing.TestingProto.ThirdEnum.THIRD_ENUM_UNKNOWN.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(502, thirdEnum_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2238,6 +2548,8 @@ public final class TestingProto {
       result = result && getListOfStringList()
           .equals(other.getListOfStringList());
       result = result && listOfEnum_.equals(other.listOfEnum_);
+      result = result && secondEnum_ == other.secondEnum_;
+      result = result && thirdEnum_ == other.thirdEnum_;
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2331,6 +2643,10 @@ public final class TestingProto {
         hash = (37 * hash) + LIST_OF_ENUM_FIELD_NUMBER;
         hash = (53 * hash) + listOfEnum_.hashCode();
       }
+      hash = (37 * hash) + SECOND_ENUM_FIELD_NUMBER;
+      hash = (53 * hash) + secondEnum_;
+      hash = (37 * hash) + THIRD_ENUM_FIELD_NUMBER;
+      hash = (53 * hash) + thirdEnum_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2540,6 +2856,10 @@ public final class TestingProto {
         bitField0_ = (bitField0_ & ~0x00400000);
         listOfEnum_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00800000);
+        secondEnum_ = 0;
+
+        thirdEnum_ = 0;
+
         return this;
       }
 
@@ -2648,6 +2968,8 @@ public final class TestingProto {
           bitField0_ = (bitField0_ & ~0x00800000);
         }
         result.listOfEnum_ = listOfEnum_;
+        result.secondEnum_ = secondEnum_;
+        result.thirdEnum_ = thirdEnum_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2812,6 +3134,12 @@ public final class TestingProto {
             listOfEnum_.addAll(other.listOfEnum_);
           }
           onChanged();
+        }
+        if (other.secondEnum_ != 0) {
+          setSecondEnumValue(other.getSecondEnumValue());
+        }
+        if (other.thirdEnum_ != 0) {
+          setThirdEnumValue(other.getThirdEnumValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4737,6 +5065,94 @@ public final class TestingProto {
         for (int value : values) {
           listOfEnum_.add(value);
         }
+        onChanged();
+        return this;
+      }
+
+      private int secondEnum_ = 0;
+      /**
+       * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       */
+      public int getSecondEnumValue() {
+        return secondEnum_;
+      }
+      /**
+       * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       */
+      public Builder setSecondEnumValue(int value) {
+        secondEnum_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       */
+      public io.structs.testing.TestingProto.SecondEnum getSecondEnum() {
+        io.structs.testing.TestingProto.SecondEnum result = io.structs.testing.TestingProto.SecondEnum.valueOf(secondEnum_);
+        return result == null ? io.structs.testing.TestingProto.SecondEnum.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       */
+      public Builder setSecondEnum(io.structs.testing.TestingProto.SecondEnum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        secondEnum_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       */
+      public Builder clearSecondEnum() {
+        
+        secondEnum_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int thirdEnum_ = 0;
+      /**
+       * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       */
+      public int getThirdEnumValue() {
+        return thirdEnum_;
+      }
+      /**
+       * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       */
+      public Builder setThirdEnumValue(int value) {
+        thirdEnum_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       */
+      public io.structs.testing.TestingProto.ThirdEnum getThirdEnum() {
+        io.structs.testing.TestingProto.ThirdEnum result = io.structs.testing.TestingProto.ThirdEnum.valueOf(thirdEnum_);
+        return result == null ? io.structs.testing.TestingProto.ThirdEnum.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       */
+      public Builder setThirdEnum(io.structs.testing.TestingProto.ThirdEnum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        thirdEnum_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       */
+      public Builder clearThirdEnum() {
+        
+        thirdEnum_ = 0;
         onChanged();
         return this;
       }
@@ -6770,7 +7186,7 @@ public final class TestingProto {
       "\n\033structs/proto/testing.proto\022\017structs.t" +
       "esting\032\037google/protobuf/timestamp.proto\032" +
       "\036google/protobuf/wrappers.proto\"\027\n\tMostB" +
-      "asic\022\n\n\002id\030\001 \001(\t\"\357\006\n\016TestingMessage\022\n\n\002i" +
+      "asic\022\n\n\002id\030\001 \001(\t\"\323\007\n\016TestingMessage\022\n\n\002i" +
       "d\030\001 \001(\t\022\024\n\014field_double\030d \001(\001\022\023\n\013field_f" +
       "loat\030e \001(\002\022\023\n\013field_int32\030f \001(\005\022\023\n\013field" +
       "_int64\030g \001(\003\022\022\n\nfield_bool\030p \001(\010\022\024\n\014fiel" +
@@ -6792,18 +7208,26 @@ public final class TestingProto {
       "_int32\030\256\002 \003(\005\022\026\n\rlist_of_int64\030\257\002 \003(\003\022\025\n" +
       "\014list_of_bool\030\270\002 \003(\010\022\027\n\016list_of_string\030\271" +
       "\002 \003(\t\0223\n\014list_of_enum\030\220\003 \003(\0162\034.structs.t" +
-      "esting.TestingEnum\"\240\001\n\014InnerMessage\022\r\n\005v" +
-      "alue\030\001 \001(\005\022\021\n\tvalue_str\030\002 \001(\t\0229\n\022field_s" +
-      "tring_value\030\320\001 \001(\0132\034.google.protobuf.Str" +
-      "ingValue\0223\n\016inner_in_inner\030\254\002 \001(\0132\032.stru" +
-      "cts.testing.MostBasic\"\201\001\n\016InnerContainer" +
-      "\022\n\n\002id\030\001 \001(\t\022,\n\005inner\030\002 \001(\0132\035.structs.te" +
-      "sting.InnerMessage\0225\n\016inner_as_bytes\030\003 \001" +
-      "(\0132\035.structs.testing.InnerMessage*[\n\013Tes" +
-      "tingEnum\022\030\n\024TESTING_ENUM_UNKNOWN\020\000\022\017\n\013FI" +
-      "RST_VALUE\020\001\022\020\n\014SECOND_VALUE\020\002\022\017\n\013THIRD_V" +
-      "ALUE\020\003B\"\n\022io.structs.testingB\014TestingPro" +
-      "tob\006proto3"
+      "esting.TestingEnum\0221\n\013second_enum\030\365\003 \001(\016" +
+      "2\033.structs.testing.SecondEnum\022/\n\nthird_e" +
+      "num\030\366\003 \001(\0162\032.structs.testing.ThirdEnum\"\240" +
+      "\001\n\014InnerMessage\022\r\n\005value\030\001 \001(\005\022\021\n\tvalue_" +
+      "str\030\002 \001(\t\0229\n\022field_string_value\030\320\001 \001(\0132\034" +
+      ".google.protobuf.StringValue\0223\n\016inner_in" +
+      "_inner\030\254\002 \001(\0132\032.structs.testing.MostBasi" +
+      "c\"\201\001\n\016InnerContainer\022\n\n\002id\030\001 \001(\t\022,\n\005inne" +
+      "r\030\002 \001(\0132\035.structs.testing.InnerMessage\0225" +
+      "\n\016inner_as_bytes\030\003 \001(\0132\035.structs.testing" +
+      ".InnerMessage*[\n\013TestingEnum\022\030\n\024TESTING_" +
+      "ENUM_UNKNOWN\020\000\022\017\n\013FIRST_VALUE\020\001\022\020\n\014SECON" +
+      "D_VALUE\020\002\022\017\n\013THIRD_VALUE\020\003*}\n\nSecondEnum" +
+      "\022\027\n\023SECOND_ENUM_UNKNOWN\020\000\022\033\n\027SECOND_ENUM" +
+      "_FIRST_VALUE\020\001\022\034\n\030SECOND_ENUM_SECOND_VAL" +
+      "UE\020\002\022\033\n\027SECOND_ENUM_THIRD_VALUE\020\003*x\n\tThi" +
+      "rdEnum\022\026\n\022THIRD_ENUM_UNKNOWN\020\000\022\032\n\026THIRD_" +
+      "ENUM_FIRST_VALUE\020\001\022\033\n\027THIRD_ENUM_SECOND_" +
+      "VALUE\020\002\022\032\n\026THIRD_ENUM_THIRD_VALUE\020\003B\"\n\022i" +
+      "o.structs.testingB\014TestingProtob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6830,7 +7254,7 @@ public final class TestingProto {
     internal_static_structs_testing_TestingMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_structs_testing_TestingMessage_descriptor,
-        new java.lang.String[] { "Id", "FieldDouble", "FieldFloat", "FieldInt32", "FieldInt64", "FieldBool", "FieldString", "FieldBytes", "FieldEnum", "FieldTimestamp", "FieldDoubleValue", "FieldFloatValue", "FieldInt64Value", "FieldInt32Value", "FieldBoolValue", "FieldStringValue", "FieldBytesValue", "ListOfDouble", "ListOfFloat", "ListOfInt32", "ListOfInt64", "ListOfBool", "ListOfString", "ListOfEnum", });
+        new java.lang.String[] { "Id", "FieldDouble", "FieldFloat", "FieldInt32", "FieldInt64", "FieldBool", "FieldString", "FieldBytes", "FieldEnum", "FieldTimestamp", "FieldDoubleValue", "FieldFloatValue", "FieldInt64Value", "FieldInt32Value", "FieldBoolValue", "FieldStringValue", "FieldBytesValue", "ListOfDouble", "ListOfFloat", "ListOfInt32", "ListOfInt64", "ListOfBool", "ListOfString", "ListOfEnum", "SecondEnum", "ThirdEnum", });
     internal_static_structs_testing_InnerMessage_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_structs_testing_InnerMessage_fieldAccessorTable = new

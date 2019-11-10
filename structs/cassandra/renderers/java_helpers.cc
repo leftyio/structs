@@ -2,6 +2,7 @@
 
 #include <set>
 
+#include "absl/strings/str_format.h"
 #include "absl/strings/str_join.h"
 #include "google/protobuf/compiler/java/java_names.h"
 
@@ -126,13 +127,15 @@ void GetPrimitiveFromJavaObj(const FieldGen& field, const std::string& obj_name,
 }
 
 void GetEnumFromJavaObj(const FieldGen& field, const std::string& obj_name, const std::string& getted_name, CodeBuilder& cb) {
-  // std::string enum_java_name = google::protobuf::compiler::java::ClassName(field.proto_field()->enum_type());
-  cb << "int val = " << obj_name << ".";
+  static int val_number = 1;
+  const string val_name = absl::StrFormat("val%d", val_number++);
+
+  cb << "int " << val_name << " = " << obj_name << ".";
   PathToFieldMinusOne(field, cb);
   std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
   cb << "get" << field_name << "Value();";
 
-  cb.Newline() << getted_name << " = val;";
+  cb.Newline() << getted_name << " = " << val_name << ";";
 }
 
 void GetSpecialMessageFromJavaObj(const FieldGen& field, const string& obj_name, const string& getted_name, CodeBuilder& cb) {

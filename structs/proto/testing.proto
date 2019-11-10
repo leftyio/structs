@@ -21,6 +21,20 @@ enum TestingEnum {
   THIRD_VALUE = 3;
 }
 
+enum SecondEnum {
+  SECOND_ENUM_UNKNOWN = 0;
+  SECOND_ENUM_FIRST_VALUE = 1;
+  SECOND_ENUM_SECOND_VALUE = 2;
+  SECOND_ENUM_THIRD_VALUE = 3;
+}
+
+enum ThirdEnum {
+  THIRD_ENUM_UNKNOWN = 0;
+  THIRD_ENUM_FIRST_VALUE = 1;
+  THIRD_ENUM_SECOND_VALUE = 2;
+  THIRD_ENUM_THIRD_VALUE = 3;
+}
+
 message TestingMessage {
   string id = 1;
 
@@ -54,6 +68,9 @@ message TestingMessage {
   // repeated bytes list_of_bytes = 314;
 
   repeated TestingEnum list_of_enum = 400;
+
+  SecondEnum second_enum = 501;
+  ThirdEnum third_enum = 502;
 }
 
 message InnerMessage {

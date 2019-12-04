@@ -449,7 +449,7 @@ string JavaContent(const MessageGen* msg) {
     }
   }
 
-  cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRowOrDie(Row row) {";
+  cb.BreakLine() << "public static " << msg->JavaClassOfMessage() << " ofRowOrDie(Row row) {";
   cb.Indent() << "try {";
   cb.Indent() << "return ofRow(row);";
   cb.Outdent() << "} catch (com.google.protobuf.InvalidProtocolBufferException ex) {";
@@ -459,7 +459,7 @@ string JavaContent(const MessageGen* msg) {
   cb.OutdentBracket();
   cb.OutdentBracket();
 
-  cb.BreakLine() << "private static " << msg->JavaClassOfMessage() << " ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {";
+  cb.BreakLine() << "public static " << msg->JavaClassOfMessage() << " ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {";
   cb.Indent() << msg->JavaClassOfMessage() << ".Builder b = " << msg->JavaClassOfMessage() << ".newBuilder();";
    
   for (const FieldGen* field : msg->Fields()) {

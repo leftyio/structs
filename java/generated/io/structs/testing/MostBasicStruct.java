@@ -110,7 +110,7 @@ public final class MostBasicStruct {
     });
   }
 
-  private static io.structs.testing.TestingProto.MostBasic ofRowOrDie(Row row) {
+  public static io.structs.testing.TestingProto.MostBasic ofRowOrDie(Row row) {
     try {
       return ofRow(row);
     } catch (com.google.protobuf.InvalidProtocolBufferException ex) {
@@ -118,7 +118,7 @@ public final class MostBasicStruct {
     }
   }
 
-  private static io.structs.testing.TestingProto.MostBasic ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {
+  public static io.structs.testing.TestingProto.MostBasic ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {
     io.structs.testing.TestingProto.MostBasic.Builder b = io.structs.testing.TestingProto.MostBasic.newBuilder();
 
     {

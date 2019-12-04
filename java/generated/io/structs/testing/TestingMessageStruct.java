@@ -340,7 +340,7 @@ public final class TestingMessageStruct {
     });
   }
 
-  private static io.structs.testing.TestingProto.TestingMessage ofRowOrDie(Row row) {
+  public static io.structs.testing.TestingProto.TestingMessage ofRowOrDie(Row row) {
     try {
       return ofRow(row);
     } catch (com.google.protobuf.InvalidProtocolBufferException ex) {
@@ -348,7 +348,7 @@ public final class TestingMessageStruct {
     }
   }
 
-  private static io.structs.testing.TestingProto.TestingMessage ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {
+  public static io.structs.testing.TestingProto.TestingMessage ofRow(Row row) throws com.google.protobuf.InvalidProtocolBufferException {
     io.structs.testing.TestingProto.TestingMessage.Builder b = io.structs.testing.TestingProto.TestingMessage.newBuilder();
 
     {

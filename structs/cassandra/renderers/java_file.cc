@@ -154,7 +154,7 @@ void SetListFromCassandraRow(const FieldGen& field,
   cb.BreakLine() << "{";
   cb.Indent() << "int idx = " << row << ".getColumnDefinitions().getIndexOf(\""
       << field.CassandraName() << "\");";
-  cb.Newline() << "if (!row.isNull(idx)) {";
+  cb.Newline() << "if (idx != -1 && !row.isNull(idx)) {";
 
   cb.Indent() << field.JavaType()
       << " value = ";
@@ -186,7 +186,7 @@ void SetFromCassandraRow(const FieldGen& field,
     cb.BreakLine() << "{";
     cb.Indent() << "int idx = " << row << ".getColumnDefinitions().getIndexOf(\""
         << field.CassandraName() << "\");";
-    cb.Newline() << "if (!row.isNull(idx)) {";
+    cb.Newline() << "if (idx != -1 && !row.isNull(idx)) {";
 
     cb.Indent() << field.JavaType()
         << " value = ";

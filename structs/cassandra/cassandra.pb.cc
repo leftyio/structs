@@ -147,16 +147,15 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_str
   &scc_info_CassandraSchemas_structs_2fcassandra_2fcassandra_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once;
-static bool descriptor_table_structs_2fcassandra_2fcassandra_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_structs_2fcassandra_2fcassandra_2eproto = {
-  &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_initialized, descriptor_table_protodef_structs_2fcassandra_2fcassandra_2eproto, "structs/cassandra/cassandra.proto", 585,
+  false, false, descriptor_table_protodef_structs_2fcassandra_2fcassandra_2eproto, "structs/cassandra/cassandra.proto", 585,
   &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once, descriptor_table_structs_2fcassandra_2fcassandra_2eproto_sccs, descriptor_table_structs_2fcassandra_2fcassandra_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_structs_2fcassandra_2fcassandra_2eproto::offsets,
   file_level_metadata_structs_2fcassandra_2fcassandra_2eproto, 3, file_level_enum_descriptors_structs_2fcassandra_2fcassandra_2eproto, file_level_service_descriptors_structs_2fcassandra_2fcassandra_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_structs_2fcassandra_2fcassandra_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_structs_2fcassandra_2fcassandra_2eproto), true);
+static bool dynamic_init_dummy_structs_2fcassandra_2fcassandra_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_structs_2fcassandra_2fcassandra_2eproto)), true);
 namespace structs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* RepeatedHandler_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_structs_2fcassandra_2fcassandra_2eproto);
@@ -184,22 +183,24 @@ class CassandraField::_Internal {
  public:
 };
 
-CassandraField::CassandraField()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+CassandraField::CassandraField(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:structs.CassandraField)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:structs.CassandraField)
 }
 CassandraField::CassandraField(const CassandraField& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_path().empty()) {
-    path_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.path_);
+    path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_path(),
+      GetArena());
   }
   field_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_field_name().empty()) {
-    field_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.field_name_);
+    field_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_field_name(),
+      GetArena());
   }
   ::memcpy(&is_id_, &from.is_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&id_cardinality_) -
@@ -219,13 +220,21 @@ void CassandraField::SharedCtor() {
 CassandraField::~CassandraField() {
   // @@protoc_insertion_point(destructor:structs.CassandraField)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void CassandraField::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   path_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   field_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void CassandraField::ArenaDtor(void* object) {
+  CassandraField* _this = reinterpret_cast< CassandraField* >(object);
+  (void)_this;
+}
+void CassandraField::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void CassandraField::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
@@ -241,16 +250,17 @@ void CassandraField::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  path_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  field_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  path_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  field_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&is_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&id_cardinality_) -
       reinterpret_cast<char*>(&is_id_)) + sizeof(id_cardinality_));
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -268,21 +278,21 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // bool is_id = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          is_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          is_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // bool is_bytes = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          is_bytes_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          is_bytes_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // bool is_transient = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          is_transient_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          is_transient_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -298,7 +308,7 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // .structs.RepeatedHandler repeated_handling = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           _internal_set_repeated_handling(static_cast<::structs::RepeatedHandler>(val));
         } else goto handle_unusual;
@@ -306,7 +316,7 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // int32 id_cardinality = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          id_cardinality_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          id_cardinality_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -316,7 +326,9 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -389,7 +401,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.CassandraField)
   return target;
@@ -472,17 +484,15 @@ void CassandraField::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 void CassandraField::MergeFrom(const CassandraField& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraField)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.path().size() > 0) {
-
-    path_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.path_);
+    _internal_set_path(from._internal_path());
   }
   if (from.field_name().size() > 0) {
-
-    field_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.field_name_);
+    _internal_set_field_name(from._internal_field_name());
   }
   if (from.is_id() != 0) {
     _internal_set_is_id(from._internal_is_id());
@@ -521,16 +531,15 @@ bool CassandraField::IsInitialized() const {
 
 void CassandraField::InternalSwap(CassandraField* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  path_.Swap(&other->path_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  field_name_.Swap(&other->field_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(is_id_, other->is_id_);
-  swap(is_bytes_, other->is_bytes_);
-  swap(is_transient_, other->is_transient_);
-  swap(repeated_handling_, other->repeated_handling_);
-  swap(id_cardinality_, other->id_cardinality_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  path_.Swap(&other->path_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  field_name_.Swap(&other->field_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(CassandraField, id_cardinality_)
+      + sizeof(CassandraField::id_cardinality_)
+      - PROTOBUF_FIELD_OFFSET(CassandraField, is_id_)>(
+          reinterpret_cast<char*>(&is_id_),
+          reinterpret_cast<char*>(&other->is_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CassandraField::GetMetadata() const {
@@ -546,39 +555,46 @@ class CassandraSchema::_Internal {
  public:
 };
 
-CassandraSchema::CassandraSchema()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+CassandraSchema::CassandraSchema(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  fields_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:structs.CassandraSchema)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:structs.CassandraSchema)
 }
 CassandraSchema::CassandraSchema(const CassandraSchema& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
       fields_(from.fields_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   message_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_message_name().empty()) {
-    message_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_name_);
+    message_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_message_name(),
+      GetArena());
   }
   table_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_table_name().empty()) {
-    table_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+    table_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_table_name(),
+      GetArena());
   }
   compaction_strategy_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_compaction_strategy().empty()) {
-    compaction_strategy_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.compaction_strategy_);
+    compaction_strategy_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_compaction_strategy(),
+      GetArena());
   }
   compression_strategy_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_compression_strategy().empty()) {
-    compression_strategy_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.compression_strategy_);
+    compression_strategy_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_compression_strategy(),
+      GetArena());
   }
   java_package_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_java_package().empty()) {
-    java_package_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.java_package_);
+    java_package_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_java_package(),
+      GetArena());
   }
   java_class_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_java_class().empty()) {
-    java_class_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.java_class_);
+    java_class_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_java_class(),
+      GetArena());
   }
   // @@protoc_insertion_point(copy_constructor:structs.CassandraSchema)
 }
@@ -596,9 +612,11 @@ void CassandraSchema::SharedCtor() {
 CassandraSchema::~CassandraSchema() {
   // @@protoc_insertion_point(destructor:structs.CassandraSchema)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void CassandraSchema::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   message_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   table_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   compaction_strategy_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -607,6 +625,12 @@ void CassandraSchema::SharedDtor() {
   java_class_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void CassandraSchema::ArenaDtor(void* object) {
+  CassandraSchema* _this = reinterpret_cast< CassandraSchema* >(object);
+  (void)_this;
+}
+void CassandraSchema::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void CassandraSchema::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
@@ -623,17 +647,18 @@ void CassandraSchema::Clear() {
   (void) cached_has_bits;
 
   fields_.Clear();
-  message_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  table_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  compaction_strategy_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  compression_strategy_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  java_package_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  java_class_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
+  message_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  table_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  compaction_strategy_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  compression_strategy_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  java_package_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  java_class_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -711,7 +736,9 @@ const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -801,7 +828,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.CassandraSchema)
   return target;
@@ -891,34 +918,28 @@ void CassandraSchema::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 void CassandraSchema::MergeFrom(const CassandraSchema& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraSchema)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   fields_.MergeFrom(from.fields_);
   if (from.message_name().size() > 0) {
-
-    message_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.message_name_);
+    _internal_set_message_name(from._internal_message_name());
   }
   if (from.table_name().size() > 0) {
-
-    table_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+    _internal_set_table_name(from._internal_table_name());
   }
   if (from.compaction_strategy().size() > 0) {
-
-    compaction_strategy_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.compaction_strategy_);
+    _internal_set_compaction_strategy(from._internal_compaction_strategy());
   }
   if (from.compression_strategy().size() > 0) {
-
-    compression_strategy_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.compression_strategy_);
+    _internal_set_compression_strategy(from._internal_compression_strategy());
   }
   if (from.java_package().size() > 0) {
-
-    java_package_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.java_package_);
+    _internal_set_java_package(from._internal_java_package());
   }
   if (from.java_class().size() > 0) {
-
-    java_class_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.java_class_);
+    _internal_set_java_class(from._internal_java_class());
   }
 }
 
@@ -942,20 +963,14 @@ bool CassandraSchema::IsInitialized() const {
 
 void CassandraSchema::InternalSwap(CassandraSchema* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   fields_.InternalSwap(&other->fields_);
-  message_name_.Swap(&other->message_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  table_name_.Swap(&other->table_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  compaction_strategy_.Swap(&other->compaction_strategy_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  compression_strategy_.Swap(&other->compression_strategy_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  java_package_.Swap(&other->java_package_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  java_class_.Swap(&other->java_class_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  message_name_.Swap(&other->message_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  table_name_.Swap(&other->table_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  compaction_strategy_.Swap(&other->compaction_strategy_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  compression_strategy_.Swap(&other->compression_strategy_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  java_package_.Swap(&other->java_package_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  java_class_.Swap(&other->java_class_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CassandraSchema::GetMetadata() const {
@@ -971,16 +986,17 @@ class CassandraSchemas::_Internal {
  public:
 };
 
-CassandraSchemas::CassandraSchemas()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+CassandraSchemas::CassandraSchemas(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  schema_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:structs.CassandraSchemas)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:structs.CassandraSchemas)
 }
 CassandraSchemas::CassandraSchemas(const CassandraSchemas& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
       schema_(from.schema_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:structs.CassandraSchemas)
 }
 
@@ -991,11 +1007,19 @@ void CassandraSchemas::SharedCtor() {
 CassandraSchemas::~CassandraSchemas() {
   // @@protoc_insertion_point(destructor:structs.CassandraSchemas)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void CassandraSchemas::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void CassandraSchemas::ArenaDtor(void* object) {
+  CassandraSchemas* _this = reinterpret_cast< CassandraSchemas* >(object);
+  (void)_this;
+}
+void CassandraSchemas::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void CassandraSchemas::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
@@ -1012,11 +1036,12 @@ void CassandraSchemas::Clear() {
   (void) cached_has_bits;
 
   schema_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* CassandraSchemas::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1040,7 +1065,9 @@ const char* CassandraSchemas::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -1070,7 +1097,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.CassandraSchemas)
   return target;
@@ -1118,7 +1145,7 @@ void CassandraSchemas::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 void CassandraSchemas::MergeFrom(const CassandraSchemas& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraSchemas)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1145,7 +1172,7 @@ bool CassandraSchemas::IsInitialized() const {
 
 void CassandraSchemas::InternalSwap(CassandraSchemas* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   schema_.InternalSwap(&other->schema_);
 }
 
@@ -1158,13 +1185,13 @@ void CassandraSchemas::InternalSwap(CassandraSchemas* other) {
 }  // namespace structs
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::structs::CassandraField* Arena::CreateMaybeMessage< ::structs::CassandraField >(Arena* arena) {
-  return Arena::CreateInternal< ::structs::CassandraField >(arena);
+  return Arena::CreateMessageInternal< ::structs::CassandraField >(arena);
 }
 template<> PROTOBUF_NOINLINE ::structs::CassandraSchema* Arena::CreateMaybeMessage< ::structs::CassandraSchema >(Arena* arena) {
-  return Arena::CreateInternal< ::structs::CassandraSchema >(arena);
+  return Arena::CreateMessageInternal< ::structs::CassandraSchema >(arena);
 }
 template<> PROTOBUF_NOINLINE ::structs::CassandraSchemas* Arena::CreateMaybeMessage< ::structs::CassandraSchemas >(Arena* arena) {
-  return Arena::CreateInternal< ::structs::CassandraSchemas >(arena);
+  return Arena::CreateMessageInternal< ::structs::CassandraSchemas >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

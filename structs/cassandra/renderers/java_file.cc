@@ -425,7 +425,7 @@ string JavaContent(const MessageGen* msg) {
   cb.Indent() << "return java.util.Optional.empty();";
   cb.Outdent() << "}";
   cb.BreakLine() << "return java.util.Optional.of(ofRowOrDie(row));";
-  cb.Outdent() << "});";
+  cb.Outdent() << "}, com.google.common.util.concurrent.MoreExecutors.directExecutor());";
   cb.OutdentBracket();
 
   {
@@ -510,7 +510,7 @@ string JavaContent(const MessageGen* msg) {
   BindObject(*msg, cb);
   cb.BreakLine() << "BoundStatement bound = stmt.bind(boundObjs);";
   cb.Newline() << "ResultSetFuture rsF = session.executeAsync(bound);";
-  cb.Newline() << "return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);";
+  cb.Newline() << "return com.google.common.util.concurrent.Futures.transform(rsF, x -> null, com.google.common.util.concurrent.MoreExecutors.directExecutor());";
   cb.OutdentBracket();
 
   // Targeted updates support.

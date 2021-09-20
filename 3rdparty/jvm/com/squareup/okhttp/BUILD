@@ -1,7 +1,6 @@
 java_library(
     name = "okhttp",
     exports = [
-        "//3rdparty/jvm/com/squareup/okio:okio",
         "//external:jar/com/squareup/okhttp/okhttp"
     ],
     visibility = [

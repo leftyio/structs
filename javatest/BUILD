@@ -1,12 +1,4 @@
 java_library(
-    name = "io_netty_netty_tcnative_boringssl_static",
-    visibility = ["//visibility:public"],
-    exports = [
-        "@io_netty_netty_tcnative_boringssl_static//jar",
-    ],
-)
-
-java_library(
     name = "java_tests",
     srcs = glob(
         [
@@ -18,8 +10,7 @@ java_library(
         "io/structs/cassandra.truststore",
     ]),
     deps = [
-        ":io_netty_netty_tcnative_boringssl_static",
-        "//3rdparty/jvm/com/datastax/cassandra:cassandra_driver_core",
+        "//3rdparty/jvm/com/scylladb:java_driver_core",
         "//3rdparty/jvm/com/google/protobuf:protobuf_java",
         "//3rdparty/jvm/com/google/protobuf:protobuf_java_util",
         "//3rdparty/jvm/junit",

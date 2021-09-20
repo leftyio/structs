@@ -27,6 +27,8 @@ java_library(
     name = "asm_commons",
     exports = [
         "//external:jar/org/ow2/asm/asm_commons",
+        ":asm",
+        ":asm_analysis",
         ":asm_tree"
     ],
     visibility = [
@@ -53,6 +55,8 @@ java_library(
     name = "asm_util",
     exports = [
         "//external:jar/org/ow2/asm/asm_util",
+        ":asm",
+        ":asm_analysis",
         ":asm_tree"
     ],
     visibility = [

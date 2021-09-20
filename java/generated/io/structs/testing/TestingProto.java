@@ -65,6 +65,8 @@ public final class TestingProto {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -72,6 +74,10 @@ public final class TestingProto {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static TestingEnum forNumber(int value) {
       switch (value) {
         case 0: return TESTING_ENUM_UNKNOWN;
@@ -96,6 +102,10 @@ public final class TestingProto {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -181,6 +191,8 @@ public final class TestingProto {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -188,6 +200,10 @@ public final class TestingProto {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static SecondEnum forNumber(int value) {
       switch (value) {
         case 0: return SECOND_ENUM_UNKNOWN;
@@ -212,6 +228,10 @@ public final class TestingProto {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -297,6 +317,8 @@ public final class TestingProto {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -304,6 +326,10 @@ public final class TestingProto {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static ThirdEnum forNumber(int value) {
       switch (value) {
         case 0: return THIRD_ENUM_UNKNOWN;
@@ -328,6 +354,10 @@ public final class TestingProto {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -368,10 +398,12 @@ public final class TestingProto {
 
     /**
      * <code>string id = 1;</code>
+     * @return The id.
      */
     java.lang.String getId();
     /**
      * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     com.google.protobuf.ByteString
         getIdBytes();
@@ -379,7 +411,7 @@ public final class TestingProto {
   /**
    * Protobuf type {@code structs.testing.MostBasic}
    */
-  public  static final class MostBasic extends
+  public static final class MostBasic extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:structs.testing.MostBasic)
       MostBasicOrBuilder {
@@ -390,6 +422,13 @@ public final class TestingProto {
     }
     private MostBasic() {
       id_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MostBasic();
     }
 
     @java.lang.Override
@@ -405,7 +444,6 @@ public final class TestingProto {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -416,17 +454,17 @@ public final class TestingProto {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               id_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -446,6 +484,7 @@ public final class TestingProto {
       return io.structs.testing.TestingProto.internal_static_structs_testing_MostBasic_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return io.structs.testing.TestingProto.internal_static_structs_testing_MostBasic_fieldAccessorTable
@@ -457,7 +496,9 @@ public final class TestingProto {
     private volatile java.lang.Object id_;
     /**
      * <code>string id = 1;</code>
+     * @return The id.
      */
+    @java.lang.Override
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
@@ -472,7 +513,9 @@ public final class TestingProto {
     }
     /**
      * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getIdBytes() {
       java.lang.Object ref = id_;
@@ -488,6 +531,7 @@ public final class TestingProto {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -497,6 +541,7 @@ public final class TestingProto {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
@@ -505,6 +550,7 @@ public final class TestingProto {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -528,11 +574,10 @@ public final class TestingProto {
       }
       io.structs.testing.TestingProto.MostBasic other = (io.structs.testing.TestingProto.MostBasic) obj;
 
-      boolean result = true;
-      result = result && getId()
-          .equals(other.getId());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -619,6 +664,7 @@ public final class TestingProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -626,6 +672,7 @@ public final class TestingProto {
     public static Builder newBuilder(io.structs.testing.TestingProto.MostBasic prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -649,6 +696,7 @@ public final class TestingProto {
         return io.structs.testing.TestingProto.internal_static_structs_testing_MostBasic_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_MostBasic_fieldAccessorTable
@@ -671,6 +719,7 @@ public final class TestingProto {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         id_ = "";
@@ -678,15 +727,18 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_MostBasic_descriptor;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.MostBasic getDefaultInstanceForType() {
         return io.structs.testing.TestingProto.MostBasic.getDefaultInstance();
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.MostBasic build() {
         io.structs.testing.TestingProto.MostBasic result = buildPartial();
         if (!result.isInitialized()) {
@@ -695,6 +747,7 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.MostBasic buildPartial() {
         io.structs.testing.TestingProto.MostBasic result = new io.structs.testing.TestingProto.MostBasic(this);
         result.id_ = id_;
@@ -702,32 +755,39 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.structs.testing.TestingProto.MostBasic) {
           return mergeFrom((io.structs.testing.TestingProto.MostBasic)other);
@@ -748,10 +808,12 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -773,6 +835,7 @@ public final class TestingProto {
       private java.lang.Object id_ = "";
       /**
        * <code>string id = 1;</code>
+       * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -788,6 +851,7 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @return The bytes for id.
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -804,6 +868,8 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
       public Builder setId(
           java.lang.String value) {
@@ -817,6 +883,7 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId() {
         
@@ -826,6 +893,8 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -838,11 +907,13 @@ public final class TestingProto {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -864,6 +935,7 @@ public final class TestingProto {
 
     private static final com.google.protobuf.Parser<MostBasic>
         PARSER = new com.google.protobuf.AbstractParser<MostBasic>() {
+      @java.lang.Override
       public MostBasic parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -881,6 +953,7 @@ public final class TestingProto {
       return PARSER;
     }
 
+    @java.lang.Override
     public io.structs.testing.TestingProto.MostBasic getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -893,60 +966,72 @@ public final class TestingProto {
 
     /**
      * <code>string id = 1;</code>
+     * @return The id.
      */
     java.lang.String getId();
     /**
      * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
      * <code>double field_double = 100;</code>
+     * @return The fieldDouble.
      */
     double getFieldDouble();
 
     /**
      * <code>float field_float = 101;</code>
+     * @return The fieldFloat.
      */
     float getFieldFloat();
 
     /**
      * <code>int32 field_int32 = 102;</code>
+     * @return The fieldInt32.
      */
     int getFieldInt32();
 
     /**
      * <code>int64 field_int64 = 103;</code>
+     * @return The fieldInt64.
      */
     long getFieldInt64();
 
     /**
      * <code>bool field_bool = 112;</code>
+     * @return The fieldBool.
      */
     boolean getFieldBool();
 
     /**
      * <code>string field_string = 113;</code>
+     * @return The fieldString.
      */
     java.lang.String getFieldString();
     /**
      * <code>string field_string = 113;</code>
+     * @return The bytes for fieldString.
      */
     com.google.protobuf.ByteString
         getFieldStringBytes();
 
     /**
      * <code>bytes field_bytes = 114;</code>
+     * @return The fieldBytes.
      */
     com.google.protobuf.ByteString getFieldBytes();
 
     /**
      * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+     * @return The enum numeric value on the wire for fieldEnum.
      */
     int getFieldEnumValue();
     /**
      * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+     * @return The fieldEnum.
      */
     io.structs.testing.TestingProto.TestingEnum getFieldEnum();
 
@@ -956,6 +1041,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
+     * @return Whether the fieldTimestamp field is set.
      */
     boolean hasFieldTimestamp();
     /**
@@ -964,6 +1050,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
+     * @return The fieldTimestamp.
      */
     com.google.protobuf.Timestamp getFieldTimestamp();
     /**
@@ -977,10 +1064,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
+     * @return Whether the fieldDoubleValue field is set.
      */
     boolean hasFieldDoubleValue();
     /**
      * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
+     * @return The fieldDoubleValue.
      */
     com.google.protobuf.DoubleValue getFieldDoubleValue();
     /**
@@ -990,10 +1079,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
+     * @return Whether the fieldFloatValue field is set.
      */
     boolean hasFieldFloatValue();
     /**
      * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
+     * @return The fieldFloatValue.
      */
     com.google.protobuf.FloatValue getFieldFloatValue();
     /**
@@ -1003,10 +1094,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
+     * @return Whether the fieldInt64Value field is set.
      */
     boolean hasFieldInt64Value();
     /**
      * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
+     * @return The fieldInt64Value.
      */
     com.google.protobuf.Int64Value getFieldInt64Value();
     /**
@@ -1016,10 +1109,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
+     * @return Whether the fieldInt32Value field is set.
      */
     boolean hasFieldInt32Value();
     /**
      * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
+     * @return The fieldInt32Value.
      */
     com.google.protobuf.Int32Value getFieldInt32Value();
     /**
@@ -1029,10 +1124,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
+     * @return Whether the fieldBoolValue field is set.
      */
     boolean hasFieldBoolValue();
     /**
      * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
+     * @return The fieldBoolValue.
      */
     com.google.protobuf.BoolValue getFieldBoolValue();
     /**
@@ -1042,10 +1139,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return Whether the fieldStringValue field is set.
      */
     boolean hasFieldStringValue();
     /**
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return The fieldStringValue.
      */
     com.google.protobuf.StringValue getFieldStringValue();
     /**
@@ -1055,10 +1154,12 @@ public final class TestingProto {
 
     /**
      * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     * @return Whether the fieldBytesValue field is set.
      */
     boolean hasFieldBytesValue();
     /**
      * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     * @return The fieldBytesValue.
      */
     com.google.protobuf.BytesValue getFieldBytesValue();
     /**
@@ -1068,66 +1169,86 @@ public final class TestingProto {
 
     /**
      * <code>repeated double list_of_double = 300;</code>
+     * @return A list containing the listOfDouble.
      */
     java.util.List<java.lang.Double> getListOfDoubleList();
     /**
      * <code>repeated double list_of_double = 300;</code>
+     * @return The count of listOfDouble.
      */
     int getListOfDoubleCount();
     /**
      * <code>repeated double list_of_double = 300;</code>
+     * @param index The index of the element to return.
+     * @return The listOfDouble at the given index.
      */
     double getListOfDouble(int index);
 
     /**
      * <code>repeated float list_of_float = 301;</code>
+     * @return A list containing the listOfFloat.
      */
     java.util.List<java.lang.Float> getListOfFloatList();
     /**
      * <code>repeated float list_of_float = 301;</code>
+     * @return The count of listOfFloat.
      */
     int getListOfFloatCount();
     /**
      * <code>repeated float list_of_float = 301;</code>
+     * @param index The index of the element to return.
+     * @return The listOfFloat at the given index.
      */
     float getListOfFloat(int index);
 
     /**
      * <code>repeated int32 list_of_int32 = 302;</code>
+     * @return A list containing the listOfInt32.
      */
     java.util.List<java.lang.Integer> getListOfInt32List();
     /**
      * <code>repeated int32 list_of_int32 = 302;</code>
+     * @return The count of listOfInt32.
      */
     int getListOfInt32Count();
     /**
      * <code>repeated int32 list_of_int32 = 302;</code>
+     * @param index The index of the element to return.
+     * @return The listOfInt32 at the given index.
      */
     int getListOfInt32(int index);
 
     /**
      * <code>repeated int64 list_of_int64 = 303;</code>
+     * @return A list containing the listOfInt64.
      */
     java.util.List<java.lang.Long> getListOfInt64List();
     /**
      * <code>repeated int64 list_of_int64 = 303;</code>
+     * @return The count of listOfInt64.
      */
     int getListOfInt64Count();
     /**
      * <code>repeated int64 list_of_int64 = 303;</code>
+     * @param index The index of the element to return.
+     * @return The listOfInt64 at the given index.
      */
     long getListOfInt64(int index);
 
     /**
      * <code>repeated bool list_of_bool = 312;</code>
+     * @return A list containing the listOfBool.
      */
     java.util.List<java.lang.Boolean> getListOfBoolList();
     /**
      * <code>repeated bool list_of_bool = 312;</code>
+     * @return The count of listOfBool.
      */
     int getListOfBoolCount();
     /**
      * <code>repeated bool list_of_bool = 312;</code>
+     * @param index The index of the element to return.
+     * @return The listOfBool at the given index.
      */
     boolean getListOfBool(int index);
 
@@ -1138,6 +1259,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @return A list containing the listOfString.
      */
     java.util.List<java.lang.String>
         getListOfStringList();
@@ -1148,6 +1270,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @return The count of listOfString.
      */
     int getListOfStringCount();
     /**
@@ -1157,6 +1280,8 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @param index The index of the element to return.
+     * @return The listOfString at the given index.
      */
     java.lang.String getListOfString(int index);
     /**
@@ -1166,54 +1291,67 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the listOfString at the given index.
      */
     com.google.protobuf.ByteString
         getListOfStringBytes(int index);
 
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @return A list containing the listOfEnum.
      */
     java.util.List<io.structs.testing.TestingProto.TestingEnum> getListOfEnumList();
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @return The count of listOfEnum.
      */
     int getListOfEnumCount();
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @param index The index of the element to return.
+     * @return The listOfEnum at the given index.
      */
     io.structs.testing.TestingProto.TestingEnum getListOfEnum(int index);
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @return A list containing the enum numeric values on the wire for listOfEnum.
      */
     java.util.List<java.lang.Integer>
     getListOfEnumValueList();
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of listOfEnum at the given index.
      */
     int getListOfEnumValue(int index);
 
     /**
      * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     * @return The enum numeric value on the wire for secondEnum.
      */
     int getSecondEnumValue();
     /**
      * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     * @return The secondEnum.
      */
     io.structs.testing.TestingProto.SecondEnum getSecondEnum();
 
     /**
      * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     * @return The enum numeric value on the wire for thirdEnum.
      */
     int getThirdEnumValue();
     /**
      * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     * @return The thirdEnum.
      */
     io.structs.testing.TestingProto.ThirdEnum getThirdEnum();
   }
   /**
    * Protobuf type {@code structs.testing.TestingMessage}
    */
-  public  static final class TestingMessage extends
+  public static final class TestingMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:structs.testing.TestingMessage)
       TestingMessageOrBuilder {
@@ -1224,23 +1362,25 @@ public final class TestingProto {
     }
     private TestingMessage() {
       id_ = "";
-      fieldDouble_ = 0D;
-      fieldFloat_ = 0F;
-      fieldInt32_ = 0;
-      fieldInt64_ = 0L;
-      fieldBool_ = false;
       fieldString_ = "";
       fieldBytes_ = com.google.protobuf.ByteString.EMPTY;
       fieldEnum_ = 0;
-      listOfDouble_ = java.util.Collections.emptyList();
-      listOfFloat_ = java.util.Collections.emptyList();
-      listOfInt32_ = java.util.Collections.emptyList();
-      listOfInt64_ = java.util.Collections.emptyList();
-      listOfBool_ = java.util.Collections.emptyList();
+      listOfDouble_ = emptyDoubleList();
+      listOfFloat_ = emptyFloatList();
+      listOfInt32_ = emptyIntList();
+      listOfInt64_ = emptyLongList();
+      listOfBool_ = emptyBooleanList();
       listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       listOfEnum_ = java.util.Collections.emptyList();
       secondEnum_ = 0;
       thirdEnum_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TestingMessage();
     }
 
     @java.lang.Override
@@ -1267,13 +1407,6 @@ public final class TestingProto {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -1427,124 +1560,124 @@ public final class TestingProto {
               break;
             }
             case 2401: {
-              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
-                listOfDouble_ = new java.util.ArrayList<java.lang.Double>();
-                mutable_bitField0_ |= 0x00020000;
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                listOfDouble_ = newDoubleList();
+                mutable_bitField0_ |= 0x00000001;
               }
-              listOfDouble_.add(input.readDouble());
+              listOfDouble_.addDouble(input.readDouble());
               break;
             }
             case 2402: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000) && input.getBytesUntilLimit() > 0) {
-                listOfDouble_ = new java.util.ArrayList<java.lang.Double>();
-                mutable_bitField0_ |= 0x00020000;
+              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+                listOfDouble_ = newDoubleList();
+                mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
-                listOfDouble_.add(input.readDouble());
+                listOfDouble_.addDouble(input.readDouble());
               }
               input.popLimit(limit);
               break;
             }
             case 2413: {
-              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
-                listOfFloat_ = new java.util.ArrayList<java.lang.Float>();
-                mutable_bitField0_ |= 0x00040000;
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                listOfFloat_ = newFloatList();
+                mutable_bitField0_ |= 0x00000002;
               }
-              listOfFloat_.add(input.readFloat());
+              listOfFloat_.addFloat(input.readFloat());
               break;
             }
             case 2410: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000) && input.getBytesUntilLimit() > 0) {
-                listOfFloat_ = new java.util.ArrayList<java.lang.Float>();
-                mutable_bitField0_ |= 0x00040000;
+              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+                listOfFloat_ = newFloatList();
+                mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                listOfFloat_.add(input.readFloat());
+                listOfFloat_.addFloat(input.readFloat());
               }
               input.popLimit(limit);
               break;
             }
             case 2416: {
-              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
-                listOfInt32_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00080000;
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                listOfInt32_ = newIntList();
+                mutable_bitField0_ |= 0x00000004;
               }
-              listOfInt32_.add(input.readInt32());
+              listOfInt32_.addInt(input.readInt32());
               break;
             }
             case 2418: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000) && input.getBytesUntilLimit() > 0) {
-                listOfInt32_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00080000;
+              if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
+                listOfInt32_ = newIntList();
+                mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
-                listOfInt32_.add(input.readInt32());
+                listOfInt32_.addInt(input.readInt32());
               }
               input.popLimit(limit);
               break;
             }
             case 2424: {
-              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
-                listOfInt64_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00100000;
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+                listOfInt64_ = newLongList();
+                mutable_bitField0_ |= 0x00000008;
               }
-              listOfInt64_.add(input.readInt64());
+              listOfInt64_.addLong(input.readInt64());
               break;
             }
             case 2426: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000) && input.getBytesUntilLimit() > 0) {
-                listOfInt64_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00100000;
+              if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
+                listOfInt64_ = newLongList();
+                mutable_bitField0_ |= 0x00000008;
               }
               while (input.getBytesUntilLimit() > 0) {
-                listOfInt64_.add(input.readInt64());
+                listOfInt64_.addLong(input.readInt64());
               }
               input.popLimit(limit);
               break;
             }
             case 2496: {
-              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
-                listOfBool_ = new java.util.ArrayList<java.lang.Boolean>();
-                mutable_bitField0_ |= 0x00200000;
+              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+                listOfBool_ = newBooleanList();
+                mutable_bitField0_ |= 0x00000010;
               }
-              listOfBool_.add(input.readBool());
+              listOfBool_.addBoolean(input.readBool());
               break;
             }
             case 2498: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00200000) == 0x00200000) && input.getBytesUntilLimit() > 0) {
-                listOfBool_ = new java.util.ArrayList<java.lang.Boolean>();
-                mutable_bitField0_ |= 0x00200000;
+              if (!((mutable_bitField0_ & 0x00000010) != 0) && input.getBytesUntilLimit() > 0) {
+                listOfBool_ = newBooleanList();
+                mutable_bitField0_ |= 0x00000010;
               }
               while (input.getBytesUntilLimit() > 0) {
-                listOfBool_.add(input.readBool());
+                listOfBool_.addBoolean(input.readBool());
               }
               input.popLimit(limit);
               break;
             }
             case 2506: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
+              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
                 listOfString_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00400000;
+                mutable_bitField0_ |= 0x00000020;
               }
               listOfString_.add(s);
               break;
             }
             case 3200: {
               int rawValue = input.readEnum();
-              if (!((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
+              if (!((mutable_bitField0_ & 0x00000040) != 0)) {
                 listOfEnum_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00800000;
+                mutable_bitField0_ |= 0x00000040;
               }
               listOfEnum_.add(rawValue);
               break;
@@ -1554,9 +1687,9 @@ public final class TestingProto {
               int oldLimit = input.pushLimit(length);
               while(input.getBytesUntilLimit() > 0) {
                 int rawValue = input.readEnum();
-                if (!((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
+                if (!((mutable_bitField0_ & 0x00000040) != 0)) {
                   listOfEnum_ = new java.util.ArrayList<java.lang.Integer>();
-                  mutable_bitField0_ |= 0x00800000;
+                  mutable_bitField0_ |= 0x00000040;
                 }
                 listOfEnum_.add(rawValue);
               }
@@ -1575,6 +1708,13 @@ public final class TestingProto {
               thirdEnum_ = rawValue;
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1583,25 +1723,25 @@ public final class TestingProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
-          listOfDouble_ = java.util.Collections.unmodifiableList(listOfDouble_);
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          listOfDouble_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
-          listOfFloat_ = java.util.Collections.unmodifiableList(listOfFloat_);
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          listOfFloat_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
-          listOfInt32_ = java.util.Collections.unmodifiableList(listOfInt32_);
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          listOfInt32_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
-          listOfInt64_ = java.util.Collections.unmodifiableList(listOfInt64_);
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
+          listOfInt64_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00200000) == 0x00200000)) {
-          listOfBool_ = java.util.Collections.unmodifiableList(listOfBool_);
+        if (((mutable_bitField0_ & 0x00000010) != 0)) {
+          listOfBool_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
+        if (((mutable_bitField0_ & 0x00000020) != 0)) {
           listOfString_ = listOfString_.getUnmodifiableView();
         }
-        if (((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
+        if (((mutable_bitField0_ & 0x00000040) != 0)) {
           listOfEnum_ = java.util.Collections.unmodifiableList(listOfEnum_);
         }
         this.unknownFields = unknownFields.build();
@@ -1613,6 +1753,7 @@ public final class TestingProto {
       return io.structs.testing.TestingProto.internal_static_structs_testing_TestingMessage_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return io.structs.testing.TestingProto.internal_static_structs_testing_TestingMessage_fieldAccessorTable
@@ -1620,12 +1761,13 @@ public final class TestingProto {
               io.structs.testing.TestingProto.TestingMessage.class, io.structs.testing.TestingProto.TestingMessage.Builder.class);
     }
 
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
      * <code>string id = 1;</code>
+     * @return The id.
      */
+    @java.lang.Override
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
@@ -1640,7 +1782,9 @@ public final class TestingProto {
     }
     /**
      * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getIdBytes() {
       java.lang.Object ref = id_;
@@ -1659,7 +1803,9 @@ public final class TestingProto {
     private double fieldDouble_;
     /**
      * <code>double field_double = 100;</code>
+     * @return The fieldDouble.
      */
+    @java.lang.Override
     public double getFieldDouble() {
       return fieldDouble_;
     }
@@ -1668,7 +1814,9 @@ public final class TestingProto {
     private float fieldFloat_;
     /**
      * <code>float field_float = 101;</code>
+     * @return The fieldFloat.
      */
+    @java.lang.Override
     public float getFieldFloat() {
       return fieldFloat_;
     }
@@ -1677,7 +1825,9 @@ public final class TestingProto {
     private int fieldInt32_;
     /**
      * <code>int32 field_int32 = 102;</code>
+     * @return The fieldInt32.
      */
+    @java.lang.Override
     public int getFieldInt32() {
       return fieldInt32_;
     }
@@ -1686,7 +1836,9 @@ public final class TestingProto {
     private long fieldInt64_;
     /**
      * <code>int64 field_int64 = 103;</code>
+     * @return The fieldInt64.
      */
+    @java.lang.Override
     public long getFieldInt64() {
       return fieldInt64_;
     }
@@ -1695,7 +1847,9 @@ public final class TestingProto {
     private boolean fieldBool_;
     /**
      * <code>bool field_bool = 112;</code>
+     * @return The fieldBool.
      */
+    @java.lang.Override
     public boolean getFieldBool() {
       return fieldBool_;
     }
@@ -1704,7 +1858,9 @@ public final class TestingProto {
     private volatile java.lang.Object fieldString_;
     /**
      * <code>string field_string = 113;</code>
+     * @return The fieldString.
      */
+    @java.lang.Override
     public java.lang.String getFieldString() {
       java.lang.Object ref = fieldString_;
       if (ref instanceof java.lang.String) {
@@ -1719,7 +1875,9 @@ public final class TestingProto {
     }
     /**
      * <code>string field_string = 113;</code>
+     * @return The bytes for fieldString.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getFieldStringBytes() {
       java.lang.Object ref = fieldString_;
@@ -1738,7 +1896,9 @@ public final class TestingProto {
     private com.google.protobuf.ByteString fieldBytes_;
     /**
      * <code>bytes field_bytes = 114;</code>
+     * @return The fieldBytes.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getFieldBytes() {
       return fieldBytes_;
     }
@@ -1747,14 +1907,17 @@ public final class TestingProto {
     private int fieldEnum_;
     /**
      * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+     * @return The enum numeric value on the wire for fieldEnum.
      */
-    public int getFieldEnumValue() {
+    @java.lang.Override public int getFieldEnumValue() {
       return fieldEnum_;
     }
     /**
      * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+     * @return The fieldEnum.
      */
-    public io.structs.testing.TestingProto.TestingEnum getFieldEnum() {
+    @java.lang.Override public io.structs.testing.TestingProto.TestingEnum getFieldEnum() {
+      @SuppressWarnings("deprecation")
       io.structs.testing.TestingProto.TestingEnum result = io.structs.testing.TestingProto.TestingEnum.valueOf(fieldEnum_);
       return result == null ? io.structs.testing.TestingProto.TestingEnum.UNRECOGNIZED : result;
     }
@@ -1767,7 +1930,9 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
+     * @return Whether the fieldTimestamp field is set.
      */
+    @java.lang.Override
     public boolean hasFieldTimestamp() {
       return fieldTimestamp_ != null;
     }
@@ -1777,7 +1942,9 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
+     * @return The fieldTimestamp.
      */
+    @java.lang.Override
     public com.google.protobuf.Timestamp getFieldTimestamp() {
       return fieldTimestamp_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : fieldTimestamp_;
     }
@@ -1788,6 +1955,7 @@ public final class TestingProto {
      *
      * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getFieldTimestampOrBuilder() {
       return getFieldTimestamp();
     }
@@ -1796,19 +1964,24 @@ public final class TestingProto {
     private com.google.protobuf.DoubleValue fieldDoubleValue_;
     /**
      * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
+     * @return Whether the fieldDoubleValue field is set.
      */
+    @java.lang.Override
     public boolean hasFieldDoubleValue() {
       return fieldDoubleValue_ != null;
     }
     /**
      * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
+     * @return The fieldDoubleValue.
      */
+    @java.lang.Override
     public com.google.protobuf.DoubleValue getFieldDoubleValue() {
       return fieldDoubleValue_ == null ? com.google.protobuf.DoubleValue.getDefaultInstance() : fieldDoubleValue_;
     }
     /**
      * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.DoubleValueOrBuilder getFieldDoubleValueOrBuilder() {
       return getFieldDoubleValue();
     }
@@ -1817,19 +1990,24 @@ public final class TestingProto {
     private com.google.protobuf.FloatValue fieldFloatValue_;
     /**
      * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
+     * @return Whether the fieldFloatValue field is set.
      */
+    @java.lang.Override
     public boolean hasFieldFloatValue() {
       return fieldFloatValue_ != null;
     }
     /**
      * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
+     * @return The fieldFloatValue.
      */
+    @java.lang.Override
     public com.google.protobuf.FloatValue getFieldFloatValue() {
       return fieldFloatValue_ == null ? com.google.protobuf.FloatValue.getDefaultInstance() : fieldFloatValue_;
     }
     /**
      * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.FloatValueOrBuilder getFieldFloatValueOrBuilder() {
       return getFieldFloatValue();
     }
@@ -1838,19 +2016,24 @@ public final class TestingProto {
     private com.google.protobuf.Int64Value fieldInt64Value_;
     /**
      * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
+     * @return Whether the fieldInt64Value field is set.
      */
+    @java.lang.Override
     public boolean hasFieldInt64Value() {
       return fieldInt64Value_ != null;
     }
     /**
      * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
+     * @return The fieldInt64Value.
      */
+    @java.lang.Override
     public com.google.protobuf.Int64Value getFieldInt64Value() {
       return fieldInt64Value_ == null ? com.google.protobuf.Int64Value.getDefaultInstance() : fieldInt64Value_;
     }
     /**
      * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.Int64ValueOrBuilder getFieldInt64ValueOrBuilder() {
       return getFieldInt64Value();
     }
@@ -1859,19 +2042,24 @@ public final class TestingProto {
     private com.google.protobuf.Int32Value fieldInt32Value_;
     /**
      * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
+     * @return Whether the fieldInt32Value field is set.
      */
+    @java.lang.Override
     public boolean hasFieldInt32Value() {
       return fieldInt32Value_ != null;
     }
     /**
      * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
+     * @return The fieldInt32Value.
      */
+    @java.lang.Override
     public com.google.protobuf.Int32Value getFieldInt32Value() {
       return fieldInt32Value_ == null ? com.google.protobuf.Int32Value.getDefaultInstance() : fieldInt32Value_;
     }
     /**
      * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.Int32ValueOrBuilder getFieldInt32ValueOrBuilder() {
       return getFieldInt32Value();
     }
@@ -1880,19 +2068,24 @@ public final class TestingProto {
     private com.google.protobuf.BoolValue fieldBoolValue_;
     /**
      * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
+     * @return Whether the fieldBoolValue field is set.
      */
+    @java.lang.Override
     public boolean hasFieldBoolValue() {
       return fieldBoolValue_ != null;
     }
     /**
      * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
+     * @return The fieldBoolValue.
      */
+    @java.lang.Override
     public com.google.protobuf.BoolValue getFieldBoolValue() {
       return fieldBoolValue_ == null ? com.google.protobuf.BoolValue.getDefaultInstance() : fieldBoolValue_;
     }
     /**
      * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.BoolValueOrBuilder getFieldBoolValueOrBuilder() {
       return getFieldBoolValue();
     }
@@ -1901,19 +2094,24 @@ public final class TestingProto {
     private com.google.protobuf.StringValue fieldStringValue_;
     /**
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return Whether the fieldStringValue field is set.
      */
+    @java.lang.Override
     public boolean hasFieldStringValue() {
       return fieldStringValue_ != null;
     }
     /**
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return The fieldStringValue.
      */
+    @java.lang.Override
     public com.google.protobuf.StringValue getFieldStringValue() {
       return fieldStringValue_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : fieldStringValue_;
     }
     /**
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder() {
       return getFieldStringValue();
     }
@@ -1922,135 +2120,165 @@ public final class TestingProto {
     private com.google.protobuf.BytesValue fieldBytesValue_;
     /**
      * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     * @return Whether the fieldBytesValue field is set.
      */
+    @java.lang.Override
     public boolean hasFieldBytesValue() {
       return fieldBytesValue_ != null;
     }
     /**
      * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+     * @return The fieldBytesValue.
      */
+    @java.lang.Override
     public com.google.protobuf.BytesValue getFieldBytesValue() {
       return fieldBytesValue_ == null ? com.google.protobuf.BytesValue.getDefaultInstance() : fieldBytesValue_;
     }
     /**
      * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.BytesValueOrBuilder getFieldBytesValueOrBuilder() {
       return getFieldBytesValue();
     }
 
     public static final int LIST_OF_DOUBLE_FIELD_NUMBER = 300;
-    private java.util.List<java.lang.Double> listOfDouble_;
+    private com.google.protobuf.Internal.DoubleList listOfDouble_;
     /**
      * <code>repeated double list_of_double = 300;</code>
+     * @return A list containing the listOfDouble.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Double>
         getListOfDoubleList() {
       return listOfDouble_;
     }
     /**
      * <code>repeated double list_of_double = 300;</code>
+     * @return The count of listOfDouble.
      */
     public int getListOfDoubleCount() {
       return listOfDouble_.size();
     }
     /**
      * <code>repeated double list_of_double = 300;</code>
+     * @param index The index of the element to return.
+     * @return The listOfDouble at the given index.
      */
     public double getListOfDouble(int index) {
-      return listOfDouble_.get(index);
+      return listOfDouble_.getDouble(index);
     }
     private int listOfDoubleMemoizedSerializedSize = -1;
 
     public static final int LIST_OF_FLOAT_FIELD_NUMBER = 301;
-    private java.util.List<java.lang.Float> listOfFloat_;
+    private com.google.protobuf.Internal.FloatList listOfFloat_;
     /**
      * <code>repeated float list_of_float = 301;</code>
+     * @return A list containing the listOfFloat.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Float>
         getListOfFloatList() {
       return listOfFloat_;
     }
     /**
      * <code>repeated float list_of_float = 301;</code>
+     * @return The count of listOfFloat.
      */
     public int getListOfFloatCount() {
       return listOfFloat_.size();
     }
     /**
      * <code>repeated float list_of_float = 301;</code>
+     * @param index The index of the element to return.
+     * @return The listOfFloat at the given index.
      */
     public float getListOfFloat(int index) {
-      return listOfFloat_.get(index);
+      return listOfFloat_.getFloat(index);
     }
     private int listOfFloatMemoizedSerializedSize = -1;
 
     public static final int LIST_OF_INT32_FIELD_NUMBER = 302;
-    private java.util.List<java.lang.Integer> listOfInt32_;
+    private com.google.protobuf.Internal.IntList listOfInt32_;
     /**
      * <code>repeated int32 list_of_int32 = 302;</code>
+     * @return A list containing the listOfInt32.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Integer>
         getListOfInt32List() {
       return listOfInt32_;
     }
     /**
      * <code>repeated int32 list_of_int32 = 302;</code>
+     * @return The count of listOfInt32.
      */
     public int getListOfInt32Count() {
       return listOfInt32_.size();
     }
     /**
      * <code>repeated int32 list_of_int32 = 302;</code>
+     * @param index The index of the element to return.
+     * @return The listOfInt32 at the given index.
      */
     public int getListOfInt32(int index) {
-      return listOfInt32_.get(index);
+      return listOfInt32_.getInt(index);
     }
     private int listOfInt32MemoizedSerializedSize = -1;
 
     public static final int LIST_OF_INT64_FIELD_NUMBER = 303;
-    private java.util.List<java.lang.Long> listOfInt64_;
+    private com.google.protobuf.Internal.LongList listOfInt64_;
     /**
      * <code>repeated int64 list_of_int64 = 303;</code>
+     * @return A list containing the listOfInt64.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Long>
         getListOfInt64List() {
       return listOfInt64_;
     }
     /**
      * <code>repeated int64 list_of_int64 = 303;</code>
+     * @return The count of listOfInt64.
      */
     public int getListOfInt64Count() {
       return listOfInt64_.size();
     }
     /**
      * <code>repeated int64 list_of_int64 = 303;</code>
+     * @param index The index of the element to return.
+     * @return The listOfInt64 at the given index.
      */
     public long getListOfInt64(int index) {
-      return listOfInt64_.get(index);
+      return listOfInt64_.getLong(index);
     }
     private int listOfInt64MemoizedSerializedSize = -1;
 
     public static final int LIST_OF_BOOL_FIELD_NUMBER = 312;
-    private java.util.List<java.lang.Boolean> listOfBool_;
+    private com.google.protobuf.Internal.BooleanList listOfBool_;
     /**
      * <code>repeated bool list_of_bool = 312;</code>
+     * @return A list containing the listOfBool.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Boolean>
         getListOfBoolList() {
       return listOfBool_;
     }
     /**
      * <code>repeated bool list_of_bool = 312;</code>
+     * @return The count of listOfBool.
      */
     public int getListOfBoolCount() {
       return listOfBool_.size();
     }
     /**
      * <code>repeated bool list_of_bool = 312;</code>
+     * @param index The index of the element to return.
+     * @return The listOfBool at the given index.
      */
     public boolean getListOfBool(int index) {
-      return listOfBool_.get(index);
+      return listOfBool_.getBoolean(index);
     }
     private int listOfBoolMemoizedSerializedSize = -1;
 
@@ -2063,6 +2291,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @return A list containing the listOfString.
      */
     public com.google.protobuf.ProtocolStringList
         getListOfStringList() {
@@ -2075,6 +2304,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @return The count of listOfString.
      */
     public int getListOfStringCount() {
       return listOfString_.size();
@@ -2086,6 +2316,8 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @param index The index of the element to return.
+     * @return The listOfString at the given index.
      */
     public java.lang.String getListOfString(int index) {
       return listOfString_.get(index);
@@ -2097,6 +2329,8 @@ public final class TestingProto {
      * </pre>
      *
      * <code>repeated string list_of_string = 313;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the listOfString at the given index.
      */
     public com.google.protobuf.ByteString
         getListOfStringBytes(int index) {
@@ -2110,39 +2344,52 @@ public final class TestingProto {
             new com.google.protobuf.Internal.ListAdapter.Converter<
                 java.lang.Integer, io.structs.testing.TestingProto.TestingEnum>() {
               public io.structs.testing.TestingProto.TestingEnum convert(java.lang.Integer from) {
+                @SuppressWarnings("deprecation")
                 io.structs.testing.TestingProto.TestingEnum result = io.structs.testing.TestingProto.TestingEnum.valueOf(from);
                 return result == null ? io.structs.testing.TestingProto.TestingEnum.UNRECOGNIZED : result;
               }
             };
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @return A list containing the listOfEnum.
      */
+    @java.lang.Override
     public java.util.List<io.structs.testing.TestingProto.TestingEnum> getListOfEnumList() {
       return new com.google.protobuf.Internal.ListAdapter<
           java.lang.Integer, io.structs.testing.TestingProto.TestingEnum>(listOfEnum_, listOfEnum_converter_);
     }
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @return The count of listOfEnum.
      */
+    @java.lang.Override
     public int getListOfEnumCount() {
       return listOfEnum_.size();
     }
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @param index The index of the element to return.
+     * @return The listOfEnum at the given index.
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.TestingEnum getListOfEnum(int index) {
       return listOfEnum_converter_.convert(listOfEnum_.get(index));
     }
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @return A list containing the enum numeric values on the wire for listOfEnum.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Integer>
     getListOfEnumValueList() {
       return listOfEnum_;
     }
     /**
      * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of listOfEnum at the given index.
      */
+    @java.lang.Override
     public int getListOfEnumValue(int index) {
       return listOfEnum_.get(index);
     }
@@ -2152,14 +2399,17 @@ public final class TestingProto {
     private int secondEnum_;
     /**
      * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     * @return The enum numeric value on the wire for secondEnum.
      */
-    public int getSecondEnumValue() {
+    @java.lang.Override public int getSecondEnumValue() {
       return secondEnum_;
     }
     /**
      * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+     * @return The secondEnum.
      */
-    public io.structs.testing.TestingProto.SecondEnum getSecondEnum() {
+    @java.lang.Override public io.structs.testing.TestingProto.SecondEnum getSecondEnum() {
+      @SuppressWarnings("deprecation")
       io.structs.testing.TestingProto.SecondEnum result = io.structs.testing.TestingProto.SecondEnum.valueOf(secondEnum_);
       return result == null ? io.structs.testing.TestingProto.SecondEnum.UNRECOGNIZED : result;
     }
@@ -2168,19 +2418,23 @@ public final class TestingProto {
     private int thirdEnum_;
     /**
      * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     * @return The enum numeric value on the wire for thirdEnum.
      */
-    public int getThirdEnumValue() {
+    @java.lang.Override public int getThirdEnumValue() {
       return thirdEnum_;
     }
     /**
      * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+     * @return The thirdEnum.
      */
-    public io.structs.testing.TestingProto.ThirdEnum getThirdEnum() {
+    @java.lang.Override public io.structs.testing.TestingProto.ThirdEnum getThirdEnum() {
+      @SuppressWarnings("deprecation")
       io.structs.testing.TestingProto.ThirdEnum result = io.structs.testing.TestingProto.ThirdEnum.valueOf(thirdEnum_);
       return result == null ? io.structs.testing.TestingProto.ThirdEnum.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2190,6 +2444,7 @@ public final class TestingProto {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -2249,35 +2504,35 @@ public final class TestingProto {
         output.writeUInt32NoTag(listOfDoubleMemoizedSerializedSize);
       }
       for (int i = 0; i < listOfDouble_.size(); i++) {
-        output.writeDoubleNoTag(listOfDouble_.get(i));
+        output.writeDoubleNoTag(listOfDouble_.getDouble(i));
       }
       if (getListOfFloatList().size() > 0) {
         output.writeUInt32NoTag(2410);
         output.writeUInt32NoTag(listOfFloatMemoizedSerializedSize);
       }
       for (int i = 0; i < listOfFloat_.size(); i++) {
-        output.writeFloatNoTag(listOfFloat_.get(i));
+        output.writeFloatNoTag(listOfFloat_.getFloat(i));
       }
       if (getListOfInt32List().size() > 0) {
         output.writeUInt32NoTag(2418);
         output.writeUInt32NoTag(listOfInt32MemoizedSerializedSize);
       }
       for (int i = 0; i < listOfInt32_.size(); i++) {
-        output.writeInt32NoTag(listOfInt32_.get(i));
+        output.writeInt32NoTag(listOfInt32_.getInt(i));
       }
       if (getListOfInt64List().size() > 0) {
         output.writeUInt32NoTag(2426);
         output.writeUInt32NoTag(listOfInt64MemoizedSerializedSize);
       }
       for (int i = 0; i < listOfInt64_.size(); i++) {
-        output.writeInt64NoTag(listOfInt64_.get(i));
+        output.writeInt64NoTag(listOfInt64_.getLong(i));
       }
       if (getListOfBoolList().size() > 0) {
         output.writeUInt32NoTag(2498);
         output.writeUInt32NoTag(listOfBoolMemoizedSerializedSize);
       }
       for (int i = 0; i < listOfBool_.size(); i++) {
-        output.writeBoolNoTag(listOfBool_.get(i));
+        output.writeBoolNoTag(listOfBool_.getBoolean(i));
       }
       for (int i = 0; i < listOfString_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 313, listOfString_.getRaw(i));
@@ -2298,6 +2553,7 @@ public final class TestingProto {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -2395,7 +2651,7 @@ public final class TestingProto {
         int dataSize = 0;
         for (int i = 0; i < listOfInt32_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(listOfInt32_.get(i));
+            .computeInt32SizeNoTag(listOfInt32_.getInt(i));
         }
         size += dataSize;
         if (!getListOfInt32List().isEmpty()) {
@@ -2409,7 +2665,7 @@ public final class TestingProto {
         int dataSize = 0;
         for (int i = 0; i < listOfInt64_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(listOfInt64_.get(i));
+            .computeInt64SizeNoTag(listOfInt64_.getLong(i));
         }
         size += dataSize;
         if (!getListOfInt64List().isEmpty()) {
@@ -2473,85 +2729,82 @@ public final class TestingProto {
       }
       io.structs.testing.TestingProto.TestingMessage other = (io.structs.testing.TestingProto.TestingMessage) obj;
 
-      boolean result = true;
-      result = result && getId()
-          .equals(other.getId());
-      result = result && (
-          java.lang.Double.doubleToLongBits(getFieldDouble())
-          == java.lang.Double.doubleToLongBits(
-              other.getFieldDouble()));
-      result = result && (
-          java.lang.Float.floatToIntBits(getFieldFloat())
-          == java.lang.Float.floatToIntBits(
-              other.getFieldFloat()));
-      result = result && (getFieldInt32()
-          == other.getFieldInt32());
-      result = result && (getFieldInt64()
-          == other.getFieldInt64());
-      result = result && (getFieldBool()
-          == other.getFieldBool());
-      result = result && getFieldString()
-          .equals(other.getFieldString());
-      result = result && getFieldBytes()
-          .equals(other.getFieldBytes());
-      result = result && fieldEnum_ == other.fieldEnum_;
-      result = result && (hasFieldTimestamp() == other.hasFieldTimestamp());
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (java.lang.Double.doubleToLongBits(getFieldDouble())
+          != java.lang.Double.doubleToLongBits(
+              other.getFieldDouble())) return false;
+      if (java.lang.Float.floatToIntBits(getFieldFloat())
+          != java.lang.Float.floatToIntBits(
+              other.getFieldFloat())) return false;
+      if (getFieldInt32()
+          != other.getFieldInt32()) return false;
+      if (getFieldInt64()
+          != other.getFieldInt64()) return false;
+      if (getFieldBool()
+          != other.getFieldBool()) return false;
+      if (!getFieldString()
+          .equals(other.getFieldString())) return false;
+      if (!getFieldBytes()
+          .equals(other.getFieldBytes())) return false;
+      if (fieldEnum_ != other.fieldEnum_) return false;
+      if (hasFieldTimestamp() != other.hasFieldTimestamp()) return false;
       if (hasFieldTimestamp()) {
-        result = result && getFieldTimestamp()
-            .equals(other.getFieldTimestamp());
+        if (!getFieldTimestamp()
+            .equals(other.getFieldTimestamp())) return false;
       }
-      result = result && (hasFieldDoubleValue() == other.hasFieldDoubleValue());
+      if (hasFieldDoubleValue() != other.hasFieldDoubleValue()) return false;
       if (hasFieldDoubleValue()) {
-        result = result && getFieldDoubleValue()
-            .equals(other.getFieldDoubleValue());
+        if (!getFieldDoubleValue()
+            .equals(other.getFieldDoubleValue())) return false;
       }
-      result = result && (hasFieldFloatValue() == other.hasFieldFloatValue());
+      if (hasFieldFloatValue() != other.hasFieldFloatValue()) return false;
       if (hasFieldFloatValue()) {
-        result = result && getFieldFloatValue()
-            .equals(other.getFieldFloatValue());
+        if (!getFieldFloatValue()
+            .equals(other.getFieldFloatValue())) return false;
       }
-      result = result && (hasFieldInt64Value() == other.hasFieldInt64Value());
+      if (hasFieldInt64Value() != other.hasFieldInt64Value()) return false;
       if (hasFieldInt64Value()) {
-        result = result && getFieldInt64Value()
-            .equals(other.getFieldInt64Value());
+        if (!getFieldInt64Value()
+            .equals(other.getFieldInt64Value())) return false;
       }
-      result = result && (hasFieldInt32Value() == other.hasFieldInt32Value());
+      if (hasFieldInt32Value() != other.hasFieldInt32Value()) return false;
       if (hasFieldInt32Value()) {
-        result = result && getFieldInt32Value()
-            .equals(other.getFieldInt32Value());
+        if (!getFieldInt32Value()
+            .equals(other.getFieldInt32Value())) return false;
       }
-      result = result && (hasFieldBoolValue() == other.hasFieldBoolValue());
+      if (hasFieldBoolValue() != other.hasFieldBoolValue()) return false;
       if (hasFieldBoolValue()) {
-        result = result && getFieldBoolValue()
-            .equals(other.getFieldBoolValue());
+        if (!getFieldBoolValue()
+            .equals(other.getFieldBoolValue())) return false;
       }
-      result = result && (hasFieldStringValue() == other.hasFieldStringValue());
+      if (hasFieldStringValue() != other.hasFieldStringValue()) return false;
       if (hasFieldStringValue()) {
-        result = result && getFieldStringValue()
-            .equals(other.getFieldStringValue());
+        if (!getFieldStringValue()
+            .equals(other.getFieldStringValue())) return false;
       }
-      result = result && (hasFieldBytesValue() == other.hasFieldBytesValue());
+      if (hasFieldBytesValue() != other.hasFieldBytesValue()) return false;
       if (hasFieldBytesValue()) {
-        result = result && getFieldBytesValue()
-            .equals(other.getFieldBytesValue());
+        if (!getFieldBytesValue()
+            .equals(other.getFieldBytesValue())) return false;
       }
-      result = result && getListOfDoubleList()
-          .equals(other.getListOfDoubleList());
-      result = result && getListOfFloatList()
-          .equals(other.getListOfFloatList());
-      result = result && getListOfInt32List()
-          .equals(other.getListOfInt32List());
-      result = result && getListOfInt64List()
-          .equals(other.getListOfInt64List());
-      result = result && getListOfBoolList()
-          .equals(other.getListOfBoolList());
-      result = result && getListOfStringList()
-          .equals(other.getListOfStringList());
-      result = result && listOfEnum_.equals(other.listOfEnum_);
-      result = result && secondEnum_ == other.secondEnum_;
-      result = result && thirdEnum_ == other.thirdEnum_;
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getListOfDoubleList()
+          .equals(other.getListOfDoubleList())) return false;
+      if (!getListOfFloatList()
+          .equals(other.getListOfFloatList())) return false;
+      if (!getListOfInt32List()
+          .equals(other.getListOfInt32List())) return false;
+      if (!getListOfInt64List()
+          .equals(other.getListOfInt64List())) return false;
+      if (!getListOfBoolList()
+          .equals(other.getListOfBoolList())) return false;
+      if (!getListOfStringList()
+          .equals(other.getListOfStringList())) return false;
+      if (!listOfEnum_.equals(other.listOfEnum_)) return false;
+      if (secondEnum_ != other.secondEnum_) return false;
+      if (thirdEnum_ != other.thirdEnum_) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2722,6 +2975,7 @@ public final class TestingProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -2729,6 +2983,7 @@ public final class TestingProto {
     public static Builder newBuilder(io.structs.testing.TestingProto.TestingMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -2752,6 +3007,7 @@ public final class TestingProto {
         return io.structs.testing.TestingProto.internal_static_structs_testing_TestingMessage_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_TestingMessage_fieldAccessorTable
@@ -2774,6 +3030,7 @@ public final class TestingProto {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         id_ = "";
@@ -2842,20 +3099,20 @@ public final class TestingProto {
           fieldBytesValue_ = null;
           fieldBytesValueBuilder_ = null;
         }
-        listOfDouble_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00020000);
-        listOfFloat_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00040000);
-        listOfInt32_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00080000);
-        listOfInt64_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00100000);
-        listOfBool_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00200000);
+        listOfDouble_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        listOfFloat_ = emptyFloatList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        listOfInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        listOfInt64_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        listOfBool_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000010);
         listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x00000020);
         listOfEnum_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x00000040);
         secondEnum_ = 0;
 
         thirdEnum_ = 0;
@@ -2863,15 +3120,18 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_TestingMessage_descriptor;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.TestingMessage getDefaultInstanceForType() {
         return io.structs.testing.TestingProto.TestingMessage.getDefaultInstance();
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.TestingMessage build() {
         io.structs.testing.TestingProto.TestingMessage result = buildPartial();
         if (!result.isInitialized()) {
@@ -2880,10 +3140,10 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.TestingMessage buildPartial() {
         io.structs.testing.TestingProto.TestingMessage result = new io.structs.testing.TestingProto.TestingMessage(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.id_ = id_;
         result.fieldDouble_ = fieldDouble_;
         result.fieldFloat_ = fieldFloat_;
@@ -2933,74 +3193,80 @@ public final class TestingProto {
         } else {
           result.fieldBytesValue_ = fieldBytesValueBuilder_.build();
         }
-        if (((bitField0_ & 0x00020000) == 0x00020000)) {
-          listOfDouble_ = java.util.Collections.unmodifiableList(listOfDouble_);
-          bitField0_ = (bitField0_ & ~0x00020000);
+        if (((bitField0_ & 0x00000001) != 0)) {
+          listOfDouble_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.listOfDouble_ = listOfDouble_;
-        if (((bitField0_ & 0x00040000) == 0x00040000)) {
-          listOfFloat_ = java.util.Collections.unmodifiableList(listOfFloat_);
-          bitField0_ = (bitField0_ & ~0x00040000);
+        if (((bitField0_ & 0x00000002) != 0)) {
+          listOfFloat_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.listOfFloat_ = listOfFloat_;
-        if (((bitField0_ & 0x00080000) == 0x00080000)) {
-          listOfInt32_ = java.util.Collections.unmodifiableList(listOfInt32_);
-          bitField0_ = (bitField0_ & ~0x00080000);
+        if (((bitField0_ & 0x00000004) != 0)) {
+          listOfInt32_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.listOfInt32_ = listOfInt32_;
-        if (((bitField0_ & 0x00100000) == 0x00100000)) {
-          listOfInt64_ = java.util.Collections.unmodifiableList(listOfInt64_);
-          bitField0_ = (bitField0_ & ~0x00100000);
+        if (((bitField0_ & 0x00000008) != 0)) {
+          listOfInt64_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000008);
         }
         result.listOfInt64_ = listOfInt64_;
-        if (((bitField0_ & 0x00200000) == 0x00200000)) {
-          listOfBool_ = java.util.Collections.unmodifiableList(listOfBool_);
-          bitField0_ = (bitField0_ & ~0x00200000);
+        if (((bitField0_ & 0x00000010) != 0)) {
+          listOfBool_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.listOfBool_ = listOfBool_;
-        if (((bitField0_ & 0x00400000) == 0x00400000)) {
+        if (((bitField0_ & 0x00000020) != 0)) {
           listOfString_ = listOfString_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00400000);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
         result.listOfString_ = listOfString_;
-        if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        if (((bitField0_ & 0x00000040) != 0)) {
           listOfEnum_ = java.util.Collections.unmodifiableList(listOfEnum_);
-          bitField0_ = (bitField0_ & ~0x00800000);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
         result.listOfEnum_ = listOfEnum_;
         result.secondEnum_ = secondEnum_;
         result.thirdEnum_ = thirdEnum_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.structs.testing.TestingProto.TestingMessage) {
           return mergeFrom((io.structs.testing.TestingProto.TestingMessage)other);
@@ -3068,7 +3334,7 @@ public final class TestingProto {
         if (!other.listOfDouble_.isEmpty()) {
           if (listOfDouble_.isEmpty()) {
             listOfDouble_ = other.listOfDouble_;
-            bitField0_ = (bitField0_ & ~0x00020000);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureListOfDoubleIsMutable();
             listOfDouble_.addAll(other.listOfDouble_);
@@ -3078,7 +3344,7 @@ public final class TestingProto {
         if (!other.listOfFloat_.isEmpty()) {
           if (listOfFloat_.isEmpty()) {
             listOfFloat_ = other.listOfFloat_;
-            bitField0_ = (bitField0_ & ~0x00040000);
+            bitField0_ = (bitField0_ & ~0x00000002);
           } else {
             ensureListOfFloatIsMutable();
             listOfFloat_.addAll(other.listOfFloat_);
@@ -3088,7 +3354,7 @@ public final class TestingProto {
         if (!other.listOfInt32_.isEmpty()) {
           if (listOfInt32_.isEmpty()) {
             listOfInt32_ = other.listOfInt32_;
-            bitField0_ = (bitField0_ & ~0x00080000);
+            bitField0_ = (bitField0_ & ~0x00000004);
           } else {
             ensureListOfInt32IsMutable();
             listOfInt32_.addAll(other.listOfInt32_);
@@ -3098,7 +3364,7 @@ public final class TestingProto {
         if (!other.listOfInt64_.isEmpty()) {
           if (listOfInt64_.isEmpty()) {
             listOfInt64_ = other.listOfInt64_;
-            bitField0_ = (bitField0_ & ~0x00100000);
+            bitField0_ = (bitField0_ & ~0x00000008);
           } else {
             ensureListOfInt64IsMutable();
             listOfInt64_.addAll(other.listOfInt64_);
@@ -3108,7 +3374,7 @@ public final class TestingProto {
         if (!other.listOfBool_.isEmpty()) {
           if (listOfBool_.isEmpty()) {
             listOfBool_ = other.listOfBool_;
-            bitField0_ = (bitField0_ & ~0x00200000);
+            bitField0_ = (bitField0_ & ~0x00000010);
           } else {
             ensureListOfBoolIsMutable();
             listOfBool_.addAll(other.listOfBool_);
@@ -3118,7 +3384,7 @@ public final class TestingProto {
         if (!other.listOfString_.isEmpty()) {
           if (listOfString_.isEmpty()) {
             listOfString_ = other.listOfString_;
-            bitField0_ = (bitField0_ & ~0x00400000);
+            bitField0_ = (bitField0_ & ~0x00000020);
           } else {
             ensureListOfStringIsMutable();
             listOfString_.addAll(other.listOfString_);
@@ -3128,7 +3394,7 @@ public final class TestingProto {
         if (!other.listOfEnum_.isEmpty()) {
           if (listOfEnum_.isEmpty()) {
             listOfEnum_ = other.listOfEnum_;
-            bitField0_ = (bitField0_ & ~0x00800000);
+            bitField0_ = (bitField0_ & ~0x00000040);
           } else {
             ensureListOfEnumIsMutable();
             listOfEnum_.addAll(other.listOfEnum_);
@@ -3146,10 +3412,12 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3172,6 +3440,7 @@ public final class TestingProto {
       private java.lang.Object id_ = "";
       /**
        * <code>string id = 1;</code>
+       * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -3187,6 +3456,7 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @return The bytes for id.
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -3203,6 +3473,8 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
       public Builder setId(
           java.lang.String value) {
@@ -3216,6 +3488,7 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId() {
         
@@ -3225,6 +3498,8 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -3241,12 +3516,16 @@ public final class TestingProto {
       private double fieldDouble_ ;
       /**
        * <code>double field_double = 100;</code>
+       * @return The fieldDouble.
        */
+      @java.lang.Override
       public double getFieldDouble() {
         return fieldDouble_;
       }
       /**
        * <code>double field_double = 100;</code>
+       * @param value The fieldDouble to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldDouble(double value) {
         
@@ -3256,6 +3535,7 @@ public final class TestingProto {
       }
       /**
        * <code>double field_double = 100;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldDouble() {
         
@@ -3267,12 +3547,16 @@ public final class TestingProto {
       private float fieldFloat_ ;
       /**
        * <code>float field_float = 101;</code>
+       * @return The fieldFloat.
        */
+      @java.lang.Override
       public float getFieldFloat() {
         return fieldFloat_;
       }
       /**
        * <code>float field_float = 101;</code>
+       * @param value The fieldFloat to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldFloat(float value) {
         
@@ -3282,6 +3566,7 @@ public final class TestingProto {
       }
       /**
        * <code>float field_float = 101;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldFloat() {
         
@@ -3293,12 +3578,16 @@ public final class TestingProto {
       private int fieldInt32_ ;
       /**
        * <code>int32 field_int32 = 102;</code>
+       * @return The fieldInt32.
        */
+      @java.lang.Override
       public int getFieldInt32() {
         return fieldInt32_;
       }
       /**
        * <code>int32 field_int32 = 102;</code>
+       * @param value The fieldInt32 to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldInt32(int value) {
         
@@ -3308,6 +3597,7 @@ public final class TestingProto {
       }
       /**
        * <code>int32 field_int32 = 102;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldInt32() {
         
@@ -3319,12 +3609,16 @@ public final class TestingProto {
       private long fieldInt64_ ;
       /**
        * <code>int64 field_int64 = 103;</code>
+       * @return The fieldInt64.
        */
+      @java.lang.Override
       public long getFieldInt64() {
         return fieldInt64_;
       }
       /**
        * <code>int64 field_int64 = 103;</code>
+       * @param value The fieldInt64 to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldInt64(long value) {
         
@@ -3334,6 +3628,7 @@ public final class TestingProto {
       }
       /**
        * <code>int64 field_int64 = 103;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldInt64() {
         
@@ -3345,12 +3640,16 @@ public final class TestingProto {
       private boolean fieldBool_ ;
       /**
        * <code>bool field_bool = 112;</code>
+       * @return The fieldBool.
        */
+      @java.lang.Override
       public boolean getFieldBool() {
         return fieldBool_;
       }
       /**
        * <code>bool field_bool = 112;</code>
+       * @param value The fieldBool to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldBool(boolean value) {
         
@@ -3360,6 +3659,7 @@ public final class TestingProto {
       }
       /**
        * <code>bool field_bool = 112;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldBool() {
         
@@ -3371,6 +3671,7 @@ public final class TestingProto {
       private java.lang.Object fieldString_ = "";
       /**
        * <code>string field_string = 113;</code>
+       * @return The fieldString.
        */
       public java.lang.String getFieldString() {
         java.lang.Object ref = fieldString_;
@@ -3386,6 +3687,7 @@ public final class TestingProto {
       }
       /**
        * <code>string field_string = 113;</code>
+       * @return The bytes for fieldString.
        */
       public com.google.protobuf.ByteString
           getFieldStringBytes() {
@@ -3402,6 +3704,8 @@ public final class TestingProto {
       }
       /**
        * <code>string field_string = 113;</code>
+       * @param value The fieldString to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldString(
           java.lang.String value) {
@@ -3415,6 +3719,7 @@ public final class TestingProto {
       }
       /**
        * <code>string field_string = 113;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldString() {
         
@@ -3424,6 +3729,8 @@ public final class TestingProto {
       }
       /**
        * <code>string field_string = 113;</code>
+       * @param value The bytes for fieldString to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldStringBytes(
           com.google.protobuf.ByteString value) {
@@ -3440,12 +3747,16 @@ public final class TestingProto {
       private com.google.protobuf.ByteString fieldBytes_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes field_bytes = 114;</code>
+       * @return The fieldBytes.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getFieldBytes() {
         return fieldBytes_;
       }
       /**
        * <code>bytes field_bytes = 114;</code>
+       * @param value The fieldBytes to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -3458,6 +3769,7 @@ public final class TestingProto {
       }
       /**
        * <code>bytes field_bytes = 114;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldBytes() {
         
@@ -3469,27 +3781,36 @@ public final class TestingProto {
       private int fieldEnum_ = 0;
       /**
        * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+       * @return The enum numeric value on the wire for fieldEnum.
        */
-      public int getFieldEnumValue() {
+      @java.lang.Override public int getFieldEnumValue() {
         return fieldEnum_;
       }
       /**
        * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+       * @param value The enum numeric value on the wire for fieldEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldEnumValue(int value) {
+        
         fieldEnum_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+       * @return The fieldEnum.
        */
+      @java.lang.Override
       public io.structs.testing.TestingProto.TestingEnum getFieldEnum() {
+        @SuppressWarnings("deprecation")
         io.structs.testing.TestingProto.TestingEnum result = io.structs.testing.TestingProto.TestingEnum.valueOf(fieldEnum_);
         return result == null ? io.structs.testing.TestingProto.TestingEnum.UNRECOGNIZED : result;
       }
       /**
        * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+       * @param value The fieldEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setFieldEnum(io.structs.testing.TestingProto.TestingEnum value) {
         if (value == null) {
@@ -3502,6 +3823,7 @@ public final class TestingProto {
       }
       /**
        * <code>.structs.testing.TestingEnum field_enum = 115;</code>
+       * @return This builder for chaining.
        */
       public Builder clearFieldEnum() {
         
@@ -3510,7 +3832,7 @@ public final class TestingProto {
         return this;
       }
 
-      private com.google.protobuf.Timestamp fieldTimestamp_ = null;
+      private com.google.protobuf.Timestamp fieldTimestamp_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> fieldTimestampBuilder_;
       /**
@@ -3519,6 +3841,7 @@ public final class TestingProto {
        * </pre>
        *
        * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
+       * @return Whether the fieldTimestamp field is set.
        */
       public boolean hasFieldTimestamp() {
         return fieldTimestampBuilder_ != null || fieldTimestamp_ != null;
@@ -3529,6 +3852,7 @@ public final class TestingProto {
        * </pre>
        *
        * <code>.google.protobuf.Timestamp field_timestamp = 200;</code>
+       * @return The fieldTimestamp.
        */
       public com.google.protobuf.Timestamp getFieldTimestamp() {
         if (fieldTimestampBuilder_ == null) {
@@ -3663,17 +3987,19 @@ public final class TestingProto {
         return fieldTimestampBuilder_;
       }
 
-      private com.google.protobuf.DoubleValue fieldDoubleValue_ = null;
+      private com.google.protobuf.DoubleValue fieldDoubleValue_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> fieldDoubleValueBuilder_;
       /**
        * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
+       * @return Whether the fieldDoubleValue field is set.
        */
       public boolean hasFieldDoubleValue() {
         return fieldDoubleValueBuilder_ != null || fieldDoubleValue_ != null;
       }
       /**
        * <code>.google.protobuf.DoubleValue field_double_value = 201;</code>
+       * @return The fieldDoubleValue.
        */
       public com.google.protobuf.DoubleValue getFieldDoubleValue() {
         if (fieldDoubleValueBuilder_ == null) {
@@ -3780,17 +4106,19 @@ public final class TestingProto {
         return fieldDoubleValueBuilder_;
       }
 
-      private com.google.protobuf.FloatValue fieldFloatValue_ = null;
+      private com.google.protobuf.FloatValue fieldFloatValue_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.FloatValue, com.google.protobuf.FloatValue.Builder, com.google.protobuf.FloatValueOrBuilder> fieldFloatValueBuilder_;
       /**
        * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
+       * @return Whether the fieldFloatValue field is set.
        */
       public boolean hasFieldFloatValue() {
         return fieldFloatValueBuilder_ != null || fieldFloatValue_ != null;
       }
       /**
        * <code>.google.protobuf.FloatValue field_float_value = 202;</code>
+       * @return The fieldFloatValue.
        */
       public com.google.protobuf.FloatValue getFieldFloatValue() {
         if (fieldFloatValueBuilder_ == null) {
@@ -3897,17 +4225,19 @@ public final class TestingProto {
         return fieldFloatValueBuilder_;
       }
 
-      private com.google.protobuf.Int64Value fieldInt64Value_ = null;
+      private com.google.protobuf.Int64Value fieldInt64Value_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Int64Value, com.google.protobuf.Int64Value.Builder, com.google.protobuf.Int64ValueOrBuilder> fieldInt64ValueBuilder_;
       /**
        * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
+       * @return Whether the fieldInt64Value field is set.
        */
       public boolean hasFieldInt64Value() {
         return fieldInt64ValueBuilder_ != null || fieldInt64Value_ != null;
       }
       /**
        * <code>.google.protobuf.Int64Value field_int64_value = 203;</code>
+       * @return The fieldInt64Value.
        */
       public com.google.protobuf.Int64Value getFieldInt64Value() {
         if (fieldInt64ValueBuilder_ == null) {
@@ -4014,17 +4344,19 @@ public final class TestingProto {
         return fieldInt64ValueBuilder_;
       }
 
-      private com.google.protobuf.Int32Value fieldInt32Value_ = null;
+      private com.google.protobuf.Int32Value fieldInt32Value_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> fieldInt32ValueBuilder_;
       /**
        * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
+       * @return Whether the fieldInt32Value field is set.
        */
       public boolean hasFieldInt32Value() {
         return fieldInt32ValueBuilder_ != null || fieldInt32Value_ != null;
       }
       /**
        * <code>.google.protobuf.Int32Value field_int32_value = 205;</code>
+       * @return The fieldInt32Value.
        */
       public com.google.protobuf.Int32Value getFieldInt32Value() {
         if (fieldInt32ValueBuilder_ == null) {
@@ -4131,17 +4463,19 @@ public final class TestingProto {
         return fieldInt32ValueBuilder_;
       }
 
-      private com.google.protobuf.BoolValue fieldBoolValue_ = null;
+      private com.google.protobuf.BoolValue fieldBoolValue_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.BoolValue, com.google.protobuf.BoolValue.Builder, com.google.protobuf.BoolValueOrBuilder> fieldBoolValueBuilder_;
       /**
        * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
+       * @return Whether the fieldBoolValue field is set.
        */
       public boolean hasFieldBoolValue() {
         return fieldBoolValueBuilder_ != null || fieldBoolValue_ != null;
       }
       /**
        * <code>.google.protobuf.BoolValue field_bool_value = 207;</code>
+       * @return The fieldBoolValue.
        */
       public com.google.protobuf.BoolValue getFieldBoolValue() {
         if (fieldBoolValueBuilder_ == null) {
@@ -4248,17 +4582,19 @@ public final class TestingProto {
         return fieldBoolValueBuilder_;
       }
 
-      private com.google.protobuf.StringValue fieldStringValue_ = null;
+      private com.google.protobuf.StringValue fieldStringValue_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> fieldStringValueBuilder_;
       /**
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       * @return Whether the fieldStringValue field is set.
        */
       public boolean hasFieldStringValue() {
         return fieldStringValueBuilder_ != null || fieldStringValue_ != null;
       }
       /**
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       * @return The fieldStringValue.
        */
       public com.google.protobuf.StringValue getFieldStringValue() {
         if (fieldStringValueBuilder_ == null) {
@@ -4365,17 +4701,19 @@ public final class TestingProto {
         return fieldStringValueBuilder_;
       }
 
-      private com.google.protobuf.BytesValue fieldBytesValue_ = null;
+      private com.google.protobuf.BytesValue fieldBytesValue_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.BytesValue, com.google.protobuf.BytesValue.Builder, com.google.protobuf.BytesValueOrBuilder> fieldBytesValueBuilder_;
       /**
        * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       * @return Whether the fieldBytesValue field is set.
        */
       public boolean hasFieldBytesValue() {
         return fieldBytesValueBuilder_ != null || fieldBytesValue_ != null;
       }
       /**
        * <code>.google.protobuf.BytesValue field_bytes_value = 209;</code>
+       * @return The fieldBytesValue.
        */
       public com.google.protobuf.BytesValue getFieldBytesValue() {
         if (fieldBytesValueBuilder_ == null) {
@@ -4482,53 +4820,65 @@ public final class TestingProto {
         return fieldBytesValueBuilder_;
       }
 
-      private java.util.List<java.lang.Double> listOfDouble_ = java.util.Collections.emptyList();
+      private com.google.protobuf.Internal.DoubleList listOfDouble_ = emptyDoubleList();
       private void ensureListOfDoubleIsMutable() {
-        if (!((bitField0_ & 0x00020000) == 0x00020000)) {
-          listOfDouble_ = new java.util.ArrayList<java.lang.Double>(listOfDouble_);
-          bitField0_ |= 0x00020000;
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          listOfDouble_ = mutableCopy(listOfDouble_);
+          bitField0_ |= 0x00000001;
          }
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @return A list containing the listOfDouble.
        */
       public java.util.List<java.lang.Double>
           getListOfDoubleList() {
-        return java.util.Collections.unmodifiableList(listOfDouble_);
+        return ((bitField0_ & 0x00000001) != 0) ?
+                 java.util.Collections.unmodifiableList(listOfDouble_) : listOfDouble_;
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @return The count of listOfDouble.
        */
       public int getListOfDoubleCount() {
         return listOfDouble_.size();
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @param index The index of the element to return.
+       * @return The listOfDouble at the given index.
        */
       public double getListOfDouble(int index) {
-        return listOfDouble_.get(index);
+        return listOfDouble_.getDouble(index);
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfDouble to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfDouble(
           int index, double value) {
         ensureListOfDoubleIsMutable();
-        listOfDouble_.set(index, value);
+        listOfDouble_.setDouble(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @param value The listOfDouble to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfDouble(double value) {
         ensureListOfDoubleIsMutable();
-        listOfDouble_.add(value);
+        listOfDouble_.addDouble(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @param values The listOfDouble to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfDouble(
           java.lang.Iterable<? extends java.lang.Double> values) {
@@ -4540,61 +4890,74 @@ public final class TestingProto {
       }
       /**
        * <code>repeated double list_of_double = 300;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfDouble() {
-        listOfDouble_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00020000);
+        listOfDouble_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private java.util.List<java.lang.Float> listOfFloat_ = java.util.Collections.emptyList();
+      private com.google.protobuf.Internal.FloatList listOfFloat_ = emptyFloatList();
       private void ensureListOfFloatIsMutable() {
-        if (!((bitField0_ & 0x00040000) == 0x00040000)) {
-          listOfFloat_ = new java.util.ArrayList<java.lang.Float>(listOfFloat_);
-          bitField0_ |= 0x00040000;
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          listOfFloat_ = mutableCopy(listOfFloat_);
+          bitField0_ |= 0x00000002;
          }
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @return A list containing the listOfFloat.
        */
       public java.util.List<java.lang.Float>
           getListOfFloatList() {
-        return java.util.Collections.unmodifiableList(listOfFloat_);
+        return ((bitField0_ & 0x00000002) != 0) ?
+                 java.util.Collections.unmodifiableList(listOfFloat_) : listOfFloat_;
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @return The count of listOfFloat.
        */
       public int getListOfFloatCount() {
         return listOfFloat_.size();
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @param index The index of the element to return.
+       * @return The listOfFloat at the given index.
        */
       public float getListOfFloat(int index) {
-        return listOfFloat_.get(index);
+        return listOfFloat_.getFloat(index);
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfFloat to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfFloat(
           int index, float value) {
         ensureListOfFloatIsMutable();
-        listOfFloat_.set(index, value);
+        listOfFloat_.setFloat(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @param value The listOfFloat to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfFloat(float value) {
         ensureListOfFloatIsMutable();
-        listOfFloat_.add(value);
+        listOfFloat_.addFloat(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @param values The listOfFloat to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfFloat(
           java.lang.Iterable<? extends java.lang.Float> values) {
@@ -4606,61 +4969,74 @@ public final class TestingProto {
       }
       /**
        * <code>repeated float list_of_float = 301;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfFloat() {
-        listOfFloat_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00040000);
+        listOfFloat_ = emptyFloatList();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
 
-      private java.util.List<java.lang.Integer> listOfInt32_ = java.util.Collections.emptyList();
+      private com.google.protobuf.Internal.IntList listOfInt32_ = emptyIntList();
       private void ensureListOfInt32IsMutable() {
-        if (!((bitField0_ & 0x00080000) == 0x00080000)) {
-          listOfInt32_ = new java.util.ArrayList<java.lang.Integer>(listOfInt32_);
-          bitField0_ |= 0x00080000;
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          listOfInt32_ = mutableCopy(listOfInt32_);
+          bitField0_ |= 0x00000004;
          }
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @return A list containing the listOfInt32.
        */
       public java.util.List<java.lang.Integer>
           getListOfInt32List() {
-        return java.util.Collections.unmodifiableList(listOfInt32_);
+        return ((bitField0_ & 0x00000004) != 0) ?
+                 java.util.Collections.unmodifiableList(listOfInt32_) : listOfInt32_;
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @return The count of listOfInt32.
        */
       public int getListOfInt32Count() {
         return listOfInt32_.size();
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @param index The index of the element to return.
+       * @return The listOfInt32 at the given index.
        */
       public int getListOfInt32(int index) {
-        return listOfInt32_.get(index);
+        return listOfInt32_.getInt(index);
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfInt32 to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfInt32(
           int index, int value) {
         ensureListOfInt32IsMutable();
-        listOfInt32_.set(index, value);
+        listOfInt32_.setInt(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @param value The listOfInt32 to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfInt32(int value) {
         ensureListOfInt32IsMutable();
-        listOfInt32_.add(value);
+        listOfInt32_.addInt(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @param values The listOfInt32 to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfInt32(
           java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -4672,61 +5048,74 @@ public final class TestingProto {
       }
       /**
        * <code>repeated int32 list_of_int32 = 302;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfInt32() {
-        listOfInt32_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00080000);
+        listOfInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
 
-      private java.util.List<java.lang.Long> listOfInt64_ = java.util.Collections.emptyList();
+      private com.google.protobuf.Internal.LongList listOfInt64_ = emptyLongList();
       private void ensureListOfInt64IsMutable() {
-        if (!((bitField0_ & 0x00100000) == 0x00100000)) {
-          listOfInt64_ = new java.util.ArrayList<java.lang.Long>(listOfInt64_);
-          bitField0_ |= 0x00100000;
+        if (!((bitField0_ & 0x00000008) != 0)) {
+          listOfInt64_ = mutableCopy(listOfInt64_);
+          bitField0_ |= 0x00000008;
          }
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @return A list containing the listOfInt64.
        */
       public java.util.List<java.lang.Long>
           getListOfInt64List() {
-        return java.util.Collections.unmodifiableList(listOfInt64_);
+        return ((bitField0_ & 0x00000008) != 0) ?
+                 java.util.Collections.unmodifiableList(listOfInt64_) : listOfInt64_;
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @return The count of listOfInt64.
        */
       public int getListOfInt64Count() {
         return listOfInt64_.size();
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @param index The index of the element to return.
+       * @return The listOfInt64 at the given index.
        */
       public long getListOfInt64(int index) {
-        return listOfInt64_.get(index);
+        return listOfInt64_.getLong(index);
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfInt64 to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfInt64(
           int index, long value) {
         ensureListOfInt64IsMutable();
-        listOfInt64_.set(index, value);
+        listOfInt64_.setLong(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @param value The listOfInt64 to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfInt64(long value) {
         ensureListOfInt64IsMutable();
-        listOfInt64_.add(value);
+        listOfInt64_.addLong(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @param values The listOfInt64 to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfInt64(
           java.lang.Iterable<? extends java.lang.Long> values) {
@@ -4738,61 +5127,74 @@ public final class TestingProto {
       }
       /**
        * <code>repeated int64 list_of_int64 = 303;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfInt64() {
-        listOfInt64_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00100000);
+        listOfInt64_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
 
-      private java.util.List<java.lang.Boolean> listOfBool_ = java.util.Collections.emptyList();
+      private com.google.protobuf.Internal.BooleanList listOfBool_ = emptyBooleanList();
       private void ensureListOfBoolIsMutable() {
-        if (!((bitField0_ & 0x00200000) == 0x00200000)) {
-          listOfBool_ = new java.util.ArrayList<java.lang.Boolean>(listOfBool_);
-          bitField0_ |= 0x00200000;
+        if (!((bitField0_ & 0x00000010) != 0)) {
+          listOfBool_ = mutableCopy(listOfBool_);
+          bitField0_ |= 0x00000010;
          }
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @return A list containing the listOfBool.
        */
       public java.util.List<java.lang.Boolean>
           getListOfBoolList() {
-        return java.util.Collections.unmodifiableList(listOfBool_);
+        return ((bitField0_ & 0x00000010) != 0) ?
+                 java.util.Collections.unmodifiableList(listOfBool_) : listOfBool_;
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @return The count of listOfBool.
        */
       public int getListOfBoolCount() {
         return listOfBool_.size();
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @param index The index of the element to return.
+       * @return The listOfBool at the given index.
        */
       public boolean getListOfBool(int index) {
-        return listOfBool_.get(index);
+        return listOfBool_.getBoolean(index);
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfBool to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfBool(
           int index, boolean value) {
         ensureListOfBoolIsMutable();
-        listOfBool_.set(index, value);
+        listOfBool_.setBoolean(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @param value The listOfBool to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfBool(boolean value) {
         ensureListOfBoolIsMutable();
-        listOfBool_.add(value);
+        listOfBool_.addBoolean(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @param values The listOfBool to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfBool(
           java.lang.Iterable<? extends java.lang.Boolean> values) {
@@ -4804,19 +5206,20 @@ public final class TestingProto {
       }
       /**
        * <code>repeated bool list_of_bool = 312;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfBool() {
-        listOfBool_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00200000);
+        listOfBool_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
 
       private com.google.protobuf.LazyStringList listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureListOfStringIsMutable() {
-        if (!((bitField0_ & 0x00400000) == 0x00400000)) {
+        if (!((bitField0_ & 0x00000020) != 0)) {
           listOfString_ = new com.google.protobuf.LazyStringArrayList(listOfString_);
-          bitField0_ |= 0x00400000;
+          bitField0_ |= 0x00000020;
          }
       }
       /**
@@ -4826,6 +5229,7 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @return A list containing the listOfString.
        */
       public com.google.protobuf.ProtocolStringList
           getListOfStringList() {
@@ -4838,6 +5242,7 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @return The count of listOfString.
        */
       public int getListOfStringCount() {
         return listOfString_.size();
@@ -4849,6 +5254,8 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @param index The index of the element to return.
+       * @return The listOfString at the given index.
        */
       public java.lang.String getListOfString(int index) {
         return listOfString_.get(index);
@@ -4860,6 +5267,8 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the listOfString at the given index.
        */
       public com.google.protobuf.ByteString
           getListOfStringBytes(int index) {
@@ -4872,6 +5281,9 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfString to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfString(
           int index, java.lang.String value) {
@@ -4890,6 +5302,8 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @param value The listOfString to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfString(
           java.lang.String value) {
@@ -4908,6 +5322,8 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @param values The listOfString to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfString(
           java.lang.Iterable<java.lang.String> values) {
@@ -4924,10 +5340,11 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfString() {
         listOfString_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -4938,6 +5355,8 @@ public final class TestingProto {
        * </pre>
        *
        * <code>repeated string list_of_string = 313;</code>
+       * @param value The bytes of the listOfString to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfStringBytes(
           com.google.protobuf.ByteString value) {
@@ -4954,13 +5373,14 @@ public final class TestingProto {
       private java.util.List<java.lang.Integer> listOfEnum_ =
         java.util.Collections.emptyList();
       private void ensureListOfEnumIsMutable() {
-        if (!((bitField0_ & 0x00800000) == 0x00800000)) {
+        if (!((bitField0_ & 0x00000040) != 0)) {
           listOfEnum_ = new java.util.ArrayList<java.lang.Integer>(listOfEnum_);
-          bitField0_ |= 0x00800000;
+          bitField0_ |= 0x00000040;
         }
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @return A list containing the listOfEnum.
        */
       public java.util.List<io.structs.testing.TestingProto.TestingEnum> getListOfEnumList() {
         return new com.google.protobuf.Internal.ListAdapter<
@@ -4968,18 +5388,24 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @return The count of listOfEnum.
        */
       public int getListOfEnumCount() {
         return listOfEnum_.size();
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param index The index of the element to return.
+       * @return The listOfEnum at the given index.
        */
       public io.structs.testing.TestingProto.TestingEnum getListOfEnum(int index) {
         return listOfEnum_converter_.convert(listOfEnum_.get(index));
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param index The index to set the value at.
+       * @param value The listOfEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setListOfEnum(
           int index, io.structs.testing.TestingProto.TestingEnum value) {
@@ -4993,6 +5419,8 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param value The listOfEnum to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfEnum(io.structs.testing.TestingProto.TestingEnum value) {
         if (value == null) {
@@ -5005,6 +5433,8 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param values The listOfEnum to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfEnum(
           java.lang.Iterable<? extends io.structs.testing.TestingProto.TestingEnum> values) {
@@ -5017,15 +5447,17 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @return This builder for chaining.
        */
       public Builder clearListOfEnum() {
         listOfEnum_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @return A list containing the enum numeric values on the wire for listOfEnum.
        */
       public java.util.List<java.lang.Integer>
       getListOfEnumValueList() {
@@ -5033,12 +5465,17 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of listOfEnum at the given index.
        */
       public int getListOfEnumValue(int index) {
         return listOfEnum_.get(index);
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of listOfEnum at the given index.
+       * @return This builder for chaining.
        */
       public Builder setListOfEnumValue(
           int index, int value) {
@@ -5049,6 +5486,8 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param value The enum numeric value on the wire for listOfEnum to add.
+       * @return This builder for chaining.
        */
       public Builder addListOfEnumValue(int value) {
         ensureListOfEnumIsMutable();
@@ -5058,6 +5497,8 @@ public final class TestingProto {
       }
       /**
        * <code>repeated .structs.testing.TestingEnum list_of_enum = 400;</code>
+       * @param values The enum numeric values on the wire for listOfEnum to add.
+       * @return This builder for chaining.
        */
       public Builder addAllListOfEnumValue(
           java.lang.Iterable<java.lang.Integer> values) {
@@ -5072,27 +5513,36 @@ public final class TestingProto {
       private int secondEnum_ = 0;
       /**
        * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       * @return The enum numeric value on the wire for secondEnum.
        */
-      public int getSecondEnumValue() {
+      @java.lang.Override public int getSecondEnumValue() {
         return secondEnum_;
       }
       /**
        * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       * @param value The enum numeric value on the wire for secondEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setSecondEnumValue(int value) {
+        
         secondEnum_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       * @return The secondEnum.
        */
+      @java.lang.Override
       public io.structs.testing.TestingProto.SecondEnum getSecondEnum() {
+        @SuppressWarnings("deprecation")
         io.structs.testing.TestingProto.SecondEnum result = io.structs.testing.TestingProto.SecondEnum.valueOf(secondEnum_);
         return result == null ? io.structs.testing.TestingProto.SecondEnum.UNRECOGNIZED : result;
       }
       /**
        * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       * @param value The secondEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setSecondEnum(io.structs.testing.TestingProto.SecondEnum value) {
         if (value == null) {
@@ -5105,6 +5555,7 @@ public final class TestingProto {
       }
       /**
        * <code>.structs.testing.SecondEnum second_enum = 501;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSecondEnum() {
         
@@ -5116,27 +5567,36 @@ public final class TestingProto {
       private int thirdEnum_ = 0;
       /**
        * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       * @return The enum numeric value on the wire for thirdEnum.
        */
-      public int getThirdEnumValue() {
+      @java.lang.Override public int getThirdEnumValue() {
         return thirdEnum_;
       }
       /**
        * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       * @param value The enum numeric value on the wire for thirdEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setThirdEnumValue(int value) {
+        
         thirdEnum_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       * @return The thirdEnum.
        */
+      @java.lang.Override
       public io.structs.testing.TestingProto.ThirdEnum getThirdEnum() {
+        @SuppressWarnings("deprecation")
         io.structs.testing.TestingProto.ThirdEnum result = io.structs.testing.TestingProto.ThirdEnum.valueOf(thirdEnum_);
         return result == null ? io.structs.testing.TestingProto.ThirdEnum.UNRECOGNIZED : result;
       }
       /**
        * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       * @param value The thirdEnum to set.
+       * @return This builder for chaining.
        */
       public Builder setThirdEnum(io.structs.testing.TestingProto.ThirdEnum value) {
         if (value == null) {
@@ -5149,6 +5609,7 @@ public final class TestingProto {
       }
       /**
        * <code>.structs.testing.ThirdEnum third_enum = 502;</code>
+       * @return This builder for chaining.
        */
       public Builder clearThirdEnum() {
         
@@ -5156,11 +5617,13 @@ public final class TestingProto {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -5182,6 +5645,7 @@ public final class TestingProto {
 
     private static final com.google.protobuf.Parser<TestingMessage>
         PARSER = new com.google.protobuf.AbstractParser<TestingMessage>() {
+      @java.lang.Override
       public TestingMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5199,6 +5663,7 @@ public final class TestingProto {
       return PARSER;
     }
 
+    @java.lang.Override
     public io.structs.testing.TestingProto.TestingMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -5211,15 +5676,18 @@ public final class TestingProto {
 
     /**
      * <code>int32 value = 1;</code>
+     * @return The value.
      */
     int getValue();
 
     /**
      * <code>string value_str = 2;</code>
+     * @return The valueStr.
      */
     java.lang.String getValueStr();
     /**
      * <code>string value_str = 2;</code>
+     * @return The bytes for valueStr.
      */
     com.google.protobuf.ByteString
         getValueStrBytes();
@@ -5230,6 +5698,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return Whether the fieldStringValue field is set.
      */
     boolean hasFieldStringValue();
     /**
@@ -5238,6 +5707,7 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return The fieldStringValue.
      */
     com.google.protobuf.StringValue getFieldStringValue();
     /**
@@ -5251,10 +5721,12 @@ public final class TestingProto {
 
     /**
      * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     * @return Whether the innerInInner field is set.
      */
     boolean hasInnerInInner();
     /**
      * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     * @return The innerInInner.
      */
     io.structs.testing.TestingProto.MostBasic getInnerInInner();
     /**
@@ -5265,7 +5737,7 @@ public final class TestingProto {
   /**
    * Protobuf type {@code structs.testing.InnerMessage}
    */
-  public  static final class InnerMessage extends
+  public static final class InnerMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:structs.testing.InnerMessage)
       InnerMessageOrBuilder {
@@ -5275,8 +5747,14 @@ public final class TestingProto {
       super(builder);
     }
     private InnerMessage() {
-      value_ = 0;
       valueStr_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InnerMessage();
     }
 
     @java.lang.Override
@@ -5292,7 +5770,6 @@ public final class TestingProto {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5303,13 +5780,6 @@ public final class TestingProto {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
 
               value_ = input.readInt32();
@@ -5347,6 +5817,13 @@ public final class TestingProto {
 
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5364,6 +5841,7 @@ public final class TestingProto {
       return io.structs.testing.TestingProto.internal_static_structs_testing_InnerMessage_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return io.structs.testing.TestingProto.internal_static_structs_testing_InnerMessage_fieldAccessorTable
@@ -5375,7 +5853,9 @@ public final class TestingProto {
     private int value_;
     /**
      * <code>int32 value = 1;</code>
+     * @return The value.
      */
+    @java.lang.Override
     public int getValue() {
       return value_;
     }
@@ -5384,7 +5864,9 @@ public final class TestingProto {
     private volatile java.lang.Object valueStr_;
     /**
      * <code>string value_str = 2;</code>
+     * @return The valueStr.
      */
+    @java.lang.Override
     public java.lang.String getValueStr() {
       java.lang.Object ref = valueStr_;
       if (ref instanceof java.lang.String) {
@@ -5399,7 +5881,9 @@ public final class TestingProto {
     }
     /**
      * <code>string value_str = 2;</code>
+     * @return The bytes for valueStr.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getValueStrBytes() {
       java.lang.Object ref = valueStr_;
@@ -5422,7 +5906,9 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return Whether the fieldStringValue field is set.
      */
+    @java.lang.Override
     public boolean hasFieldStringValue() {
       return fieldStringValue_ != null;
     }
@@ -5432,7 +5918,9 @@ public final class TestingProto {
      * </pre>
      *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+     * @return The fieldStringValue.
      */
+    @java.lang.Override
     public com.google.protobuf.StringValue getFieldStringValue() {
       return fieldStringValue_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : fieldStringValue_;
     }
@@ -5443,6 +5931,7 @@ public final class TestingProto {
      *
      * <code>.google.protobuf.StringValue field_string_value = 208;</code>
      */
+    @java.lang.Override
     public com.google.protobuf.StringValueOrBuilder getFieldStringValueOrBuilder() {
       return getFieldStringValue();
     }
@@ -5451,24 +5940,30 @@ public final class TestingProto {
     private io.structs.testing.TestingProto.MostBasic innerInInner_;
     /**
      * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     * @return Whether the innerInInner field is set.
      */
+    @java.lang.Override
     public boolean hasInnerInInner() {
       return innerInInner_ != null;
     }
     /**
      * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+     * @return The innerInInner.
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.MostBasic getInnerInInner() {
       return innerInInner_ == null ? io.structs.testing.TestingProto.MostBasic.getDefaultInstance() : innerInInner_;
     }
     /**
      * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.MostBasicOrBuilder getInnerInInnerOrBuilder() {
       return getInnerInInner();
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -5478,6 +5973,7 @@ public final class TestingProto {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (value_ != 0) {
@@ -5495,6 +5991,7 @@ public final class TestingProto {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -5530,23 +6027,22 @@ public final class TestingProto {
       }
       io.structs.testing.TestingProto.InnerMessage other = (io.structs.testing.TestingProto.InnerMessage) obj;
 
-      boolean result = true;
-      result = result && (getValue()
-          == other.getValue());
-      result = result && getValueStr()
-          .equals(other.getValueStr());
-      result = result && (hasFieldStringValue() == other.hasFieldStringValue());
+      if (getValue()
+          != other.getValue()) return false;
+      if (!getValueStr()
+          .equals(other.getValueStr())) return false;
+      if (hasFieldStringValue() != other.hasFieldStringValue()) return false;
       if (hasFieldStringValue()) {
-        result = result && getFieldStringValue()
-            .equals(other.getFieldStringValue());
+        if (!getFieldStringValue()
+            .equals(other.getFieldStringValue())) return false;
       }
-      result = result && (hasInnerInInner() == other.hasInnerInInner());
+      if (hasInnerInInner() != other.hasInnerInInner()) return false;
       if (hasInnerInInner()) {
-        result = result && getInnerInInner()
-            .equals(other.getInnerInInner());
+        if (!getInnerInInner()
+            .equals(other.getInnerInInner())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5643,6 +6139,7 @@ public final class TestingProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -5650,6 +6147,7 @@ public final class TestingProto {
     public static Builder newBuilder(io.structs.testing.TestingProto.InnerMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -5673,6 +6171,7 @@ public final class TestingProto {
         return io.structs.testing.TestingProto.internal_static_structs_testing_InnerMessage_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_InnerMessage_fieldAccessorTable
@@ -5695,6 +6194,7 @@ public final class TestingProto {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         value_ = 0;
@@ -5716,15 +6216,18 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_InnerMessage_descriptor;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.InnerMessage getDefaultInstanceForType() {
         return io.structs.testing.TestingProto.InnerMessage.getDefaultInstance();
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.InnerMessage build() {
         io.structs.testing.TestingProto.InnerMessage result = buildPartial();
         if (!result.isInitialized()) {
@@ -5733,6 +6236,7 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.InnerMessage buildPartial() {
         io.structs.testing.TestingProto.InnerMessage result = new io.structs.testing.TestingProto.InnerMessage(this);
         result.value_ = value_;
@@ -5751,32 +6255,39 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.structs.testing.TestingProto.InnerMessage) {
           return mergeFrom((io.structs.testing.TestingProto.InnerMessage)other);
@@ -5806,10 +6317,12 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5831,12 +6344,16 @@ public final class TestingProto {
       private int value_ ;
       /**
        * <code>int32 value = 1;</code>
+       * @return The value.
        */
+      @java.lang.Override
       public int getValue() {
         return value_;
       }
       /**
        * <code>int32 value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(int value) {
         
@@ -5846,6 +6363,7 @@ public final class TestingProto {
       }
       /**
        * <code>int32 value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -5857,6 +6375,7 @@ public final class TestingProto {
       private java.lang.Object valueStr_ = "";
       /**
        * <code>string value_str = 2;</code>
+       * @return The valueStr.
        */
       public java.lang.String getValueStr() {
         java.lang.Object ref = valueStr_;
@@ -5872,6 +6391,7 @@ public final class TestingProto {
       }
       /**
        * <code>string value_str = 2;</code>
+       * @return The bytes for valueStr.
        */
       public com.google.protobuf.ByteString
           getValueStrBytes() {
@@ -5888,6 +6408,8 @@ public final class TestingProto {
       }
       /**
        * <code>string value_str = 2;</code>
+       * @param value The valueStr to set.
+       * @return This builder for chaining.
        */
       public Builder setValueStr(
           java.lang.String value) {
@@ -5901,6 +6423,7 @@ public final class TestingProto {
       }
       /**
        * <code>string value_str = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValueStr() {
         
@@ -5910,6 +6433,8 @@ public final class TestingProto {
       }
       /**
        * <code>string value_str = 2;</code>
+       * @param value The bytes for valueStr to set.
+       * @return This builder for chaining.
        */
       public Builder setValueStrBytes(
           com.google.protobuf.ByteString value) {
@@ -5923,7 +6448,7 @@ public final class TestingProto {
         return this;
       }
 
-      private com.google.protobuf.StringValue fieldStringValue_ = null;
+      private com.google.protobuf.StringValue fieldStringValue_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> fieldStringValueBuilder_;
       /**
@@ -5932,6 +6457,7 @@ public final class TestingProto {
        * </pre>
        *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       * @return Whether the fieldStringValue field is set.
        */
       public boolean hasFieldStringValue() {
         return fieldStringValueBuilder_ != null || fieldStringValue_ != null;
@@ -5942,6 +6468,7 @@ public final class TestingProto {
        * </pre>
        *
        * <code>.google.protobuf.StringValue field_string_value = 208;</code>
+       * @return The fieldStringValue.
        */
       public com.google.protobuf.StringValue getFieldStringValue() {
         if (fieldStringValueBuilder_ == null) {
@@ -6076,17 +6603,19 @@ public final class TestingProto {
         return fieldStringValueBuilder_;
       }
 
-      private io.structs.testing.TestingProto.MostBasic innerInInner_ = null;
+      private io.structs.testing.TestingProto.MostBasic innerInInner_;
       private com.google.protobuf.SingleFieldBuilderV3<
           io.structs.testing.TestingProto.MostBasic, io.structs.testing.TestingProto.MostBasic.Builder, io.structs.testing.TestingProto.MostBasicOrBuilder> innerInInnerBuilder_;
       /**
        * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       * @return Whether the innerInInner field is set.
        */
       public boolean hasInnerInInner() {
         return innerInInnerBuilder_ != null || innerInInner_ != null;
       }
       /**
        * <code>.structs.testing.MostBasic inner_in_inner = 300;</code>
+       * @return The innerInInner.
        */
       public io.structs.testing.TestingProto.MostBasic getInnerInInner() {
         if (innerInInnerBuilder_ == null) {
@@ -6192,11 +6721,13 @@ public final class TestingProto {
         }
         return innerInInnerBuilder_;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -6218,6 +6749,7 @@ public final class TestingProto {
 
     private static final com.google.protobuf.Parser<InnerMessage>
         PARSER = new com.google.protobuf.AbstractParser<InnerMessage>() {
+      @java.lang.Override
       public InnerMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6235,6 +6767,7 @@ public final class TestingProto {
       return PARSER;
     }
 
+    @java.lang.Override
     public io.structs.testing.TestingProto.InnerMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -6247,20 +6780,24 @@ public final class TestingProto {
 
     /**
      * <code>string id = 1;</code>
+     * @return The id.
      */
     java.lang.String getId();
     /**
      * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
      * <code>.structs.testing.InnerMessage inner = 2;</code>
+     * @return Whether the inner field is set.
      */
     boolean hasInner();
     /**
      * <code>.structs.testing.InnerMessage inner = 2;</code>
+     * @return The inner.
      */
     io.structs.testing.TestingProto.InnerMessage getInner();
     /**
@@ -6270,10 +6807,12 @@ public final class TestingProto {
 
     /**
      * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
+     * @return Whether the innerAsBytes field is set.
      */
     boolean hasInnerAsBytes();
     /**
      * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
+     * @return The innerAsBytes.
      */
     io.structs.testing.TestingProto.InnerMessage getInnerAsBytes();
     /**
@@ -6284,7 +6823,7 @@ public final class TestingProto {
   /**
    * Protobuf type {@code structs.testing.InnerContainer}
    */
-  public  static final class InnerContainer extends
+  public static final class InnerContainer extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:structs.testing.InnerContainer)
       InnerContainerOrBuilder {
@@ -6295,6 +6834,13 @@ public final class TestingProto {
     }
     private InnerContainer() {
       id_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InnerContainer();
     }
 
     @java.lang.Override
@@ -6310,7 +6856,6 @@ public final class TestingProto {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6321,13 +6866,6 @@ public final class TestingProto {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -6360,6 +6898,13 @@ public final class TestingProto {
 
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6377,6 +6922,7 @@ public final class TestingProto {
       return io.structs.testing.TestingProto.internal_static_structs_testing_InnerContainer_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return io.structs.testing.TestingProto.internal_static_structs_testing_InnerContainer_fieldAccessorTable
@@ -6388,7 +6934,9 @@ public final class TestingProto {
     private volatile java.lang.Object id_;
     /**
      * <code>string id = 1;</code>
+     * @return The id.
      */
+    @java.lang.Override
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
@@ -6403,7 +6951,9 @@ public final class TestingProto {
     }
     /**
      * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getIdBytes() {
       java.lang.Object ref = id_;
@@ -6422,19 +6972,24 @@ public final class TestingProto {
     private io.structs.testing.TestingProto.InnerMessage inner_;
     /**
      * <code>.structs.testing.InnerMessage inner = 2;</code>
+     * @return Whether the inner field is set.
      */
+    @java.lang.Override
     public boolean hasInner() {
       return inner_ != null;
     }
     /**
      * <code>.structs.testing.InnerMessage inner = 2;</code>
+     * @return The inner.
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.InnerMessage getInner() {
       return inner_ == null ? io.structs.testing.TestingProto.InnerMessage.getDefaultInstance() : inner_;
     }
     /**
      * <code>.structs.testing.InnerMessage inner = 2;</code>
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.InnerMessageOrBuilder getInnerOrBuilder() {
       return getInner();
     }
@@ -6443,24 +6998,30 @@ public final class TestingProto {
     private io.structs.testing.TestingProto.InnerMessage innerAsBytes_;
     /**
      * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
+     * @return Whether the innerAsBytes field is set.
      */
+    @java.lang.Override
     public boolean hasInnerAsBytes() {
       return innerAsBytes_ != null;
     }
     /**
      * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
+     * @return The innerAsBytes.
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.InnerMessage getInnerAsBytes() {
       return innerAsBytes_ == null ? io.structs.testing.TestingProto.InnerMessage.getDefaultInstance() : innerAsBytes_;
     }
     /**
      * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
      */
+    @java.lang.Override
     public io.structs.testing.TestingProto.InnerMessageOrBuilder getInnerAsBytesOrBuilder() {
       return getInnerAsBytes();
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -6470,6 +7031,7 @@ public final class TestingProto {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
@@ -6484,6 +7046,7 @@ public final class TestingProto {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -6515,21 +7078,20 @@ public final class TestingProto {
       }
       io.structs.testing.TestingProto.InnerContainer other = (io.structs.testing.TestingProto.InnerContainer) obj;
 
-      boolean result = true;
-      result = result && getId()
-          .equals(other.getId());
-      result = result && (hasInner() == other.hasInner());
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (hasInner() != other.hasInner()) return false;
       if (hasInner()) {
-        result = result && getInner()
-            .equals(other.getInner());
+        if (!getInner()
+            .equals(other.getInner())) return false;
       }
-      result = result && (hasInnerAsBytes() == other.hasInnerAsBytes());
+      if (hasInnerAsBytes() != other.hasInnerAsBytes()) return false;
       if (hasInnerAsBytes()) {
-        result = result && getInnerAsBytes()
-            .equals(other.getInnerAsBytes());
+        if (!getInnerAsBytes()
+            .equals(other.getInnerAsBytes())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6624,6 +7186,7 @@ public final class TestingProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -6631,6 +7194,7 @@ public final class TestingProto {
     public static Builder newBuilder(io.structs.testing.TestingProto.InnerContainer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -6654,6 +7218,7 @@ public final class TestingProto {
         return io.structs.testing.TestingProto.internal_static_structs_testing_InnerContainer_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_InnerContainer_fieldAccessorTable
@@ -6676,6 +7241,7 @@ public final class TestingProto {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         id_ = "";
@@ -6695,15 +7261,18 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return io.structs.testing.TestingProto.internal_static_structs_testing_InnerContainer_descriptor;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.InnerContainer getDefaultInstanceForType() {
         return io.structs.testing.TestingProto.InnerContainer.getDefaultInstance();
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.InnerContainer build() {
         io.structs.testing.TestingProto.InnerContainer result = buildPartial();
         if (!result.isInitialized()) {
@@ -6712,6 +7281,7 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public io.structs.testing.TestingProto.InnerContainer buildPartial() {
         io.structs.testing.TestingProto.InnerContainer result = new io.structs.testing.TestingProto.InnerContainer(this);
         result.id_ = id_;
@@ -6729,32 +7299,39 @@ public final class TestingProto {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof io.structs.testing.TestingProto.InnerContainer) {
           return mergeFrom((io.structs.testing.TestingProto.InnerContainer)other);
@@ -6781,10 +7358,12 @@ public final class TestingProto {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6806,6 +7385,7 @@ public final class TestingProto {
       private java.lang.Object id_ = "";
       /**
        * <code>string id = 1;</code>
+       * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -6821,6 +7401,7 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @return The bytes for id.
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -6837,6 +7418,8 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
       public Builder setId(
           java.lang.String value) {
@@ -6850,6 +7433,7 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId() {
         
@@ -6859,6 +7443,8 @@ public final class TestingProto {
       }
       /**
        * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6872,17 +7458,19 @@ public final class TestingProto {
         return this;
       }
 
-      private io.structs.testing.TestingProto.InnerMessage inner_ = null;
+      private io.structs.testing.TestingProto.InnerMessage inner_;
       private com.google.protobuf.SingleFieldBuilderV3<
           io.structs.testing.TestingProto.InnerMessage, io.structs.testing.TestingProto.InnerMessage.Builder, io.structs.testing.TestingProto.InnerMessageOrBuilder> innerBuilder_;
       /**
        * <code>.structs.testing.InnerMessage inner = 2;</code>
+       * @return Whether the inner field is set.
        */
       public boolean hasInner() {
         return innerBuilder_ != null || inner_ != null;
       }
       /**
        * <code>.structs.testing.InnerMessage inner = 2;</code>
+       * @return The inner.
        */
       public io.structs.testing.TestingProto.InnerMessage getInner() {
         if (innerBuilder_ == null) {
@@ -6989,17 +7577,19 @@ public final class TestingProto {
         return innerBuilder_;
       }
 
-      private io.structs.testing.TestingProto.InnerMessage innerAsBytes_ = null;
+      private io.structs.testing.TestingProto.InnerMessage innerAsBytes_;
       private com.google.protobuf.SingleFieldBuilderV3<
           io.structs.testing.TestingProto.InnerMessage, io.structs.testing.TestingProto.InnerMessage.Builder, io.structs.testing.TestingProto.InnerMessageOrBuilder> innerAsBytesBuilder_;
       /**
        * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
+       * @return Whether the innerAsBytes field is set.
        */
       public boolean hasInnerAsBytes() {
         return innerAsBytesBuilder_ != null || innerAsBytes_ != null;
       }
       /**
        * <code>.structs.testing.InnerMessage inner_as_bytes = 3;</code>
+       * @return The innerAsBytes.
        */
       public io.structs.testing.TestingProto.InnerMessage getInnerAsBytes() {
         if (innerAsBytesBuilder_ == null) {
@@ -7105,11 +7695,13 @@ public final class TestingProto {
         }
         return innerAsBytesBuilder_;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -7131,6 +7723,7 @@ public final class TestingProto {
 
     private static final com.google.protobuf.Parser<InnerContainer>
         PARSER = new com.google.protobuf.AbstractParser<InnerContainer>() {
+      @java.lang.Override
       public InnerContainer parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -7148,6 +7741,7 @@ public final class TestingProto {
       return PARSER;
     }
 
+    @java.lang.Override
     public io.structs.testing.TestingProto.InnerContainer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -7229,20 +7823,12 @@ public final class TestingProto {
       "VALUE\020\002\022\032\n\026THIRD_ENUM_THIRD_VALUE\020\003B\"\n\022i" +
       "o.structs.testingB\014TestingProtob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.WrappersProto.getDescriptor(),
-        }, assigner);
+        });
     internal_static_structs_testing_MostBasic_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_structs_testing_MostBasic_fieldAccessorTable = new

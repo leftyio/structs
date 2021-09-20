@@ -12,5 +12,6 @@ java_library(
         "//3rdparty/jvm/com/google/protobuf:protobuf_java",
         "//3rdparty/jvm/com/google/protobuf:protobuf_java_util",
         "//3rdparty/jvm/io/grpc:grpc_all",
+        "//java/src:structs_runtime",
     ],
 )

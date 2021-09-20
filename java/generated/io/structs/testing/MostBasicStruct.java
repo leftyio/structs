@@ -2,12 +2,13 @@
 
 package io.structs.testing;
 
-import com.datastax.driver.core.BoundStatement;
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.ResultSetFuture;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.AsyncResultSet;
+import com.datastax.oss.driver.api.core.cql.BoundStatement;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.type.reflect.GenericType;
 
 public final class MostBasicStruct {
   public enum Fields {
@@ -61,11 +62,11 @@ public final class MostBasicStruct {
     }
   }
 
-  private final Session session;
+  private final CqlSession session;
   private final com.google.common.base.Supplier<PreparedStatement> selectAllStmt;
   private final com.google.common.base.Supplier<PreparedStatement> insertAllStmt;
 
-  public MostBasicStruct(Session session) {
+  public MostBasicStruct(CqlSession session) {
     this.session = session;
     this.selectAllStmt = com.google.common.base.Suppliers.memoize(() -> {
       return createSelectAllStmt(session);
@@ -76,7 +77,7 @@ public final class MostBasicStruct {
     });
   }
 
-  private static PreparedStatement createSelectAllStmt(Session session) {
+  private static PreparedStatement createSelectAllStmt(CqlSession session) {
     Iterable<String> names = com.google.common.collect.Iterables.transform(Fields.all(), x -> x.fieldName);
     StringBuilder sb = new StringBuilder("select ");
     com.google.common.base.Joiner.on(',').appendTo(sb, names);
@@ -99,7 +100,7 @@ public final class MostBasicStruct {
   public com.google.common.util.concurrent.ListenableFuture<java.util.Optional<io.structs.testing.TestingProto.MostBasic>> loadAsync(String id) {
     PreparedStatement stmt = selectAllStmt.get();
     BoundStatement bound = stmt.bind(id);
-    ResultSetFuture rsF = session.executeAsync(bound);
+    com.google.common.util.concurrent.ListenableFuture<AsyncResultSet> rsF = io.structs.FutureAdapters.toListenableFuture(session.executeAsync(bound));
     return com.google.common.util.concurrent.Futures.transform(rsF, rs -> {
       Row row = rs.one();
       if (row == null) {
@@ -107,7 +108,7 @@ public final class MostBasicStruct {
       }
 
       return java.util.Optional.of(ofRowOrDie(row));
-    });
+    }, com.google.common.util.concurrent.MoreExecutors.directExecutor());
   }
 
   public static io.structs.testing.TestingProto.MostBasic ofRowOrDie(Row row) {
@@ -122,8 +123,8 @@ public final class MostBasicStruct {
     io.structs.testing.TestingProto.MostBasic.Builder b = io.structs.testing.TestingProto.MostBasic.newBuilder();
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("id");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("id");
+      if (idx != -1 && !row.isNull(idx)) {
         String value = row.getString(idx);
         b.setId(value);
       }
@@ -133,7 +134,7 @@ public final class MostBasicStruct {
     return b.build();
   }
 
-  private static PreparedStatement createInsertAllStmt(Session session) {
+  private static PreparedStatement createInsertAllStmt(CqlSession session) {
     StringBuilder sb = new StringBuilder();
     sb.append("INSERT INTO most_basics (");
     sb.append("id) ");
@@ -167,8 +168,8 @@ public final class MostBasicStruct {
     }
 
     BoundStatement bound = stmt.bind(boundObjs);
-    ResultSetFuture rsF = session.executeAsync(bound);
-    return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);
+    com.google.common.util.concurrent.ListenableFuture<AsyncResultSet> rsF = io.structs.FutureAdapters.toListenableFuture(session.executeAsync(bound));
+    return com.google.common.util.concurrent.Futures.transform(rsF, x -> null, com.google.common.util.concurrent.MoreExecutors.directExecutor());
   }
 
   public void update(io.structs.testing.TestingProto.MostBasic obj, com.google.protobuf.FieldMask mask) {

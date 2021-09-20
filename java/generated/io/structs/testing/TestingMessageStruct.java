@@ -2,12 +2,13 @@
 
 package io.structs.testing;
 
-import com.datastax.driver.core.BoundStatement;
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.ResultSetFuture;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.AsyncResultSet;
+import com.datastax.oss.driver.api.core.cql.BoundStatement;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.type.reflect.GenericType;
 
 public final class TestingMessageStruct {
   public enum Fields {
@@ -141,7 +142,7 @@ public final class TestingMessageStruct {
         
         case FIELD_TIMESTAMP:
           if (obj.hasFieldTimestamp()) {
-            y = new java.util.Date(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
+            y = java.time.Instant.ofEpochMilli(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
           }
           break;
         
@@ -279,23 +280,23 @@ public final class TestingMessageStruct {
     }
   }
 
-  private static final com.google.common.reflect.TypeToken<Double> listOfDoubles = new com.google.common.reflect.TypeToken<Double>() {};
+  private static final GenericType<java.util.List<Double>> listOfDoubles = new GenericType<java.util.List<Double>>() {};
 
-  private static final com.google.common.reflect.TypeToken<Float> listOfFloats = new com.google.common.reflect.TypeToken<Float>() {};
+  private static final GenericType<java.util.List<Float>> listOfFloats = new GenericType<java.util.List<Float>>() {};
 
-  private static final com.google.common.reflect.TypeToken<Integer> listOfInts = new com.google.common.reflect.TypeToken<Integer>() {};
+  private static final GenericType<java.util.List<Integer>> listOfInts = new GenericType<java.util.List<Integer>>() {};
 
-  private static final com.google.common.reflect.TypeToken<Long> listOfLongs = new com.google.common.reflect.TypeToken<Long>() {};
+  private static final GenericType<java.util.List<Long>> listOfLongs = new GenericType<java.util.List<Long>>() {};
 
-  private static final com.google.common.reflect.TypeToken<Boolean> listOfBools = new com.google.common.reflect.TypeToken<Boolean>() {};
+  private static final GenericType<java.util.List<Boolean>> listOfBools = new GenericType<java.util.List<Boolean>>() {};
 
-  private static final com.google.common.reflect.TypeToken<String> listOfStrings = new com.google.common.reflect.TypeToken<String>() {};
+  private static final GenericType<java.util.List<String>> listOfStrings = new GenericType<java.util.List<String>>() {};
 
-  private final Session session;
+  private final CqlSession session;
   private final com.google.common.base.Supplier<PreparedStatement> selectAllStmt;
   private final com.google.common.base.Supplier<PreparedStatement> insertAllStmt;
 
-  public TestingMessageStruct(Session session) {
+  public TestingMessageStruct(CqlSession session) {
     this.session = session;
     this.selectAllStmt = com.google.common.base.Suppliers.memoize(() -> {
       return createSelectAllStmt(session);
@@ -306,7 +307,7 @@ public final class TestingMessageStruct {
     });
   }
 
-  private static PreparedStatement createSelectAllStmt(Session session) {
+  private static PreparedStatement createSelectAllStmt(CqlSession session) {
     Iterable<String> names = com.google.common.collect.Iterables.transform(Fields.all(), x -> x.fieldName);
     StringBuilder sb = new StringBuilder("select ");
     com.google.common.base.Joiner.on(',').appendTo(sb, names);
@@ -329,7 +330,7 @@ public final class TestingMessageStruct {
   public com.google.common.util.concurrent.ListenableFuture<java.util.Optional<io.structs.testing.TestingProto.TestingMessage>> loadAsync(String id) {
     PreparedStatement stmt = selectAllStmt.get();
     BoundStatement bound = stmt.bind(id);
-    ResultSetFuture rsF = session.executeAsync(bound);
+    com.google.common.util.concurrent.ListenableFuture<AsyncResultSet> rsF = io.structs.FutureAdapters.toListenableFuture(session.executeAsync(bound));
     return com.google.common.util.concurrent.Futures.transform(rsF, rs -> {
       Row row = rs.one();
       if (row == null) {
@@ -337,7 +338,7 @@ public final class TestingMessageStruct {
       }
 
       return java.util.Optional.of(ofRowOrDie(row));
-    });
+    }, com.google.common.util.concurrent.MoreExecutors.directExecutor());
   }
 
   public static io.structs.testing.TestingProto.TestingMessage ofRowOrDie(Row row) {
@@ -352,145 +353,145 @@ public final class TestingMessageStruct {
     io.structs.testing.TestingProto.TestingMessage.Builder b = io.structs.testing.TestingProto.TestingMessage.newBuilder();
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("id");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("id");
+      if (idx != -1 && !row.isNull(idx)) {
         String value = row.getString(idx);
         b.setId(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_double");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_double");
+      if (idx != -1 && !row.isNull(idx)) {
         double value = row.getDouble(idx);
         b.setFieldDouble(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_float");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_float");
+      if (idx != -1 && !row.isNull(idx)) {
         float value = row.getFloat(idx);
         b.setFieldFloat(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_int32");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_int32");
+      if (idx != -1 && !row.isNull(idx)) {
         int value = row.getInt(idx);
         b.setFieldInt32(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_int64");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_int64");
+      if (idx != -1 && !row.isNull(idx)) {
         long value = row.getLong(idx);
         b.setFieldInt64(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_bool");
-      if (!row.isNull(idx)) {
-        boolean value = row.getBool(idx);
+      int idx = row.getColumnDefinitions().firstIndexOf("field_bool");
+      if (idx != -1 && !row.isNull(idx)) {
+        boolean value = row.getBoolean(idx);
         b.setFieldBool(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_string");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_string");
+      if (idx != -1 && !row.isNull(idx)) {
         String value = row.getString(idx);
         b.setFieldString(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_bytes");
-      if (!row.isNull(idx)) {
-        java.nio.ByteBuffer value = row.getBytes(idx);
+      int idx = row.getColumnDefinitions().firstIndexOf("field_bytes");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.nio.ByteBuffer value = row.getByteBuffer(idx);
         b.setFieldBytes(com.google.protobuf.ByteString.copyFrom(value));
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_enum");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_enum");
+      if (idx != -1 && !row.isNull(idx)) {
         int value = row.getInt(idx);
         b.setFieldEnumValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_timestamp");
-      if (!row.isNull(idx)) {
-        java.util.Date value = row.getTimestamp(idx);
-        b.setFieldTimestamp(com.google.protobuf.util.Timestamps.fromMillis(value.getTime()));
+      int idx = row.getColumnDefinitions().firstIndexOf("field_timestamp");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.time.Instant value = row.getInstant(idx);
+        b.setFieldTimestamp(com.google.protobuf.util.Timestamps.fromMillis(value.toEpochMilli()));
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_double_value");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_double_value");
+      if (idx != -1 && !row.isNull(idx)) {
         double value = row.getDouble(idx);
         b.getFieldDoubleValueBuilder().setValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_float_value");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_float_value");
+      if (idx != -1 && !row.isNull(idx)) {
         float value = row.getFloat(idx);
         b.getFieldFloatValueBuilder().setValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_int64_value");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_int64_value");
+      if (idx != -1 && !row.isNull(idx)) {
         long value = row.getLong(idx);
         b.getFieldInt64ValueBuilder().setValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_int32_value");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_int32_value");
+      if (idx != -1 && !row.isNull(idx)) {
         int value = row.getInt(idx);
         b.getFieldInt32ValueBuilder().setValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_bool_value");
-      if (!row.isNull(idx)) {
-        boolean value = row.getBool(idx);
+      int idx = row.getColumnDefinitions().firstIndexOf("field_bool_value");
+      if (idx != -1 && !row.isNull(idx)) {
+        boolean value = row.getBoolean(idx);
         b.getFieldBoolValueBuilder().setValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_string_value");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("field_string_value");
+      if (idx != -1 && !row.isNull(idx)) {
         String value = row.getString(idx);
         b.getFieldStringValueBuilder().setValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("field_bytes_value");
-      if (!row.isNull(idx)) {
-        java.nio.ByteBuffer value = row.getBytes(idx);
+      int idx = row.getColumnDefinitions().firstIndexOf("field_bytes_value");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.nio.ByteBuffer value = row.getByteBuffer(idx);
         b.getFieldBytesValueBuilder().setValue(com.google.protobuf.ByteString.copyFrom(value));
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_double");
-      if (!row.isNull(idx)) {
-        java.util.List<Double> value = row.getList(idx, listOfDoubles);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_double");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<Double> value = row.get(idx, listOfDoubles);
         for (double x : value) {
           b.addListOfDouble(x);
         }
@@ -498,9 +499,9 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_float");
-      if (!row.isNull(idx)) {
-        java.util.List<Float> value = row.getList(idx, listOfFloats);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_float");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<Float> value = row.get(idx, listOfFloats);
         for (float x : value) {
           b.addListOfFloat(x);
         }
@@ -508,9 +509,9 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_int32");
-      if (!row.isNull(idx)) {
-        java.util.List<Integer> value = row.getList(idx, listOfInts);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_int32");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<Integer> value = row.get(idx, listOfInts);
         for (int x : value) {
           b.addListOfInt32(x);
         }
@@ -518,9 +519,9 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_int64");
-      if (!row.isNull(idx)) {
-        java.util.List<Long> value = row.getList(idx, listOfLongs);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_int64");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<Long> value = row.get(idx, listOfLongs);
         for (long x : value) {
           b.addListOfInt64(x);
         }
@@ -528,9 +529,9 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_bool");
-      if (!row.isNull(idx)) {
-        java.util.List<Boolean> value = row.getList(idx, listOfBools);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_bool");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<Boolean> value = row.get(idx, listOfBools);
         for (boolean x : value) {
           b.addListOfBool(x);
         }
@@ -538,9 +539,9 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_string");
-      if (!row.isNull(idx)) {
-        java.util.List<String> value = row.getList(idx, listOfStrings);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_string");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<String> value = row.get(idx, listOfStrings);
         for (String x : value) {
           b.addListOfString(x);
         }
@@ -548,9 +549,9 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("list_of_enum");
-      if (!row.isNull(idx)) {
-        java.util.List<Integer> value = row.getList(idx, listOfInts);
+      int idx = row.getColumnDefinitions().firstIndexOf("list_of_enum");
+      if (idx != -1 && !row.isNull(idx)) {
+        java.util.List<Integer> value = row.get(idx, listOfInts);
         for (int x : value) {
           b.addListOfEnumValue(x);
         }
@@ -558,16 +559,16 @@ public final class TestingMessageStruct {
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("second_enum");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("second_enum");
+      if (idx != -1 && !row.isNull(idx)) {
         int value = row.getInt(idx);
         b.setSecondEnumValue(value);
       }
     }
 
     {
-      int idx = row.getColumnDefinitions().getIndexOf("third_enum");
-      if (!row.isNull(idx)) {
+      int idx = row.getColumnDefinitions().firstIndexOf("third_enum");
+      if (idx != -1 && !row.isNull(idx)) {
         int value = row.getInt(idx);
         b.setThirdEnumValue(value);
       }
@@ -577,7 +578,7 @@ public final class TestingMessageStruct {
     return b.build();
   }
 
-  private static PreparedStatement createInsertAllStmt(Session session) {
+  private static PreparedStatement createInsertAllStmt(CqlSession session) {
     StringBuilder sb = new StringBuilder();
     sb.append("INSERT INTO testing_messages (");
     sb.append("id, field_double, field_float, field_int32, field_int64, field_bool, field_string, field_bytes, field_enum, field_timestamp, field_double_value, field_float_value, field_int64_value, field_int32_value, field_bool_value, field_string_value, field_bytes_value, list_of_double, list_of_float, list_of_int32, list_of_int64, list_of_bool, list_of_string, list_of_enum, second_enum, third_enum) ");
@@ -648,7 +649,7 @@ public final class TestingMessageStruct {
     {
       Object o = null;
       if (obj.hasFieldTimestamp()) {
-        o = new java.util.Date(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
+        o = java.time.Instant.ofEpochMilli(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
       }
       boundObjs[9] = o;
     }
@@ -880,7 +881,7 @@ public final class TestingMessageStruct {
     {
       Object o = null;
       if (obj.hasFieldTimestamp()) {
-        o = new java.util.Date(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
+        o = java.time.Instant.ofEpochMilli(com.google.protobuf.util.Timestamps.toMillis(obj.getFieldTimestamp()));
       }
       boundObjs[9] = o;
     }
@@ -1047,8 +1048,8 @@ public final class TestingMessageStruct {
     }
 
     BoundStatement bound = stmt.bind(boundObjs);
-    ResultSetFuture rsF = session.executeAsync(bound);
-    return com.google.common.util.concurrent.Futures.transform(rsF, x -> null);
+    com.google.common.util.concurrent.ListenableFuture<AsyncResultSet> rsF = io.structs.FutureAdapters.toListenableFuture(session.executeAsync(bound));
+    return com.google.common.util.concurrent.Futures.transform(rsF, x -> null, com.google.common.util.concurrent.MoreExecutors.directExecutor());
   }
 
   public void update(io.structs.testing.TestingProto.TestingMessage obj, com.google.protobuf.FieldMask mask) {

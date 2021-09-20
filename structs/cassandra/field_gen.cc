@@ -5,14 +5,13 @@
 
 #include "absl/strings/str_join.h"
 #include "glog/logging.h"
-#include "google/protobuf/descriptor.pb.h"
 #include "google/protobuf/compiler/java/java_names.h"
-
+#include "google/protobuf/descriptor.pb.h"
 #include "structs/base/utils.h"
 
 using google::protobuf::FieldDescriptorProto;
-using google::protobuf::FieldDescriptorProto_Type_TYPE_MESSAGE;
 using google::protobuf::FieldDescriptorProto_Label_LABEL_REPEATED;
+using google::protobuf::FieldDescriptorProto_Type_TYPE_MESSAGE;
 
 namespace structs {
 namespace {
@@ -43,22 +42,22 @@ string SpecialMessageCassandraType(const FieldDescriptor* field) {
   types["google.protobuf.BytesValue"] = "blob";
 
   auto it = types.find(field->message_type()->full_name());
-  CHECK(it != types.end()) << "not a special type: " << field->message_type()->full_name();
+  CHECK(it != types.end()) << "not a special type: "
+                           << field->message_type()->full_name();
   return it->second;
 }
 }  // namespace
 
-FieldGen::FieldGen(const CassandraSchema& schema,
-                   vector<string> path,
-                   const FieldDescriptor* proto_field) : proto_field_(proto_field) {
+FieldGen::FieldGen(const CassandraSchema& schema, vector<string> path,
+                   const FieldDescriptor* proto_field)
+    : proto_field_(proto_field) {
   path.push_back(proto_field->name());
   std::swap(path, path_);
 
   field_schema_ = FindField(schema, path_);
 }
 
-FieldGen::~FieldGen() {
-}
+FieldGen::~FieldGen() {}
 
 bool FieldGen::IsSpecialMessage() const {
   if (proto_field()->type() != FieldDescriptor::Type::TYPE_MESSAGE) {
@@ -66,19 +65,14 @@ bool FieldGen::IsSpecialMessage() const {
   }
 
   std::set<string> special_names{
-      "google.protobuf.Timestamp",
-      "google.protobuf.DoubleValue",
-      "google.protobuf.FloatValue",
-      "google.protobuf.Int64Value",
-      "google.protobuf.UInt64Value",
-      "google.protobuf.Int32Value",
-      "google.protobuf.UInt32Value",
-      "google.protobuf.BoolValue",
-      "google.protobuf.StringValue",
-      "google.protobuf.BytesValue"
-  };
+      "google.protobuf.Timestamp",   "google.protobuf.DoubleValue",
+      "google.protobuf.FloatValue",  "google.protobuf.Int64Value",
+      "google.protobuf.UInt64Value", "google.protobuf.Int32Value",
+      "google.protobuf.UInt32Value", "google.protobuf.BoolValue",
+      "google.protobuf.StringValue", "google.protobuf.BytesValue"};
 
-  return special_names.find(proto_field()->message_type()->full_name()) != special_names.end();
+  return special_names.find(proto_field()->message_type()->full_name()) !=
+         special_names.end();
 }
 
 bool FieldGen::IsTransient() {
@@ -93,9 +87,7 @@ int FieldGen::IdCardinality() const {
   return field_schema_ != nullptr ? field_schema_->id_cardinality() : 0;
 }
 
-bool FieldGen::IsList() const {
-  return proto_field_->is_repeated();
-}
+bool FieldGen::IsList() const { return proto_field_->is_repeated(); }
 
 bool FieldGen::WillRecurse() {
   if (proto_field_->type() != FieldDescriptor::Type::TYPE_MESSAGE) {
@@ -136,7 +128,7 @@ string FieldGen::JavaName() const {
 
 string FieldGen::JavaBaseType() const {
   std::map<string, string> types;
-  types["timestamp"] = "java.util.Date";
+  types["timestamp"] = "java.time.Instant";
   types["double"] = "double";
   types["float"] = "float";
   types["bigint"] = "long";
@@ -147,7 +139,8 @@ string FieldGen::JavaBaseType() const {
   types["blob"] = "java.nio.ByteBuffer";
 
   auto it = types.find(NonRepeatedCassandraType());
-  CHECK(it != types.end()) << "unsupported type: " << NonRepeatedCassandraType();
+  CHECK(it != types.end()) << "unsupported type: "
+                           << NonRepeatedCassandraType();
   return it->second;
 }
 
@@ -170,7 +163,7 @@ string WrapperTypeOf(const string& java_type) {
 
   return it->second;
 }
-}
+}  // namespace
 
 string FieldGen::JavaType() const {
   if (!proto_field_->is_repeated()) {
@@ -185,7 +178,7 @@ string FieldGen::CassandraType() const {
   if (!proto_field_->is_repeated()) {
     return NonRepeatedCassandraType();
   }
-  
+
   return "list<" + NonRepeatedCassandraType() + ">";
 }
 
@@ -224,13 +217,13 @@ string FieldGen::NonRepeatedCassandraType() const {
 
     case FieldDescriptor::Type::TYPE_ENUM:
       return "int";
-      
+
     case FieldDescriptor::TYPE_MESSAGE:
       if (IsSpecialMessage()) {
         return SpecialMessageCassandraType(proto_field_);
       } else {
-        // If it is not special and we're asking the type it means we didn't recurse, so it
-        // must be of type bytes.
+        // If it is not special and we're asking the type it means we didn't
+        // recurse, so it must be of type bytes.
         return "blob";
       }
     default:

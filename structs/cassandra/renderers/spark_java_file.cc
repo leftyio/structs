@@ -50,9 +50,22 @@ std::string GetFromCassandraRow(const std::string cassandra_type) {
 
 void SetListFromCassandraRow(const FieldGen& field,
                              const string& builder,
-                             const string& value,
+                             const string& row,
                              CodeBuilder& cb) {
-  // TODO(christian) implement this.
+  cb.BreakLine() << "{";
+  cb.Indent() << "int idx = " << row
+              << ".indexOf(\""
+              << field.CassandraName() << "\");";
+  cb.Newline() << "if (idx != -1 && !row.isNullAt(idx)) {";
+
+  cb.Indent() << field.JavaType() << " value = ";
+
+  GetterFromCassandraRow(field, "row", "idx", cb);
+
+  cb.Newline();
+  SetListFromJavaStmt(field, builder, "value", cb);
+  cb.OutdentBracket();
+  cb.OutdentBracket();
 }
 
 void SetFromValue(const FieldGen& field,
@@ -60,7 +73,7 @@ void SetFromValue(const FieldGen& field,
                   const string& value,
                   CodeBuilder& cb) {
   cb << builder << ".";
-  SetFromJavaStmt(field, value, cb);
+  SetFromJavaStmt(field, value, cb, true);
   cb << ";";
 }
 
@@ -89,6 +102,32 @@ void SetFromCassandraRow(const FieldGen& field,
     cb.Outdent() << "}";
   }
 }
+
+// Create private vars for each list type token that shall be needed.
+void WriteTypeTokens(const MessageGen& msg, CodeBuilder& cb) {
+  const auto& fields = msg.Fields();
+
+  std::set<string> already_written_types;
+
+  for (const FieldGen* field : fields) {
+    if (!field->IsList()) {
+      continue;
+    }
+
+    string java_type = field->JavaBaseType();
+    if (already_written_types.find(java_type) != already_written_types.end()) {
+      continue;
+    }
+
+    already_written_types.insert(java_type);
+    cb.BreakLine() << "private static final com.datastax.spark.connector.types.TypeConverter<java.util.List<"
+                   << WrapperTypeOf(java_type) << ">> " << TokenName(java_type)
+                   << " = com.datastax.spark.connector.types.TypeConverter.javaListConverter("
+                   << "(com.datastax.spark.connector.types.TypeConverter<" << WrapperTypeOf(java_type)
+                   << ">) com.datastax.spark.connector.types.TypeConverter.forType("
+                   << WrapperTypeOf(java_type) << ".class));";
+  }
+}
 }  // anonymous namespace
 
 string SparkJavaContent(const MessageGen* msg) {
@@ -103,6 +142,10 @@ string SparkJavaContent(const MessageGen* msg) {
 
   cb << "public final class " << msg->JavaClass() << " {";
   cb.Newline();
+  WriteTypeTokens(*msg, cb);
+  cb.Newline();
+  cb.Newline();
+
   cb.Indent() <<  "public static " << msg->JavaClassOfMessage() << " of(CassandraRow row) throws com.google.protobuf.InvalidProtocolBufferException {";
   cb.Indent() << msg->JavaClassOfMessage() << ".Builder b = " << msg->JavaClassOfMessage() << ".newBuilder();";
    

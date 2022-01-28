@@ -27,7 +27,8 @@ void MutablePathToFieldMinusOne(const FieldGen& field, CodeBuilder& cb) {
 
 void SetSpecialMessageFromJavaStmt(const FieldGen& field,
                                    const std::string& value_name,
-                                   CodeBuilder& cb) {
+                                   CodeBuilder& cb,
+                                   bool is_for_spark) {
   std::set<std::string> simple_primitives;
   simple_primitives.insert("google.protobuf.DoubleValue");
   simple_primitives.insert("google.protobuf.FloatValue");
@@ -62,10 +63,17 @@ void SetSpecialMessageFromJavaStmt(const FieldGen& field,
   MutablePathToFieldMinusOne(field, cb);
   std::string field_name = UnderscoresToCamelCase(field.path().back(), true);
 
-  cb << "set" << field_name
-     << "(com.google.protobuf.util.Timestamps.fromMillis(" << value_name
-     << ".toEpochMilli())"
-     << ")";
+  if (!is_for_spark) {
+    cb << "set" << field_name
+       << "(com.google.protobuf.util.Timestamps.fromMillis(" << value_name
+       << ".toEpochMilli())"
+       << ")";
+  } else {
+    cb << "set" << field_name
+       << "(com.google.protobuf.util.Timestamps.fromMillis(" << value_name
+       << ".getTime())"
+       << ")";
+  }
 }
 
 void SetEnumFromJavaStmt(const FieldGen& field, const std::string& value_name,
@@ -306,7 +314,7 @@ void SetListFromJavaStmt(const FieldGen& field, const string& builder,
 
 // statement to set this field from a java value.
 void SetFromJavaStmt(const FieldGen& field, const string& value_name,
-                     CodeBuilder& cb) {
+                     CodeBuilder& cb, bool is_from_spark) {
   if (field.proto_field()->type() == FieldDescriptor::Type::TYPE_MESSAGE &&
       !field.IsSpecialMessage()) {
     SetMessageFromJavaStmt(field, value_name, cb);
@@ -315,7 +323,7 @@ void SetFromJavaStmt(const FieldGen& field, const string& value_name,
 
   if (field.proto_field()->type() == FieldDescriptor::Type::TYPE_MESSAGE &&
       field.IsSpecialMessage()) {
-    SetSpecialMessageFromJavaStmt(field, value_name, cb);
+    SetSpecialMessageFromJavaStmt(field, value_name, cb, is_from_spark);
     return;
   }
 

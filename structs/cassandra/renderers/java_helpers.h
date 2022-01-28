@@ -13,7 +13,7 @@
 namespace structs {
 void SetFromJavaStmt(const FieldGen& field,
                      const string& value_name,
-                     CodeBuilder& cb);
+                     CodeBuilder& cb, bool is_from_spark);
 
 void SetListFromJavaStmt(const FieldGen& field,
                          const string& builder,

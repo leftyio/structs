@@ -174,7 +174,7 @@ void SetListFromCassandraRow(const FieldGen& field, const string& builder,
 void SetFromValue(const FieldGen& field, const string& builder,
                   const string& value, CodeBuilder& cb) {
   cb << builder << ".";
-  SetFromJavaStmt(field, value, cb);
+  SetFromJavaStmt(field, value, cb, false);
   cb << ";";
 }
 

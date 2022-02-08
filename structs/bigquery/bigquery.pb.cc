@@ -14,81 +14,63 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_structs_2fbigquery_2fbigquery_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_structs_2fstructs_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_StructSchema_structs_2fstructs_2eproto;
+
+PROTOBUF_PRAGMA_INIT_SEG
 namespace structs {
-class BigQueryFieldDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<BigQueryField> _instance;
-} _BigQueryField_default_instance_;
-class BigQuerySchemaDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<BigQuerySchema> _instance;
-} _BigQuerySchema_default_instance_;
-class BigQuerySchemasDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<BigQuerySchemas> _instance;
-} _BigQuerySchemas_default_instance_;
+constexpr BigQueryField::BigQueryField(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct BigQueryFieldDefaultTypeInternal {
+  constexpr BigQueryFieldDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BigQueryFieldDefaultTypeInternal() {}
+  union {
+    BigQueryField _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BigQueryFieldDefaultTypeInternal _BigQueryField_default_instance_;
+constexpr BigQuerySchema::BigQuerySchema(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : bigquery_table_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , structs_schema_(nullptr){}
+struct BigQuerySchemaDefaultTypeInternal {
+  constexpr BigQuerySchemaDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BigQuerySchemaDefaultTypeInternal() {}
+  union {
+    BigQuerySchema _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BigQuerySchemaDefaultTypeInternal _BigQuerySchema_default_instance_;
+constexpr BigQuerySchemas::BigQuerySchemas(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : schema_(){}
+struct BigQuerySchemasDefaultTypeInternal {
+  constexpr BigQuerySchemasDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BigQuerySchemasDefaultTypeInternal() {}
+  union {
+    BigQuerySchemas _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BigQuerySchemasDefaultTypeInternal _BigQuerySchemas_default_instance_;
 }  // namespace structs
-static void InitDefaultsscc_info_BigQueryField_structs_2fbigquery_2fbigquery_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::structs::_BigQueryField_default_instance_;
-    new (ptr) ::structs::BigQueryField();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::structs::BigQueryField::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_BigQueryField_structs_2fbigquery_2fbigquery_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_BigQueryField_structs_2fbigquery_2fbigquery_2eproto}, {}};
-
-static void InitDefaultsscc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::structs::_BigQuerySchema_default_instance_;
-    new (ptr) ::structs::BigQuerySchema();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::structs::BigQuerySchema::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto}, {
-      &scc_info_StructSchema_structs_2fstructs_2eproto.base,}};
-
-static void InitDefaultsscc_info_BigQuerySchemas_structs_2fbigquery_2fbigquery_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::structs::_BigQuerySchemas_default_instance_;
-    new (ptr) ::structs::BigQuerySchemas();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::structs::BigQuerySchemas::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_BigQuerySchemas_structs_2fbigquery_2fbigquery_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_BigQuerySchemas_structs_2fbigquery_2fbigquery_2eproto}, {
-      &scc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto.base,}};
-
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_structs_2fbigquery_2fbigquery_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_structs_2fbigquery_2fbigquery_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_structs_2fbigquery_2fbigquery_2eproto = nullptr;
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_structs_2fbigquery_2fbigquery_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+const uint32_t TableStruct_structs_2fbigquery_2fbigquery_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::structs::BigQueryField, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::structs::BigQuerySchema, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::structs::BigQuerySchema, structs_schema_),
   PROTOBUF_FIELD_OFFSET(::structs::BigQuerySchema, bigquery_table_name_),
   ~0u,  // no _has_bits_
@@ -96,12 +78,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_structs_2fbigquery_2fbigquery_
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::structs::BigQuerySchemas, schema_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::structs::BigQueryField)},
-  { 5, -1, sizeof(::structs::BigQuerySchema)},
-  { 12, -1, sizeof(::structs::BigQuerySchemas)},
+  { 0, -1, -1, sizeof(::structs::BigQueryField)},
+  { 6, -1, -1, sizeof(::structs::BigQuerySchema)},
+  { 14, -1, -1, sizeof(::structs::BigQuerySchemas)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -122,194 +105,62 @@ const char descriptor_table_protodef_structs_2fbigquery_2fbigquery_2eproto[] PRO
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_structs_2fbigquery_2fbigquery_2eproto_deps[1] = {
   &::descriptor_table_structs_2fstructs_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_structs_2fbigquery_2fbigquery_2eproto_sccs[3] = {
-  &scc_info_BigQueryField_structs_2fbigquery_2fbigquery_2eproto.base,
-  &scc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto.base,
-  &scc_info_BigQuerySchemas_structs_2fbigquery_2fbigquery_2eproto.base,
-};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_structs_2fbigquery_2fbigquery_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_structs_2fbigquery_2fbigquery_2eproto = {
-  false, false, descriptor_table_protodef_structs_2fbigquery_2fbigquery_2eproto, "structs/bigquery/bigquery.proto", 244,
-  &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_once, descriptor_table_structs_2fbigquery_2fbigquery_2eproto_sccs, descriptor_table_structs_2fbigquery_2fbigquery_2eproto_deps, 3, 1,
+  false, false, 244, descriptor_table_protodef_structs_2fbigquery_2fbigquery_2eproto, "structs/bigquery/bigquery.proto", 
+  &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_once, descriptor_table_structs_2fbigquery_2fbigquery_2eproto_deps, 1, 3,
   schemas, file_default_instances, TableStruct_structs_2fbigquery_2fbigquery_2eproto::offsets,
-  file_level_metadata_structs_2fbigquery_2fbigquery_2eproto, 3, file_level_enum_descriptors_structs_2fbigquery_2fbigquery_2eproto, file_level_service_descriptors_structs_2fbigquery_2fbigquery_2eproto,
+  file_level_metadata_structs_2fbigquery_2fbigquery_2eproto, file_level_enum_descriptors_structs_2fbigquery_2fbigquery_2eproto, file_level_service_descriptors_structs_2fbigquery_2fbigquery_2eproto,
 };
+PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_structs_2fbigquery_2fbigquery_2eproto_getter() {
+  return &descriptor_table_structs_2fbigquery_2fbigquery_2eproto;
+}
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_structs_2fbigquery_2fbigquery_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_structs_2fbigquery_2fbigquery_2eproto)), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_structs_2fbigquery_2fbigquery_2eproto(&descriptor_table_structs_2fbigquery_2fbigquery_2eproto);
 namespace structs {
 
 // ===================================================================
 
-void BigQueryField::InitAsDefaultInstance() {
-}
 class BigQueryField::_Internal {
  public:
 };
 
-BigQueryField::BigQueryField(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+BigQueryField::BigQueryField(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:structs.BigQueryField)
 }
 BigQueryField::BigQueryField(const BigQueryField& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:structs.BigQueryField)
 }
 
-void BigQueryField::SharedCtor() {
-}
-
-BigQueryField::~BigQueryField() {
-  // @@protoc_insertion_point(destructor:structs.BigQueryField)
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-void BigQueryField::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-}
-
-void BigQueryField::ArenaDtor(void* object) {
-  BigQueryField* _this = reinterpret_cast< BigQueryField* >(object);
-  (void)_this;
-}
-void BigQueryField::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void BigQueryField::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const BigQueryField& BigQueryField::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_BigQueryField_structs_2fbigquery_2fbigquery_2eproto.base);
-  return *internal_default_instance();
-}
 
 
-void BigQueryField::Clear() {
-// @@protoc_insertion_point(message_clear_start:structs.BigQueryField)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
 
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
 
-const char* BigQueryField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-  }  // while
-success:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BigQueryField::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BigQueryField::GetClassData() const { return &_class_data_; }
 
-::PROTOBUF_NAMESPACE_ID::uint8* BigQueryField::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structs.BigQueryField)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structs.BigQueryField)
-  return target;
-}
 
-size_t BigQueryField::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:structs.BigQueryField)
-  size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
 
-void BigQueryField::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structs.BigQueryField)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BigQueryField* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BigQueryField>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structs.BigQueryField)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structs.BigQueryField)
-    MergeFrom(*source);
-  }
-}
-
-void BigQueryField::MergeFrom(const BigQueryField& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structs.BigQueryField)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-}
-
-void BigQueryField::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structs.BigQueryField)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void BigQueryField::CopyFrom(const BigQueryField& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structs.BigQueryField)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool BigQueryField::IsInitialized() const {
-  return true;
-}
-
-void BigQueryField::InternalSwap(BigQueryField* other) {
-  using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BigQueryField::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_getter, &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_once,
+      file_level_metadata_structs_2fbigquery_2fbigquery_2eproto[0]);
 }
-
 
 // ===================================================================
 
-void BigQuerySchema::InitAsDefaultInstance() {
-  ::structs::_BigQuerySchema_default_instance_._instance.get_mutable()->structs_schema_ = const_cast< ::structs::StructSchema*>(
-      ::structs::StructSchema::internal_default_instance());
-}
 class BigQuerySchema::_Internal {
  public:
   static const ::structs::StructSchema& structs_schema(const BigQuerySchema* msg);
@@ -320,24 +171,30 @@ BigQuerySchema::_Internal::structs_schema(const BigQuerySchema* msg) {
   return *msg->structs_schema_;
 }
 void BigQuerySchema::clear_structs_schema() {
-  if (GetArena() == nullptr && structs_schema_ != nullptr) {
+  if (GetArenaForAllocation() == nullptr && structs_schema_ != nullptr) {
     delete structs_schema_;
   }
   structs_schema_ = nullptr;
 }
-BigQuerySchema::BigQuerySchema(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+BigQuerySchema::BigQuerySchema(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  RegisterArenaDtor(arena);
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:structs.BigQuerySchema)
 }
 BigQuerySchema::BigQuerySchema(const BigQuerySchema& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   bigquery_table_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    bigquery_table_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_bigquery_table_name().empty()) {
-    bigquery_table_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_bigquery_table_name(),
-      GetArena());
+    bigquery_table_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_bigquery_table_name(), 
+      GetArenaForAllocation());
   }
   if (from._internal_has_structs_schema()) {
     structs_schema_ = new ::structs::StructSchema(*from.structs_schema_);
@@ -347,20 +204,23 @@ BigQuerySchema::BigQuerySchema(const BigQuerySchema& from)
   // @@protoc_insertion_point(copy_constructor:structs.BigQuerySchema)
 }
 
-void BigQuerySchema::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto.base);
-  bigquery_table_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  structs_schema_ = nullptr;
+inline void BigQuerySchema::SharedCtor() {
+bigquery_table_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  bigquery_table_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+structs_schema_ = nullptr;
 }
 
 BigQuerySchema::~BigQuerySchema() {
   // @@protoc_insertion_point(destructor:structs.BigQuerySchema)
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void BigQuerySchema::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void BigQuerySchema::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   bigquery_table_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete structs_schema_;
 }
@@ -374,20 +234,15 @@ void BigQuerySchema::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void BigQuerySchema::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const BigQuerySchema& BigQuerySchema::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_BigQuerySchema_structs_2fbigquery_2fbigquery_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void BigQuerySchema::Clear() {
 // @@protoc_insertion_point(message_clear_start:structs.BigQuerySchema)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  bigquery_table_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  if (GetArena() == nullptr && structs_schema_ != nullptr) {
+  bigquery_table_name_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && structs_schema_ != nullptr) {
     delete structs_schema_;
   }
   structs_schema_ = nullptr;
@@ -396,58 +251,59 @@ void BigQuerySchema::Clear() {
 
 const char* BigQuerySchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
     switch (tag >> 3) {
       // .structs.StructSchema structs_schema = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_structs_schema(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // string bigquery_table_name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_bigquery_table_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.BigQuerySchema.bigquery_table_name"));
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* BigQuerySchema::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* BigQuerySchema::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:structs.BigQuerySchema)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .structs.StructSchema structs_schema = 1;
-  if (this->has_structs_schema()) {
+  if (this->_internal_has_structs_schema()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
@@ -455,7 +311,7 @@ failure:
   }
 
   // string bigquery_table_name = 2;
-  if (this->bigquery_table_name().size() > 0) {
+  if (!this->_internal_bigquery_table_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_bigquery_table_name().data(), static_cast<int>(this->_internal_bigquery_table_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -476,68 +332,53 @@ size_t BigQuerySchema::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:structs.BigQuerySchema)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string bigquery_table_name = 2;
-  if (this->bigquery_table_name().size() > 0) {
+  if (!this->_internal_bigquery_table_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_bigquery_table_name());
   }
 
   // .structs.StructSchema structs_schema = 1;
-  if (this->has_structs_schema()) {
+  if (this->_internal_has_structs_schema()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *structs_schema_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-void BigQuerySchema::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structs.BigQuerySchema)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BigQuerySchema* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BigQuerySchema>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structs.BigQuerySchema)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structs.BigQuerySchema)
-    MergeFrom(*source);
-  }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BigQuerySchema::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    BigQuerySchema::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BigQuerySchema::GetClassData() const { return &_class_data_; }
+
+void BigQuerySchema::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<BigQuerySchema *>(to)->MergeFrom(
+      static_cast<const BigQuerySchema &>(from));
 }
+
 
 void BigQuerySchema::MergeFrom(const BigQuerySchema& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structs.BigQuerySchema)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.bigquery_table_name().size() > 0) {
+  if (!from._internal_bigquery_table_name().empty()) {
     _internal_set_bigquery_table_name(from._internal_bigquery_table_name());
   }
-  if (from.has_structs_schema()) {
+  if (from._internal_has_structs_schema()) {
     _internal_mutable_structs_schema()->::structs::StructSchema::MergeFrom(from._internal_structs_schema());
   }
-}
-
-void BigQuerySchema::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structs.BigQuerySchema)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BigQuerySchema::CopyFrom(const BigQuerySchema& from) {
@@ -553,29 +394,37 @@ bool BigQuerySchema::IsInitialized() const {
 
 void BigQuerySchema::InternalSwap(BigQuerySchema* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  bigquery_table_name_.Swap(&other->bigquery_table_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &bigquery_table_name_, lhs_arena,
+      &other->bigquery_table_name_, rhs_arena
+  );
   swap(structs_schema_, other->structs_schema_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BigQuerySchema::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_getter, &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_once,
+      file_level_metadata_structs_2fbigquery_2fbigquery_2eproto[1]);
 }
-
 
 // ===================================================================
 
-void BigQuerySchemas::InitAsDefaultInstance() {
-}
 class BigQuerySchemas::_Internal {
  public:
 };
 
-BigQuerySchemas::BigQuerySchemas(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+BigQuerySchemas::BigQuerySchemas(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   schema_(arena) {
   SharedCtor();
-  RegisterArenaDtor(arena);
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:structs.BigQuerySchemas)
 }
 BigQuerySchemas::BigQuerySchemas(const BigQuerySchemas& from)
@@ -585,18 +434,18 @@ BigQuerySchemas::BigQuerySchemas(const BigQuerySchemas& from)
   // @@protoc_insertion_point(copy_constructor:structs.BigQuerySchemas)
 }
 
-void BigQuerySchemas::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_BigQuerySchemas_structs_2fbigquery_2fbigquery_2eproto.base);
+inline void BigQuerySchemas::SharedCtor() {
 }
 
 BigQuerySchemas::~BigQuerySchemas() {
   // @@protoc_insertion_point(destructor:structs.BigQuerySchemas)
+  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void BigQuerySchemas::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void BigQuerySchemas::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
 void BigQuerySchemas::ArenaDtor(void* object) {
@@ -608,15 +457,10 @@ void BigQuerySchemas::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void BigQuerySchemas::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const BigQuerySchemas& BigQuerySchemas::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_BigQuerySchemas_structs_2fbigquery_2fbigquery_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void BigQuerySchemas::Clear() {
 // @@protoc_insertion_point(message_clear_start:structs.BigQuerySchemas)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -626,15 +470,13 @@ void BigQuerySchemas::Clear() {
 
 const char* BigQuerySchemas::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
     switch (tag >> 3) {
       // repeated .structs.BigQuerySchema schema = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -642,34 +484,36 @@ const char* BigQuerySchemas::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* BigQuerySchemas::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* BigQuerySchemas::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:structs.BigQuerySchemas)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .structs.BigQuerySchema schema = 1;
@@ -692,7 +536,7 @@ size_t BigQuerySchemas::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:structs.BigQuerySchemas)
   size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -703,45 +547,30 @@ size_t BigQuerySchemas::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-void BigQuerySchemas::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structs.BigQuerySchemas)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BigQuerySchemas* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BigQuerySchemas>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structs.BigQuerySchemas)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structs.BigQuerySchemas)
-    MergeFrom(*source);
-  }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BigQuerySchemas::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    BigQuerySchemas::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BigQuerySchemas::GetClassData() const { return &_class_data_; }
+
+void BigQuerySchemas::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<BigQuerySchemas *>(to)->MergeFrom(
+      static_cast<const BigQuerySchemas &>(from));
 }
+
 
 void BigQuerySchemas::MergeFrom(const BigQuerySchemas& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structs.BigQuerySchemas)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   schema_.MergeFrom(from.schema_);
-}
-
-void BigQuerySchemas::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structs.BigQuerySchemas)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BigQuerySchemas::CopyFrom(const BigQuerySchemas& from) {
@@ -757,14 +586,15 @@ bool BigQuerySchemas::IsInitialized() const {
 
 void BigQuerySchemas::InternalSwap(BigQuerySchemas* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   schema_.InternalSwap(&other->schema_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BigQuerySchemas::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_getter, &descriptor_table_structs_2fbigquery_2fbigquery_2eproto_once,
+      file_level_metadata_structs_2fbigquery_2fbigquery_2eproto[2]);
 }
-
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace structs

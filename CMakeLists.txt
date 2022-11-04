@@ -56,6 +56,7 @@ target_link_libraries(structs_lib
   absl::synchronization
   absl::strings
   absl::str_format
+  pthread
 )
 
 add_executable(protoc-gen-structs-bigquery-schema

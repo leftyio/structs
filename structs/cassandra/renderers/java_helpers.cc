@@ -4,7 +4,7 @@
 
 #include "absl/strings/str_format.h"
 #include "absl/strings/str_join.h"
-#include "google/protobuf/compiler/java/java_names.h"
+#include "google/protobuf/compiler/java/names.h"
 #include "structs/base/code_builder.h"
 #include "structs/base/utils.h"
 #include "structs/cassandra/field_gen.h"

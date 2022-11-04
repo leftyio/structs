@@ -16,38 +16,44 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace structs {
-constexpr StructField::StructField(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : path_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , structs_transient_(false){}
+PROTOBUF_CONSTEXPR StructField::StructField(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.path_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.structs_transient_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct StructFieldDefaultTypeInternal {
-  constexpr StructFieldDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR StructFieldDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~StructFieldDefaultTypeInternal() {}
   union {
     StructField _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT StructFieldDefaultTypeInternal _StructField_default_instance_;
-constexpr StructSchema::StructSchema(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : message_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , java_package_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , java_class_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StructFieldDefaultTypeInternal _StructField_default_instance_;
+PROTOBUF_CONSTEXPR StructSchema::StructSchema(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.message_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.java_package_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.java_class_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct StructSchemaDefaultTypeInternal {
-  constexpr StructSchemaDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR StructSchemaDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~StructSchemaDefaultTypeInternal() {}
   union {
     StructSchema _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT StructSchemaDefaultTypeInternal _StructSchema_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StructSchemaDefaultTypeInternal _StructSchema_default_instance_;
 }  // namespace structs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_structs_2fstructs_2eproto[2];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_structs_2fstructs_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_structs_2fstructs_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_structs_2fstructs_2eproto[2];
+static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_structs_2fstructs_2eproto = nullptr;
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_structs_2fstructs_2eproto = nullptr;
 
 const uint32_t TableStruct_structs_2fstructs_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -56,26 +62,26 @@ const uint32_t TableStruct_structs_2fstructs_2eproto::offsets[] PROTOBUF_SECTION
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::structs::StructField, path_),
-  PROTOBUF_FIELD_OFFSET(::structs::StructField, structs_transient_),
+  PROTOBUF_FIELD_OFFSET(::structs::StructField, _impl_.path_),
+  PROTOBUF_FIELD_OFFSET(::structs::StructField, _impl_.structs_transient_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::structs::StructSchema, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::structs::StructSchema, message_name_),
-  PROTOBUF_FIELD_OFFSET(::structs::StructSchema, java_package_),
-  PROTOBUF_FIELD_OFFSET(::structs::StructSchema, java_class_),
+  PROTOBUF_FIELD_OFFSET(::structs::StructSchema, _impl_.message_name_),
+  PROTOBUF_FIELD_OFFSET(::structs::StructSchema, _impl_.java_package_),
+  PROTOBUF_FIELD_OFFSET(::structs::StructSchema, _impl_.java_class_),
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::structs::StructField)},
   { 8, -1, -1, sizeof(::structs::StructSchema)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::structs::_StructField_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::structs::_StructSchema_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::structs::_StructField_default_instance_._instance,
+  &::structs::_StructSchema_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_structs_2fstructs_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -85,19 +91,21 @@ const char descriptor_table_protodef_structs_2fstructs_2eproto[] PROTOBUF_SECTIO
   "\030\001 \001(\t\022\024\n\014java_package\030\002 \001(\t\022\022\n\njava_cla"
   "ss\030\003 \001(\tb\006proto3"
   ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_structs_2fstructs_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_structs_2fstructs_2eproto = {
-  false, false, 176, descriptor_table_protodef_structs_2fstructs_2eproto, "structs/structs.proto", 
-  &descriptor_table_structs_2fstructs_2eproto_once, nullptr, 0, 2,
-  schemas, file_default_instances, TableStruct_structs_2fstructs_2eproto::offsets,
-  file_level_metadata_structs_2fstructs_2eproto, file_level_enum_descriptors_structs_2fstructs_2eproto, file_level_service_descriptors_structs_2fstructs_2eproto,
+static ::_pbi::once_flag descriptor_table_structs_2fstructs_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_structs_2fstructs_2eproto = {
+    false, false, 176, descriptor_table_protodef_structs_2fstructs_2eproto,
+    "structs/structs.proto",
+    &descriptor_table_structs_2fstructs_2eproto_once, nullptr, 0, 2,
+    schemas, file_default_instances, TableStruct_structs_2fstructs_2eproto::offsets,
+    file_level_metadata_structs_2fstructs_2eproto, file_level_enum_descriptors_structs_2fstructs_2eproto,
+    file_level_service_descriptors_structs_2fstructs_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_structs_2fstructs_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_structs_2fstructs_2eproto_getter() {
   return &descriptor_table_structs_2fstructs_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_structs_2fstructs_2eproto(&descriptor_table_structs_2fstructs_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_structs_2fstructs_2eproto(&descriptor_table_structs_2fstructs_2eproto);
 namespace structs {
 
 // ===================================================================
@@ -109,55 +117,61 @@ class StructField::_Internal {
 StructField::StructField(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:structs.StructField)
 }
 StructField::StructField(const StructField& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StructField* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.path_){}
+    , decltype(_impl_.structs_transient_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.path_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.path_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_path().empty()) {
-    path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_path(), 
-      GetArenaForAllocation());
+    _this->_impl_.path_.Set(from._internal_path(), 
+      _this->GetArenaForAllocation());
   }
-  structs_transient_ = from.structs_transient_;
+  _this->_impl_.structs_transient_ = from._impl_.structs_transient_;
   // @@protoc_insertion_point(copy_constructor:structs.StructField)
 }
 
-inline void StructField::SharedCtor() {
-path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-structs_transient_ = false;
+inline void StructField::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.path_){}
+    , decltype(_impl_.structs_transient_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.path_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 StructField::~StructField() {
   // @@protoc_insertion_point(destructor:structs.StructField)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void StructField::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  path_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.path_.Destroy();
 }
 
-void StructField::ArenaDtor(void* object) {
-  StructField* _this = reinterpret_cast< StructField* >(object);
-  (void)_this;
-}
-void StructField::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void StructField::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void StructField::Clear() {
@@ -166,31 +180,31 @@ void StructField::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  path_.ClearToEmpty();
-  structs_transient_ = false;
+  _impl_.path_.ClearToEmpty();
+  _impl_.structs_transient_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* StructField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* StructField::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string path = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_path();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.StructField.path"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.StructField.path"));
         } else
           goto handle_unusual;
         continue;
       // bool structs_transient = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          structs_transient_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.structs_transient_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -237,11 +251,11 @@ uint8_t* StructField::_InternalSerialize(
   // bool structs_transient = 2;
   if (this->_internal_structs_transient() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_structs_transient(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_structs_transient(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.StructField)
@@ -268,35 +282,31 @@ size_t StructField::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StructField::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     StructField::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StructField::GetClassData() const { return &_class_data_; }
 
-void StructField::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<StructField *>(to)->MergeFrom(
-      static_cast<const StructField &>(from));
-}
 
-
-void StructField::MergeFrom(const StructField& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structs.StructField)
-  GOOGLE_DCHECK_NE(&from, this);
+void StructField::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StructField*>(&to_msg);
+  auto& from = static_cast<const StructField&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:structs.StructField)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_path().empty()) {
-    _internal_set_path(from._internal_path());
+    _this->_internal_set_path(from._internal_path());
   }
   if (from._internal_structs_transient() != 0) {
-    _internal_set_structs_transient(from._internal_structs_transient());
+    _this->_internal_set_structs_transient(from._internal_structs_transient());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void StructField::CopyFrom(const StructField& from) {
@@ -316,15 +326,14 @@ void StructField::InternalSwap(StructField* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &path_, lhs_arena,
-      &other->path_, rhs_arena
+      &_impl_.path_, lhs_arena,
+      &other->_impl_.path_, rhs_arena
   );
-  swap(structs_transient_, other->structs_transient_);
+  swap(_impl_.structs_transient_, other->_impl_.structs_transient_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata StructField::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_structs_2fstructs_2eproto_getter, &descriptor_table_structs_2fstructs_2eproto_once,
       file_level_metadata_structs_2fstructs_2eproto[0]);
 }
@@ -338,79 +347,88 @@ class StructSchema::_Internal {
 StructSchema::StructSchema(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:structs.StructSchema)
 }
 StructSchema::StructSchema(const StructSchema& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StructSchema* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_name_){}
+    , decltype(_impl_.java_package_){}
+    , decltype(_impl_.java_class_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.message_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.message_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_message_name().empty()) {
-    message_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.message_name_.Set(from._internal_message_name(), 
+      _this->GetArenaForAllocation());
   }
-  java_package_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.java_package_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    java_package_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.java_package_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_java_package().empty()) {
-    java_package_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_java_package(), 
-      GetArenaForAllocation());
+    _this->_impl_.java_package_.Set(from._internal_java_package(), 
+      _this->GetArenaForAllocation());
   }
-  java_class_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.java_class_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    java_class_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.java_class_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_java_class().empty()) {
-    java_class_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_java_class(), 
-      GetArenaForAllocation());
+    _this->_impl_.java_class_.Set(from._internal_java_class(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:structs.StructSchema)
 }
 
-inline void StructSchema::SharedCtor() {
-message_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-java_package_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  java_package_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-java_class_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  java_class_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+inline void StructSchema::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_name_){}
+    , decltype(_impl_.java_package_){}
+    , decltype(_impl_.java_class_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.message_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.java_package_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.java_package_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.java_class_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.java_class_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 StructSchema::~StructSchema() {
   // @@protoc_insertion_point(destructor:structs.StructSchema)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void StructSchema::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  java_package_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  java_class_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.message_name_.Destroy();
+  _impl_.java_package_.Destroy();
+  _impl_.java_class_.Destroy();
 }
 
-void StructSchema::ArenaDtor(void* object) {
-  StructSchema* _this = reinterpret_cast< StructSchema* >(object);
-  (void)_this;
-}
-void StructSchema::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void StructSchema::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void StructSchema::Clear() {
@@ -419,25 +437,25 @@ void StructSchema::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  message_name_.ClearToEmpty();
-  java_package_.ClearToEmpty();
-  java_class_.ClearToEmpty();
+  _impl_.message_name_.ClearToEmpty();
+  _impl_.java_package_.ClearToEmpty();
+  _impl_.java_class_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* StructSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* StructSchema::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string message_name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_message_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.StructSchema.message_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.StructSchema.message_name"));
         } else
           goto handle_unusual;
         continue;
@@ -445,9 +463,9 @@ const char* StructSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_java_package();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.StructSchema.java_package"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.StructSchema.java_package"));
         } else
           goto handle_unusual;
         continue;
@@ -455,9 +473,9 @@ const char* StructSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_java_class();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.StructSchema.java_class"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.StructSchema.java_class"));
         } else
           goto handle_unusual;
         continue;
@@ -521,7 +539,7 @@ uint8_t* StructSchema::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.StructSchema)
@@ -557,38 +575,34 @@ size_t StructSchema::ByteSizeLong() const {
         this->_internal_java_class());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StructSchema::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     StructSchema::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StructSchema::GetClassData() const { return &_class_data_; }
 
-void StructSchema::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<StructSchema *>(to)->MergeFrom(
-      static_cast<const StructSchema &>(from));
-}
 
-
-void StructSchema::MergeFrom(const StructSchema& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structs.StructSchema)
-  GOOGLE_DCHECK_NE(&from, this);
+void StructSchema::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StructSchema*>(&to_msg);
+  auto& from = static_cast<const StructSchema&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:structs.StructSchema)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_message_name().empty()) {
-    _internal_set_message_name(from._internal_message_name());
+    _this->_internal_set_message_name(from._internal_message_name());
   }
   if (!from._internal_java_package().empty()) {
-    _internal_set_java_package(from._internal_java_package());
+    _this->_internal_set_java_package(from._internal_java_package());
   }
   if (!from._internal_java_class().empty()) {
-    _internal_set_java_class(from._internal_java_class());
+    _this->_internal_set_java_class(from._internal_java_class());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void StructSchema::CopyFrom(const StructSchema& from) {
@@ -608,24 +622,21 @@ void StructSchema::InternalSwap(StructSchema* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_name_, lhs_arena,
-      &other->message_name_, rhs_arena
+      &_impl_.message_name_, lhs_arena,
+      &other->_impl_.message_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &java_package_, lhs_arena,
-      &other->java_package_, rhs_arena
+      &_impl_.java_package_, lhs_arena,
+      &other->_impl_.java_package_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &java_class_, lhs_arena,
-      &other->java_class_, rhs_arena
+      &_impl_.java_class_, lhs_arena,
+      &other->_impl_.java_class_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata StructSchema::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_structs_2fstructs_2eproto_getter, &descriptor_table_structs_2fstructs_2eproto_once,
       file_level_metadata_structs_2fstructs_2eproto[1]);
 }
@@ -633,10 +644,12 @@ void StructSchema::InternalSwap(StructSchema* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace structs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::structs::StructField* Arena::CreateMaybeMessage< ::structs::StructField >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::structs::StructField*
+Arena::CreateMaybeMessage< ::structs::StructField >(Arena* arena) {
   return Arena::CreateMessageInternal< ::structs::StructField >(arena);
 }
-template<> PROTOBUF_NOINLINE ::structs::StructSchema* Arena::CreateMaybeMessage< ::structs::StructSchema >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::structs::StructSchema*
+Arena::CreateMaybeMessage< ::structs::StructSchema >(Arena* arena) {
   return Arena::CreateMessageInternal< ::structs::StructSchema >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

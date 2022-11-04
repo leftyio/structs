@@ -16,60 +16,66 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-namespace structs {
-constexpr CassandraField::CassandraField(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : path_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , field_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , is_id_(false)
-  , is_bytes_(false)
-  , is_transient_(false)
-  , repeated_handling_(0)
 
-  , id_cardinality_(0){}
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
+namespace structs {
+PROTOBUF_CONSTEXPR CassandraField::CassandraField(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.path_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.field_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.is_id_)*/false
+  , /*decltype(_impl_.is_bytes_)*/false
+  , /*decltype(_impl_.is_transient_)*/false
+  , /*decltype(_impl_.repeated_handling_)*/0
+  , /*decltype(_impl_.id_cardinality_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CassandraFieldDefaultTypeInternal {
-  constexpr CassandraFieldDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR CassandraFieldDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~CassandraFieldDefaultTypeInternal() {}
   union {
     CassandraField _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CassandraFieldDefaultTypeInternal _CassandraField_default_instance_;
-constexpr CassandraSchema::CassandraSchema(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : fields_()
-  , message_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , table_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , compaction_strategy_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , compression_strategy_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , java_package_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , java_class_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CassandraFieldDefaultTypeInternal _CassandraField_default_instance_;
+PROTOBUF_CONSTEXPR CassandraSchema::CassandraSchema(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.fields_)*/{}
+  , /*decltype(_impl_.message_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.table_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.compaction_strategy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.compression_strategy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.java_package_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.java_class_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CassandraSchemaDefaultTypeInternal {
-  constexpr CassandraSchemaDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR CassandraSchemaDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~CassandraSchemaDefaultTypeInternal() {}
   union {
     CassandraSchema _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CassandraSchemaDefaultTypeInternal _CassandraSchema_default_instance_;
-constexpr CassandraSchemas::CassandraSchemas(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : schema_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CassandraSchemaDefaultTypeInternal _CassandraSchema_default_instance_;
+PROTOBUF_CONSTEXPR CassandraSchemas::CassandraSchemas(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.schema_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CassandraSchemasDefaultTypeInternal {
-  constexpr CassandraSchemasDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR CassandraSchemasDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~CassandraSchemasDefaultTypeInternal() {}
   union {
     CassandraSchemas _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CassandraSchemasDefaultTypeInternal _CassandraSchemas_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CassandraSchemasDefaultTypeInternal _CassandraSchemas_default_instance_;
 }  // namespace structs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_structs_2fcassandra_2fcassandra_2eproto[3];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_structs_2fcassandra_2fcassandra_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_structs_2fcassandra_2fcassandra_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_structs_2fcassandra_2fcassandra_2eproto[3];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_structs_2fcassandra_2fcassandra_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_structs_2fcassandra_2fcassandra_2eproto = nullptr;
 
 const uint32_t TableStruct_structs_2fcassandra_2fcassandra_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -78,44 +84,44 @@ const uint32_t TableStruct_structs_2fcassandra_2fcassandra_2eproto::offsets[] PR
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, path_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, is_id_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, id_cardinality_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, is_bytes_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, is_transient_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, field_name_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, repeated_handling_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.path_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.is_id_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.id_cardinality_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.is_bytes_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.is_transient_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.field_name_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraField, _impl_.repeated_handling_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, message_name_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, table_name_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, fields_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, compaction_strategy_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, compression_strategy_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, java_package_),
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, java_class_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.message_name_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.table_name_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.fields_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.compaction_strategy_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.compression_strategy_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.java_package_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchema, _impl_.java_class_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::structs::CassandraSchemas, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchemas, schema_),
+  PROTOBUF_FIELD_OFFSET(::structs::CassandraSchemas, _impl_.schema_),
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::structs::CassandraField)},
   { 13, -1, -1, sizeof(::structs::CassandraSchema)},
   { 26, -1, -1, sizeof(::structs::CassandraSchemas)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::structs::_CassandraField_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::structs::_CassandraSchema_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::structs::_CassandraSchemas_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::structs::_CassandraField_default_instance_._instance,
+  &::structs::_CassandraSchema_default_instance_._instance,
+  &::structs::_CassandraSchemas_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_structs_2fcassandra_2fcassandra_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -135,19 +141,21 @@ const char descriptor_table_protodef_structs_2fcassandra_2fcassandra_2eproto[] P
   "ST\020\000\022\017\n\013FROZEN_LIST\020\001\022\t\n\005BYTES\020\002\022\016\n\nFROZ"
   "EN_SET\020\003\022\007\n\003SET\020\004b\006proto3"
   ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_structs_2fcassandra_2fcassandra_2eproto = {
-  false, false, 585, descriptor_table_protodef_structs_2fcassandra_2fcassandra_2eproto, "structs/cassandra/cassandra.proto", 
-  &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once, nullptr, 0, 3,
-  schemas, file_default_instances, TableStruct_structs_2fcassandra_2fcassandra_2eproto::offsets,
-  file_level_metadata_structs_2fcassandra_2fcassandra_2eproto, file_level_enum_descriptors_structs_2fcassandra_2fcassandra_2eproto, file_level_service_descriptors_structs_2fcassandra_2fcassandra_2eproto,
+static ::_pbi::once_flag descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_structs_2fcassandra_2fcassandra_2eproto = {
+    false, false, 585, descriptor_table_protodef_structs_2fcassandra_2fcassandra_2eproto,
+    "structs/cassandra/cassandra.proto",
+    &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once, nullptr, 0, 3,
+    schemas, file_default_instances, TableStruct_structs_2fcassandra_2fcassandra_2eproto::offsets,
+    file_level_metadata_structs_2fcassandra_2fcassandra_2eproto, file_level_enum_descriptors_structs_2fcassandra_2fcassandra_2eproto,
+    file_level_service_descriptors_structs_2fcassandra_2fcassandra_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_structs_2fcassandra_2fcassandra_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_structs_2fcassandra_2fcassandra_2eproto_getter() {
   return &descriptor_table_structs_2fcassandra_2fcassandra_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_structs_2fcassandra_2fcassandra_2eproto(&descriptor_table_structs_2fcassandra_2fcassandra_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_structs_2fcassandra_2fcassandra_2eproto(&descriptor_table_structs_2fcassandra_2fcassandra_2eproto);
 namespace structs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* RepeatedHandler_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_structs_2fcassandra_2fcassandra_2eproto);
@@ -176,73 +184,86 @@ class CassandraField::_Internal {
 CassandraField::CassandraField(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:structs.CassandraField)
 }
 CassandraField::CassandraField(const CassandraField& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CassandraField* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.path_){}
+    , decltype(_impl_.field_name_){}
+    , decltype(_impl_.is_id_){}
+    , decltype(_impl_.is_bytes_){}
+    , decltype(_impl_.is_transient_){}
+    , decltype(_impl_.repeated_handling_){}
+    , decltype(_impl_.id_cardinality_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.path_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.path_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_path().empty()) {
-    path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_path(), 
-      GetArenaForAllocation());
+    _this->_impl_.path_.Set(from._internal_path(), 
+      _this->GetArenaForAllocation());
   }
-  field_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.field_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    field_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.field_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_field_name().empty()) {
-    field_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_field_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.field_name_.Set(from._internal_field_name(), 
+      _this->GetArenaForAllocation());
   }
-  ::memcpy(&is_id_, &from.is_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&id_cardinality_) -
-    reinterpret_cast<char*>(&is_id_)) + sizeof(id_cardinality_));
+  ::memcpy(&_impl_.is_id_, &from._impl_.is_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.id_cardinality_) -
+    reinterpret_cast<char*>(&_impl_.is_id_)) + sizeof(_impl_.id_cardinality_));
   // @@protoc_insertion_point(copy_constructor:structs.CassandraField)
 }
 
-inline void CassandraField::SharedCtor() {
-path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  path_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-field_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  field_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&is_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&id_cardinality_) -
-    reinterpret_cast<char*>(&is_id_)) + sizeof(id_cardinality_));
+inline void CassandraField::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.path_){}
+    , decltype(_impl_.field_name_){}
+    , decltype(_impl_.is_id_){false}
+    , decltype(_impl_.is_bytes_){false}
+    , decltype(_impl_.is_transient_){false}
+    , decltype(_impl_.repeated_handling_){0}
+    , decltype(_impl_.id_cardinality_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.path_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.field_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.field_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 CassandraField::~CassandraField() {
   // @@protoc_insertion_point(destructor:structs.CassandraField)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void CassandraField::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  path_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  field_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.path_.Destroy();
+  _impl_.field_name_.Destroy();
 }
 
-void CassandraField::ArenaDtor(void* object) {
-  CassandraField* _this = reinterpret_cast< CassandraField* >(object);
-  (void)_this;
-}
-void CassandraField::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CassandraField::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void CassandraField::Clear() {
@@ -251,34 +272,34 @@ void CassandraField::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  path_.ClearToEmpty();
-  field_name_.ClearToEmpty();
-  ::memset(&is_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_cardinality_) -
-      reinterpret_cast<char*>(&is_id_)) + sizeof(id_cardinality_));
+  _impl_.path_.ClearToEmpty();
+  _impl_.field_name_.ClearToEmpty();
+  ::memset(&_impl_.is_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.id_cardinality_) -
+      reinterpret_cast<char*>(&_impl_.is_id_)) + sizeof(_impl_.id_cardinality_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CassandraField::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string path = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_path();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraField.path"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraField.path"));
         } else
           goto handle_unusual;
         continue;
       // bool is_id = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          is_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.is_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -286,7 +307,7 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // bool is_bytes = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          is_bytes_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.is_bytes_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -294,7 +315,7 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // bool is_transient = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          is_transient_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.is_transient_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -303,9 +324,9 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_field_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraField.field_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraField.field_name"));
         } else
           goto handle_unusual;
         continue;
@@ -321,7 +342,7 @@ const char* CassandraField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // int32 id_cardinality = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          id_cardinality_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.id_cardinality_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -368,19 +389,19 @@ uint8_t* CassandraField::_InternalSerialize(
   // bool is_id = 2;
   if (this->_internal_is_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_is_id(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_is_id(), target);
   }
 
   // bool is_bytes = 3;
   if (this->_internal_is_bytes() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_is_bytes(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_is_bytes(), target);
   }
 
   // bool is_transient = 4;
   if (this->_internal_is_transient() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_is_transient(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(4, this->_internal_is_transient(), target);
   }
 
   // string field_name = 5;
@@ -396,18 +417,18 @@ uint8_t* CassandraField::_InternalSerialize(
   // .structs.RepeatedHandler repeated_handling = 6;
   if (this->_internal_repeated_handling() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       6, this->_internal_repeated_handling(), target);
   }
 
   // int32 id_cardinality = 7;
   if (this->_internal_id_cardinality() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_id_cardinality(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(7, this->_internal_id_cardinality(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.CassandraField)
@@ -454,58 +475,54 @@ size_t CassandraField::ByteSizeLong() const {
   // .structs.RepeatedHandler repeated_handling = 6;
   if (this->_internal_repeated_handling() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_repeated_handling());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_repeated_handling());
   }
 
   // int32 id_cardinality = 7;
   if (this->_internal_id_cardinality() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id_cardinality());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id_cardinality());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CassandraField::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     CassandraField::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CassandraField::GetClassData() const { return &_class_data_; }
 
-void CassandraField::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<CassandraField *>(to)->MergeFrom(
-      static_cast<const CassandraField &>(from));
-}
 
-
-void CassandraField::MergeFrom(const CassandraField& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraField)
-  GOOGLE_DCHECK_NE(&from, this);
+void CassandraField::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CassandraField*>(&to_msg);
+  auto& from = static_cast<const CassandraField&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraField)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_path().empty()) {
-    _internal_set_path(from._internal_path());
+    _this->_internal_set_path(from._internal_path());
   }
   if (!from._internal_field_name().empty()) {
-    _internal_set_field_name(from._internal_field_name());
+    _this->_internal_set_field_name(from._internal_field_name());
   }
   if (from._internal_is_id() != 0) {
-    _internal_set_is_id(from._internal_is_id());
+    _this->_internal_set_is_id(from._internal_is_id());
   }
   if (from._internal_is_bytes() != 0) {
-    _internal_set_is_bytes(from._internal_is_bytes());
+    _this->_internal_set_is_bytes(from._internal_is_bytes());
   }
   if (from._internal_is_transient() != 0) {
-    _internal_set_is_transient(from._internal_is_transient());
+    _this->_internal_set_is_transient(from._internal_is_transient());
   }
   if (from._internal_repeated_handling() != 0) {
-    _internal_set_repeated_handling(from._internal_repeated_handling());
+    _this->_internal_set_repeated_handling(from._internal_repeated_handling());
   }
   if (from._internal_id_cardinality() != 0) {
-    _internal_set_id_cardinality(from._internal_id_cardinality());
+    _this->_internal_set_id_cardinality(from._internal_id_cardinality());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CassandraField::CopyFrom(const CassandraField& from) {
@@ -525,25 +542,23 @@ void CassandraField::InternalSwap(CassandraField* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &path_, lhs_arena,
-      &other->path_, rhs_arena
+      &_impl_.path_, lhs_arena,
+      &other->_impl_.path_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &field_name_, lhs_arena,
-      &other->field_name_, rhs_arena
+      &_impl_.field_name_, lhs_arena,
+      &other->_impl_.field_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CassandraField, id_cardinality_)
-      + sizeof(CassandraField::id_cardinality_)
-      - PROTOBUF_FIELD_OFFSET(CassandraField, is_id_)>(
-          reinterpret_cast<char*>(&is_id_),
-          reinterpret_cast<char*>(&other->is_id_));
+      PROTOBUF_FIELD_OFFSET(CassandraField, _impl_.id_cardinality_)
+      + sizeof(CassandraField::_impl_.id_cardinality_)
+      - PROTOBUF_FIELD_OFFSET(CassandraField, _impl_.is_id_)>(
+          reinterpret_cast<char*>(&_impl_.is_id_),
+          reinterpret_cast<char*>(&other->_impl_.is_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CassandraField::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_getter, &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once,
       file_level_metadata_structs_2fcassandra_2fcassandra_2eproto[0]);
 }
@@ -556,121 +571,137 @@ class CassandraSchema::_Internal {
 
 CassandraSchema::CassandraSchema(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  fields_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:structs.CassandraSchema)
 }
 CassandraSchema::CassandraSchema(const CassandraSchema& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      fields_(from.fields_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CassandraSchema* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.fields_){from._impl_.fields_}
+    , decltype(_impl_.message_name_){}
+    , decltype(_impl_.table_name_){}
+    , decltype(_impl_.compaction_strategy_){}
+    , decltype(_impl_.compression_strategy_){}
+    , decltype(_impl_.java_package_){}
+    , decltype(_impl_.java_class_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.message_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.message_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_message_name().empty()) {
-    message_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.message_name_.Set(from._internal_message_name(), 
+      _this->GetArenaForAllocation());
   }
-  table_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.table_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    table_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.table_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_table_name().empty()) {
-    table_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_table_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.table_name_.Set(from._internal_table_name(), 
+      _this->GetArenaForAllocation());
   }
-  compaction_strategy_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.compaction_strategy_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    compaction_strategy_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.compaction_strategy_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_compaction_strategy().empty()) {
-    compaction_strategy_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_compaction_strategy(), 
-      GetArenaForAllocation());
+    _this->_impl_.compaction_strategy_.Set(from._internal_compaction_strategy(), 
+      _this->GetArenaForAllocation());
   }
-  compression_strategy_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.compression_strategy_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    compression_strategy_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.compression_strategy_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_compression_strategy().empty()) {
-    compression_strategy_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_compression_strategy(), 
-      GetArenaForAllocation());
+    _this->_impl_.compression_strategy_.Set(from._internal_compression_strategy(), 
+      _this->GetArenaForAllocation());
   }
-  java_package_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.java_package_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    java_package_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.java_package_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_java_package().empty()) {
-    java_package_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_java_package(), 
-      GetArenaForAllocation());
+    _this->_impl_.java_package_.Set(from._internal_java_package(), 
+      _this->GetArenaForAllocation());
   }
-  java_class_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.java_class_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    java_class_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.java_class_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_java_class().empty()) {
-    java_class_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_java_class(), 
-      GetArenaForAllocation());
+    _this->_impl_.java_class_.Set(from._internal_java_class(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:structs.CassandraSchema)
 }
 
-inline void CassandraSchema::SharedCtor() {
-message_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-table_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  table_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-compaction_strategy_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  compaction_strategy_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-compression_strategy_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  compression_strategy_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-java_package_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  java_package_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-java_class_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  java_class_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+inline void CassandraSchema::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.fields_){arena}
+    , decltype(_impl_.message_name_){}
+    , decltype(_impl_.table_name_){}
+    , decltype(_impl_.compaction_strategy_){}
+    , decltype(_impl_.compression_strategy_){}
+    , decltype(_impl_.java_package_){}
+    , decltype(_impl_.java_class_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.message_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.table_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.table_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.compaction_strategy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.compaction_strategy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.compression_strategy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.compression_strategy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.java_package_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.java_package_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.java_class_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.java_class_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 CassandraSchema::~CassandraSchema() {
   // @@protoc_insertion_point(destructor:structs.CassandraSchema)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void CassandraSchema::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  table_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  compaction_strategy_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  compression_strategy_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  java_package_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  java_class_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.fields_.~RepeatedPtrField();
+  _impl_.message_name_.Destroy();
+  _impl_.table_name_.Destroy();
+  _impl_.compaction_strategy_.Destroy();
+  _impl_.compression_strategy_.Destroy();
+  _impl_.java_package_.Destroy();
+  _impl_.java_class_.Destroy();
 }
 
-void CassandraSchema::ArenaDtor(void* object) {
-  CassandraSchema* _this = reinterpret_cast< CassandraSchema* >(object);
-  (void)_this;
-}
-void CassandraSchema::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CassandraSchema::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void CassandraSchema::Clear() {
@@ -679,29 +710,29 @@ void CassandraSchema::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  fields_.Clear();
-  message_name_.ClearToEmpty();
-  table_name_.ClearToEmpty();
-  compaction_strategy_.ClearToEmpty();
-  compression_strategy_.ClearToEmpty();
-  java_package_.ClearToEmpty();
-  java_class_.ClearToEmpty();
+  _impl_.fields_.Clear();
+  _impl_.message_name_.ClearToEmpty();
+  _impl_.table_name_.ClearToEmpty();
+  _impl_.compaction_strategy_.ClearToEmpty();
+  _impl_.compression_strategy_.ClearToEmpty();
+  _impl_.java_package_.ClearToEmpty();
+  _impl_.java_class_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CassandraSchema::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string message_name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_message_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraSchema.message_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraSchema.message_name"));
         } else
           goto handle_unusual;
         continue;
@@ -709,9 +740,9 @@ const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_table_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraSchema.table_name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraSchema.table_name"));
         } else
           goto handle_unusual;
         continue;
@@ -732,9 +763,9 @@ const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_compaction_strategy();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraSchema.compaction_strategy"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraSchema.compaction_strategy"));
         } else
           goto handle_unusual;
         continue;
@@ -742,9 +773,9 @@ const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_compression_strategy();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraSchema.compression_strategy"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraSchema.compression_strategy"));
         } else
           goto handle_unusual;
         continue;
@@ -752,9 +783,9 @@ const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           auto str = _internal_mutable_java_package();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraSchema.java_package"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraSchema.java_package"));
         } else
           goto handle_unusual;
         continue;
@@ -762,9 +793,9 @@ const char* CassandraSchema::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
           auto str = _internal_mutable_java_class();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "structs.CassandraSchema.java_class"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "structs.CassandraSchema.java_class"));
         } else
           goto handle_unusual;
         continue;
@@ -818,11 +849,11 @@ uint8_t* CassandraSchema::_InternalSerialize(
   }
 
   // repeated .structs.CassandraField fields = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_fields_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_fields_size()); i < n; i++) {
+    const auto& repfield = this->_internal_fields(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_fields(i), target, stream);
+        InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // string compaction_strategy = 4;
@@ -866,7 +897,7 @@ uint8_t* CassandraSchema::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.CassandraSchema)
@@ -883,7 +914,7 @@ size_t CassandraSchema::ByteSizeLong() const {
 
   // repeated .structs.CassandraField fields = 3;
   total_size += 1UL * this->_internal_fields_size();
-  for (const auto& msg : this->fields_) {
+  for (const auto& msg : this->_impl_.fields_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
@@ -930,48 +961,44 @@ size_t CassandraSchema::ByteSizeLong() const {
         this->_internal_java_class());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CassandraSchema::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     CassandraSchema::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CassandraSchema::GetClassData() const { return &_class_data_; }
 
-void CassandraSchema::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<CassandraSchema *>(to)->MergeFrom(
-      static_cast<const CassandraSchema &>(from));
-}
 
-
-void CassandraSchema::MergeFrom(const CassandraSchema& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraSchema)
-  GOOGLE_DCHECK_NE(&from, this);
+void CassandraSchema::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CassandraSchema*>(&to_msg);
+  auto& from = static_cast<const CassandraSchema&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraSchema)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  fields_.MergeFrom(from.fields_);
+  _this->_impl_.fields_.MergeFrom(from._impl_.fields_);
   if (!from._internal_message_name().empty()) {
-    _internal_set_message_name(from._internal_message_name());
+    _this->_internal_set_message_name(from._internal_message_name());
   }
   if (!from._internal_table_name().empty()) {
-    _internal_set_table_name(from._internal_table_name());
+    _this->_internal_set_table_name(from._internal_table_name());
   }
   if (!from._internal_compaction_strategy().empty()) {
-    _internal_set_compaction_strategy(from._internal_compaction_strategy());
+    _this->_internal_set_compaction_strategy(from._internal_compaction_strategy());
   }
   if (!from._internal_compression_strategy().empty()) {
-    _internal_set_compression_strategy(from._internal_compression_strategy());
+    _this->_internal_set_compression_strategy(from._internal_compression_strategy());
   }
   if (!from._internal_java_package().empty()) {
-    _internal_set_java_package(from._internal_java_package());
+    _this->_internal_set_java_package(from._internal_java_package());
   }
   if (!from._internal_java_class().empty()) {
-    _internal_set_java_class(from._internal_java_class());
+    _this->_internal_set_java_class(from._internal_java_class());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CassandraSchema::CopyFrom(const CassandraSchema& from) {
@@ -990,41 +1017,35 @@ void CassandraSchema::InternalSwap(CassandraSchema* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  fields_.InternalSwap(&other->fields_);
+  _impl_.fields_.InternalSwap(&other->_impl_.fields_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_name_, lhs_arena,
-      &other->message_name_, rhs_arena
+      &_impl_.message_name_, lhs_arena,
+      &other->_impl_.message_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &table_name_, lhs_arena,
-      &other->table_name_, rhs_arena
+      &_impl_.table_name_, lhs_arena,
+      &other->_impl_.table_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &compaction_strategy_, lhs_arena,
-      &other->compaction_strategy_, rhs_arena
+      &_impl_.compaction_strategy_, lhs_arena,
+      &other->_impl_.compaction_strategy_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &compression_strategy_, lhs_arena,
-      &other->compression_strategy_, rhs_arena
+      &_impl_.compression_strategy_, lhs_arena,
+      &other->_impl_.compression_strategy_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &java_package_, lhs_arena,
-      &other->java_package_, rhs_arena
+      &_impl_.java_package_, lhs_arena,
+      &other->_impl_.java_package_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &java_class_, lhs_arena,
-      &other->java_class_, rhs_arena
+      &_impl_.java_class_, lhs_arena,
+      &other->_impl_.java_class_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CassandraSchema::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_getter, &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once,
       file_level_metadata_structs_2fcassandra_2fcassandra_2eproto[1]);
 }
@@ -1037,43 +1058,47 @@ class CassandraSchemas::_Internal {
 
 CassandraSchemas::CassandraSchemas(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  schema_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:structs.CassandraSchemas)
 }
 CassandraSchemas::CassandraSchemas(const CassandraSchemas& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      schema_(from.schema_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CassandraSchemas* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schema_){from._impl_.schema_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:structs.CassandraSchemas)
 }
 
-inline void CassandraSchemas::SharedCtor() {
+inline void CassandraSchemas::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schema_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 CassandraSchemas::~CassandraSchemas() {
   // @@protoc_insertion_point(destructor:structs.CassandraSchemas)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void CassandraSchemas::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.schema_.~RepeatedPtrField();
 }
 
-void CassandraSchemas::ArenaDtor(void* object) {
-  CassandraSchemas* _this = reinterpret_cast< CassandraSchemas* >(object);
-  (void)_this;
-}
-void CassandraSchemas::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CassandraSchemas::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void CassandraSchemas::Clear() {
@@ -1082,15 +1107,15 @@ void CassandraSchemas::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  schema_.Clear();
+  _impl_.schema_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CassandraSchemas::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CassandraSchemas::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .structs.CassandraSchema schema = 1;
       case 1:
@@ -1135,15 +1160,15 @@ uint8_t* CassandraSchemas::_InternalSerialize(
   (void) cached_has_bits;
 
   // repeated .structs.CassandraSchema schema = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_schema_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_schema_size()); i < n; i++) {
+    const auto& repfield = this->_internal_schema(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_schema(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:structs.CassandraSchemas)
@@ -1160,35 +1185,31 @@ size_t CassandraSchemas::ByteSizeLong() const {
 
   // repeated .structs.CassandraSchema schema = 1;
   total_size += 1UL * this->_internal_schema_size();
-  for (const auto& msg : this->schema_) {
+  for (const auto& msg : this->_impl_.schema_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CassandraSchemas::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     CassandraSchemas::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CassandraSchemas::GetClassData() const { return &_class_data_; }
 
-void CassandraSchemas::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<CassandraSchemas *>(to)->MergeFrom(
-      static_cast<const CassandraSchemas &>(from));
-}
 
-
-void CassandraSchemas::MergeFrom(const CassandraSchemas& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraSchemas)
-  GOOGLE_DCHECK_NE(&from, this);
+void CassandraSchemas::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CassandraSchemas*>(&to_msg);
+  auto& from = static_cast<const CassandraSchemas&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:structs.CassandraSchemas)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  schema_.MergeFrom(from.schema_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.schema_.MergeFrom(from._impl_.schema_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CassandraSchemas::CopyFrom(const CassandraSchemas& from) {
@@ -1205,11 +1226,11 @@ bool CassandraSchemas::IsInitialized() const {
 void CassandraSchemas::InternalSwap(CassandraSchemas* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  schema_.InternalSwap(&other->schema_);
+  _impl_.schema_.InternalSwap(&other->_impl_.schema_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CassandraSchemas::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_getter, &descriptor_table_structs_2fcassandra_2fcassandra_2eproto_once,
       file_level_metadata_structs_2fcassandra_2fcassandra_2eproto[2]);
 }
@@ -1217,13 +1238,16 @@ void CassandraSchemas::InternalSwap(CassandraSchemas* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace structs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::structs::CassandraField* Arena::CreateMaybeMessage< ::structs::CassandraField >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::structs::CassandraField*
+Arena::CreateMaybeMessage< ::structs::CassandraField >(Arena* arena) {
   return Arena::CreateMessageInternal< ::structs::CassandraField >(arena);
 }
-template<> PROTOBUF_NOINLINE ::structs::CassandraSchema* Arena::CreateMaybeMessage< ::structs::CassandraSchema >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::structs::CassandraSchema*
+Arena::CreateMaybeMessage< ::structs::CassandraSchema >(Arena* arena) {
   return Arena::CreateMessageInternal< ::structs::CassandraSchema >(arena);
 }
-template<> PROTOBUF_NOINLINE ::structs::CassandraSchemas* Arena::CreateMaybeMessage< ::structs::CassandraSchemas >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::structs::CassandraSchemas*
+Arena::CreateMaybeMessage< ::structs::CassandraSchemas >(Arena* arena) {
   return Arena::CreateMessageInternal< ::structs::CassandraSchemas >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

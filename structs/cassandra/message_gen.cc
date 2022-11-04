@@ -4,7 +4,7 @@
 #include <list>
 
 #include "glog/logging.h"
-#include "google/protobuf/compiler/java/java_names.h"
+#include "google/protobuf/compiler/java/names.h"
 #include "google/protobuf/descriptor.pb.h"
 
 using google::protobuf::Descriptor;

@@ -322,6 +322,8 @@ string JavaContent(const MessageGen* msg) {
   cb.Newline() << "import com.datastax.oss.driver.api.core.cql.Row;";
   cb.Newline()
       << "import com.datastax.oss.driver.api.core.type.reflect.GenericType;";
+
+  cb.BreakLine() << "import java.util.Optional;";
   cb.BreakLine();
 
   cb << "public final class " << msg->JavaClass() << " {";
@@ -416,13 +418,23 @@ string JavaContent(const MessageGen* msg) {
   }
 
   string result_type = "java.util.Optional<" + msg->JavaClassOfMessage() + ">";
+
   cb.BreakLine() << "public " << result_type << " load(";
   LoadArguments(*msg, cb);
   cb << ") {";
+  cb.BreakLine() << "return load(";
+  LoadArgumentsNoType(*msg, cb);
+  cb << ", Optional.empty());";
+  cb.OutdentBracket();
+
+  cb.BreakLine() << "public " << result_type << " load(";
+  LoadArguments(*msg, cb);
+  cb << ", Optional<String> profile) {";
   cb.Indent() << "PreparedStatement stmt = selectAllStmt.get();";
   cb.Newline() << "BoundStatement bound = stmt.bind(";
   LoadArgumentsNoType(*msg, cb);
   cb << ");";
+  cb.Newline() << "profile.ifPresent(bound::setExecutionProfileName);";
   cb.Newline() << "ResultSet rs = session.execute(bound);";
   cb.Newline() << "Row row = rs.one();";
   cb.Newline() << "if (row == null) {";
@@ -541,19 +553,31 @@ string JavaContent(const MessageGen* msg) {
 
   cb.BreakLine() << "public void save(" << msg->JavaClassOfMessage()
                  << " obj) {";
+  cb.Indent() << "save(obj, Optional.empty());";
+  cb.OutdentBracket();
+             
+  cb.BreakLine() << "public void save(" << msg->JavaClassOfMessage()
+                 << " obj, Optional<String> profile) {";
   cb.Indent() << "PreparedStatement stmt = insertAllStmt.get();";
   BindObject(*msg, cb);
   cb.BreakLine() << "BoundStatement bound = stmt.bind(boundObjs);";
+  cb.Newline() << "profile.ifPresent(bound::setExecutionProfileName);";
   cb.Newline() << "session.execute(bound);";
+  cb.OutdentBracket();
+
+  cb.BreakLine() << "public com.google.common.util.concurrent.ListenableFuture<Void> saveAsync(" << msg->JavaClassOfMessage()
+                 << " obj) {";
+  cb.Indent() << "return saveAsync(obj, Optional.empty());";
   cb.OutdentBracket();
 
   cb.BreakLine()
       << "public com.google.common.util.concurrent.ListenableFuture<Void> "
          "saveAsync("
-      << msg->JavaClassOfMessage() << " obj) {";
+      << msg->JavaClassOfMessage() << " obj, Optional<String> profile) {";
   cb.Indent() << "PreparedStatement stmt = insertAllStmt.get();";
   BindObject(*msg, cb);
   cb.BreakLine() << "BoundStatement bound = stmt.bind(boundObjs);";
+  cb.Newline() << "profile.ifPresent(bound::setExecutionProfileName);";
   cb.Newline()
       << "com.google.common.util.concurrent.ListenableFuture<AsyncResultSet> "
          "rsF = "
@@ -565,9 +589,14 @@ string JavaContent(const MessageGen* msg) {
          "com.google.common.util.concurrent.MoreExecutors.directExecutor());";
   cb.OutdentBracket();
 
-  // Targeted updates support.
   cb.BreakLine() << "public void update(" << msg->JavaClassOfMessage()
                  << " obj, com.google.protobuf.FieldMask mask) {";
+  cb.Indent() << "update(obj, mask, Optional.empty());";
+  cb.OutdentBracket();
+
+  // Targeted updates support.
+  cb.BreakLine() << "public void update(" << msg->JavaClassOfMessage()
+                 << " obj, com.google.protobuf.FieldMask mask, Optional<String> profile) {";
   cb.Indent()
       << "mask = com.google.protobuf.util.FieldMaskUtil.normalize(mask);";
   cb.Newline() << "if (!com.google.protobuf.util.FieldMaskUtil.isValid("
@@ -611,6 +640,7 @@ string JavaContent(const MessageGen* msg) {
   }
 
   cb.BreakLine() << "BoundStatement bound = stmt.bind(boundObjs);";
+  cb.Newline() << "profile.ifPresent(bound::setExecutionProfileName);";
   cb.Newline() << "session.execute(bound);";
 
   cb.OutdentBracket();
